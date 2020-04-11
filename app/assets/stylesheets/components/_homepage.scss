@@ -1,0 +1,16 @@
+#homepage1{
+  height: 679px;
+  width: 1440px;
+  background-image: url(images/homepage/banner-homepage.svg);
+  h1{
+    font-size: 38px;
+    color: white;
+    font-weight: 700;
+    font-style: normal;
+
+    span{
+      color: $purple;
+    }
+  }
+
+}

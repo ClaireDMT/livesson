@@ -1,6 +1,6 @@
 #homepage1{
   height: calc(80vh - 80px);
-  background-image: url("homepage/banner-homepage.svg");
+  background-image: url("homepage/banner-homepage.jpg");
   background-size: cover;
   background-position-y: bottom;
   text-align: center;
@@ -57,10 +57,45 @@
 
 #homepage3{
   margin-top: 95px;
-  text-align: center;
+  text-align: -webkit-center;
   h2{
     font-weight: 700;
     font-size: 38px;
     line-height: 40px;
+    max-width: 847px;
+  }
+}
+
+#homepage4{
+  margin-top: 61px;
+  .flexify{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    p{
+      font-size: 16px;
+      line-height: 24px;
+      width: 600px;
+    }
+    h2{
+      font-size: 32px;
+      line-height: 56px;
+      font-weight: 700;
+      margin-bottom: 30px;
+      width: 600px;
+    }
+    img{
+      width: 500px;
+    }
+  }
+  .sub2{
+    margin-right: 40px;
+  }
+  .sub3{
+    text-align: right;
+    margin-left: 40px;
+    h2{
+      line-height: 36px;
+    }
   }
 }

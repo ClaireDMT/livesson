@@ -1,16 +1,19 @@
 #homepage1{
-  height: 679px;
-  width: 1440px;
-  background-image: url(images/homepage/banner-homepage.svg);
+  height: calc(80vh - 80px);
+  background-image: url("homepage/banner-homepage.svg");
+  background-size: cover;
+  background-position-y: bottom;
+  text-align: center;
   h1{
     font-size: 38px;
+    line-height: 56px;
     color: white;
-    font-weight: 700;
-    font-style: normal;
-
+    padding-top: 39px;
     span{
       color: $purple;
     }
   }
-
+  button{
+    margin-top: 24px;
+  }
 }

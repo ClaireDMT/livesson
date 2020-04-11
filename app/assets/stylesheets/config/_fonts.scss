@@ -1,16 +1,133 @@
-// Import Google fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito:400,700|Work+Sans:400,700&display=swap');
+@font-face {
+    font-family: 'Graphik';
+    src: asset-url('Graphik-Thin.otf') format('truetype');
+    font-weight: 100;
+    font-style: normal;
+}
 
-// Define fonts for body and headers
-$body-font: "Work Sans", "Helvetica", "sans-serif";
-$headers-font: "Nunito", "Helvetica", "sans-serif";
+@font-face {
+    font-family: 'Graphik';
+    src: asset-url('Graphik-ThinItalic.otf') format('truetype');
+    font-weight: 100;
+    font-style: italic;
+}
 
-// To use a font file (.woff) uncomment following lines
-// @font-face {
-//   font-family: "Font Name";
-//   src: font-url('FontFile.eot');
-//   src: font-url('FontFile.eot?#iefix') format('embedded-opentype'),
-//        font-url('FontFile.woff') format('woff'),
-//        font-url('FontFile.ttf') format('truetype')
-// }
-// $my-font: "Font Name";
+@font-face {
+    font-family: 'Graphik';
+    src: asset-url('Graphik-Extralight.otf') format('truetype');
+    font-weight: 200;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Graphik';
+    src: asset-url('Graphik-ExtralightItalic.otf') format('truetype');
+    font-weight: 200;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Graphik';
+    src: asset-url('Graphik-Light.otf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Graphik';
+    src: asset-url('Graphik-LightItalic.otf') format('truetype');
+    font-weight: 300;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Graphik';
+    src: asset-url('Graphik-Regular.otf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Graphik';
+    src: asset-url('Graphik-RegularItalic.otf') format('truetype');
+    font-weight: 400;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Graphik';
+    src: asset-url('Graphik-Medium.otf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Graphik';
+    src: asset-url('Graphik-MediumItalic.otf') format('truetype');
+    font-weight: 500;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Graphik';
+    src: asset-url('Graphik-Semibold.otf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Graphik';
+    src: asset-url('Graphik-SemiboldItalic.otf') format('truetype');
+    font-weight: 600;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Graphik';
+    src: asset-url('Graphik-Bold.otf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Graphik';
+    src: asset-url('Graphik-BoldItalic.otf') format('truetype');
+    font-weight: 700;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Graphik';
+    src: asset-url('Graphik-Black.otf') format('truetype');
+    font-weight: 800;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Graphik';
+    src: asset-url('Graphik-BlackItalic.otf') format('truetype');
+    font-weight: 800;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Graphik';
+    src: asset-url('Graphik-Super.otf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Graphik';
+    src: asset-url('Graphik-SuperItalic.otf') format('truetype');
+    font-weight: 900;
+    font-style: italic;
+}
+
+/* Document level adjustments */
+html {
+  font-size: 14px;
+  font-weight: 400;
+  font-family: Graphik, sans-serif;
+  color: #18273A;
+}

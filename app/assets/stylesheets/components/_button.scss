@@ -7,4 +7,10 @@
   border-style: none;
   font-size: 18px;
   line-height: 24px;
+  text-decoration: none;
+  @media all and (max-width: 450px){
+    width: 264px;
+    height: 49px;
+    font-size: 14px;
+  }
 }

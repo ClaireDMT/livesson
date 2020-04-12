@@ -5,8 +5,8 @@
         <div class="image">
           <%= image_tag "empty.jpg" %>
         </div>
-        <div class="content">
-          <div class="__left">
+        <div class="card-content">
+          <div class="card-content-left">
             <p class="lesson-type medium">PILATE FUSION</p>
             <p class="lesson-level">Tous niveaux</p>
             <p class="lesson-teacher medium">Elodie Bernier</p>
@@ -21,12 +21,12 @@
               <span class="__number">(3)</span>
             </div>
           </div>
-          <div class="__right">
-            <p class="lesson-price medium">8€</p>
-            <p class="lesson-duration">60min</p>
-            <%= link_to root_path, class:"btn-rectangle" do %>
-              <p>Réserver</p>
-            <% end %>
+          <div class="card-content-right">
+            <div class="card-content-right-top">
+              <p class="lesson-price medium">8€</p>
+              <p class="lesson-duration">60min</p>
+            </div>
+            <button class="btn-rectangle">Réserver</button>
           </div>
         </div>
       </div>

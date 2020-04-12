@@ -3,8 +3,9 @@
   height: 160px;
   border: 1px solid $light-gray;
   display: flex;
-  align-items: center;
+  // align-items: center;
   flex-direction: row;
+  font-size: 16px;
   p {
     margin-bottom: 0;
   }
@@ -14,32 +15,43 @@
       width: 160px;
     }
   }
-  .content {
+  .card-content {
+    height: 160px;
+    width: 100%;
     display: flex;
-    justify-content: space-evenly;
     align-items: center;
-    flex-direction: row;
-    padding-left: 15px;
-    .lesson-type {
-      color: $purple;
-    }
-    .lesson-level, .lesson-language {
-      color: $light-gray;
-    }
-    .lesson-teacher {
-      color: black;
-    }
-    .lesson-notation {
-      color: $blue;
-      span.__number {
-        color: $light-gray;
+    justify-content: space-between;
+    padding: 0 15px;
+    .card-content-left {
+      .lesson-type {
+        color: $purple;
+      }
+      .lesson-level, .lesson-language {
+        color: $gray;
+      }
+      .lesson-teacher {
+        color: black;
+      }
+      .lesson-notation {
+        color: $blue;
+        span.__number {
+          color: $gray;
+        }
       }
     }
-    .lesson-price {
-      color: $purple;
-    }
-    .lesson-duration {
-      color: $light-gray;
+    .card-content-right {
+      text-align: right;
+      height: 100%;
+      padding: 10px 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      .lesson-price {
+        color: $purple;
+      }
+      .lesson-duration {
+        color: $gray;
+      }
     }
   }
 }

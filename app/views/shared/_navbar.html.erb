@@ -1,29 +1,43 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <div class="navbar-desktop d-none d-md-flex">
-    <div class="logo">
-      <%= image_tag "logo.png" %>
+<div class="navbar-desktop d-none d-md-flex">
+  <div class="logo">
+    <%= image_tag "logo.png" %>
+  </div>
+  <div class="content-navbar">
+    <div class="search-bar-navbar">
+      <i class="fas fa-search"></i>
+      <input type="text" placeholder="Rechercher un coach en particulier">
+    </div>
+    <button class="btn-rounded medium">
+      <p>
+        Professionnel ? <br>
+        Proposer des cours
+       </p>
+    </button>
+    <%= link_to 'Aide', root_path, class:"medium" %>
+    <%= link_to 'Inscription', root_path, class:"medium" %>
+    <button class="btn-rectangle medium">
+      <p>Connexion</p>
+    </button>
+  </div>
+</div>
+<div class="navbar-mobile d-flex d-sm-none">
+  <div class="btn-group dropleft">
+    <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="dropdown-menu">
+      <%= link_to 'Rechercher un coach en particulier', root_path %>
+      <%= link_to 'Professionel ? Proposer des cours', root_path %>
     </div>
   </div>
-  <div class="navbar-mobile d-flex d-sm-none">
-    <div class="btn-group dropleft">
-      <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-      <div class="dropdown-menu">
-        <%= link_to 'Rechercher un coach en particulier', root_path %>
-        <%= link_to 'Professionel ? Proposer des cours', root_path %>
-      </div>
-    </div>
-    <div class="btn-group dropright">
-      <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <i class="far fa-user"></i>
-      </button>
-      <div class="dropdown-menu">
-        <%= link_to 'Aide', root_path %>
-        <%= link_to 'Inscription', root_path %>
-        <%= link_to 'Connexion', root_path %>
-      </div>
+  <div class="btn-group dropright">
+    <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <i class="far fa-user"></i>
+    </button>
+    <div class="dropdown-menu">
+      <%= link_to 'Aide', root_path %>
+      <%= link_to 'Inscription', root_path %>
+      <%= link_to 'Connexion', root_path %>
     </div>
   </div>
 </div>
-

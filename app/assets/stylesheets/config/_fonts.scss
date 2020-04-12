@@ -159,6 +159,9 @@ html {
   white-space: pre-wrap;
   box-shadow: rgba(121, 33, 233, 0.24) 0px -2rem 0px inset;
   padding: 0;
+  @media all and (max-width: 450px){
+    box-shadow: rgba(121, 33, 233, 0.24) 0px -1.1rem 0px inset;
+  }
 }
 .textcenter {
   text-align: center;

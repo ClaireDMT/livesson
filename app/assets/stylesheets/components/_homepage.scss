@@ -108,20 +108,52 @@
     }
   }
   @media all and (max-width: 450px){
+    display: none;
+    margin-top: 38px;
+  }
+}
+#homepage3responsive{
+  display: none;
+  margin-top: 95px;
+  text-align: -webkit-center;
+  h2{
+    font-weight: 700;
+    font-size: 38px;
+    line-height: 40px;
+    max-width: 847px;
+    @media all and (max-width: 450px){
+      font-size: 24px;
+      line-height: 28px;
+      max-width: 300px;
+    }
+  }
+  @media all and (max-width: 450px){
+    display: block;
     margin-top: 38px;
   }
 }
 
 #homepage4{
   margin-top: 61px;
-  .flexify{
+  .flexify, .resp2, .resp{
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 30px;
+    @media all and (max-width: 1100px){
+      display: block;
+      text-align: -webkit-center;
+
+    }
     p{
       font-size: 16px;
       line-height: 24px;
       width: 600px;
+      @media all and (max-width: 1100px){
+        font-size: 14px;
+        font-family: 18px;
+        width: 344px;
+      }
     }
     h2{
       font-size: 32px;
@@ -129,19 +161,57 @@
       font-weight: 700;
       margin-bottom: 30px;
       width: 600px;
+      @media all and (max-width: 1100px){
+        font-size: 24px;
+        line-height: 28px;
+        width: 344px;
+      }
     }
     img{
       width: 500px;
+      @media all and (max-width: 450px){
+        width: 277px;
+      }
+    }
+  }
+  .resp2{
+    @media all and (max-width: 1100px){
+      display: none;
     }
   }
   .sub2{
     margin-right: 40px;
+    @media all and (max-width: 1100px){
+      text-align: center;
+      text-align: -webkit-center;
+    }
   }
   .sub3{
     text-align: right;
     margin-left: 40px;
+    @media all and (max-width: 1100px){
+      text-align: center;
+      text-align: -webkit-center;
+    }
     h2{
       line-height: 36px;
+      @media all and (max-width: 1100px){
+        font-size: 24px;
+        line-height: 28px;
+        width: 344px;
+      }
+    }
+  }
+  .resp{
+    display: none;
+    img{
+      max-width: 500px;
+      @media all and (max-width: 450px){
+        width: 277px;
+      }
+    }
+    @media all and (max-width: 1100px){
+      display: block;
     }
   }
 }

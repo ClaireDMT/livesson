@@ -1,0 +1,57 @@
+.card {
+  width: 670px;
+  height: 160px;
+  border: 1px solid $light-gray;
+  display: flex;
+  // align-items: center;
+  flex-direction: row;
+  font-size: 16px;
+  p {
+    margin-bottom: 0;
+  }
+  .image {
+    img {
+      height: 160px;
+      width: 160px;
+    }
+  }
+  .card-content {
+    height: 160px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 15px;
+    .card-content-left {
+      .lesson-type {
+        color: $purple;
+      }
+      .lesson-level, .lesson-language {
+        color: $gray;
+      }
+      .lesson-teacher {
+        color: black;
+      }
+      .lesson-notation {
+        color: $blue;
+        span.__number {
+          color: $gray;
+        }
+      }
+    }
+    .card-content-right {
+      text-align: right;
+      height: 100%;
+      padding: 10px 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      .lesson-price {
+        color: $purple;
+      }
+      .lesson-duration {
+        color: $gray;
+      }
+    }
+  }
+}

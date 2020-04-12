@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-md-6">
+      <div class="card">
+        <div class="image">
+          <%= image_tag "empty.jpg" %>
+        </div>
+        <div class="content">
+          <div class="__left">
+            <p class="lesson-type medium">PILATE FUSION</p>
+            <p class="lesson-level">Tous niveaux</p>
+            <p class="lesson-teacher medium">Elodie Bernier</p>
+            <p class="lesson-date">Mercredi 12 mars 2020 à 20h00</p>
+            <p class="lesson-language">Cours en Français</p>
+            <div class="lesson-notation">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="far fa-star"></i>
+              <i class="far fa-star"></i>
+              <span class="__number">(3)</span>
+            </div>
+          </div>
+          <div class="__right">
+            <p class="lesson-price medium">8€</p>
+            <p class="lesson-duration">60min</p>
+            <%= link_to root_path, class:"btn-rectangle" do %>
+              <p>Réserver</p>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -8,17 +8,24 @@
     <div class='right-part'>
       <p>Retrouvez-nous sur</p>
       <%= link_to "" do %>
-        <%= image_tag %>
+        <%= image_tag "footer/insta.svg" %>
       <% end %>
-      <%= link_to "" do %>
-        <%= image_tag %>
+      <%= link_to  do %>
+        <%= image_tag "footer/facebook.svg" %>
       <% end %>
-      <%= link_to "" do %>
-        <%= image_tag %>
+      <%= link_to  do %>
+        <%= image_tag "footer/linkedIn.svg" %>
       <% end %>
     </div>
   </div>
   <div id="footer-white">
-
+    <div class="left-part">
+      <p>Copyright © 2020 Livesson. Tous droits réservés.</p>
+    </div>
+    <div class="right-part">
+      <%= link_to "Conditions d'utilisation", "" %>
+      <%= link_to "Politique de protection des données", ""  %>
+      <%= link_to "Mentions légales", ""  %>
+    </div>
   </div>
 </footer>

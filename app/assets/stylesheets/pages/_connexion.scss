@@ -35,9 +35,24 @@
         font-size: 32px;
         line-height: 48px;
       }
+      .form-inputs {
+        margin-bottom: 30px;
+      }
+      .form-actions {
+        margin-top: 30px;
+      }
+      .page-connexion-actu-conditions-generale{
+        label{
+          font-size: 14px;
+        }
+        p{
+          font-size: 12px;
+          color: $gray;
+        }
+      }
       .password-forgotten {
         position: relative;
-        top: -8.1rem;
+        top: -9.1rem;
         right: -376px;
         color: black;
         &:hover {

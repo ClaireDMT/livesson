@@ -1,11 +1,13 @@
 <div class="page-connexion">
   <div class="page-connexion-left">
-    <%= image_tag 'page-connexion/page-connexion-image.jpg' %>
+    <%= image_tag 'page-connexion/page-connexion-connexion-image.jpg' %>
   </div>
   <div class="page-connexion-right">
     <div class="page-connexion-right-inscription">
       <p>Nouveau sur Livesson, vous n’avez pas encore de compte ?</p>
-      <button class="btn-rectangle">M'inscrire</button>
+      <%= link_to new_user_registration_path do %>
+        <button class="btn-rectangle">M'inscrire</button>
+      <% end %>
     </div>
     <div class="page-connexion-right-form">
       <h2>Connexion</h2>
@@ -30,6 +32,5 @@
       <% end %>
       <%= link_to "Mot de passe oublié ?", new_password_path(resource_name), class: "password-forgotten" %>
     </div>
-
   </div>
 </div>

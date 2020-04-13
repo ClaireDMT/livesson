@@ -60,3 +60,21 @@
     margin-top: 9%
   }
 }
+
+.hp-button {
+  width: 322px;
+  height: 62px;
+  background-color: $purple;
+  color: white;
+  border-radius: 8px;
+  border-style: none;
+  font-size: 18px;
+  line-height: 24px;
+  text-decoration: none;
+  @media all and (max-width: 450px){
+    width: 264px;
+    height: 49px;
+    font-size: 14px;
+  }
+}
+

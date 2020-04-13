@@ -1,12 +1,125 @@
-.navbar-lewagon {
-  justify-content: space-between;
+.navbar-desktop {
+  box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
   background: white;
+  height: 70px;
+  z-index: +1;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+  padding: 20px;
+  width: 100%;
+  .logo {
+    float: left;
+    img {
+      width: 270px;
+    }
+  }
+  .content-navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: inherit;
+    a {
+      color: black;
+      font-size: 18px;
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
 }
 
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
+@media all and (max-width: 1024px){
+  .navbar-desktop {
+    .logo {
+      float: left;
+      img {
+        width: 200px;
+      }
+    }
+    .content-navbar {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      width: inherit;
+      a {
+        color: black;
+        font-size: 14px;
+        &:hover {
+          text-decoration: none;
+        }
+      }
+    }
+  }
 }
 
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+@media all and (max-width: 450px) {
+  .navbar-mobile {
+    box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
+    background: white;
+    height: 70px;
+    z-index: +1;
+    list-style: none;
+    width: 100%;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+    span {
+      display: flex;
+      width: 29px;
+      height: 3px;
+      margin-bottom: 5px;
+      position: relative;
+      background: black;
+      border-radius: 3px;
+      z-index: 1;
+    }
+    i.far.fa-user {
+      font-size: 26px;
+    }
+    .dropleft .dropdown-toggle::before {
+      display: none;
+    }
+    .dropright .dropdown-toggle::after {
+      display: none;
+    }
+    .dropleft .dropdown-menu {
+      top: 53px;
+      left: -15px;
+      margin-top: 0;
+      margin-right: 0.125rem;
+      width: 280px;
+      padding: 20px;
+      border: none;
+      box-shadow: 10px 10px 12px rgba(0, 0, 0, 0.5);
+      a {
+        color: black;
+        line-height: 35px;
+        &:hover {
+          text-decoration: none;
+        }
+      }
+    }
+    .dropright .dropdown-menu {
+      text-align: right;
+      top: 53px;
+      left: -84px;
+      margin-top: 0;
+      margin-left: 0.125rem;
+      padding: 20px;
+      border: none;
+      box-shadow: -10px 10px 12px rgba(0, 0, 0, 0.5);
+      a {
+        color: black;
+        line-height: 35px;
+        &:hover {
+          text-decoration: none;
+        }
+      }
+    }
+  }
 }

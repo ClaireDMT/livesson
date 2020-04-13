@@ -1,3 +1,18 @@
+.btn-rounded {
+  background-color: $purple;
+  color: white;
+  border-radius: 40px;
+  font-size: 12px;
+  vertical-align: middle;
+  text-align: center;
+  border: transparent;
+  p {
+    margin-bottom: 0;
+    padding: 5px 20px;
+    font-size: 14px
+  }
+}
+
 .btn-rectangle {
   background-color: $purple;
   color: white;
@@ -7,6 +22,37 @@
   text-align: center;
   height: 35px;
   width: 100px;
+  border: transparent;
+  p {
+    margin-bottom: 0;
+  }
+}
+
+.btn-secondary {
+  background-color: transparent;
+  border-color: transparent;
+  color: black;
+  &:hover {
+    background-color: transparent;
+    border-color: transparent;
+    color: black;
+  }
+  &:not(:disabled):not(.disabled):active{
+    background-color: transparent;
+    border-color: transparent;
+    color: black;
+  }
+  &:not(:disabled):not(.disabled):active:focus {
+    box-shadow: none;
+  }
+}
+
+.show > .btn-secondary.dropdown-toggle {
+  background-color: transparent;
+  border-color: transparent;
+  color: black;
+  &:focus {
+    box-shadow: none;
   p {
     margin-bottom: 0;
     padding: 0 10px;

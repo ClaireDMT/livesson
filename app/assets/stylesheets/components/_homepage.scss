@@ -1,0 +1,215 @@
+#homepage1{
+  height: calc(80vh - 80px);
+  background-image: url("homepage/banner-homepage.jpg");
+  background-size: cover;
+  background-position-y: bottom;
+  text-align: center;
+  h1{
+    font-size: 38px;
+    line-height: 56px;
+    color: white;
+    padding-top: 39px;
+    span{
+      color: $purple;
+    }
+  }
+  button{
+    margin-top: 24px;
+  }
+  @media all and (max-width: 450px){
+    height: calc(50vh - 80px);
+    text-align: -webkit-center;
+    background-position-x: center;
+    h1{
+      font-size: 24px;
+      line-height: 34px;
+      max-width: 343px;
+      padding-top: 25px;
+    }
+  }
+}
+
+#homepage2{
+  .grouped-exp{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+    @media all and (max-width: 450px){
+      display: block;
+      text-align: -webkit-center;
+      margin-top: 10px;
+    }
+  }
+  .exponations{
+    display: flex;
+    align-items: center;
+    text-align: right;
+    h1{
+      color: $purple;
+      font-size: 90px;
+      line-height: 56px;
+      font-weight: 700;
+      @media all and (max-width: 1100px){
+        font-size: 60px;
+        width: 50px;
+      }
+    }
+    .sub1{
+      max-width: 339px;
+      max-height: 100px;
+      margin: 0px 35px 0px 15px;
+      text-align: left;
+      h2{
+        font-size: 32px;
+        line-height: 56px;
+        font-weight: 700;
+        margin: 0px;
+        @media all and (max-width: 1100px){
+          font-size: 24px;
+        }
+      }
+      p{
+        font-size: 16px;
+        line-height: 24px;
+        font-weight: 400;
+        margin: 0px;
+        padding: 0px;
+        @media all and (max-width: 1100px){
+          font-size: 14px;
+          line-height: 18px;
+        }
+      }
+      @media all and (max-width: 1100px){
+        max-width: 303px;
+        max-height: 90px;
+        margin-bottom: 10px;
+      }
+    }
+    @media all and (max-width: 1100px){
+      margin-top: 10px;
+    }
+  }
+}
+
+#homepage3{
+  margin-top: 95px;
+  text-align: -webkit-center;
+  h2{
+    font-weight: 700;
+    font-size: 38px;
+    line-height: 40px;
+    max-width: 847px;
+    @media all and (max-width: 450px){
+      font-size: 24px;
+      line-height: 28px;
+      max-width: 300px;
+    }
+  }
+  @media all and (max-width: 450px){
+    display: none;
+    margin-top: 38px;
+  }
+}
+#homepage3responsive{
+  display: none;
+  margin-top: 95px;
+  text-align: -webkit-center;
+  h2{
+    font-weight: 700;
+    font-size: 38px;
+    line-height: 40px;
+    max-width: 847px;
+    @media all and (max-width: 450px){
+      font-size: 24px;
+      line-height: 28px;
+      max-width: 300px;
+    }
+  }
+  @media all and (max-width: 450px){
+    display: block;
+    margin-top: 38px;
+  }
+}
+
+#homepage4{
+  margin-top: 61px;
+  .flexify, .resp2, .resp{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+    @media all and (max-width: 1100px){
+      display: block;
+      text-align: -webkit-center;
+    }
+    p{
+      font-size: 16px;
+      line-height: 24px;
+      width: 600px;
+      @media all and (max-width: 1100px){
+        font-size: 14px;
+        font-family: 18px;
+        width: 344px;
+      }
+    }
+    h2{
+      font-size: 32px;
+      line-height: 56px;
+      font-weight: 700;
+      margin-bottom: 30px;
+      width: 600px;
+      @media all and (max-width: 1100px){
+        font-size: 24px;
+        line-height: 28px;
+        width: 344px;
+      }
+    }
+    img{
+      width: 500px;
+      @media all and (max-width: 450px){
+        width: 277px;
+      }
+    }
+  }
+  .resp2{
+    @media all and (max-width: 1100px){
+      display: none;
+    }
+  }
+  .sub2{
+    margin-right: 40px;
+    @media all and (max-width: 1100px){
+      text-align: center;
+      text-align: -webkit-center;
+    }
+  }
+  .sub3{
+    text-align: right;
+    margin-left: 40px;
+    @media all and (max-width: 1100px){
+      text-align: center;
+      text-align: -webkit-center;
+    }
+    h2{
+      line-height: 36px;
+      @media all and (max-width: 1100px){
+        font-size: 24px;
+        line-height: 28px;
+        width: 344px;
+      }
+    }
+  }
+  .resp{
+    display: none;
+    img{
+      max-width: 500px;
+      @media all and (max-width: 450px){
+        width: 277px;
+      }
+    }
+    @media all and (max-width: 1100px){
+      display: block;
+    }
+  }
+}

@@ -1,6 +1,8 @@
 <div class="navbar-desktop d-none d-md-flex">
   <div class="logo">
-    <%= image_tag "logo.png" %>
+    <%= link_to root_path do %>
+      <%= image_tag "logo.png" %>
+    <% end %>
   </div>
   <div class="content-navbar">
     <div class="search-bar-navbar">
@@ -13,11 +15,13 @@
         Proposer des cours
        </p>
     </button>
-    <%= link_to 'Aide', root_path, class:"medium" %>
-    <%= link_to 'Inscription', root_path, class:"medium" %>
-    <button class="btn-rectangle medium">
-      <p>Connexion</p>
-    </button>
+    <%= link_to 'Aide', root_path, class:"medium nav-link" %>
+    <%= link_to 'Inscription', root_path, class:"medium nav-link" %>
+    <%= link_to new_user_session_path do %>
+      <button class="btn-rectangle medium">
+        <p>Connexion</p>
+      </button>
+    <% end %>
   </div>
 </div>
 <div class="navbar-mobile d-flex d-sm-none">

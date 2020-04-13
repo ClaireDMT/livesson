@@ -1,20 +1,35 @@
-<h2>Log in</h2>
-
-<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="form-inputs">
-    <%= f.input :email,
-                required: false,
-                autofocus: true,
-                input_html: { autocomplete: "email" } %>
-    <%= f.input :password,
-                required: false,
-                input_html: { autocomplete: "current-password" } %>
-    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+<div class="page-connexion">
+  <div class="page-connexion-left">
+    <%= image_tag 'page-connexion/page-connexion-image.jpg' %>
   </div>
+  <div class="page-connexion-right">
+    <div class="page-connexion-right-inscription">
+      <p>Nouveau sur Livesson, vous n’avez pas encore de compte ?</p>
+      <button class="btn-rectangle">M'inscrire</button>
+    </div>
+    <div class="page-connexion-right-form">
+      <h2>Connexion</h2>
+      <p>Elèves et professeurs, connectez-vous.</p>
+      <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="form-inputs">
+          <%= f.input :email,
+                      label: "Adresse email",
+                      placeholder: "hello@livesson.com",
+                      required: false,
+                      autofocus: true,
+                      input_html: { autocomplete: "email" } %>
+          <%= f.input :password,
+                      label: "Mot de passe",
+                      placeholder: "Saississez votre mot de passe",
+                      required: false,
+                      input_html: { autocomplete: "current-password" } %>
+        </div>
+        <div class="form-actions">
+          <%= f.button :submit, "Se connecter", class: "btn-rectangle" %>
+        </div>
+      <% end %>
+      <%= link_to "Mot de passe oublié ?", new_password_path(resource_name), class: "password-forgotten" %>
+    </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Log in" %>
   </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>

@@ -1,0 +1,49 @@
+.page-connexion{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: black;
+  .page-connexion-left{
+    img {
+      height: calc(100vh - 70px);
+    }
+  }
+  .page-connexion-right{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .page-connexion-right-inscription {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      font-size: 16px;
+      p {
+        margin-bottom: 0;
+        margin-right: 20px;
+      }
+    }
+    .page-connexion-right-form{
+      display: flex;
+      flex-direction: column;
+      font-size: 16px;
+      width: 545px;
+      margin-top: 70px;
+      position: relative;
+      h2 {
+        font-size: 32px;
+        line-height: 48px;
+      }
+      .password-forgotten {
+        position: relative;
+        top: -8.1rem;
+        right: -376px;
+        color: black;
+        &:hover {
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}

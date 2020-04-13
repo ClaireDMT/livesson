@@ -1,21 +1,25 @@
 <footer>
   <div id="footer-gray">
     <div class="left-part">
-      <%= link_to "Aide", "" %>
-      <%= link_to "Devenir coach sur Livesson", "" %>
-      <%= link_to "Contact", "" %>
+      <div class="links">
+        <%= link_to "Aide", "" %>
+        <%= link_to "Devenir coach sur Livesson", "" %>
+        <%= link_to "Contact", "" %>
+      </div>
     </div>
     <div class='right-part'>
       <p>Retrouvez-nous sur</p>
-      <%= link_to "" do %>
-        <%= image_tag "footer/insta.svg" %>
-      <% end %>
-      <%= link_to  do %>
-        <%= image_tag "footer/facebook.svg" %>
-      <% end %>
-      <%= link_to  do %>
-        <%= image_tag "footer/linkedIn.svg" %>
-      <% end %>
+      <div class="social-links">
+        <%= link_to "" do %>
+          <%= image_tag "footer/insta.svg" %>
+        <% end %>
+        <%= link_to  do %>
+          <%= image_tag "footer/facebook.svg" %>
+        <% end %>
+        <%= link_to  do %>
+          <%= image_tag "footer/linkedIn.svg" %>
+        <% end %>
+      </div>
     </div>
   </div>
   <div id="footer-white">
@@ -23,9 +27,11 @@
       <p>Copyright © 2020 Livesson. Tous droits réservés.</p>
     </div>
     <div class="right-part">
-      <%= link_to "Conditions d'utilisation", "" %>
-      <%= link_to "Politique de protection des données", ""  %>
-      <%= link_to "Mentions légales", ""  %>
+      <div class="links">
+        <%= link_to "Conditions d'utilisation", "" %>
+        <%= link_to "Politique de protection des données", ""  %>
+        <%= link_to "Mentions légales", ""  %>
+      </div>
     </div>
   </div>
 </footer>

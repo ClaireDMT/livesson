@@ -32,3 +32,16 @@
     }
   }
 }
+
+@media all and (min-width: 1900px){
+  .search-bar-navbar {
+    font-size: 14px;
+    i.fa-search {
+      font-size: 18px;
+    }
+    input {
+      min-width: 550px;
+      border: transparent;
+    }
+  }
+}

@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
   get '/inscription-confirmation', to: 'pages#inscription_confirmation'
+  get '/pro', to: 'pages#home_pro'
 end

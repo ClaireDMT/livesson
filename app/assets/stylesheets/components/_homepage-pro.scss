@@ -1,0 +1,208 @@
+#homepage5{
+  height: calc(100vh - 80px);
+  background-image: url("homepage/banner-homepage-pro.jpg");
+  background-size: cover;
+  background-position-y: bottom;
+  text-align: center;
+  position: relative;
+  h1{
+    font-size: 38px;
+    line-height: 56px;
+    color: black;
+    padding-top: 39px;
+    position: absolute;
+    top: 15%;
+    right: 3%;
+    span{
+      color: $purple;
+    }
+  }
+  button{
+    margin-top: 24px;
+    position: absolute;
+    top: 55%;
+    right: 12%;
+  }
+  @media all and (max-width: 1100px){
+    height: calc(80vh - 80px);
+    h1{
+      font-size: 28px;
+      line-height: 36px;
+      color: black;
+      padding-top: 39px;
+      position: absolute;
+      top: 10%;
+      right: 3%;
+      span{
+        color: $purple;
+      }
+    }
+    button{
+      margin-top: 24px;
+      position: absolute;
+      top: 45%;
+      right: 8%;
+    }
+  }
+  @media all and (max-width: 450px){
+    height: calc(50vh - 80px);
+    text-align: -webkit-center;
+    img {
+      height: 300px;
+      width: 100%;
+      position: relative
+    }
+    h1{
+      font-size: 24px;
+      line-height: 34px;
+      max-width: 343px;
+      padding-top: 25px;
+    }
+  }
+}
+
+#homepage6{
+  margin-top: 220px;
+  text-align: -webkit-center;
+  h2{
+    font-weight: 700;
+    font-size: 38px;
+    line-height: 40px;
+    max-width: 700px;
+    @media all and (max-width: 450px){
+      font-size: 24px;
+      line-height: 28px;
+      max-width: 300px;
+    }
+  }
+  @media all and (max-width: 1100px){
+    margin-top: 70px;
+  }
+  @media all and (max-width: 450px){
+    display: none;
+    margin-top: 38px;
+  }
+}
+#homepage6responsive{
+  display: none;
+  margin-top: 95px;
+  text-align: -webkit-center;
+  h2{
+    font-weight: 700;
+    font-size: 38px;
+    line-height: 40px;
+    max-width: 847px;
+    @media all and (max-width: 450px){
+      font-size: 24px;
+      line-height: 28px;
+      max-width: 300px;
+    }
+  }
+  @media all and (max-width: 450px){
+    display: block;
+    margin-top: 38px;
+  }
+}
+
+#homepage7{
+  margin-top: 61px;
+  .flexify, .resp2, .resp{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+    @media all and (max-width: 1100px){
+      display: block;
+      text-align: -webkit-center;
+    }
+    .exponations{
+      display: flex;
+      align-items: center;
+      text-align: left;
+      h1{
+        color: $purple;
+        font-size: 90px;
+        line-height: 56px;
+        font-weight: 700;
+        padding-right: 20px;
+        @media all and (max-width: 1100px){
+          font-size: 60px;
+          width: 50px;
+        }
+      }
+    p{
+      font-size: 16px;
+      line-height: 24px;
+      width: 600px;
+      @media all and (max-width: 1100px){
+        font-size: 14px;
+        font-family: 18px;
+        width: 344px;
+      }
+    }
+    h2{
+      font-size: 32px;
+      line-height: 56px;
+      font-weight: 700;
+      margin-bottom: 30px;
+      width: 600px;
+      @media all and (max-width: 1100px){
+        font-size: 24px;
+        line-height: 28px;
+        width: 344px;
+      }
+    }
+  }
+    img{
+      width: 500px;
+      @media all and (max-width: 450px){
+        width: 277px;
+      }
+    }
+  }
+  .resp2{
+    h1 {
+      padding-left: 20px;
+      padding-right: 0 !important;
+    }
+    @media all and (max-width: 1100px){
+      display: none;
+    }
+  }
+  .sub2{
+    margin-right: 40px;
+    text-align: center;
+    @media all and (max-width: 1100px){
+      text-align: center;
+      text-align: -webkit-center;
+    }
+  }
+  .sub3{
+    text-align: left;
+    margin-left: 40px;
+    @media all and (max-width: 1100px){
+      text-align: center;
+      text-align: -webkit-center;
+    }
+    h2{
+      line-height: 36px;
+      @media all and (max-width: 1100px){
+        font-size: 24px;
+        line-height: 28px;
+        width: 344px;
+      }
+    }
+  }
+  .resp{
+    display: none;
+    img{
+      max-width: 500px;
+      @media all and (max-width: 450px){
+        width: 277px;
+      }
+    }
+    @media all and (max-width: 1100px){
+      display: block;
+    }
+  }
+}

@@ -9,12 +9,14 @@
       <i class="fas fa-search"></i>
       <input type="text" placeholder="Rechercher un coach en particulier">
     </div>
-    <button class="btn-rounded medium">
-      <p>
-        Professionnel ? <br>
-        Proposer des cours
-       </p>
-    </button>
+    <%= link_to pro_path do %>
+      <button class="btn-rounded medium">
+        <p>
+          Professionnel ? <br>
+          Proposer des cours
+         </p>
+      </button>
+    <% end %>
     <%= link_to 'Aide', root_path, class:"medium nav-link" %>
     <%= link_to 'Inscription', new_user_registration_path, class:"medium nav-link" %>
     <%= link_to new_user_session_path do %>

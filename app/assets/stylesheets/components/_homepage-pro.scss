@@ -64,7 +64,7 @@
       right: 8%;
     }
   }
-  @media all and (max-height: 790px){
+  @media handheld and (max-height: 790px){
     height: calc(50vh - 80px);
     text-align: -webkit-center;
     background-position-x: right;

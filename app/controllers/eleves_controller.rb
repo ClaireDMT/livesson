@@ -1,0 +1,2 @@
+class ElevesController < ApplicationController
+end

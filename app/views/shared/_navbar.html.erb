@@ -1,6 +1,6 @@
 <div class="navbar-desktop d-none d-md-flex">
   <div class="logo">
-    <%= link_to root_path do %>
+    <%= link_to '/home' do %>
       <%= image_tag "logo.png" %>
     <% end %>
   </div>
@@ -15,7 +15,7 @@
         Proposer des cours
        </p>
     </button>
-    <%= link_to 'Aide', root_path, class:"medium nav-link" %>
+    <%= link_to 'Aide', '/home', class:"medium nav-link" %>
     <%= link_to 'Inscription', new_user_registration_path, class:"medium nav-link" %>
     <%= link_to new_user_session_path do %>
       <button class="btn-rectangle medium">
@@ -30,12 +30,12 @@
       <span></span><span></span><span></span>
     </button>
     <div class="dropdown-menu">
-      <%= link_to 'Rechercher un coach en particulier', root_path %>
-      <%= link_to 'Professionel ? Proposer des cours', root_path %>
+      <%= link_to 'Rechercher un coach en particulier', '/home' %>
+      <%= link_to 'Professionel ? Proposer des cours', '/home' %>
     </div>
   </div>
   <div class="logo">
-    <%= link_to root_path do %>
+    <%= link_to '/home' do %>
       <%= image_tag "logo.png" %>
     <% end %>
   </div>
@@ -44,9 +44,9 @@
       <i class="far fa-user"></i>
     </button>
     <div class="dropdown-menu">
-      <%= link_to 'Aide', root_path %>
-      <%= link_to 'Inscription', root_path %>
-      <%= link_to 'Connexion', root_path %>
+      <%= link_to 'Aide', '/home' %>
+      <%= link_to 'Inscription', '/home' %>
+      <%= link_to 'Connexion', '/home' %>
     </div>
   </div>
 </div>

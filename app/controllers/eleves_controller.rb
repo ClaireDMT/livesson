@@ -16,6 +16,19 @@ class ElevesController < ApplicationController
     redirect_to edit_user_registration_path
   end
 
+  def edit
+    @eleve = Eleve.find(params[:id])
+  end
+
+  def update
+    @eleve = Eleve.find(params[:id])
+    if @eleve.update
+      redirect_to edit_elefe_path(@eleve, errors: @errors, alerts: @alerts), notice: 'Profil mis à jour'
+    else
+      render :edit
+    end
+  end
+
   # def registration
   #   # @step = params[:step].nil? ? 1 : params[:step].to_i
   #   # @alerts = params[:alerts].nil? ? [] : params[:alerts]

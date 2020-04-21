@@ -15,12 +15,16 @@
         Proposer des cours
        </p>
     </button>
-    <%= link_to 'Aide', '/home', class:"medium nav-link" %>
-    <%= link_to 'Inscription', new_user_registration_path, class:"medium nav-link" %>
-    <%= link_to new_user_session_path do %>
-      <button class="btn-rectangle medium">
-        <p>Connexion</p>
-      </button>
+    <%= link_to 'Aide', '/home', class: "medium nav-link" %>
+    <% unless user_signed_in? %>
+      <%= link_to 'Inscription', new_user_registration_path, class: "medium nav-link" %>
+      <%= link_to new_user_session_path do %>
+        <button class="btn-rectangle medium">
+          <p>Connexion</p>
+        </button>
+      <% end %>
+    <% else %>
+      <%= link_to 'Mon Compte', edit_elefe_path(current_user.eleve), class: "medium nav-link" %>
     <% end %>
   </div>
 </div>

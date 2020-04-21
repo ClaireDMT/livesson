@@ -40,6 +40,8 @@ class Customdevise::RegistrationsController < Devise::RegistrationsController
     # raise
     if @user.admin?
       redirect_to admin_root_path
+    elsif @user.prof? && @eleve.nil?
+      redirect_to new_elefe_path
     elsif @eleve.nil?
       redirect_to new_elefe_path
     # elsif @eleve.moderated?

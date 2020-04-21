@@ -11,4 +11,8 @@ class User < ApplicationRecord
     false
     # admin == true
   end
+
+  def prof?
+    user.prof == true
+  end
 end

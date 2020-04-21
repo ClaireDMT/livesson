@@ -30,6 +30,10 @@
                         placeholder: "Confirmez votre mot de passe",
                         required: true,
                         input_html: { autocomplete: "new-password" } %>
+            <%= f.checkbox :prof,
+                            label: "Voulez-vous être prof ?",
+                            required: true,
+                            input_html: { autocomplete: "prof" } %>
           </div>
           <div class="page-connexion-actu-conditions-generale">
             <input type="checkbox" id="ActuLivesson">

@@ -4,16 +4,22 @@ class ElevesController < ApplicationController
   end
 
   def create
-    if Eleve.where(user_id: current_user.id).empty?
-      p 'Creating an eleve'
+    @user = current_user
+    if Eleve.where(user_id: current_user.id).empty? && @user.prof?
+      @eleve = Eleve.new(eleve_params)
+      @eleve.user_id = current_user.id
+      new_prof
+    elsif Eleve.where(user_id: current_user.id).empty?
       @eleve = Eleve.new(eleve_params)
       @eleve.user_id = current_user.id
       @eleve.save
-    else
-      p 'Getting last eleve from user'
-      @eleve = Eleve.where(user_id: current_user.id).last
     end
     redirect_to edit_user_registration_path
+  end
+
+  def new_prof
+    @eleve.prof = true
+    @eleve.save
   end
 
   def edit
@@ -22,7 +28,7 @@ class ElevesController < ApplicationController
 
   def update
     @eleve = Eleve.find(params[:id])
-    if @eleve.update
+    if @eleve.update(eleve_params)
       redirect_to edit_elefe_path(@eleve, errors: @errors, alerts: @alerts), notice: 'Profil mis à jour'
     else
       render :edit

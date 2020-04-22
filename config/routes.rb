@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
+  get '/pro', to: 'pages#home_pro'
   # devise_for :users
   # root to: 'pages#home'
   # root to: redirect('/users/sign_up')

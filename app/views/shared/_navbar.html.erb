@@ -6,17 +6,21 @@
         <%= image_tag "logo.png" %>
       <% end %>
     </div>
+
+    <%= link_to pro_path do %>
     <div class="content-navbar">
       <div class="search-bar-navbar">
         <i class="fas fa-search"></i>
         <input type="text" placeholder="Rechercher un coach en particulier">
       </div>
+
       <button class="btn-rounded medium">
         <p>
           Professionnel ? <br>
           Proposer des cours
          </p>
       </button>
+    <% end %>
       <%= link_to 'Aide', '/home', class: "medium nav-link" %>
       <% unless user_signed_in? %>
         <%= link_to 'Inscription', new_user_registration_path, class: "medium nav-link" %>

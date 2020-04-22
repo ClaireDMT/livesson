@@ -35,6 +35,14 @@ class ElevesController < ApplicationController
     end
   end
 
+  def turn_eleve_into_prof
+    unless @eleve.nil?
+      @eleve.prof = true
+      @eleve.save
+      edit
+    end
+  end
+
   # def registration
   #   # @step = params[:step].nil? ? 1 : params[:step].to_i
   #   # @alerts = params[:alerts].nil? ? [] : params[:alerts]

@@ -1,11 +1,34 @@
-<%= simple_form_for @eleve do |f| %>
-  <%= f.input :name %>
-  <%= f.input :surname %>
-  <%= f.input :birthdate %>
-  <%= f.input :sex %>
-  <%#= f.input :country %>
-  <%= f.input :phone_number %>
-  <%= f.submit 'Enregistrer', class: 'btn-rectangle' %>
-<% end %>
+<% if @eleve.prof? %>
+  <!-- GUITOU THIS IS YOUR PART -->
+<% else %>
+<div id="edit-eleve-infos">
+  <h1>Mon profil</h1>
+  <%= image_tag 'empty.jpg'%>
+  <div class="form-edit-eleve">
+    <%= simple_form_for @eleve do |f| %>
+      <%= f.input :name,
+                    label: "Prénom",
+                    placeholder: "Votre prénom" %>
+      <%= f.input :surname,
+                    label: "Nom",
+                    placeholder: "Votre nom" %>
+      <%= f.input :birthdate,
+                    label: "Date de naissance",
+                    placeholder: "Date de naissance" %>
+      <%= f.input :sex,
+                    as: :radio_buttons,
+                    collection: [['Femme', 'F'], ['Homme', 'M'], ['Ne souhaite pas communiquer', 'NA']] %>
+      <%#= f.input :country,
+                    label: "Pays",
+                    placeholder: "Votre pays" %>
+      <%= f.input :phone_number,
+                    label: "Numéro de téléphone",
+                    placeholder: "00 00 00 00 00",
+                    hint: "(attention: vous recevrez les notifications de cours sur ce numéro)" %>
+      <%= f.submit 'Enregistrer', class: 'btn-rectangle' %>
+    <% end %>
+  </div>
+  <% end%>
 
-<%= link_to 'email et mdp', account_settings_path(@eleve.user_id) %>
+  <%= link_to 'email et mdp', account_settings_path(@eleve.user_id) %>
+</div>

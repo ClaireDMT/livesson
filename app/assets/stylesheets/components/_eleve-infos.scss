@@ -1,0 +1,26 @@
+#edit-eleve-infos {
+  padding-left: 5%;
+  img {
+    width: 170px;
+  }
+  .form-edit-eleve {
+    fieldset {
+      legend {
+        display: none;
+      }
+      &.eleve_sex {
+        display: flex;
+        flex-direction: row;
+      }
+    }
+    #eleve_name, #eleve_surname{
+      width: 335px;
+    }
+    #eleve_birthdate_1i, #eleve_birthdate_2i, #eleve_birthdate_3i {
+      width: 100px;
+    }
+    #eleve_phone_number {
+      width: 544px;
+    }
+  }
+}

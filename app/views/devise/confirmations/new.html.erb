@@ -1,20 +1,35 @@
-<h2>Resend confirmation instructions</h2>
-
-<%= simple_form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
-  <%= f.error_notification %>
-  <%= f.full_error :confirmation_token %>
-
-  <div class="form-inputs">
-    <%= f.input :email,
-                required: true,
-                autofocus: true,
-                value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email),
-                input_html: { autocomplete: "email" } %>
+<div class="page-connexion">
+  <div class="page-connexion-left">
+    <%= image_tag 'page-connexion/page-connexion-inscription-image.jpg' %>
   </div>
+  <div class="page-connexion-right">
+    <div class="page-connexion-right-confirmation">
+      <h2 class="title">Inscription</h2>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Resend confirmation instructions" %>
+      <p class="bold">Félicitations, votre inscription est bien prise en compte ! </p>
+      <p>Un e-mail vous a été envoyé pour valider votre adresse e-mail et vous permettre de créer votre profil !</p>
+      <br>
+      <p>Vous ne l'avez pas reçu ? <%#= link_to "Renvoyer l'email de confirmation", root_path, class: "bold" %></p>
+        <p <%= params[:resend] == "true" ? 'hidden' : ''  %> class="light"> Vous ne l'avez pas reçu ? <%= link_to "Renvoyer l'email de confirmation", new_user_confirmation_path(resend: 'true'), class: "link-resend" %></p>
+        <div <%= params[:resend] == "true" ? '' : 'hidden'%> data-target="animation.collapse">
+          <p>Indiquez votre adresse e-mail pour le renvoyer</p>
+          <%= simple_form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post, class: 'form-block-transparent full-width' }) do |f| %>
+
+            <div class="form-inputs">
+              <%= f.input :email,
+                          label: false,
+                          placeholder: "hello@woonies.com",
+                          required: true,
+                          autofocus: true,
+                          value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email),
+                          input_html: { autocomplete: "email" } %>
+            </div>
+            <div class="form-actions await-confirmation">
+              <%= f.button :submit, "Renvoyer l'email de confirmation" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>

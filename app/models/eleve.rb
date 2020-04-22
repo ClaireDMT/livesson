@@ -1,7 +1,12 @@
 class Eleve < ApplicationRecord
   belongs_to :user
+  has_one_attached :profile_picture
 
-  def pro?
-    eleve.pro == true
+  def prof?
+    prof == true
+  end
+
+  def moderated?
+    moderated == true
   end
 end

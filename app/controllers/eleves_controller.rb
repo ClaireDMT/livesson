@@ -12,6 +12,7 @@ class ElevesController < ApplicationController
     elsif Eleve.where(user_id: current_user.id).empty?
       @eleve = Eleve.new(eleve_params)
       @eleve.user_id = current_user.id
+      @eleve.status = "Inscrit(e)"
       @eleve.save
     end
     redirect_to edit_user_registration_path
@@ -19,6 +20,7 @@ class ElevesController < ApplicationController
 
   def new_prof
     @eleve.prof = true
+    @eleve.status = "En attente de modération"
     @eleve.save
   end
 
@@ -38,18 +40,11 @@ class ElevesController < ApplicationController
   def turn_eleve_into_prof
     unless @eleve.nil?
       @eleve.prof = true
+      @eleve.status = "En attente de modération"
       @eleve.save
       edit
     end
   end
-
-  # def registration
-  #   # @step = params[:step].nil? ? 1 : params[:step].to_i
-  #   # @alerts = params[:alerts].nil? ? [] : params[:alerts]
-  #   # @errors = params[:errors].nil? ? [] : params[:errors]
-  #   @eleve = Eleve.find(params[:id])
-  #   # define_steps(@pro)
-  # end
 
   private
 

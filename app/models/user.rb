@@ -13,6 +13,6 @@ class User < ApplicationRecord
   end
 
   def prof?
-    user.prof == true
+    prof == true
   end
 end

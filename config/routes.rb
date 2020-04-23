@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  get '/pro', to: 'pages#home_pro'
+  get '/prof', to: 'pages#home_pro'
   # devise_for :users
   # root to: 'pages#home'
   # root to: redirect('/users/sign_up')
@@ -25,7 +25,12 @@ Rails.application.routes.draw do
 
   get '/home', to: 'pages#home'
   # root to: redirect('/users/sign_up')
-  resources :eleves, only: [:new, :create, :edit, :update]
+  resources :eleves, only: [:new, :create, :edit, :update] do
+    collection do
+      get '/turn_eleve_into_prof', to: 'eleves#turn_eleve_into_prof'
+    end
+  end
+  # post 'turn_eleve_into_prof', to: 'eleves#turn_eleve_into_prof'
 # post "users/:id/reset", to: "customdevise/registrations#reset_user", as: :user_reset
 get "users/:id/mon_compte", to: "customdevise/registrations#account_settings", as: :account_settings
 patch "users/:id/update_password", to: "customdevise/registrations#update_password"

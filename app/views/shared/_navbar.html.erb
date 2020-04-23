@@ -7,13 +7,13 @@
       <% end %>
     </div>
 
-    <%= link_to pro_path do %>
     <div class="content-navbar">
       <div class="search-bar-navbar">
         <i class="fas fa-search"></i>
         <input type="text" placeholder="Rechercher un coach en particulier">
       </div>
 
+    <%= link_to pro_path do %>
       <button class="btn-rounded medium">
         <p>
           Professionnel ? <br>
@@ -31,6 +31,7 @@
         <% end %>
       <% else %>
         <%= link_to 'Mon Compte', edit_elefe_path(current_user.eleve), class: "medium nav-link" %>
+        <%= link_to 'Me déconnecter', destroy_user_session_path, class: "medium nav-link" %>
       <% end %>
     </div>
   </div>
@@ -41,8 +42,8 @@
       <span></span><span></span><span></span>
     </button>
     <div class="dropdown-menu">
-      <%= link_to 'Rechercher un coach en particulier', '/home' %>
-      <%= link_to 'Professionel ? Proposer des cours', '/home' %>
+      <%= link_to 'Rechercher un coach en particulier', pro_path %>
+      <%= link_to 'Professionel ? Proposer des cours', pro_path %>
     </div>
   </div>
   <div class="logo">
@@ -55,9 +56,14 @@
       <i class="far fa-user"></i>
     </button>
     <div class="dropdown-menu">
-      <%= link_to 'Aide', '/home' %>
-      <%= link_to 'Inscription', '/home' %>
-      <%= link_to 'Connexion', '/home' %>
+      <%= link_to 'Aide', '/home' %> <br>
+      <% if user_signed_in? %>
+        <%= link_to 'Mon Compte', edit_elefe_path(current_user.eleve) %>
+        <%= link_to 'Me déconnecter', destroy_user_session_path %>
+      <% else %>
+        <%= link_to 'Inscription', new_user_registration_path %>
+        <%= link_to 'Connexion', new_user_session_path %>
+      <% end %>
     </div>
   </div>
 </div>

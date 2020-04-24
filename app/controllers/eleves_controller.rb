@@ -41,15 +41,13 @@ class ElevesController < ApplicationController
     @eleve = current_user.eleve
     @eleve = Eleve.find(@eleve.id)
     unless @eleve.nil?
-      @eleve.prof = true
-      @eleve.status = "En attente de modération"
-      @eleve.update(eleve_params)
+      new_prof
     end
   end
 
   private
 
   def eleve_params
-    params.permit(:name, :surname, :birthdate, :sex, :phone_number)
+    params.require(:eleve).permit(:name, :surname, :birthdate, :sex, :phone_number, :prof, :city, :presentation, :siret_number, :company_address, :facebook, :instagram)
   end
 end

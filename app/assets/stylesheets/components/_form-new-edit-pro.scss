@@ -2,6 +2,45 @@
   .form-flexify{
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
+  }
+  .form-group{
+    width: 544px;
+    height: 48px;
+    margin: 20px 0;
+    label{
+      font-size: 16px;
+      line-height: 16px;
+    }
+    input{
+      margin-bottom: 17px;
+    }
+    small{
+      margin-top: -17px;
+      margin-bottom: 17px;
+    }
+  }
+  p{
+    width: 500px;
+  }
+  .form-left-part{
+    margin-right: 55px;
+    .profil-picture-prof{
+      width: 170px;
+      height: 158px;
+    }
+    .flexify{
+      display: flex;
+      .nom-prenom{
+        .form-group{
+            width: 335px;
+            height: 48px;
+            margin-left: 35px;
+          }
+      }
+    }
+  }
+  .form-right-part{
+    margin-left: 55px;
   }
 }

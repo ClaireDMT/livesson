@@ -16,7 +16,7 @@
             <%#= f.input :birthdate, as: :date, start_year: Date.today.year - 100,
                                     end_year: Date.today, discard_day: true,
                                     order: [:month, :year] %>
-            <%= f.input :sex, as: :check_boxes, collection: ['Homme', 'Femme', 'Ne souhaite pas communiquer'] %>
+            <%= f.input :sex, as: :radio_buttons, collection: ['Homme', 'Femme', 'Ne souhaite pas communiquer'] %>
             <%#= f.input :country, label: 'Pays', placeholder: 'Votre pays', required: true, error: 'Le Pays est obligatoire' %>
             <%= f.input :city, label: 'Ville', placeholder: 'Votre ville', required: true, error: 'Le Ville est obligatoire' %>
             <%= f.input :phone_number, label: 'Numéro de téléphone', placeholder: '00 00 00 00 00', required: true, error: 'Le numéro de téléphone est obligatoire', hint: '(attention : vous recevrez les notifications de cours sur ce numéro)' %>

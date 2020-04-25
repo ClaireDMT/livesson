@@ -1,0 +1,58 @@
+#form-eleve{
+  margin-top: 20px;
+  .form-flexify-normal{
+    display: flex;
+    justify-content: space-around;
+  }
+  .form-flexify {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+  p{
+    width: 500px;
+  }
+  .form-left-part{
+    margin-right: 55px;
+    img{
+      width: 170px;
+      margin-bottom: 25px;
+    }
+    .flexify{
+      display: flex;
+      .nom-prenom{
+        .form-group{
+          width: 335px;
+          margin-left: 35px;
+        }
+      }
+    }
+    .form-profil {
+      h2 {
+        margin-bottom: 20px;
+      }
+      fieldset {
+        legend {
+          display: none;
+        }
+      }
+    }
+  }
+  .form-right-part{
+    margin-left: 55px;
+    img {
+      width: 100%;
+    }
+    .form-paiement {
+      display: flex;
+      flex-direction: column;
+      h2 {
+        margin-bottom: 20px;
+      }
+      input {
+        width: 544px;
+        height: 48px;
+      }
+    }
+  }
+}

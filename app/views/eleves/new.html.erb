@@ -1,30 +1,71 @@
 <% if @eleve.prof? %>
   <!-- GUITOU THIS IS YOUR PART -->
 <% else %>
-<p>Complétez votre profil et indiquez vos coordonnées bancaires pour faire votre première réservation. <br>
-Aucun paiement ne s’effectuer en avance. Vous serez prélevé une fois la réservation de votre premier cours effectuée</p>
-<h1>Mon profil</h1>
-  <%= simple_form_for @eleve do |f| %>
-    <%= f.input :name,
-                  label: "Prénom",
-                  placeholder: "Votre prénom" %>
-    <%= f.input :surname,
-                  label: "Nom",
-                  placeholder: "Votre nom" %>
-    <%= f.input :birthdate,
-                  label: "Date de naissance",
-                  placeholder: "Date de naissance" %>
-    <%= f.input :sex,
-                  as: :radio_buttons,
-                  collection: [['F', 'Femme'], ['M', 'Homme'], ['NA', 'Ne souhaite pas communiquer']] %>
-    <%#= f.input :country,
-                  label: "Pays",
-                  placeholder: "Votre pays" %>
-    <%= f.input :phone_number,
-                  label: "Numéro de téléphone",
-                  placeholder: "00 00 00 00 00",
-                  hint: "(attention: vous recevrez les notifications de cours sur ce numéro)" %>
-    <%= f.submit 'Enregistrer', class: 'btn-rectangle' %>
-  <% end %>
+  <div class="container">
+    <div id="form-eleve">
+      <%= simple_form_for @eleve do |f| %>
+        <div class="form-flexify">
+          <div class="form-left-part">
+            <div class="form-profil">
+              <p>Complétez votre profil et indiquez vos coordonnées bancaires pour faire votre première réservation. <br>
+              Aucun paiement ne s’effectuer en avance. Vous serez prélevé une fois la réservation de votre premier cours effectuée</p>
+              <h2>Mon profil</h2>
+              <div class='flexify'>
+                <%= image_tag 'empty.jpg', class: 'profil-picture-eleve' %>
+                <div class="nom-prenom">
+                  <%= f.input :name,
+                                label: "Prénom",
+                                placeholder: "Votre prénom",
+                                required: true,
+                                error: 'Le prénom est obligatoire' %>
+                  <%= f.input :surname,
+                                label: "Nom",
+                                placeholder: "Votre nom",
+                                required: true,
+                                error: 'Le nom est obligatoire' %>
+                </div>
+              </div>
+              <%= f.input :birthdate,
+                          label: "Date de naissance",
+                          placeholder: "Date de naissance",
+                          as: :date,
+                          start_year: Date.today.year - 100,
+                          end_year: Date.today.year,
+                          order: [:day, :month, :year],
+                          prompt: "Sélectionnez" %>
+              <%= f.input :sex,
+                          as: :radio_buttons,
+                          collection: ['Femme', 'Homme', 'Ne souhaite pas communiquer'] %>
+              <%= f.input :country,
+                          label: "Pays",
+                          include_blank: "Votre pays",
+                          required: true,
+                          error: 'Le Pays est obligatoire' %>
+              <%= f.input :phone_number,
+                          label: "Numéro de téléphone",
+                          placeholder: "00 00 00 00 00",
+                          hint: "(attention: vous recevrez les notifications de cours sur ce numéro)",
+                          required: true,
+                          error: 'Le numéro de téléphone est obligatoire' %>
+            </div>
+          </div>
+          <div class="form-right-part">
+            <div class="form-paiement">
+              <h2>Paiement</h2>
+              <label for="">Prénom du porteur de la carte</label>
+              <input type="text">
+              <label for="">Nom du porteur de la carte</label>
+              <input type="text">
+              <label for="">Type de carte</label>
+              <input type="text">
+              <label for="">Numéro de carte</label>
+              <input type="text">
+            </div>
+            <%= f.submit 'Enregistrer', class: 'btn-rectangle' %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
 <% end%>
 

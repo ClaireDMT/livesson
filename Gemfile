@@ -11,6 +11,7 @@ gem 'redis'
 
 gem 'activeadmin'
 gem 'autoprefixer-rails'
+gem 'country_select', '~> 4.0'
 gem 'font-awesome-sass', '~> 5.12.0'
 gem 'sassc-rails'
 gem 'simple_form'

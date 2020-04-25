@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_21_164432) do
+ActiveRecord::Schema.define(version: 2020_04_25_134945) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(version: 2020_04_21_164432) do
     t.string "twitter"
     t.string "instagram"
     t.string "siret_number"
-    t.text "company_address"
+    t.string "company_address"
     t.string "iban"
     t.string "bic"
     t.boolean "admin"

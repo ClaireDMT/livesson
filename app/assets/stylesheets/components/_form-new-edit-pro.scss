@@ -9,21 +9,32 @@
   }
   .form-left-part{
     margin-right: 55px;
-    .profil-picture-prof{
+    img{
       width: 170px;
-      // height: 158px;
+      margin-bottom: 25px;
     }
     .flexify{
       display: flex;
       .nom-prenom{
         .form-group{
-            width: 335px;
-            margin-left: 35px;
-          }
+          width: 335px;
+          margin-left: 35px;
+        }
       }
     }
   }
   .form-right-part{
     margin-left: 55px;
+    .flexify{
+      display: flex;
+      justify-content: space-between;
+      img{
+        width: 28px;
+        padding-bottom: 20px;
+      }
+      input#eleve_instagram, input#eleve_facebook{
+        width: 455px;
+      }
+    }
   }
 }

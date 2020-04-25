@@ -1,0 +1,95 @@
+.form-group {
+    box-sizing: border-box;
+    display: grid;
+    margin-bottom: 24px;
+    label{
+      margin-bottom: 8px;
+      font-size: 16px;
+      color: #18273A;
+      line-height: 16px;
+    }
+    input:hover{
+      cursor: pointer;
+    }
+    input[type='text'], input[type='email'], input[type='password'] {
+      clear: both;
+      height: 48px;
+      padding-left: 16px;
+      border-radius: 8px;
+      border: solid 1px rgba(28, 28, 38, 0.15);
+      background-color: transparent;
+      font-family: 'Graphik' !important;
+      box-sizing: border-box;
+    }
+    input[type="radiobutton"] + label {
+      display: flex;
+      align-items: center;
+      margin: 0.2em;
+      cursor: pointer;
+      padding: 0.2em;
+
+    }
+
+    input[type="radiobutton"] {
+      font-family: 'Graphik' !important;
+      // display: none;
+
+      display: inline;
+    }
+    input[type="radiobutton"]:focus {
+      outline: none;
+    }
+    // input[type="radiobutton"] + label:before {
+    //   content: "\2714";
+    //   border: 0.1em solid rgba(28, 28, 38, 0.15);
+    //   border-radius: 0.2em;
+    //   display: flex;
+    //   justify-content: center;
+    //   align-items: center;
+    //   width: 1em;
+    //   height: 1em;
+    //   padding: 0.1em;
+    //   margin-right: 8px;
+    //   vertical-align: bottom;
+    //   color: transparent;
+    //   transition: 0.2s;
+    // }
+
+    input[type="radiobutton"] + label:active:before {
+      transform: scale(0);
+    }
+
+    input[type="radiobutton"]:checked + label:before {
+      background-color: #7921E9;
+      border-color: #7921E9;
+      color: white;
+    }
+    textarea {
+      height: 319px;
+    }
+    select{
+      -moz-appearance: none;
+      -webkit-appearance: none;
+      appearance: none;
+      height: 48px;
+      padding-left: 16px;
+      border-radius: 8px;
+      border: solid 1px rgba(28, 28, 38, 0.15);
+      background-color: transparent;
+      background: transparent url(others/sort-down-solid.svg) 95% 40% / 1rem no-repeat;
+      font-size: 14px;
+      width: 100%;
+    }
+    select:focus{
+      outline: none;
+    }
+    small {
+      clear: left;
+      margin-left: 16px;
+      margin-top: 3px;
+      color: #18273A;
+      font-weight: 400;
+      display: block;
+      font-style: italic;
+    }
+  }

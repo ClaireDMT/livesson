@@ -1,12 +1,15 @@
-<!-- render eleve.prof?
-render eleve -->
-
-<%= simple_form_for @eleve do |f| %>
-  <%= f.input :name %>
-  <%= f.input :surname %>
-  <%= f.input :birthdate %>
-  <%= f.input :sex %>
-  <%#= f.input :country %>
-  <%= f.input :phone_number %>
-  <%= f.submit 'Enregistrer', class: 'btn-rectangle' %>
+<% if @eleve.prof? %>
+  <%= render 'form_prof' %>
+<% else %>
+  <%= simple_form_for @eleve do |f| %>
+    <%= f.input :name %>
+    <%= f.input :surname %>
+    <%= f.input :birthdate %>
+    <%= f.input :sex %>
+    <%#= f.input :country %>
+    <%= f.input :phone_number %>
+    <%= f.submit 'Enregistrer', class: 'btn-rectangle' %>
+  <% end %>
 <% end %>
+
+

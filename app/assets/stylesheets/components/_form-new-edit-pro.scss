@@ -1,0 +1,82 @@
+#form-prof{
+  .form-flexify{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+  p{
+    width: 500px;
+  }
+  .form-left-part{
+    margin-right: 55px;
+    img{
+      width: 170px;
+      margin-bottom: 25px;
+    }
+    .flexify{
+      display: flex;
+      .nom-prenom{
+        .form-group{
+          width: 335px;
+          margin-left: 35px;
+        }
+      }
+    }
+  }
+  .form-right-part{
+    margin-left: 55px;
+    .flexify{
+      display: flex;
+      justify-content: space-between;
+      img{
+        width: 28px;
+        padding-bottom: 20px;
+      }
+      input#eleve_instagram, input#eleve_facebook{
+        width: 455px;
+      }
+    }
+  }
+}
+#edit-form-prof{
+  .form-flexify{
+    display: flex;
+    // align-items: center;
+    justify-content: space-around;
+  }
+  p{
+    width: 500px;
+  }
+  .form-left-part{
+    margin-right: 55px;
+    img{
+      width: 170px;
+      margin-bottom: 10px;
+    }
+    .flexify{
+      display: flex;
+      .nom-prenom{
+        .form-group{
+          width: 335px;
+          margin-left: 35px;
+        }
+      }
+    }
+  }
+  .flexify{
+      display: flex;
+      justify-content: space-between;
+      img{
+        width: 28px;
+        padding-bottom: 20px;
+      }
+      input#eleve_instagram, input#eleve_facebook{
+        width: 455px;
+      }
+    }
+  .form-right-part{
+    margin-left: 55px;
+
+  }
+
+}

@@ -7,13 +7,13 @@
       <% end %>
     </div>
 
-    <%= link_to pro_path do %>
     <div class="content-navbar">
       <div class="search-bar-navbar">
         <i class="fas fa-search"></i>
         <input type="text" placeholder="Rechercher un coach en particulier">
       </div>
 
+    <%= link_to prof_path do %>
       <button class="btn-rounded medium">
         <p>
           Professionnel ? <br>
@@ -31,33 +31,42 @@
         <% end %>
       <% else %>
         <%= link_to 'Mon Compte', edit_elefe_path(current_user.eleve), class: "medium nav-link" %>
+        <%= link_to 'Me déconnecter', destroy_user_session_path, class: "medium nav-link" %>
       <% end %>
     </div>
   </div>
 <% end %>
-<div class="navbar-mobile d-flex d-sm-none">
-  <div class="btn-group dropleft">
-    <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-    <div class="dropdown-menu">
-      <%= link_to 'Rechercher un coach en particulier', '/home' %>
-      <%= link_to 'Professionel ? Proposer des cours', '/home' %>
+<% if params[:controller] == 'eleves' && params[:action] == 'new'  %>
+<% else %>
+  <div class="navbar-mobile d-flex d-sm-none">
+    <div class="btn-group dropleft">
+      <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="dropdown-menu">
+        <%= link_to 'Rechercher un coach en particulier', prof_path %>
+        <%= link_to 'Professionel ? Proposer des cours', prof_path %>
+      </div>
+    </div>
+    <div class="logo">
+      <%= link_to '/home' do %>
+        <%= image_tag "logo.png" %>
+      <% end %>
+    </div>
+    <div class="btn-group dropright">
+      <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <i class="far fa-user"></i>
+      </button>
+      <div class="dropdown-menu">
+        <%= link_to 'Aide', '/home' %> <br>
+        <% if user_signed_in? %>
+          <%= link_to 'Mon Compte', edit_elefe_path(current_user.eleve) %>
+          <%= link_to 'Me déconnecter', destroy_user_session_path %>
+        <% else %>
+          <%= link_to 'Inscription', new_user_registration_path %>
+          <%= link_to 'Connexion', new_user_session_path %>
+        <% end %>
+      </div>
     </div>
   </div>
-  <div class="logo">
-    <%= link_to '/home' do %>
-      <%= image_tag "logo.png" %>
-    <% end %>
-  </div>
-  <div class="btn-group dropright">
-    <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      <i class="far fa-user"></i>
-    </button>
-    <div class="dropdown-menu">
-      <%= link_to 'Aide', '/home' %>
-      <%= link_to 'Inscription', '/home' %>
-      <%= link_to 'Connexion', '/home' %>
-    </div>
-  </div>
-</div>
+<% end %>

@@ -38,17 +38,16 @@ class ElevesController < ApplicationController
   end
 
   def turn_eleve_into_prof
+    @eleve = current_user.eleve
+    @eleve = Eleve.find(@eleve.id)
     unless @eleve.nil?
-      @eleve.prof = true
-      @eleve.status = "En attente de modération"
-      @eleve.save
-      edit
+      new_prof
     end
   end
 
   private
 
   def eleve_params
-    params.require(:eleve).permit(:name, :surname, :birthdate, :sex, :phone_number)
+    params.require(:eleve).permit(:name, :surname, :birthdate, :sex, :phone_number, :prof, :city, :presentation, :siret_number, :company_address, :facebook, :instagram)
   end
 end

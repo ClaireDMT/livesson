@@ -5,7 +5,16 @@
       Rejoignez Livesson et donnez votre<br>
       premier cours en live !
     </h1>
-    <button class='hp-button semi-bold'>M'inscrire</button>
+    <% if !current_user.eleve.nil? %>
+      <%= link_to turn_eleve_into_prof_eleves_path do %>
+        <button class='hp-button semi-bold'>M'inscrire</button>
+      <% end %>
+    <% else %>
+      <%= link_to new_user_registration_path do %>
+        <button class='hp-button semi-bold'>M'inscrire</button>
+      <% end %>
+    <% end %>
+
   </div>
 </div>
 <div id="homepage6">

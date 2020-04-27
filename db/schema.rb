@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_26_172354) do
+ActiveRecord::Schema.define(version: 2020_04_26_172727) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,6 +71,23 @@ ActiveRecord::Schema.define(version: 2020_04_26_172354) do
     t.string "moderated"
     t.bigint "user_id"
     t.index ["user_id"], name: "index_eleves_on_user_id"
+  end
+
+  create_table "lessons", force: :cascade do |t|
+    t.date "lesson_date"
+    t.time "beginning_time"
+    t.time "end_time"
+    t.text "lesson_description"
+    t.text "lesson_material_needed"
+    t.integer "review"
+    t.string "lesson_name"
+    t.integer "lesson_level"
+    t.integer "lesson_duration"
+    t.string "lesson_language"
+    t.integer "lesson_price"
+    t.integer "lesson_discount_price"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "sports", force: :cascade do |t|

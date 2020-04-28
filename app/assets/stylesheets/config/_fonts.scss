@@ -129,7 +129,7 @@ html {
   font-size: 14px;
   font-weight: 400;
   font-family: Graphik, sans-serif;
-  color: #18273A;
+  color: black;
 }
 
 /* Easy styling classes */
@@ -165,5 +165,13 @@ html {
 }
 .textcenter {
   text-align: center;
+}
+
+body {
+  font-family: 'Graphik';
+}
+
+h1, h2, h3, h4, p, a, form {
+  font-family: 'Graphik';
 }
 

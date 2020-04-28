@@ -1,4 +1,4 @@
-<% if @eleve.prof? %>
+<% if current_user.prof? || @eleve.prof? %>
   <%= render 'form_prof' %>
 <% else %>
   <div class="container">

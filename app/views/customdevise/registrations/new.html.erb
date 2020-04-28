@@ -15,9 +15,9 @@
         <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
           <div class="form-inputs">
             <%= f.input :prof,
-                            collection: [['Élève : je souhaite trouver des cours', false],['Professionnel : je souhaite proposer des cours (vous pourrez également prendre des cours comme élève)',true]],
-                            label: "Je suis:",
-                            required: true %>
+                        collection: [['Élève : je souhaite trouver des cours', false],['Professionnel : je souhaite proposer des cours (vous pourrez également prendre des cours comme élève)',true]],
+                        label: "Je suis:",
+                        required: true %>
 
             <%= f.input :email,
                         label: "Adresse email",
@@ -30,7 +30,7 @@
                         placeholder: "Saississez votre mot de passe",
                         required: true,
                         input_html: { autocomplete: "new-password" } %>
-            <%= f.input :password_confirmation,
+            <%#= f.input :password_confirmation,
                         label: "Confirmation du mot de passe",
                         placeholder: "Confirmez votre mot de passe",
                         required: true,

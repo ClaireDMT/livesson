@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_26_172727) do
+ActiveRecord::Schema.define(version: 2020_04_27_172740) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,6 +47,15 @@ ActiveRecord::Schema.define(version: 2020_04_26_172727) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
+  create_table "bookings", force: :cascade do |t|
+    t.bigint "eleve_id"
+    t.bigint "lesson_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["eleve_id"], name: "index_bookings_on_eleve_id"
+    t.index ["lesson_id"], name: "index_bookings_on_lesson_id"
+  end
+
   create_table "eleves", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -70,6 +79,10 @@ ActiveRecord::Schema.define(version: 2020_04_26_172727) do
     t.string "status"
     t.string "moderated"
     t.bigint "user_id"
+    t.bigint "sport_id"
+    t.bigint "activity_id"
+    t.index ["activity_id"], name: "index_eleves_on_activity_id"
+    t.index ["sport_id"], name: "index_eleves_on_sport_id"
     t.index ["user_id"], name: "index_eleves_on_user_id"
   end
 
@@ -88,6 +101,10 @@ ActiveRecord::Schema.define(version: 2020_04_26_172727) do
     t.integer "lesson_discount_price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "sport_id"
+    t.bigint "activity_id"
+    t.index ["activity_id"], name: "index_lessons_on_activity_id"
+    t.index ["sport_id"], name: "index_lessons_on_sport_id"
   end
 
   create_table "sports", force: :cascade do |t|
@@ -112,5 +129,11 @@ ActiveRecord::Schema.define(version: 2020_04_26_172727) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "bookings", "eleves", column: "eleve_id"
+  add_foreign_key "bookings", "lessons"
+  add_foreign_key "eleves", "activities"
+  add_foreign_key "eleves", "sports"
   add_foreign_key "eleves", "users"
+  add_foreign_key "lessons", "activities"
+  add_foreign_key "lessons", "sports"
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_27_172740) do
+ActiveRecord::Schema.define(version: 2020_04_29_142725) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -103,8 +103,21 @@ ActiveRecord::Schema.define(version: 2020_04_27_172740) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "sport_id"
     t.bigint "activity_id"
+    t.bigint "eleve_id"
     t.index ["activity_id"], name: "index_lessons_on_activity_id"
+    t.index ["eleve_id"], name: "index_lessons_on_eleve_id"
     t.index ["sport_id"], name: "index_lessons_on_sport_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.string "content"
+    t.integer "rating"
+    t.bigint "eleve_id"
+    t.bigint "lesson_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["eleve_id"], name: "index_reviews_on_eleve_id"
+    t.index ["lesson_id"], name: "index_reviews_on_lesson_id"
   end
 
   create_table "sports", force: :cascade do |t|
@@ -135,5 +148,8 @@ ActiveRecord::Schema.define(version: 2020_04_27_172740) do
   add_foreign_key "eleves", "sports"
   add_foreign_key "eleves", "users"
   add_foreign_key "lessons", "activities"
+  add_foreign_key "lessons", "eleves", column: "eleve_id"
   add_foreign_key "lessons", "sports"
+  add_foreign_key "reviews", "eleves", column: "eleve_id"
+  add_foreign_key "reviews", "lessons"
 end

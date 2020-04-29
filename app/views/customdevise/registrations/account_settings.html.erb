@@ -1,35 +1,23 @@
-<%= form_for(@user, url: { action:"update_email" }, local: true ) do |form| %>
-  <div class="form-group">
-    <%= form.label :email, "Nouvelle adresse email" %>
-    <%= form.email_field :email %>
-  </div>
-  <div class="form-group">
-    <%= form.label :current_password, "Votre mot de passe" %>
-    <%= form.password_field :current_password, autocomplete: "off"  %>
-  </div>
-  <div class="nav-actions flex-between">
-    <%= hidden_field_tag(:step, @step) %>
-    <%= form.submit "Enregistrer" %>
-  </div>
-<% end %>
-
-<div class="forms-adjacent">
-    <%= form_for( @user, url: { action:"update_password" }, local: true ) do |form| %>
-      <div class="form-group">
-        <%= form.label :current_password, "Mot de passe actuel" %>
-        <%= form.password_field :current_password, autocomplete: "off"  %>
+<div id="email-mdp">
+  <div class="container">
+    <div class="form-flexify">
+      <div class="form-left-part">
+        <%= simple_form_for(@user, url: { action:"update_email" }, local: true ) do |form| %>
+          <%= form.input :email, label: "Nouvelle adresse email" %>
+          <%= form.input :current_password, autocomplete: "off", label: "Votre mot de passe"  %>
+          <%= form.submit "Enregistrer", class:'btn-rectangle' %>
+        <% end %>
+        <br>
+        <%= simple_form_for( @user, url: { action:"update_password" }, local: true ) do |form| %>
+          <%= form.input :current_password, autocomplete: "off", label: "Mot de passe actuel"  %>
+          <%= form.input :password, label: "Nouveau mot de passe" %>
+          <%= form.input :password_confirmation, label: "Confirmation nouveau mot de passe" %>
+          <%= form.submit "Enregistrer", class:'btn-rectangle' %>
+        <% end %>
       </div>
-      <div class="form-group">
-        <%= form.label :password, "Nouveau mot de passe" %>
-        <%= form.password_field :password %>
+      <div class="form-right-part">
+        <%= image_tag 'compte/email_mdp_image.svg' %>
       </div>
-      <div class="form-group">
-        <%= form.label :password_confirmation, "Confirme batard ton Nouveau mot de passe" %>
-        <%= form.password_field :password_confirmation %>
-      </div>
-      <div class="nav-actions flex-between">
-        <%= hidden_field_tag(:step, @step) %>
-        <%= form.submit "Enregistrer" %>
-      </div>
-    <% end %>
+    </div>
   </div>
+</div>

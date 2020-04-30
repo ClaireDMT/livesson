@@ -16,7 +16,7 @@ class LessonsController < ApplicationController
 
   def create
     @lesson = Lesson.new(lesson_params)
-    @lesson.eleve = current_user
+    @lesson.eleve = current_user.eleve
     if @lesson.save
       redirect_to lesson_path(@lesson)
     else

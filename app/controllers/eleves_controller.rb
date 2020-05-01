@@ -48,6 +48,6 @@ class ElevesController < ApplicationController
   private
 
   def eleve_params
-    params.require(:eleve).permit(:name, :surname, :birthdate, :sex, :phone_number, :prof, :city, :presentation, :siret_number, :company_address, :facebook, :instagram)
+    params.require(:eleve).permit(:name, :surname, :birthdate, :sex, :phone_number, :prof, :city, :presentation, :siret_number, :company_address, :facebook, :instagram, :country, :iban, :bic)
   end
 end

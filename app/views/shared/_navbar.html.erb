@@ -31,7 +31,7 @@
         <% end %>
       <% else %>
         <%= link_to 'Mon Compte', edit_elefe_path(current_user.eleve), class: "medium nav-link" %>
-        <%= link_to 'Me déconnecter', destroy_user_session_path, class: "medium nav-link" %>
+        <%= link_to 'Me déconnecter', destroy_user_session_path, method: :delete, class: "medium nav-link" %>
       <% end %>
     </div>
   </div>
@@ -61,7 +61,7 @@
         <%= link_to 'Aide', '/home' %> <br>
         <% if user_signed_in? %>
           <%= link_to 'Mon Compte', edit_elefe_path(current_user.eleve) %>
-          <%= link_to 'Me déconnecter', destroy_user_session_path %>
+          <%= link_to 'Me déconnecter', destroy_user_session_path, method: :delete %>
         <% else %>
           <%= link_to 'Inscription', new_user_registration_path %>
           <%= link_to 'Connexion', new_user_session_path %>

@@ -12,13 +12,18 @@ class LessonsController < ApplicationController
 
   def new
     @lesson = Lesson.new
+    @sports = Sport.all
+    @activities = Activity.all
   end
 
   def create
     @lesson = Lesson.new(lesson_params)
     @lesson.eleve = current_user.eleve
+    @sports = Sport.all
+    @activities = Activity.all
+    @lesson.lesson_duration = @lesson.end_time - @lesson.beginning_time
     if @lesson.save
-      redirect_to lesson_path(@lesson)
+      redirect_to lessons_path
     else
       render :new
     end
@@ -48,6 +53,6 @@ class LessonsController < ApplicationController
                                    :lesson_description, :lesson_material_needed,
                                    :lesson_name, :lesson_level, :lesson_duration,
                                    :lesson_language, :lesson_price,
-                                   :lesson_discount_price)
+                                   :lesson_discount_price, :sport_id, :activity_id)
   end
 end

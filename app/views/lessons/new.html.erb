@@ -1,15 +1,1 @@
-<%= simple_form_for @lesson do |f| %>
-  <%= f.input :sport  %>
-  <%= f.input :lesson_name  %>
-  <%= f.input :lesson_level %>
-  <%= f.input :lesson_description %>
-  <%= f.input :lesson_material_needed %>
-  <%= f.input :activity %>
-  <%= f.input :lesson_date %>
-  <%= f.input :beginning_time %>
-  <%= f.input :end_time %>
-  <%= f.input :lesson_language %>
-  <%= f.input :lesson_price %>
-  <%= f.input :lesson_discount_price %>
-  <%= f.submit 'Enregistrer', class: 'btn-rectangle' %>
-<% end %>
+<%= render "form_lesson" %>

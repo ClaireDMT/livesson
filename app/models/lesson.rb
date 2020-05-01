@@ -8,4 +8,8 @@ class Lesson < ApplicationRecord
             :lesson_description, :lesson_material_needed,
             :lesson_name, :lesson_level, :lesson_duration,
             :lesson_language, :lesson_price, presence: true
+
+  def duration
+    @lesson_duration = end_time - beginning_time
+  end
 end

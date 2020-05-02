@@ -7,11 +7,11 @@
         </div>
         <div class="card-content">
           <div class="card-content-left">
-            <p class="lesson-type medium">PILATE FUSION</p>
-            <p class="lesson-level">Tous niveaux</p>
-            <p class="lesson-teacher medium">Elodie Bernier</p>
-            <p class="lesson-date">Mercredi 12 mars 2020 à 20h00</p>
-            <p class="lesson-language">Cours en Français</p>
+            <p class="lesson-type medium"> <%= lesson.lesson_name %> </p>
+            <p class="lesson-level"> <%=lesson.lesson_level%> </p>
+            <p class="lesson-teacher medium"> <%=lesson.eleve.name %> </p>
+            <p class="lesson-date"><%= lesson.lesson_date %> à <%= lesson.beginning_time %></p>
+            <p class="lesson-language">Cours en <%= lesson.lesson_language %></p>
             <div class="lesson-notation">
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
@@ -23,8 +23,8 @@
           </div>
           <div class="card-content-right">
             <div class="card-content-right-top">
-              <p class="lesson-price medium">8€</p>
-              <p class="lesson-duration">60min</p>
+              <p class="lesson-price medium"><%= lesson.lesson_price %></p>
+              <p class="lesson-duration"><%= lesson.lesson_duration %>min</p>
             </div>
             <button class="btn-rectangle">Réserver</button>
           </div>

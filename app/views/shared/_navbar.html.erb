@@ -1,6 +1,14 @@
 <% if params[:controller] == 'eleves' && params[:action] == 'new'  %>
+  <div class="navbar-desktop d-none d-md-flex">
+    <div class="logo">
+      <%= link_to '/home' do %>
+        <%= image_tag "logo.png" %>
+      <% end %>
+    </div>
+  </div>
 <% else %>
   <div class="navbar-desktop d-none d-md-flex">
+    <!-- Logo -->
     <div class="logo">
       <%= link_to '/home' do %>
         <%= image_tag "logo.png" %>
@@ -8,21 +16,25 @@
     </div>
 
     <div class="content-navbar">
+      <!-- Search-bar -->
       <div class="search-bar-navbar">
         <i class="fas fa-search"></i>
         <input type="text" placeholder="Rechercher un coach en particulier">
       </div>
+      <!-- Bouton devenir pro -->
+      <% if current_user.nil? || !current_user.prof? || !current_user.eleve.prof? %>
+        <%= link_to prof_path do %>
+          <button class="btn-rounded medium">
+            <p>
+              Professionnel ? <br>
+              Proposer des cours
+             </p>
+          </button>
+        <% end %>
+      <% end %>
 
-    <%= link_to prof_path do %>
-      <button class="btn-rounded medium">
-        <p>
-          Professionnel ? <br>
-          Proposer des cours
-         </p>
-      </button>
-    <% end %>
-      <%= link_to 'Aide', '/home', class: "medium nav-link" %>
       <% unless user_signed_in? %>
+        <%= link_to 'Aide', '/home', class: "medium nav-link" %>
         <%= link_to 'Inscription', new_user_registration_path, class: "medium nav-link" %>
         <%= link_to new_user_session_path do %>
           <button class="btn-rectangle medium">
@@ -30,12 +42,28 @@
           </button>
         <% end %>
       <% else %>
-        <%= link_to 'Mon Compte', edit_elefe_path(current_user.eleve), class: "medium nav-link" %>
-        <%= link_to 'Me déconnecter', destroy_user_session_path, method: :delete, class: "medium nav-link" %>
+        <% if current_user.eleve.prof?  %>
+          <%= link_to 'Cours', '', class: "medium nav-link" %>
+          <%= link_to 'Planning', '', class: "medium nav-link" %>
+        <% end %>
+        <%= link_to 'Réservations', '', class: "medium nav-link" %>
+        <%= link_to 'Aide', '/home', class: "medium nav-link" %>
+        <div class="btn-group dropright">
+          <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="far fa-user"></i>
+          </button>
+          <div class="dropdown-menu">
+            <%= link_to 'Mon Compte', edit_elefe_path(current_user.eleve) %>
+            <%= link_to 'Me déconnecter', destroy_user_session_path, method: :delete %>
+          </div>
+        </div>
+        <%#= link_to 'Mon Compte', edit_elefe_path(current_user.eleve), class: "medium nav-link" %>
+        <%#= link_to 'Me déconnecter', destroy_user_session_path, method: :delete, class: "medium nav-link" %>
       <% end %>
     </div>
   </div>
 <% end %>
+<!-- Responsive Part -->
 <% if params[:controller] == 'eleves' && params[:action] == 'new'  %>
 <% else %>
   <div class="navbar-mobile d-flex d-sm-none">

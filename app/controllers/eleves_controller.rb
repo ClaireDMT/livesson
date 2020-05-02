@@ -40,9 +40,12 @@ class ElevesController < ApplicationController
   def turn_eleve_into_prof
     @eleve = current_user.eleve
     @eleve = Eleve.find(@eleve.id)
-    unless @eleve.nil?
-      new_prof
-    end
+    new_prof unless @eleve.nil?
+  end
+
+  def mes_cours
+    @eleve = Eleve.find(params[:id])
+    @lessons = Lesson.where(params[eleve_id: @eleve])
   end
 
   private

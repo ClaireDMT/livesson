@@ -43,7 +43,7 @@
         <% end %>
       <% else %>
         <% if current_user.eleve.prof?  %>
-          <%= link_to 'Cours', '', class: "medium nav-link" %>
+          <%= link_to 'Cours', mes_cours_path(current_user.eleve), class: "medium nav-link" %>
           <%= link_to 'Planning', '', class: "medium nav-link" %>
         <% end %>
         <%= link_to 'Réservations', '', class: "medium nav-link" %>

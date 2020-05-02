@@ -1,3 +1,29 @@
+GIT
+  remote: https://github.com/activeadmin/activeadmin.git
+  revision: 0bcef0c7191ae70b48f128d22832b67741111683
+  specs:
+    activeadmin (2.7.0)
+      arbre (~> 1.2, >= 1.2.1)
+      formtastic (~> 3.1)
+      formtastic_i18n (~> 0.4)
+      inherited_resources (~> 1.7)
+      jquery-rails (~> 4.2)
+      kaminari (~> 1.0, >= 1.0.1)
+      railties (>= 5.2, < 6.1)
+      ransack (~> 2.1, >= 2.1.1)
+      sassc-rails (~> 2.1)
+      sprockets (>= 3.0, < 4.1)
+
+GIT
+  remote: https://github.com/activeadmin/inherited_resources.git
+  revision: 985efa728a277f9415b68468c1ec1a9affce831a
+  specs:
+    inherited_resources (1.11.0)
+      actionpack (>= 5.2, < 6.1)
+      has_scope (~> 0.6)
+      railties (>= 5.2, < 6.1)
+      responders (>= 2, < 4)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -37,17 +63,6 @@ GEM
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.1, >= 1.2.0)
-    activeadmin (2.7.0)
-      arbre (~> 1.2, >= 1.2.1)
-      formtastic (~> 3.1)
-      formtastic_i18n (~> 0.4)
-      inherited_resources (~> 1.7)
-      jquery-rails (~> 4.2)
-      kaminari (~> 1.0, >= 1.0.1)
-      railties (>= 5.2, < 6.1)
-      ransack (~> 2.1, >= 2.1.1)
-      sassc-rails (~> 2.1)
-      sprockets (>= 3.0, < 4.1)
     activejob (6.0.2.1)
       activesupport (= 6.0.2.1)
       globalid (>= 0.3.6)
@@ -113,11 +128,6 @@ GEM
     i18n (1.8.2)
       concurrent-ruby (~> 1.0)
     i18n_data (0.10.0)
-    inherited_resources (1.11.0)
-      actionpack (>= 5.0, < 6.1)
-      has_scope (~> 0.6)
-      railties (>= 5.0, < 6.1)
-      responders (>= 2, < 4)
     jbuilder (2.10.0)
       activesupport (>= 5.0.0)
     jquery-rails (4.3.5)
@@ -268,13 +278,14 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  activeadmin
+  activeadmin!
   autoprefixer-rails
   bootsnap
   country_select (~> 4.0)
   devise
   dotenv-rails
   font-awesome-sass (~> 5.12.0)
+  inherited_resources!
   jbuilder (~> 2.0)
   listen (~> 3.0.5)
   pg (~> 0.21)

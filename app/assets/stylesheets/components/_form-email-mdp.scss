@@ -1,0 +1,26 @@
+#email-mdp{
+  .form-flexify{
+    display: flex;
+    // align-items: center;
+    // justify-content: space-around;
+  }
+  .form-left-part{
+    margin-right: 55px;
+    input{
+      width: 545px;
+    }
+    input[type='submit']{
+      width: 197px;
+      height: 48px;
+    }
+  }
+  .form-right-part{
+    // margin-left: 55px;
+    img{
+      width: 842px;
+      height: 561px;
+    }
+    // background-image: url("compte/Livesson_compte_1.jpg");
+    // background-size: cover;
+  }
+}

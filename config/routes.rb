@@ -31,7 +31,9 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :lessons
+  resources :lessons do
+    resources :reviews, only: [:new, :create]
+  end
   # post 'turn_eleve_into_prof', to: 'eleves#turn_eleve_into_prof'
 # post "users/:id/reset", to: "customdevise/registrations#reset_user", as: :user_reset
 get "users/:id/mon_compte", to: "customdevise/registrations#account_settings", as: :account_settings

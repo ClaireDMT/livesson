@@ -1,0 +1,9 @@
+#lesson-show{
+  height: calc(100vh - 80px);
+  .show-lesson{
+    width: 370px;
+    min-height: 400px;
+    box-shadow: -5px 5px 5px rgba(0,0,0,0.2);
+    float: right;
+  }
+}

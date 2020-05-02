@@ -6,7 +6,8 @@ class LessonsController < ApplicationController
   end
 
   def show
-    @eleve = Eleve.find(params[:eleve_id])
+    @prof = Eleve.find(@lesson.eleve.id)
+    @eleve = current_user.eleve
     @booking = Booking.new
     @review = Review.new
   end

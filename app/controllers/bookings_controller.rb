@@ -5,13 +5,14 @@ class BookingsController < ApplicationController
 
   def new
     @lesson = Lesson.find(params[:lesson_id])
+    @eleve = current_user.eleve.id
     @booking = Booking.new
   end
 
   def create
     @lesson = Lesson.find(params[:lesson_id])
-    # @date = params[:booking][:date]
-    @booking = Booking.new(lesson: @lesson, eleve: current_user.eleve)
+    @eleve = current_user.eleve.id
+    @booking = Booking.new(lesson: @lesson, eleve_id: @eleve)
     if @booking.save
       redirect_to lesson_path(@lesson)
     else
@@ -36,6 +37,6 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-    params.require(:booking).permit(:status, :lesson_id)
+    params.require(:booking).permit(:status, :lesson_id, :eleve_id)
   end
 end

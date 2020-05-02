@@ -1,0 +1,33 @@
+<div id="lesson-show">
+  <div class="show-lesson">
+    <% if !@eleve.lessons.where(id: @lesson).any?  %>
+      <%= simple_form_for [@lesson, @booking], url: lesson_bookings_url(@lesson) do |f| %>
+        <%= f.button :submit, "Book", class: "btn btn-success" %>
+      <% end %>
+    <% end %>
+    <%= @lesson.lesson_name %> <br>
+    <%= @lesson.lesson_price %>€ <br>
+    <%= @lesson.lesson_level %> <br>
+    <%= @lesson.lesson_date %> à <%= @lesson.beginning_time.strftime('%Hh%M') %> <br>
+    Cours en <%= @lesson.lesson_language %> <br>
+    <%= @lesson.eleve.name %> <%= @lesson.eleve.surname %> <br>
+    <%#= @lesson.rating %>
+    <p>Descriptif du cours</p>
+    <%= @lesson.lesson_description %>
+    <p>Matériel nécessaire</p>
+    <%= @lesson.lesson_material_needed %>
+  </div>
+  <div class="show-prof">
+    <%= @prof.name %> <%= @prof.surname %>
+    <%= @prof.city %> <%= @prof.country %>
+    <p>Avis (voir tous les avis)</p>
+    <p>Présentation</p>
+    <%= @prof.presentation %>
+    <p>Planning</p>
+    <p>Réseaux sociaux</p>
+    <%= @prof.instagram %>
+    <%= @prof.facebook %>
+    <%=  %>
+    <%=  %>
+  </div>
+</div>

@@ -30,6 +30,7 @@ Rails.application.routes.draw do
       get '/turn_eleve_into_prof', to: 'eleves#turn_eleve_into_prof'
     end
   end
+  get 'eleves/:id/mes-cours', to: 'eleves#mes_cours', as: :mes_cours
 
   resources :lessons do
     resources :reviews, only: [:new, :create]

@@ -5,8 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-puts "Cleaning AdminUser"
-AdminUser.destroy_all
+puts "Cleaning Lessons"
+Lesson.destroy_all
 puts "Cleaning Activities"
 Activity.destroy_all
 puts "Cleaning Sports"
@@ -15,10 +15,6 @@ puts "Cleaning Users"
 User.destroy_all
 puts "Cleaning Eleves"
 Eleve.destroy_all
-puts "Cleaning Lessons"
-Lesson.destroy_all
-
-AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
 
 puts "Création d'une activité"
 Activity.create!(activity_name: 'Sport')
@@ -37,8 +33,8 @@ possible_sports.each do |sport|
 end
 
 puts "Création des Users"
-marine = User.create!(email: "marine@sourin.com", password: "marinesourin", password_confirmation: "marinesourin")
-guitou = User.create!(email: "guitou@imary.com", password: "guitouimary", password_confirmation: "guitouimary", prof: true)
+marine = User.create!(email: "marine@sourin.com", password: "marinesourin", password_confirmation: "marinesourin", admin: true, confirmed_at: DateTime.now)
+guitou = User.create!(email: "guitou@imary.com", password: "guitouimary", password_confirmation: "guitouimary", prof: true, confirmed_at: DateTime.now)
 
 puts "Création des Eleves/Profs"
 Eleve.create!(name: "Marine",

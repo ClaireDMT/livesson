@@ -5,11 +5,25 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+puts "Cleaning AdminUser"
+AdminUser.destroy_all
+puts "Cleaning Activities"
+Activity.destroy_all
+puts "Cleaning Sports"
+Sport.destroy_all
+puts "Cleaning Users"
+User.destroy_all
+puts "Cleaning Eleves"
+Eleve.destroy_all
+puts "Cleaning Lessons"
+Lesson.destroy_all
+
 AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
 
+puts "Création d'une activité"
 Activity.create!(activity_name: 'Sport')
 
-Sport.destroy_all
+puts "Création des sports"
 possible_sports = [
   "Yoga",
   "Pilates",
@@ -22,29 +36,59 @@ possible_sports.each do |sport|
   Sport.create!(sport_name: sport)
 end
 
-# Lesson.destroy_all
-# lesson1 = Lesson.create!(
-#   lesson_date: Date.now,
-#   beginning_time: Time.now.day + 7,
-#   end_time: Time.now.hour + 2,
-#   lesson_description: "Ceci est la description de l'évènement",
-#   lesson_material_needed: "Vous avez besoin de plusieurs choses",
-#   lesson_name: 'Yoga Nidra',
-#   lesson_level: 'Tous niveaux',
-#   lesson_duration: 45,
-#   lesson_language: 'Français',
-#   lesson_price: 12,
-#   lesson_discount_price: 9)
+puts "Création des Users"
+marine = User.create!(email: "marine@sourin.com", password: "marinesourin", password_confirmation: "marinesourin")
+guitou = User.create!(email: "guitou@imary.com", password: "guitouimary", password_confirmation: "guitouimary", prof: true)
 
-# lesson2 = Lesson.create!(
-#   lesson_date: Date.now,
-#   beginning_time: Time.now.day + 8,
-#   end_time: Time.now.hour + 2,
-#   lesson_description: "Ceci est la description de l'évènement 2",
-#   lesson_material_needed: "Vous avez besoin de plusieurs choses 2",
-#   lesson_name: 'Yoga Nidra',
-#   lesson_level: 'Tous niveaux',
-#   lesson_duration: 45,
-#   lesson_language: 'Français',
-#   lesson_price: 12,
-#   lesson_discount_price: 9)
+puts "Création des Eleves/Profs"
+Eleve.create!(name: "Marine",
+             surname: "Sourin",
+             birthdate: "07/05/1995",
+             prof: marine[:prof],
+             sex: "Femme",
+             phone_number: "0688000760",
+             country: "France",
+             city: "Paris",
+             status: "Inscrit(e)",
+             user_id: marine.id)
+
+guitou_eleve = Eleve.create!(name: "Guitou",
+             surname: "Imary",
+             birthdate: "15/10/1990",
+             prof: guitou[:prof],
+             sex: "Homme",
+             phone_number: "0634762386",
+             country: "France",
+             city: "Paris",
+             status: "Inscrit(e)",
+             presentation: "Ceci est ma présentation en temps que prof",
+             facebook: "https://www.facebook.com/guitou.imary",
+             twitter: "https://www.twitter.fr",
+             instagram: "https://www.instagram.com/guitouchou/",
+             siret_number: "ABC123",
+             company_address: "53 rue de Rome",
+             iban: "AZERTY123456",
+             bic: "AZE123",
+             moderated: true,
+             user_id: guitou.id)
+
+puts "Création des Lessons"
+Lesson.create!(lesson_date: "23/06/2020",
+              beginning_time: "4:00pm",
+              end_time: "5:00pm",
+              lesson_description: "Ceci est la description du cours",
+              lesson_material_needed: "Vous aurez besoin de ce matériel",
+              lesson_name: "Ceci est le cours",
+              lesson_level: "Débutant",
+              lesson_duration: "1:00",
+              lesson_language: "Français",
+              lesson_price: 15,
+              sport_id: Sport.first.id,
+              activity_id: Activity.first.id,
+              eleve_id: guitou_eleve.id)
+
+
+
+
+
+

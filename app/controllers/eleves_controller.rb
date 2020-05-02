@@ -31,7 +31,7 @@ class ElevesController < ApplicationController
 
   def update
     @eleve = Eleve.find(params[:id])
-    @user = User.find(params[:user_id])
+    @user = User.find(params[:id])
     if @eleve.update(eleve_params)
       redirect_to edit_elefe_path(@eleve, errors: @errors, alerts: @alerts), notice: 'Profil mis à jour'
     else

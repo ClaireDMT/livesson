@@ -1,0 +1,40 @@
+#lesson-show{
+  height: calc(100vh - 80px);
+  .show-lesson{
+    width: 370px;
+    min-height: 400px;
+    box-shadow: -5px 5px 5px rgba(0,0,0,0.2);
+    float: right;
+    p{
+      line-height: 24px;
+      font-size: 16px;
+      margin: 0px 10px 0px 10px;
+    }
+    .lesson-name{
+      color: $purple;
+      letter-spacing: 0.67px;
+    }
+    .lesson-price{
+      color: $purple;
+      font-size: 18px;
+      line-height: 32px;
+    }
+    .lesson-teacher, .lesson-description, .lesson-material{
+      font-weight: 500;
+    }
+  }
+  .show-prof{
+    margin: 20px;
+    .flexify{
+      display: flex;
+      justify-content: space-between;
+    }
+    .purple-title{
+      color: $purple;
+      letter-spacing: 0.67px;
+    }
+    .bold{
+      font-weight: 500;
+    }
+  }
+}

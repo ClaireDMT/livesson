@@ -24,17 +24,18 @@ Rails.application.routes.draw do
 
   get '/home', to: 'pages#home'
   # root to: redirect('/users/sign_up')
-  resources :eleves, only: [:new, :create, :edit, :update] do
+  resources :eleves, only: [:new, :create, :edit, :update, :show] do
     collection do
       get '/turn_eleve_into_prof', to: 'eleves#turn_eleve_into_prof'
     end
-    resources :bookings, only: [:new, :create]
   end
   resources :bookings, only: :destroy
+
   get 'eleves/:id/mes-cours', to: 'eleves#mes_cours', as: :mes_cours
 
   resources :lessons do
     resources :reviews, only: [:new, :create]
+    resources :bookings, only: [:new, :create]
   end
   # post 'turn_eleve_into_prof', to: 'eleves#turn_eleve_into_prof'
 # post "users/:id/reset", to: "customdevise/registrations#reset_user", as: :user_reset

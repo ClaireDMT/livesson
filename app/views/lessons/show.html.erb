@@ -1,37 +1,43 @@
 <div id="lesson-show">
+  <%= link_to 'Revenir à la recherche', :back %>
   <div class="show-lesson">
-    <% if !@eleve.lessons.where(id: @lesson).any?  %>
-      <%= simple_form_for [@lesson, @booking], url: lesson_bookings_url(@lesson) do |f| %>
-        <%= f.button :submit, "Book", class: "btn-rectangle" %>
+    <div class="reserver">
+      <% if !@eleve.lessons.where(id: @lesson).any?  %>
+        <%= simple_form_for [@lesson, @booking], url: lesson_bookings_url(@lesson) do |f| %>
+          <%= f.button :submit, "Réserver", class: "btn-rectangle" %>
+        <% end %>
       <% end %>
-    <% end %>
-    <div class='lesson-name'>
-      <%= @lesson.lesson_name %>
     </div>
-    <div class="lesson-price">
-      <%= @lesson.lesson_price %>€
-    </div>
-    <%= @lesson.lesson_level %> <br>
-    <%= @lesson.lesson_date %> à <%= @lesson.beginning_time.strftime('%Hh%M') %> <br>
-    Cours en <%= @lesson.lesson_language %> <br>
-    <%= @lesson.eleve.name %> <%= @lesson.eleve.surname %> <br>
+    <p class='lesson-name'> <%= @lesson.lesson_name %></p>
+    <p class="lesson-price"> <%= @lesson.lesson_price %>€</p>
+    <p> <%= @lesson.lesson_level %></p>
+    <p> <%= @lesson.lesson_date %> à <%= @lesson.beginning_time.strftime('%Hh%M') %></p>
+    <p>Cours en <%= @lesson.lesson_language %> </p>
+    <p> <%= @lesson.lesson_duration %> min</p>
+    <p class="lesson-teacher"> <%= @lesson.eleve.name %> <%= @lesson.eleve.surname %> </p>
     <%#= @lesson.rating %>
-    <p>Descriptif du cours</p>
-    <%= @lesson.lesson_description %>
-    <p>Matériel nécessaire</p>
-    <%= @lesson.lesson_material_needed %>
+    <br><br>
+    <p class="lesson-description">Descriptif du cours</p>
+    <p><%= @lesson.lesson_description %></p>
+    <br>
+    <p class="lesson-material">Matériel nécessaire</p>
+    <p><%= @lesson.lesson_material_needed %></p>
   </div>
   <div class="show-prof">
-    <%= @prof.name %> <%= @prof.surname %>
-    <%= @prof.city %> <%= @prof.country %>
-    <p>Avis (voir tous les avis)</p>
-    <p>Présentation</p>
-    <%= @prof.presentation %>
-    <p>Planning</p>
-    <p>Réseaux sociaux</p>
-    <%= @prof.instagram %>
-    <%= @prof.facebook %>
-    <%=  %>
-    <%=  %>
+    <div class="flexify">
+      <div class="profil">
+        <p><%= @prof.name %> <%= @prof.surname %></p>
+        <p><%= @prof.city %> <%= @prof.country %></p>
+        <p>Avis (voir tous les avis)</p>
+      </div>
+      <div class="social-networks">
+        <p class='purple-title'>Réseaux sociaux</p>
+        <p><%= @prof.instagram %></p>
+        <p><%= @prof.facebook %></p>
+      </div>
+    </div>
+    <p class="bold">Présentation</p>
+    <p><%= @prof.presentation %></p>
+    <p class="bold">Planning</p>
   </div>
 </div>

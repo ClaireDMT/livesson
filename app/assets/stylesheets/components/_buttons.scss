@@ -1,3 +1,7 @@
+button:focus {
+  outline: none !important;
+}
+
 .btn-rounded {
   background-color: $purple;
   color: white;
@@ -23,6 +27,20 @@
   text-align: center;
   height: 35px;
   border: transparent;
+  p {
+    margin-bottom: 0;
+  }
+}
+
+.btn-dropdown {
+  background-color: white;
+  color: black;
+  border-radius: 10px;
+  font-size: 16px;
+  vertical-align: middle;
+  text-align: center;
+  height: 35px;
+  border: 1px solid rgba(0, 0, 0, 0.5);
   p {
     margin-bottom: 0;
   }

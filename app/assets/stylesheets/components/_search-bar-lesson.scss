@@ -1,0 +1,13 @@
+.search-bar-lesson {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  .dropdown-toggle {
+    width: 228px;
+  }
+  .dropdown-menu {
+    width: 228px;
+    padding-left: 20px;
+  }
+}

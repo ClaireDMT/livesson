@@ -6,7 +6,12 @@
           <div class="form-profil">
             <h2>Mon profil</h2>
             <div class='flexify'>
-              <%= image_tag 'empty.jpg', class: 'profil-picture-eleve' %>
+              <% if @eleve.profile_picture.blank? %>
+                <%= f.input :profile_picture %>
+              <% else %>
+                <%= image_tag @eleve.profile_picture %>
+              <% end %>
+              <%#= image_tag 'empty.jpg', class: 'profil-picture-eleve' %>
               <div class="nom-prenom">
                 <%= f.input :name,
                               label: "Prénom",

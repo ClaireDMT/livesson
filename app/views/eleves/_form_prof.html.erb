@@ -6,7 +6,7 @@
           <div class="form-profil">
             <h2>Mon profil</h2>
             <div class='flexify'>
-              <%= image_tag 'page-connexion/page-connexion-inscription-image.jpg', class: 'profil-picture-prof' %>
+               <%= f.input :profile_picture %>
               <div class="nom-prenom">
                 <%= f.input :name, label: 'Prénom', placeholder:'Votre prénom', required: true, error: 'Le Prénom est obligatoire' %>
                 <%= f.input :surname, label: 'Nom', placeholder:'Votre nom', required: true, error: 'Le Nom est obligatoire' %>

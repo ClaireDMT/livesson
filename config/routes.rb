@@ -32,6 +32,7 @@ Rails.application.routes.draw do
   resources :bookings, only: :destroy
 
   get 'eleves/:id/mes-cours', to: 'eleves#mes_cours', as: :mes_cours
+  get 'eleves/:id/mes-reservations', to: 'eleves#mes_reservations', as: :mes_reservations
 
   resources :lessons do
     resources :reviews, only: [:new, :create]

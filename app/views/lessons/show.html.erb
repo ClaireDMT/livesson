@@ -2,11 +2,15 @@
   <div class="show-lesson">
     <% if !@eleve.lessons.where(id: @lesson).any?  %>
       <%= simple_form_for [@lesson, @booking], url: lesson_bookings_url(@lesson) do |f| %>
-        <%= f.button :submit, "Book", class: "btn btn-success" %>
+        <%= f.button :submit, "Book", class: "btn-rectangle" %>
       <% end %>
     <% end %>
-    <%= @lesson.lesson_name %> <br>
-    <%= @lesson.lesson_price %>€ <br>
+    <div class='lesson-name'>
+      <%= @lesson.lesson_name %>
+    </div>
+    <div class="lesson-price">
+      <%= @lesson.lesson_price %>€
+    </div>
     <%= @lesson.lesson_level %> <br>
     <%= @lesson.lesson_date %> à <%= @lesson.beginning_time.strftime('%Hh%M') %> <br>
     Cours en <%= @lesson.lesson_language %> <br>

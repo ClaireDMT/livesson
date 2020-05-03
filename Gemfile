@@ -22,8 +22,10 @@ gem 'uglifier'
 gem 'webpacker'
 # Security for sensitive info (wrapper for .env variables)
 gem 'figaro'
-#AWS storage s3
+# AWS storage s3
 gem 'aws-sdk-s3'
+# Sendinblue --> mailer
+gem 'sendinblue'
 
 group :development do
   gem 'web-console', '>= 3.3.0'

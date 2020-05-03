@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_03_130316) do
+ActiveRecord::Schema.define(version: 2020_05_03_143236) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -85,7 +85,7 @@ ActiveRecord::Schema.define(version: 2020_05_03_130316) do
     t.string "iban"
     t.string "bic"
     t.string "status"
-    t.string "moderated"
+    t.boolean "moderated", default: false
     t.bigint "user_id"
     t.bigint "sport_id"
     t.bigint "activity_id"

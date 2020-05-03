@@ -9,6 +9,7 @@ class ElevesController < ApplicationController
       @eleve = Eleve.new(eleve_params)
       @eleve.user_id = current_user.id
       new_prof
+      # UserMailer.awaiting_moderation(current_user).deliver_now
     elsif Eleve.where(user_id: current_user.id).empty?
       @eleve = Eleve.new(eleve_params)
       @eleve.user_id = current_user.id

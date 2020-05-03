@@ -1,11 +1,5 @@
 <br>
-<div class= 'text-center'>
-  <button class='btn-rectangle'><p>Type d'activité</p></button>
-  <button class='btn-rectangle'><p>Langue</p></button>
-  <button class='btn-rectangle'><p>Jour</p></button>
-  <button class='btn-rectangle'><p>Créneau</p></button>
-  <button class='btn-rectangle'><p>Niveau</p></button>
-</div>
+<%= render 'shared/search-bar-lesson' %>
 <br>
 <br>
 <% @lessons.each do |lesson| %>

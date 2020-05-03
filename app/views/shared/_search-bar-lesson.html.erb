@@ -1,0 +1,84 @@
+<div class= 'text-center search-bar-lesson'>
+  <div class="dropdown show">
+    <button class="btn-rectangle dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Type d'activité
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+      <% Sport.all.each do |sport| %>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+          <label class="form-check-label" for="defaultCheck1">
+            <%= sport.sport_name %>
+          </label>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="dropdown show">
+    <button class="btn-dropdown dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Langue
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+      <p class="purple medium">LANGUES</p>
+      <% Lesson.all.each do |lesson| %>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+          <label class="form-check-label" for="defaultCheck1">
+            <%= lesson.lesson_language %>
+          </label>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="dropdown show">
+    <button class="btn-dropdown dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Jour
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+      <% Lesson.all.each do |lesson| %>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+          <label class="form-check-label" for="defaultCheck1">
+            <%= lesson.lesson_date.strftime("%d %B %Y") %>
+          </label>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="dropdown show">
+    <button class="btn-dropdown dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Créneau
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+      <p class="purple medium">CRÉNEAUX</p>
+      <% Lesson.all.each do |lesson| %>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+          <label class="form-check-label" for="defaultCheck1">
+            Entre <%= lesson.beginning_time.strftime("%H") %>h et  <%= lesson.end_time.strftime("%H") %>h
+          </label>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="dropdown show">
+    <button class="btn-dropdown dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Niveau
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+      <p class="purple medium">NIVEAUX</p>
+      <% Lesson.all.each do |lesson| %>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+          <label class="form-check-label" for="defaultCheck1">
+            <%= lesson.lesson_level %>
+          </label>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

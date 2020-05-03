@@ -12,7 +12,12 @@
                 <%= f.input :surname, label: 'Nom', placeholder:'Votre nom', required: true, error: 'Le Nom est obligatoire' %>
               </div>
             </div>
-            <%= f.input :birthdate, as: :date, start_year: Date.today.year - 100, end_year: Date.today.year, :order => [:day, :month, :year], prompt: 'Séléctionnez' %>
+            <%= f.input :birthdate,
+                        label: "Date de naissance",
+                        placeholder: "Date de naissance",
+                        as: :string,
+                        required: false,
+                        input_html: {class: "datepicker"}%>
             <%= f.input :sex, as: :radio_buttons, collection: ['Homme', 'Femme', 'Ne souhaite pas communiquer'] %>
             <%= f.input :country,
                           label: "Pays",

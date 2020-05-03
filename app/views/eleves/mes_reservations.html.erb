@@ -1,5 +1,8 @@
 
 <h2>Mes cours comme Eleve +</h2>
+<%= link_to new_lesson_path do %>
+  <button class='btn-rectangle'>Créer un cours</button>
+<% end %>
 <% @bookings.each do |lesson| %>
   <div class="container">
     <div class="row">

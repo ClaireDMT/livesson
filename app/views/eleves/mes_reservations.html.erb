@@ -1,9 +1,12 @@
 
 <h2>Mes cours comme Eleve +</h2>
-<%= link_to new_lesson_path do %>
+<%= link_to new_template_path do %>
   <button class='btn-rectangle'>Créer un cours</button>
 <% end %>
-<% @bookings.each do |lesson| %>
+<%= link_to new_lesson_path do %>
+  <button class='btn-rectangle'>Créer un lesson</button>
+<% end %>
+<% @bookings.each do |booking| %>
   <div class="container">
     <div class="row">
       <div class="col-xs-12 col-md-6">
@@ -15,7 +18,7 @@
             <div class="card-content-left">
               <p class="lesson-type medium"> <%= booking.lesson.lesson_name %> </p>
               <p class="lesson-level"> <%= booking.lesson.lesson_level %> </p>
-              <p class="lesson-teacher medium"> <%= booking.lesson.eleve.name.capitalize %> <%= lesson.eleve.surname.capitalize %> </p>
+              <p class="lesson-teacher medium"> <%= booking.lesson.eleve.name.capitalize %> <%= booking.lesson.eleve.surname.capitalize %> </p>
               <p class="lesson-date"><%= booking.lesson.lesson_date.strftime('%a %d %b') %> à <%= booking.lesson.beginning_time.strftime('%Hh%M') %></p>
               <p class="lesson-language">Cours en <%= booking.lesson.lesson_language %></p>
               <!-- <div class="lesson-notation">

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_03_143236) do
+ActiveRecord::Schema.define(version: 2020_05_04_150621) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -112,9 +112,11 @@ ActiveRecord::Schema.define(version: 2020_05_03_143236) do
     t.bigint "sport_id"
     t.bigint "activity_id"
     t.bigint "eleve_id"
+    t.bigint "template_id"
     t.index ["activity_id"], name: "index_lessons_on_activity_id"
     t.index ["eleve_id"], name: "index_lessons_on_eleve_id"
     t.index ["sport_id"], name: "index_lessons_on_sport_id"
+    t.index ["template_id"], name: "index_lessons_on_template_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -132,6 +134,21 @@ ActiveRecord::Schema.define(version: 2020_05_03_143236) do
     t.string "sport_name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "templates", force: :cascade do |t|
+    t.text "template_description"
+    t.text "template_material_needed"
+    t.string "template_name"
+    t.integer "template_level"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "sport_id"
+    t.bigint "activity_id"
+    t.bigint "eleve_id"
+    t.index ["activity_id"], name: "index_templates_on_activity_id"
+    t.index ["eleve_id"], name: "index_templates_on_eleve_id"
+    t.index ["sport_id"], name: "index_templates_on_sport_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -160,6 +177,10 @@ ActiveRecord::Schema.define(version: 2020_05_03_143236) do
   add_foreign_key "lessons", "activities"
   add_foreign_key "lessons", "eleves", column: "eleve_id"
   add_foreign_key "lessons", "sports"
+  add_foreign_key "lessons", "templates"
   add_foreign_key "reviews", "eleves", column: "eleve_id"
   add_foreign_key "reviews", "lessons"
+  add_foreign_key "templates", "activities"
+  add_foreign_key "templates", "eleves", column: "eleve_id"
+  add_foreign_key "templates", "sports"
 end

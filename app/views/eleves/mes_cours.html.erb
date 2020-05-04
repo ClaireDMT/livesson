@@ -1,9 +1,9 @@
 
 <h2>Mes cours comme Prof +</h2>
-<%= link_to new_lesson_path do %>
+<%= link_to new_template_path do %>
   <button class='btn-rectangle'>Créer un cours</button>
 <% end %>
-<% @lessons.each do |lesson| %>
+<% @templates.each do |lesson| %>
   <div class="container">
     <div class="row">
       <div class="col-xs-12 col-md-6">
@@ -13,11 +13,11 @@
           </div>
           <div class="card-content">
             <div class="card-content-left">
-              <p class="lesson-type medium"> <%= lesson.lesson_name %> </p>
-              <p class="lesson-level"> <%=lesson.lesson_level %> </p>
-              <p class="lesson-teacher medium"> <%=lesson.eleve.name.capitalize %> <%= lesson.eleve.surname.capitalize %> </p>
-              <p class="lesson-date"><%= lesson.lesson_date.strftime('%a %d %b') %> à <%= lesson.beginning_time.strftime('%Hh%M') %></p>
-              <p class="lesson-language">Cours en <%= lesson.lesson_language %></p>
+              <p class="lesson-type medium"> <%= template.template_name %> </p>
+              <p class="lesson-level"> <%=template.template_level %> </p>
+              <p class="lesson-teacher medium"> <%= @eleve.name.capitalize %> <%= @eleve.surname.capitalize %> </p>
+              <p class="lesson-date"><%= 'Jour' %> à <%= '00h00' %></p>
+              <p class="lesson-language">Cours en Français</p>
               <!-- <div class="lesson-notation">
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
@@ -30,17 +30,10 @@
             <div class="card-content-right">
               <div class="card-content-right-top">
                 <p class="lesson-price medium">
-                  <% if lesson.lesson_discount_price.nil? %>
-                    <%= lesson.lesson_price %>€
-                  <% else %>
-                    <%= lesson.lesson_discount_price %>
-                  <% end %>
+                  00€
                 </p>
-                <p class="lesson-duration"><%= lesson.lesson_duration / 60 %>min</p>
+                <p class="lesson-duration">00min</p>
               </div>
-              <% unless lesson.eleve == current_user.eleve %>
-                <button class="btn-rectangle">Réserver</button>
-              <% end %>
             </div>
           </div>
         </div>

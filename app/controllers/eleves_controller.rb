@@ -54,6 +54,7 @@ class ElevesController < ApplicationController
   def mes_reservations
     @eleve = Eleve.find(params[:id])
     @bookings = Booking.where(params[eleve_id: @eleve])
+    @lessons = Lesson.where(params[eleve_id: @eleve])
   end
 
   private

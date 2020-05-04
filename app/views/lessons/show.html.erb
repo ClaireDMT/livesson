@@ -1,6 +1,41 @@
-<div id="lesson-show">
-  <%= link_to 'Revenir à la recherche', :back %>
-  <div class="show-lesson">
+<div id="lesson-show" class="flexify">
+  <div class="container-show-prof col-md-10">
+    <div class="back-to-search flexify space-between mb-4">
+      <p class="link-back-to-search"><%= link_to 'Revenir à la recherche', :back %></p>
+      <h4>PARTAGER CE PROFIL</h4>
+    </div>
+    <div class="show-prof">
+      <div class="flexify">
+        <div class="image-profil">
+          <%= image_tag "homepage/banner-homepage-pro.jpg" %>
+        </div>
+        <div class="flex-grow-1">
+          <h3 class="title-purple-upcase"><%= @prof.sport.sport_name %></h3>
+          <div class="prof-infos flexify space-between">
+            <div class="profil">
+              <p class="bold"><%= @prof.name %> <%= @prof.surname %></p>
+              <p><%= @prof.city %> <%= @prof.country %></p>
+              <p>Avis (voir tous les avis)</p>
+              <p>****</p>
+            </div>
+            <div class="social-networks">
+              <p class="title-purple-upcase">Réseaux sociaux</p>
+              <p><%= @prof.instagram %></p>
+              <p><%= @prof.facebook %></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-5">
+        <p class="bold">Présentation</p>
+        <p class="text-justify"><%= @prof.presentation %></p>
+        <p class="bold">Planning</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="show-lesson col-md-2">
     <div class="reserver">
       <% if !@eleve.lessons.where(id: @lesson).any?  %>
         <%= simple_form_for [@lesson, @booking], url: lesson_bookings_url(@lesson) do |f| %>
@@ -8,36 +43,21 @@
         <% end %>
       <% end %>
     </div>
-    <p class='lesson-name'> <%= @lesson.lesson_name %></p>
+    <h3 class="title-purple-upcase"> <%= @lesson.lesson_name %></h3>
     <p class="lesson-price"> <%= @lesson.lesson_price %>€</p>
     <p> <%= @lesson.lesson_level %></p>
     <p> <%= @lesson.lesson_date %> à <%= @lesson.beginning_time.strftime('%Hh%M') %></p>
     <p>Cours en <%= @lesson.lesson_language %> </p>
     <p> <%= @lesson.lesson_duration %> min</p>
     <p class="lesson-teacher"> <%= @lesson.eleve.name %> <%= @lesson.eleve.surname %> </p>
+    <p>****</p>
+
     <%#= @lesson.rating %>
     <br><br>
     <p class="lesson-description">Descriptif du cours</p>
-    <p><%= @lesson.lesson_description %></p>
+    <p class="text-justify"><%= @lesson.lesson_description %></p>
     <br>
     <p class="lesson-material">Matériel nécessaire</p>
-    <p><%= @lesson.lesson_material_needed %></p>
-  </div>
-  <div class="show-prof">
-    <div class="flexify">
-      <div class="profil">
-        <p><%= @prof.name %> <%= @prof.surname %></p>
-        <p><%= @prof.city %> <%= @prof.country %></p>
-        <p>Avis (voir tous les avis)</p>
-      </div>
-      <div class="social-networks">
-        <p class='purple-title'>Réseaux sociaux</p>
-        <p><%= @prof.instagram %></p>
-        <p><%= @prof.facebook %></p>
-      </div>
-    </div>
-    <p class="bold">Présentation</p>
-    <p><%= @prof.presentation %></p>
-    <p class="bold">Planning</p>
+    <p class="text-justify"><%= @lesson.lesson_material_needed %></p>
   </div>
 </div>

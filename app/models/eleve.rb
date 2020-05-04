@@ -1,5 +1,6 @@
 class Eleve < ApplicationRecord
   belongs_to :user
+  belongs_to :sport, optional: true
   has_many :lessons
   has_many :reviews
   has_one_attached :profile_picture

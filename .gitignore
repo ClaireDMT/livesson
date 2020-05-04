@@ -32,7 +32,12 @@ yarn-debug.log*
 
 # Ignore .env file containing credentials.
 .env*
+application.yml
+
 
 # Ignore Mac and Linux file system files
 *.swp
 .DS_Store
+
+# Ignore application configuration
+/config/application.yml

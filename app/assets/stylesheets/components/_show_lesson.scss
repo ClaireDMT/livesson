@@ -1,11 +1,22 @@
-#lesson-show{
+#lesson-show {
   height: calc(100vh - 80px);
-  .show-lesson{
-    width: 370px;
+  display: flex;
+  p {
+    font-size: 16px;
+  }
+
+  .flexify {
+    display: flex;
+  }
+  .space-between {
+    justify-content: space-between;
+  }
+
+  .show-lesson {
     min-height: 400px;
     box-shadow: -5px 5px 5px rgba(0,0,0,0.2);
-    float: right;
-    p{
+    padding: 20px;
+    p {
       line-height: 24px;
       font-size: 16px;
       margin: 0px 10px 0px 10px;
@@ -23,17 +34,20 @@
       font-weight: 500;
     }
   }
-  .show-prof{
-    margin: 20px;
-    .flexify{
-      display: flex;
-      justify-content: space-between;
+
+  .container-show-prof {
+    padding: 20px 30px;
+
+    .image-profil {
+      margin-right: 30px;
     }
-    .purple-title{
-      color: $purple;
-      letter-spacing: 0.67px;
+    .image-profil img {
+      width: 180px;
+      height: 180px;
+      object-fit: cover;
     }
-    .bold{
+
+    .bold {
       font-weight: 500;
     }
   }

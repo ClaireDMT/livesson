@@ -89,8 +89,8 @@
                 </p>
                 <p class="lesson-duration"><%= booking.lesson.lesson_duration / 60 %>min</p>
               </div>
-              <% unless booking.lesson.eleve == current_user.eleve %>
-                <button class="btn-rectangle">Réserver</button>
+              <%= link_to booking_path(booking), method: :delete do %>
+              <button class="btn-rectangle-gray">Annuler</button>
               <% end %>
             </div>
           </div>

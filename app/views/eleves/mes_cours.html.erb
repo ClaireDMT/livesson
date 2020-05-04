@@ -1,6 +1,8 @@
-
 <h2>Mes cours comme Prof +</h2>
 <%= link_to new_template_path do %>
+  <button class='btn-rectangle'>Créer un cours</button>
+<% end %>
+<%= link_to new_lesson_path do %>
   <button class='btn-rectangle'>Créer un cours</button>
 <% end %>
 <% @templates.each do |lesson| %>

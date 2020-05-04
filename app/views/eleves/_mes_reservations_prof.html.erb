@@ -1,6 +1,6 @@
 <% if @lessons.present? %>
   <div class="container">
-    <h5 class="purple">MES COURS À VENIR (<%= @upcoming_lessons.count %>) <button id="buttonToggleUpcoming" class="purple medium">+</button></h5>
+    <h5 class="purple">MES COURS À VENIR (<%= @upcoming_lessons.count %>) <button id="buttonToggleUpcomingLessons" class="purple medium">+</button></h5>
     <div id="toggleUpcomingLessons" style="display: none">
       <% if @upcoming_lessons.present? %>
         <% @upcoming_lessons.each do |upcoming_lesson| %>
@@ -28,7 +28,7 @@
         <p>Vous n'avez pas de cours à venir.</p>
       <% end %>
     </div>
-    <h5 class="purple">MES COURS PASSÉS (<%= @past_lessons.count %>) <button id="buttonTogglePast" class="purple medium">+</button></h5>
+    <h5 class="purple">MES COURS PASSÉS (<%= @past_lessons.count %>) <button id="buttonTogglePastLessons" class="purple medium">+</button></h5>
     <div id="togglePastLessons" style="display: none">
       <% if @past_lessons.present? %>
         <% @past_lessons.each do |past_lesson| %>

@@ -5,9 +5,21 @@
   .nav-item {
     margin-right: 60px;
   }
-  .nav-link{
+  .nav-link.nav-link-compte{
     color: black;
     width: 267px;
+    border-bottom: 2px solid black;
+    border-radius: 0;
+    padding: 0px;
+    &.active {
+      color: black;
+      background-color: transparent;
+      border-bottom: 2px solid #E55EE0;
+    }
+  }
+  .nav-link.nav-link-reservation{
+    color: black;
+    width: 350px;
     border-bottom: 2px solid black;
     border-radius: 0;
     padding: 0px;

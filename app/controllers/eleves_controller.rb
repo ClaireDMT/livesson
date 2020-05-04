@@ -56,6 +56,8 @@ class ElevesController < ApplicationController
     @eleve = Eleve.find(params[:id])
     @bookings = Booking.where(params[eleve_id: @eleve])
     @lessons = Lesson.where(params[eleve_id: @eleve])
+    @upcoming_lessons = @lessons.where("lesson_date > ?", Date.today)
+    @past_lessons = @lessons.where("lesson_date < ?", Date.today)
   end
 
   private

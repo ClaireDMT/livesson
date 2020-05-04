@@ -1,0 +1,49 @@
+<% if @bookings.present? %>
+  <% @bookings.each do |booking| %>
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-md-6">
+          <div class="card">
+            <div class="image">
+              <%= image_tag "empty.jpg" %>
+            </div>
+            <div class="card-content">
+              <div class="card-content-left">
+                <p class="lesson-type medium"> <%= booking.lesson.lesson_name %> </p>
+                <p class="lesson-level"> <%= booking.lesson.lesson_level %> </p>
+                <p class="lesson-teacher medium"> <%= booking.lesson.eleve.name.capitalize %> <%= booking.lesson.eleve.surname.capitalize %> </p>
+                <p class="lesson-date"><%= booking.lesson.lesson_date.strftime('%a %d %b') %> à <%= booking.lesson.beginning_time.strftime('%Hh%M') %></p>
+                <p class="lesson-language">Cours en <%= booking.lesson.lesson_language %></p>
+                <!-- <div class="lesson-notation">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="far fa-star"></i>
+                  <i class="far fa-star"></i>
+                  <span class="__number">(3)</span>
+                </div> -->
+              </div>
+              <div class="card-content-right">
+                <div class="card-content-right-top">
+                  <p class="lesson-price medium">
+                    <% if booking.lesson.lesson_discount_price.nil? %>
+                      <%= booking.lesson.lesson_price %>€
+                    <% else %>
+                      <%= booking.lesson.lesson_discount_price %>
+                    <% end %>
+                  </p>
+                  <p class="lesson-duration"><%= booking.lesson.lesson_duration / 60 %>min</p>
+                </div>
+                <% unless booking.lesson.eleve == current_user.eleve %>
+                  <button class="btn-rectangle">Réserver</button>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% else %>
+  <p>Vous ne vous êtes pas encore inscrit(e) à un cours.</p>
+<% end %>

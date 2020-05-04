@@ -34,6 +34,7 @@ Rails.application.routes.draw do
   get 'eleves/:id/mes-cours', to: 'eleves#mes_cours', as: :mes_cours
   get 'eleves/:id/mes-reservations', to: 'eleves#mes_reservations', as: :mes_reservations
 
+  resources :templates, only: [:index, :new, :create]
   resources :lessons do
     resources :reviews, only: [:new, :create]
     resources :bookings, only: [:new, :create]

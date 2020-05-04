@@ -9,12 +9,13 @@ class ElevesController < ApplicationController
       @eleve = Eleve.new(eleve_params)
       @eleve.user_id = current_user.id
       new_prof
-      # UserMailer.awaiting_moderation(current_user).deliver_now
+      UserMailer.inscription_prof(current_user).deliver_now
     elsif Eleve.where(user_id: current_user.id).empty?
       @eleve = Eleve.new(eleve_params)
       @eleve.user_id = current_user.id
       @eleve.status = "Inscrit(e)"
       @eleve.save
+      UserMailer.send_welcome(current_user).deliver_now
     end
     redirect_to edit_user_registration_path
   end

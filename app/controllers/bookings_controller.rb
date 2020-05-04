@@ -14,6 +14,7 @@ class BookingsController < ApplicationController
     @eleve = current_user.eleve.id
     @booking = Booking.new(lesson: @lesson, eleve_id: @eleve)
     if @booking.save
+      UserMailer.inscription_cours(@booking.id).deliver_now
       redirect_to lesson_path(@lesson)
     else
       render :new

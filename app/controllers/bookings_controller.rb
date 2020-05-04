@@ -15,7 +15,7 @@ class BookingsController < ApplicationController
     @booking = Booking.new(lesson: @lesson, eleve_id: @eleve)
     if @booking.save
       UserMailer.inscription_cours(@booking.id).deliver_now
-      redirect_to lesson_path(@lesson)
+      redirect_to mes_reservations_url(@eleve)
     else
       render :new
     end
@@ -32,7 +32,7 @@ class BookingsController < ApplicationController
     # @training = Training.find(params[:training_id])
     @booking = Booking.find(params[:id])
     @booking.destroy
-    redirect_to lessons_path
+    redirect_to mes_reservations_url(@booking.eleve_id)
   end
 
   private

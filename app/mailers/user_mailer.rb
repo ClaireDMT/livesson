@@ -24,9 +24,10 @@ class UserMailer < ApplicationMailer
   # Confirmation d'un eleve au cours
   def inscription_cours(booking_id)
     @booking = Booking.find(booking_id)
-    @eleve = @booking.eleve
+    @eleve = @booking.eleve_id
     @prof = @booking.lesson.eleve
-    mail(to: @eleve.user.email, subject: "Votre cours avec #{@prof.name} #{@prof.surname} est confirmée ! ")
+    @email = Eleve.find(@eleve).user.email
+    mail(to: @email, subject: "Votre cours avec #{@prof.name} #{@prof.surname} est confirmée ! ")
   end
 
   # def discover_woonies(pro, email)

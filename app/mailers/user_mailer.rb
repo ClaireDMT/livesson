@@ -1,21 +1,34 @@
 class UserMailer < ApplicationMailer
   default from: "Livesson <hello@livesson.com>"
 
-  # def send_welcome(user)
-  #   mail(to: user.email, subject: “Welcome”)
-  # end
+  # Inscription eleve
+  def send_welcome(user)
+    mail(to: user.email, subject: 'Bienvenue chez Livesson')
+  end
 
-  # def awaiting_moderation(prof)
-  #   mail(to: prof.email, subject: "Profil complété en attente de modération")
-  # end
+  # Wait for moderation
+  def inscription_prof(user)
+    mail(to: user.email, subject: "Profil complété en attente de modération")
+  end
 
-  # def moderation_positive(prof)
-  #   mail(to: prof.email, subject: "Livesson a accepté votre profil")
-  # end
+  # Moderated --> true --> Admin
+  def moderated_prof
+    mail(to: user.email, subject: "Livesson a accepté votre profil")
+  end
 
-  # def moderation_negative(prof)
-  #   mail(to: prof.email, subject: "Livesson a refusé votre profil")
-  # end
+  # Moderated --> false --> Admin
+  def not_moderated_prof
+    mail(to: prof.email, subject: "Livesson a refusé votre profil")
+  end
+
+  # Confirmation d'un eleve au cours
+  def inscription_cours(booking_id)
+    @booking = Booking.find(booking_id)
+    @eleve = @booking.eleve_id
+    @prof = @booking.lesson.eleve
+    @email = Eleve.find(@eleve).user.email
+    mail(to: @email, subject: "Votre cours avec #{@prof.name} #{@prof.surname} est confirmée ! ")
+  end
 
   # def discover_woonies(pro, email)
   #   @pro_url = "https://woonies.com/pros/#{pro.id}"

@@ -1,11 +1,6 @@
 <div class="container">
   <%= simple_form_for @lesson do |f| %>
-    <%= f.association :sport, collection: @sports, label_method: :sport_name, value_method: :id %>
-    <%= f.input :lesson_name  %>
-    <%= f.input :lesson_level %>
-    <%= f.input :lesson_description %>
-    <%= f.input :lesson_material_needed %>
-    <%= f.association :activity, collection: @activities, label_method: :activity_name, value_method: :id %>
+    <%= f.association :template, collection: @templates, label_method: :template_name, value_method: :id %>
     <%= f.input :lesson_date %>
     <%= f.input :beginning_time %>
     <%= f.input :end_time %>

@@ -1,10 +1,10 @@
 <div class="container">
   <nav class="nav nav-pills">
-      <a class="nav-item nav-link active" id="pills-profil-tab" data-toggle="tab" href="#pills-profil" role="tab" aria-controls="pills-profil" aria-selected="true">PROFIL ÉLÈVE</a>
-      <a class="nav-item nav-link" id="pills-emailmdp-tab" data-toggle="tab" href="#pills-emailmdp" role="tab" aria-controls="pills-emailmdp" aria-selected="false">E-MAIL ET MOT DE PASSE</a>
-      <a class="nav-item nav-link" id="pills-paiement-tab" data-toggle="tab" href="#pills-paiement" role="tab" aria-controls="pills-paiement" aria-selected="false">MODE DE PAIEMENT</a>
+      <a class="nav-item nav-link nav-link-compte active" id="pills-profil-tab" data-toggle="tab" href="#pills-profil" role="tab" aria-controls="pills-profil" aria-selected="true">PROFIL ÉLÈVE</a>
+      <a class="nav-item nav-link nav-link-compte" id="pills-emailmdp-tab" data-toggle="tab" href="#pills-emailmdp" role="tab" aria-controls="pills-emailmdp" aria-selected="false">E-MAIL ET MOT DE PASSE</a>
+      <a class="nav-item nav-link nav-link-compte" id="pills-paiement-tab" data-toggle="tab" href="#pills-paiement" role="tab" aria-controls="pills-paiement" aria-selected="false">MODE DE PAIEMENT</a>
       <% if @eleve.moderated? %>
-        <a class="nav-item nav-link" id="pills-espace-prof-tab" data-toggle="tab" href="#pills-espace-prof" role="tab" aria-controls="pills-espace-prof" aria-selected="false">MON ESPACE PROFESSIONNEL</a>
+        <a class="nav-item nav-link nav-link-compte" id="pills-espace-prof-tab" data-toggle="tab" href="#pills-espace-prof" role="tab" aria-controls="pills-espace-prof" aria-selected="false">MON ESPACE PROFESSIONNEL</a>
       <% end %>
   </nav>
 </div>

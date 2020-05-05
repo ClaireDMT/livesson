@@ -1,50 +1,35 @@
-
-<h2>Mes cours comme Eleve +</h2>
-<%= link_to new_lesson_path do %>
-  <button class='btn-rectangle'>Créer un cours</button>
-<% end %>
-<% @bookings.each do |lesson| %>
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-12 col-md-6">
-        <div class="card">
-          <div class="image">
-            <%= image_tag "empty.jpg" %>
-          </div>
-          <div class="card-content">
-            <div class="card-content-left">
-              <p class="lesson-type medium"> <%= booking.lesson.lesson_name %> </p>
-              <p class="lesson-level"> <%= booking.lesson.lesson_level %> </p>
-              <p class="lesson-teacher medium"> <%= booking.lesson.eleve.name.capitalize %> <%= lesson.eleve.surname.capitalize %> </p>
-              <p class="lesson-date"><%= booking.lesson.lesson_date.strftime('%a %d %b') %> à <%= booking.lesson.beginning_time.strftime('%Hh%M') %></p>
-              <p class="lesson-language">Cours en <%= booking.lesson.lesson_language %></p>
-              <!-- <div class="lesson-notation">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="far fa-star"></i>
-                <i class="far fa-star"></i>
-                <span class="__number">(3)</span>
-              </div> -->
-            </div>
-            <div class="card-content-right">
-              <div class="card-content-right-top">
-                <p class="lesson-price medium">
-                  <% if booking.lesson.lesson_discount_price.nil? %>
-                    <%= booking.lesson.lesson_price %>€
-                  <% else %>
-                    <%= booking.lesson.lesson_discount_price %>
-                  <% end %>
-                </p>
-                <p class="lesson-duration"><%= booking.lesson.lesson_duration / 60 %>min</p>
-              </div>
-              <% unless booking.lesson.eleve == current_user.eleve %>
-                <button class="btn-rectangle">Réserver</button>
-              <% end %>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+<div class="container">
+  <br>
+  <div class="reservations-header">
+    <h2>Mes réservations</h2>
+    <% if @eleve.moderated? %>
+      <%= link_to new_template_path do %>
+        <button class='btn-rectangle'>Créer un cours</button>
+      <% end %>
+    <% end %>
   </div>
-<% end %>
+  <nav class="nav nav-pills">
+      <a class="nav-item nav-link nav-link-reservation active" id="pills-reservations-eleve-tab" data-toggle="tab" href="#pills-reservations-eleve" role="tab" aria-controls="pills-reservations-eleve" aria-selected="true">MES RÉSERVATIONS COMME ÉLÈVE</a>
+      <% if @eleve.moderated? %>
+        <a class="nav-item nav-link nav-link-reservation" id="pills-reservations-prof-tab" data-toggle="tab" href="#pills-reservations-prof" role="tab" aria-controls="pills-reservations-prof" aria-selected="false">MES RÉSERVATIONS COMME PROFESSEUR</a>
+      <% end %>
+  </nav>
+  <br>
+  <div class="tab-content" id="pills-tabContent">
+    <% if @eleve.prof? %>
+      <div class="tab-pane fade show active" id="pills-reservations-eleve" role="tabpanel" aria-labelledby="pills-reservations-eleve-tab">
+        <%= render 'mes_reservations_eleve'%>
+      </div>
+      <div class="tab-pane fade" id="pills-reservations-prof" role="tabpanel" aria-labelledby="pills-reservations-prof-tab">
+        <%= render 'mes_reservations_prof'%>
+      </div>
+    <% else %>
+      <div class="tab-pane fade show active" id="pills-reservations-eleve" role="tabpanel" aria-labelledby="pills-reservations-eleve-tab">
+        <%= render 'mes_reservations_eleve'%>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+
+

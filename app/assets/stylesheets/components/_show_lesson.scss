@@ -1,15 +1,98 @@
-#lesson-show{
-  height: calc(100vh - 80px);
-  .show-lesson{
-    width: 370px;
-    min-height: 400px;
-    box-shadow: -5px 5px 5px rgba(0,0,0,0.2);
-    float: right;
-    p{
-      line-height: 24px;
-      font-size: 16px;
-      margin: 0px 10px 0px 10px;
+#lesson-show {
+
+  /////// PAGE LAYOUT ////////////////////
+  min-height: calc(100vh - 80px);
+  display: flex;
+  p {
+    font-size: 16px;
+  }
+
+  .flexify {
+    display: flex;
+  }
+  .space-between {
+    justify-content: space-between;
+  }
+  .bold {
+    font-weight: 500;
+  }
+
+    /////// BACK TO PREVIOUS ////////////////////
+
+  .back-to-search .social-media-sharing-icon img {
+    height: 25px;
+  }
+  .back-to-search .caret-left {
+    height: 25px;
+    transform: rotate(90deg);
+    margin-right: 10px;
+  }
+
+  .back-to-search .go-back {
+    text-decoration: none;
+    color: $black;
+    font-weight: 500;
+  }
+
+  .back-to-search .go-back:hover {
+    text-decoration: none;
+  }
+
+
+
+
+  /////// PROF SECTION ////////////////////
+
+  .container-show-prof {
+    padding: 20px 30px;
+
+    .image-profil {
+      margin-right: 30px;
     }
+    .image-profil img {
+      width: 180px;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .social-networks img {
+      margin-left: 10px;
+      height: 22px;
+    }
+
+    .planning-prof {
+      width: 100%
+    }
+  }
+
+  /////////////////////////////// LESSON //////////////////////////
+  .show-lesson {
+    height: max-content;
+    position: sticky;
+    top: 0;
+    border-left: 1px solid rgba(0,0,0,0.1);
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+
+    padding: 20px;
+    p {
+      font-size: 16px;
+      margin-bottom: 0;
+    }
+
+    .reserver {
+      margin-bottom: 20px;
+    }
+
+    form {
+      text-align: center;
+    }
+
+    .reserver input {
+      width: 70%;
+      margin: 0 auto;
+      font-weight: 500;
+    }
+
     .lesson-name{
       color: $purple;
       letter-spacing: 0.67px;
@@ -17,24 +100,13 @@
     .lesson-price{
       color: $purple;
       font-size: 18px;
-      line-height: 32px;
     }
     .lesson-teacher, .lesson-description, .lesson-material{
       font-weight: 500;
     }
   }
-  .show-prof{
-    margin: 20px;
-    .flexify{
-      display: flex;
-      justify-content: space-between;
-    }
-    .purple-title{
-      color: $purple;
-      letter-spacing: 0.67px;
-    }
-    .bold{
-      font-weight: 500;
-    }
+
+  .show-lesson:hover {
+    box-shadow: -3px 3px 4px 3px rgba(0, 0, 0, 0.2);
   }
 }

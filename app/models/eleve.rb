@@ -1,5 +1,6 @@
 class Eleve < ApplicationRecord
   belongs_to :user
+  belongs_to :sport, optional: true
   has_many :lessons
   has_many :reviews
   has_one_attached :profile_picture
@@ -14,5 +15,15 @@ class Eleve < ApplicationRecord
 
   def moderated?
     moderated == true
+  end
+
+  def url_to_fb_pseudo
+    pseudo = facebook.match(/https?:\/\/www.facebook.com\/([^\/]+)\/?/)
+    pseudo.nil? ? facebook : pseudo[1]
+  end
+
+  def url_to_insta_pseudo
+    pseudo = instagram.match(/https?:\/\/www.instagram.com\/([^\/]+)\/?/)
+    pseudo.nil? ? instagram : pseudo[1]
   end
 end

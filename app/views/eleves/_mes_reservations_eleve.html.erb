@@ -1,0 +1,62 @@
+<% if @bookings.present? %>
+  <div class="container">
+    <h5 class="purple">MES COURS À VENIR (<%= @upcoming_bookings.count %>) <button id="buttonToggleUpcomingBookings" class="purple medium">+</button></h5>
+    <div id="toggleUpcomingBookings" style="display: none">
+      <% if @upcoming_bookings.present? %>
+        <% @upcoming_bookings.each do |upcoming_booking| %>
+          <div class="row">
+            <div class="col-xs-12 col-md-6">
+              <div class="card-mes-reservations">
+                <div class="card-part-left">
+                  <p class="medium"><%= upcoming_booking.lesson.lesson_date.strftime(" %A %d %B %Y") %> à <%= upcoming_booking.lesson.beginning_time.strftime('%Hh%M') %></p>
+                  <p class="purple medium"><%= upcoming_booking.lesson.lesson_name.upcase %></p>
+                  <p><%= upcoming_booking.lesson.lesson_level %></p>
+                  <p>Cours en <%= upcoming_booking.lesson.lesson_language %></p>
+                  <p class="medium"><span class= "purple"><%= upcoming_booking.lesson.bookings.count %></span> réservation</p>
+                </div>
+                <div class="card-part-right">
+                  <p>Descriptif du cours</p>
+                  <p><%= upcoming_booking.lesson.lesson_description %></p>
+                  <p>Matériel nécessaire</p>
+                  <p><%= upcoming_booking.lesson.lesson_material_needed %></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% else %>
+        <p>Vous n'avez pas de cours à venir.</p>
+      <% end %>
+    </div>
+    <h5 class="purple">MES COURS PASSÉS (<%= @past_bookings.count %>) <button id="buttonTogglePastBookings" class="purple medium">+</button></h5>
+    <div id="togglePastBookings" style="display: none">
+      <% if @past_bookings.present? %>
+        <% @past_bookings.each do |past_booking| %>
+          <div class="row">
+            <div class="col-xs-12 col-md-6">
+              <div class="card-mes-reservations">
+                <div class="card-part-left">
+                  <p class="medium"><%= past_booking.lesson.lesson_date.strftime(" %A %d %B %Y") %> à <%= past_booking.lesson.beginning_time.strftime('%Hh%M') %></p>
+                  <p class="purple medium"><%= past_booking.lesson.lesson_name.upcase %></p>
+                  <p><%= past_booking.lesson.lesson_level %></p>
+                  <p>Cours en <%= past_booking.lesson.lesson_language %></p>
+                  <p class="medium"><span class= "purple"><%= past_booking.lesson.bookings.count %></span> réservation</p>
+                </div>
+                <div class="card-part-right">
+                  <p>Descriptif du cours</p>
+                  <p><%= past_booking.lesson.lesson_description %></p>
+                  <p>Matériel nécessaire</p>
+                  <p><%= past_booking.lesson.lesson_material_needed %></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% else %>
+        <p>Vous n'avez pas de cours passés</p>
+      <% end %>
+    </div>
+  </div>
+<% else %>
+  <p>Vous ne vous êtes pas encore inscrit(e) à un cours.</p>
+<% end %>

@@ -110,3 +110,13 @@ button:focus {
   }
 }
 
+#buttonTogglePastLessons, #buttonToggleUpcomingLessons,
+#buttonToggleUpcomingBookings, #buttonTogglePastBookings {
+  font-size: 20px;
+  border: none;
+  background-color: transparent;
+  &:hover {
+    transform: rotate(45deg);
+    font-size: 24px;
+  }
+}

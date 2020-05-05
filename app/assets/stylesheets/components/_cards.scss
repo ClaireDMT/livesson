@@ -55,3 +55,18 @@
     }
   }
 }
+
+.card-mes-reservations {
+  height: 161px;
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+    p {
+    margin-bottom: 0;
+  }
+  .card-part-right {
+    vertical-align: middle
+  }
+}
+

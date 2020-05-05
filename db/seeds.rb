@@ -5,6 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+puts "Cleaning Reviews"
+Review.destroy_all
+puts "Cleaning Bookings"
+Booking.destroy_all
 puts "Cleaning Lessons"
 Lesson.destroy_all
 puts "Cleaning Templates"
@@ -40,7 +44,7 @@ guitou = User.create!(email: "guitou@imary.com", password: "guitouimary", passwo
 claire = User.create!(email: "claire@demont.com", password: "clairedemont", password_confirmation: "clairedemont", prof: false, confirmed_at: DateTime.now)
 
 puts "Création des Eleves/Profs"
-Eleve.create!(name: "Marine",
+marine_eleve = Eleve.create!(name: "Marine",
              surname: "Sourin",
              birthdate: "07/05/1995",
              prof: marine[:prof],
@@ -93,7 +97,6 @@ puts "Création des Templates"
 Template.create!(template_name: "Yoga Meditation",
               template_description: "Des mouvements et des exercices plus lents que le Hatha Yoga, mais plus en profondeur sur la respiration et la conscience du corps. Ce cours est à destination de tous les niveaux.",
               template_material_needed: "Pour ce cours, seul un tapis est nécessaire. Aucun autre matériel ne sera demandé. Vous pouvez également prévoir un plaid.",
-              template_name: "Yoga Méditation",
               template_level: "Débutant",
               sport_id: Sport.first.id,
               activity_id: Activity.first.id,
@@ -116,8 +119,49 @@ Lesson.create!(lesson_date: "23/06/2020",
               activity_id: Activity.first.id,
               eleve_id: guitou_eleve.id)
 
+lesson_2 = Lesson.create!(lesson_date: "01/04/2020",
+              beginning_time: "4:00pm",
+              end_time: "5:00pm",
+              lesson_description: "Des mouvements et des exercices plus lents que le Hatha Yoga, mais plus en profondeur sur la respiration et la conscience du corps. Ce cours est à destination de tous les niveaux.",
+              lesson_material_needed: "Pour ce cours, seul un tapis est nécessaire. Aucun autre matériel ne sera demandé. Vous pouvez également prévoir un plaid.",
+              lesson_name: "Yoga Méditation",
+              lesson_level: "Débutant",
+              lesson_duration: "1:00",
+              lesson_language: "Français",
+              lesson_price: 15,
+              template_id: Template.first.id,
+              sport_id: Sport.first.id,
+              activity_id: Activity.first.id,
+              eleve_id: guitou_eleve.id)
+
+lesson_3 = Lesson.create!(lesson_date: "01/05/2020",
+              beginning_time: "4:00pm",
+              end_time: "5:00pm",
+              lesson_description: "Des mouvements et des exercices plus lents que le Hatha Yoga, mais plus en profondeur sur la respiration et la conscience du corps. Ce cours est à destination de tous les niveaux.",
+              lesson_material_needed: "Pour ce cours, seul un tapis est nécessaire. Aucun autre matériel ne sera demandé. Vous pouvez également prévoir un plaid.",
+              lesson_name: "Yoga Méditation",
+              lesson_level: "Débutant",
+              lesson_duration: "1:00",
+              lesson_language: "Français",
+              lesson_price: 15,
+              template_id: Template.first.id,
+              sport_id: Sport.first.id,
+              activity_id: Activity.first.id,
+              eleve_id: guitou_eleve.id)
+
+puts "Création des bookings"
+
+Booking.create!(eleve_id: marine_eleve,
+                lesson_id: Lesson.last.id)
 
 
+puts "Création des reviews"
+Review.create!(content: "Beautiful Sunday class with Guitou. We were just 5 people so attention was given to each of teach of the participants.",
+                rating: 4,
+                eleve_id: marine_eleve.id,
+                lesson_id: lesson_2.id)
 
-
-
+Review.create!(content: "Beautiful Sunday class with Guitou. We were just 5 people so attention was given to each of teach of the participants.",
+                rating: 2,
+                eleve_id: marine_eleve.id,
+                lesson_id: lesson_3.id)

@@ -14,6 +14,7 @@ gem 'activeadmin', github: 'activeadmin/activeadmin'
 gem 'autoprefixer-rails'
 # Select country in simple form
 gem 'country_select', '~> 4.0'
+gem 'rails-i18n', '~> 6.0.0'
 gem 'font-awesome-sass', '~> 5.12.0'
 gem 'inherited_resources', github: 'activeadmin/inherited_resources'
 gem 'sassc-rails'

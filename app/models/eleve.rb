@@ -16,4 +16,14 @@ class Eleve < ApplicationRecord
   def moderated?
     moderated == true
   end
+
+  def url_to_fb_pseudo
+    pseudo = facebook.match(/https?:\/\/www.facebook.com\/([^\/]+)\/?/)
+    pseudo.nil? ? facebook : pseudo[1]
+  end
+
+  def url_to_insta_pseudo
+    pseudo = instagram.match(/https?:\/\/www.instagram.com\/([^\/]+)\/?/)
+    pseudo.nil? ? instagram : pseudo[1]
+  end
 end

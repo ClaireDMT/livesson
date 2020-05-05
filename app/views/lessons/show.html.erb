@@ -1,10 +1,23 @@
 <div id="lesson-show" class="flexify">
   <div class="container-show-prof col-md-10">
     <div class="back-to-search flexify space-between mb-4">
-      <p class="link-back-to-search"><%= link_to 'Revenir à la recherche', :back %></p>
-      <h4>PARTAGER CE PROFIL</h4>
+      <div>
+        <%= link_to :back, class: "flexify" do %>
+          <%= image_tag "caret-left.png", class: "caret-left" %>
+          <p class="go-back">Revenir à la recherche</p>
+        <% end %>
+      </div>
+      <h4>PARTAGER CE PROFIL
+        <span class="social-media-sharing-icon"><%= image_tag "social_media_share.svg" %></span>
+      </h4>
     </div>
+
+    <!--------------------------  PROF ------------------------------------------------------->
+
     <div class="show-prof">
+
+      <!-- PROF INFO & SOCIAL -->
+
       <div class="flexify">
         <div class="image-profil">
           <%= image_tag "homepage/banner-homepage-pro.jpg" %>
@@ -14,26 +27,43 @@
           <div class="prof-infos flexify space-between">
             <div class="profil">
               <p class="bold"><%= @prof.name %> <%= @prof.surname %></p>
-              <p><%= @prof.city %> <%= @prof.country %></p>
+              <p><%= @prof.city %> - <%= @prof.country %></p>
               <p>Avis (voir tous les avis)</p>
               <p>****</p>
             </div>
-            <div class="social-networks">
+            <div class="social-networks text-right">
               <p class="title-purple-upcase">Réseaux sociaux</p>
-              <p><%= @prof.instagram %></p>
-              <p><%= @prof.facebook %></p>
+              <p>
+                @<%= @prof.url_to_insta_pseudo %>
+                <%= image_tag "instagram.svg" %>
+              </p>
+              <p>
+                <%= @prof.url_to_fb_pseudo %>
+                <%= image_tag "facebook.svg" %>
+              </p>
             </div>
           </div>
         </div>
       </div>
 
+
+      <!-- DESCRIPTION & PLANNING -->
       <div class="mt-5">
-        <p class="bold">Présentation</p>
-        <p class="text-justify"><%= @prof.presentation %></p>
-        <p class="bold">Planning</p>
+        <div class="porf-description">
+          <p class="bold">Présentation</p>
+          <p class="text-justify"><%= @prof.presentation %></p>
+        </div>
+        <div class="prof-planning mt-5">
+          <p class="bold">Planning</p>
+          <%= image_tag "planning.png", class: "planning-prof" %>
+        </div>
       </div>
     </div>
   </div>
+  <!--------------------------  PROF ------------------------------------------------------->
+
+
+<!--------------------------  LESSON ------------------------------------------------------->
 
   <div class="show-lesson col-md-2">
     <div class="reserver">
@@ -43,21 +73,29 @@
         <% end %>
       <% end %>
     </div>
-    <h3 class="title-purple-upcase"> <%= @lesson.lesson_name %></h3>
-    <p class="lesson-price"> <%= @lesson.lesson_price %>€</p>
-    <p> <%= @lesson.lesson_level %></p>
-    <p> <%= @lesson.lesson_date %> à <%= @lesson.beginning_time.strftime('%Hh%M') %></p>
-    <p>Cours en <%= @lesson.lesson_language %> </p>
-    <p> <%= @lesson.lesson_duration %> min</p>
-    <p class="lesson-teacher"> <%= @lesson.eleve.name %> <%= @lesson.eleve.surname %> </p>
-    <p>****</p>
+    <div class="bold mb-4">
+      <h3 class="title-purple-upcase"> <%= @lesson.lesson_name %></h3>
+      <h3 class="title-purple-upcase"> <%= @lesson.lesson_price %>€</h3>
+    </div>
+    <div class="infos-lesson">
+      <p> <%= @lesson.lesson_level %></p>
+      <p> <%= I18n.l(@lesson.lesson_date, format: '%A %d %B %Y', locale: :'fr').capitalize %> à <%= @lesson.beginning_time.strftime('%Hh%M') %></p>
+      <p>Cours en <%= @lesson.lesson_language %> </p>
+      <p> <%= @lesson.lesson_duration %> min</p>
+    </div>
+
+    <div class="infos-teacher mt-4">
+      <p class="lesson-teacher"> <%= @lesson.eleve.name %> <%= @lesson.eleve.surname %> </p>
+      <p>****</p>
+    </div>
 
     <%#= @lesson.rating %>
-    <br><br>
-    <p class="lesson-description">Descriptif du cours</p>
-    <p class="text-justify"><%= @lesson.lesson_description %></p>
-    <br>
-    <p class="lesson-material">Matériel nécessaire</p>
-    <p class="text-justify"><%= @lesson.lesson_material_needed %></p>
+    <div class="mt-4">
+      <p class="lesson-description">Descriptif du cours</p>
+      <p class="text-justify"><%= @lesson.lesson_description %></p>
+      <br>
+      <p class="lesson-material">Matériel nécessaire</p>
+      <p class="text-justify"><%= @lesson.lesson_material_needed %></p>
+    </div>
   </div>
 </div>

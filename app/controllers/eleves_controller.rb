@@ -44,7 +44,8 @@ class ElevesController < ApplicationController
   def turn_eleve_into_prof
     @eleve = current_user.eleve
     @eleve = Eleve.find(@eleve.id)
-    new_prof unless @eleve.nil?
+    @eleve.prof = true
+    @eleve.save
   end
 
   def mes_cours

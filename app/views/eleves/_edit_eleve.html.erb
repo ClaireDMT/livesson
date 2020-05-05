@@ -7,11 +7,10 @@
             <h2>Mon profil</h2>
             <div class='flexify'>
               <% if @eleve.profile_picture.attached? %>
-                <%= f.input :profile_picture, as: :file %>
+                <%= image_tag @eleve.profile_picture, class: 'profil-picture-eleve' %>
               <% else %>
-                <%= image_tag @eleve.profile_picture %>
+                <%= f.input :profile_picture, as: :file, class: 'profil-picture-eleve' %>
               <% end %>
-              <%#= image_tag 'empty.jpg', class: 'profil-picture-eleve' %>
               <div class="nom-prenom">
                 <%= f.input :name,
                               label: "Prénom",

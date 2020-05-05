@@ -7,6 +7,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 puts "Cleaning Lessons"
 Lesson.destroy_all
+puts "Cleaning Templates"
+Template.destroy_all
 puts "Cleaning Activities"
 Activity.destroy_all
 puts "Cleaning Users"
@@ -86,6 +88,18 @@ claire_eleve = Eleve.create!(name: "Claire",
              instagram: "https://www.instagram.com/claireDTM/",
              user_id: claire.id)
 
+puts "Création des Templates"
+
+Template.create!(template_name: "Yoga Meditation",
+              template_description: "Des mouvements et des exercices plus lents que le Hatha Yoga, mais plus en profondeur sur la respiration et la conscience du corps. Ce cours est à destination de tous les niveaux.",
+              template_material_needed: "Pour ce cours, seul un tapis est nécessaire. Aucun autre matériel ne sera demandé. Vous pouvez également prévoir un plaid.",
+              template_name: "Yoga Méditation",
+              template_level: "Débutant",
+              sport_id: Sport.first.id,
+              activity_id: Activity.first.id,
+              eleve_id: guitou_eleve.id)
+
+
 puts "Création des Lessons"
 Lesson.create!(lesson_date: "23/06/2020",
               beginning_time: "4:00pm",
@@ -97,6 +111,7 @@ Lesson.create!(lesson_date: "23/06/2020",
               lesson_duration: "1:00",
               lesson_language: "Français",
               lesson_price: 15,
+              template_id: Template.first.id,
               sport_id: Sport.first.id,
               activity_id: Activity.first.id,
               eleve_id: guitou_eleve.id)

@@ -8,7 +8,7 @@
             Aucun paiement ne s’effectuer en avance. Vous serez prélevé une fois la réservation de votre premier cours effectuée</p>
             <h2>Mon profil</h2>
             <div class='flexify'>
-               <%= f.input :profile_picture %>
+               <%= f.input :profile_picture, as: :file %>
               <div class="nom-prenom">
                 <%= f.input :name,
                               label: "Prénom",

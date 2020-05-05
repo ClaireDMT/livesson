@@ -6,8 +6,8 @@
           <div class="form-profil">
             <h2>Mon profil</h2>
             <div class='flexify'>
-              <% if @eleve.profile_picture.blank? %>
-                <%= f.input :profile_picture %>
+              <% if @eleve.profile_picture.attached? %>
+                <%= f.input :profile_picture, as: :file %>
               <% else %>
                 <%= image_tag @eleve.profile_picture %>
               <% end %>

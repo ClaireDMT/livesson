@@ -50,7 +50,7 @@ class ElevesController < ApplicationController
 
   def mes_cours
     @eleve = Eleve.find(params[:id])
-    @templates = Template.where(params[eleve_id: @eleve])
+    @templates = Template.where(eleve_id: @eleve)
   end
 
   def mes_reservations

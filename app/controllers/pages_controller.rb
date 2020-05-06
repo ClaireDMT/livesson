@@ -6,5 +6,6 @@ class PagesController < ApplicationController
   end
 
   def home_pro
+    @eleve = current_user.eleve unless current_user.nil?
   end
 end

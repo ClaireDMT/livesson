@@ -21,6 +21,13 @@ gem 'sassc-rails'
 gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
+
+# Calendar
+gem 'fullcalendar-rails'
+#  Handle the dates in Javascript
+gem 'momentjs-rails'
+# enhance speed  of JS
+gem 'turbolinks', '~> 5.2.0'
 # Security for sensitive info (wrapper for .env variables)
 gem 'figaro'
 # AWS storage s3

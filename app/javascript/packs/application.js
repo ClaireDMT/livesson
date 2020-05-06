@@ -1,3 +1,7 @@
+//= require moment
+//= require fullcalendar
+//= require fullcalendar/locale-all
+//= require turbolinks
 require("@rails/ujs").start()
 require("@rails/activestorage").start()
 require("channels")
@@ -10,3 +14,5 @@ initStarRating();
 
 import { toggleDisplay } from '../plugins/toggle_display';
 toggleDisplay();
+
+$('#calendar').fullCalendar({});

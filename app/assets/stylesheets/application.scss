@@ -8,10 +8,11 @@
 @import "font-awesome-sprockets";
 @import "font-awesome";
 
+
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
-
 @import "flatpickr/dist/flatpickr.min";
 
-
+// Full calendar CSS Themes
+*= require fullcalendar;

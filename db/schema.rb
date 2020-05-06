@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_04_150621) do
+ActiveRecord::Schema.define(version: 2020_05_05_084519) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -140,7 +140,7 @@ ActiveRecord::Schema.define(version: 2020_05_04_150621) do
     t.text "template_description"
     t.text "template_material_needed"
     t.string "template_name"
-    t.integer "template_level"
+    t.string "template_level"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "sport_id"

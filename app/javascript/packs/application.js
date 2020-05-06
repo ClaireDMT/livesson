@@ -31,14 +31,24 @@ import listPlugin from '@fullcalendar/list';
 import bootstrapPlugin from '@fullcalendar/bootstrap';
 
 
+
 document.addEventListener('DOMContentLoaded', function() {
-  var calendarEl = document.getElementById('calendar');
+  const calendarEl = document.getElementById('calendar');
+  // const lessons = JSON.parse(calendarEl.dataset.lessons);
+  // console.log(lessons);
+  // const newLessons = lessons.map(lesson => new Object({id: lesson.id, start: lesson.beginning_time, end: lesson.end_time}));
+  // console.log(newLessons);
+  const lessonShow = document.getElementById('lesson-show');
+
+  const lesson = lessonShow.dataset.lessonId;
+  // console.log(lesson);
 
 
-  var calendar = new Calendar(calendarEl, {
+  const calendar = new Calendar(calendarEl, {
     plugins: [ interactionPlugin, dayGridPlugin, timeGridPlugin, listPlugin, bootstrapPlugin, momentPlugin, momentTimezonePlugin  ],
     // titleFormat: 'MMMM D, YYYY',
-    // timeZone: 'Europe/Paris',
+    //
+    timeZone: 'local',
     header: {
       left: 'dayGridMonth,timeGridWeek,timeGridDay',
       center: 'title',
@@ -50,47 +60,9 @@ document.addEventListener('DOMContentLoaded', function() {
     navLinks: true, // can click day/week names to navigate views
     editable: true,
     eventLimit: true, // allow "more" link when too many events
-    events: [
-      {
-        title: 'All Day Event',
-        start: '2020-05-06',
-      },
-      {
-        title: 'Long Event',
-        start: '2020-05-06',
-        end: '2020-05-07'
-      },
-      {
-        title: 'Conference',
-        start: '2020-05-08',
-        end: '2020-05-10'
-      },
-      {
-        title: 'Lunch',
-        start: '2020-05-12T12:00:00'
-      },
-      {
-        title: 'Meeting',
-        start: '2020-05-12T14:30:00'
-      },
-      {
-        title: 'Happy Hour',
-        start: '2020-05-12T17:30:00'
-      },
-      {
-        title: 'Dinner',
-        start: '2020-05-12T20:00:00'
-      },
-      {
-        title: 'Birthday Party',
-        start: '2020-05-13T07:00:00'
-      },
-      {
-        title: 'Click for Google',
-        url: 'http://google.com/',
-        start: '2020-05-28'
-      }
-    ]
+    events: `/lessons/${lesson}.json`,
+    displayEventTime: true,
+    displayEventEnd: true
   });
 
   calendar.render();

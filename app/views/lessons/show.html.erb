@@ -1,4 +1,4 @@
-<div id="lesson-show" class="flexify">
+<div id="lesson-show" data-lesson-id="<%= @lesson.id %>" class="flexify">
   <div class="container-show-prof col-md-10">
     <div class="back-to-search flexify space-between mb-4">
       <div>
@@ -64,7 +64,8 @@
         </div>
         <div class="prof-planning mt-5">
           <p class="bold">Planning</p>
-          <div id="calendar"></div>
+          <div id="calendar"
+          data-lessons="<%= @lessons.to_json %>"></div>
         </div>
       </div>
     </div>
@@ -88,7 +89,7 @@
     </div>
     <div class="infos-lesson">
       <p> <%= @lesson.lesson_level %></p>
-      <p> <%= I18n.l(@lesson.lesson_date, format: '%A %d %B %Y', locale: :'fr').capitalize %> à <%= @lesson.beginning_time.strftime('%Hh%M') %></p>
+      <p> <%= I18n.l(@lesson.lesson_date, format: '%A %d %B %Y', locale: :'fr').capitalize %> à <%= @lesson.start.strftime('%Hh%M') %></p>
       <p>Cours en <%= @lesson.lesson_language %> </p>
       <p> <%= @lesson.lesson_duration %> min</p>
     </div>

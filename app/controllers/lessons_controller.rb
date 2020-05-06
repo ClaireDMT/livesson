@@ -29,13 +29,19 @@ class LessonsController < ApplicationController
       #   end
       # end
     end
+
   end
 
   def show
     @prof = Eleve.find(@lesson.eleve.id)
     @eleve = current_user.eleve
+    @lessons = Lesson.where(eleve_id: @prof.id)
     @booking = Booking.new
-    @review = Review.new
+    @reviews = Review.joins(:lesson).where(lessons: { eleve_id: @prof.id })
+    respond_to do |format|
+      format.html { render 'show' }
+      format.json { render json: @lessons }
+    end
   end
 
   def new

@@ -1,9 +1,33 @@
 class LessonsController < ApplicationController
-  before_action :authenticate_user!, only: %i[index show]
+  skip_before_action :authenticate_user!, only: %i[index show]
   before_action :find_lesson, only: %i[show edit update destroy]
 
   def index
     @lessons = Lesson.all
+    @sports = Sport.all
+    query = params[:query]
+    if query.present?
+
+      @sport = query[:sport_name]
+      if query[:sport_name].present?
+        @lessons = @lessons.search_by_sport_name(query[:sport_name])
+      end
+
+      @langue = query[:lesson_language]
+      if query[:lesson_language].present?
+        @lessons = @lessons.search_by_lesson_language(query[:lesson_language])
+      end
+
+      if query[:lesson_date].present?
+        @lessons = @lessons.search_by_lesson_date(query[:lesson_date])
+      end
+
+      # if query[:creneaux].present?
+      #   @lessons = @lessons.select do |lesson|
+      #     lesson.beginning_time.split(":")[0].to_i >= query[:creneaux].to_i
+      #   end
+      # end
+    end
   end
 
   def show

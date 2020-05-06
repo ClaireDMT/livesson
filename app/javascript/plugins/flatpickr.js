@@ -6,3 +6,7 @@ flatpickr(".datepicker", {
                            dateFormat: "d-m-Y",
                            "locale": French
                          })
+
+flatpickr("#query_lesson_date", {
+                                  "locale": French
+                                })

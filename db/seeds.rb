@@ -27,12 +27,16 @@ Activity.create!(activity_name: 'Sport')
 
 puts "Création des sports"
 possible_sports = [
-  "Yoga",
-  "Pilates",
-  "Cross-fit",
   "Danse",
-  "Musculation",
-  "Réathlétisation"
+  "Yoga",
+  "Barre",
+  "Gym / Pilate",
+  "Cardio training",
+  "Renforcement",
+  "Méditation",
+  "Stretching",
+  "Sports de combat",
+  "Spécial kids"
 ]
 possible_sports.each do |sport|
   Sport.create!(sport_name: sport)
@@ -92,68 +96,61 @@ claire_eleve = Eleve.create!(name: "Claire",
              instagram: "https://www.instagram.com/claireDTM/",
              user_id: claire.id)
 
-puts "Création des Templates"
+puts "Création des templates"
+template_one = Template.create!(template_description: "Envie de réveiller vos muscles et de rester tonique ? Le yoga Vinyasa est fait pour vous.",
+                 template_material_needed: "Vous aurez besoin d'un tapis de yoga",
+                 template_name: "Cours de yoga vinyasa",
+                 template_level: "Tous niveaux",
+                 sport_id: Sport.find_by(sport_name: "Yoga").id,
+                 activity_id: Activity.first.id,
+                 eleve_id: guitou_eleve.id)
 
-Template.create!(template_name: "Yoga Meditation",
-              template_description: "Des mouvements et des exercices plus lents que le Hatha Yoga, mais plus en profondeur sur la respiration et la conscience du corps. Ce cours est à destination de tous les niveaux.",
-              template_material_needed: "Pour ce cours, seul un tapis est nécessaire. Aucun autre matériel ne sera demandé. Vous pouvez également prévoir un plaid.",
-              template_level: "Débutant",
-              sport_id: Sport.first.id,
-              activity_id: Activity.first.id,
-              eleve_id: guitou_eleve.id)
-
+template_two = Template.create!(template_description: "Le cardio-training rassemble des activités de fitness sollicitant le muscle cardiaque afin de l\'entraîner à l\'effort et ainsi de renforcer les systèmes cardio-vasculaire et cardio-respiratoire.",
+                 template_material_needed: "Vous aurez besoin d'un tapis, et c'est tout ! :)",
+                 template_name: "Cours de cardio training",
+                 template_level: "Débutant",
+                 sport_id: Sport.find_by(sport_name: "Cardio training").id,
+                 activity_id: Activity.first.id,
+                 eleve_id: guitou_eleve.id)
 
 puts "Création des Lessons"
-Lesson.create!(lesson_date: "23/06/2020",
+lesson_1 = Lesson.create!(lesson_date: "23/06/2020",
               beginning_time: "4:00pm",
               end_time: "5:00pm",
-              lesson_description: "Des mouvements et des exercices plus lents que le Hatha Yoga, mais plus en profondeur sur la respiration et la conscience du corps. Ce cours est à destination de tous les niveaux.",
-              lesson_material_needed: "Pour ce cours, seul un tapis est nécessaire. Aucun autre matériel ne sera demandé. Vous pouvez également prévoir un plaid.",
-              lesson_name: "Yoga Méditation",
-              lesson_level: "Débutant",
-              lesson_duration: "1:00",
-              lesson_language: "Français",
-              lesson_price: 15,
-              template_id: Template.first.id,
-              sport_id: Sport.first.id,
-              activity_id: Activity.first.id,
-              eleve_id: guitou_eleve.id)
 
-lesson_2 = Lesson.create!(lesson_date: "01/04/2020",
-              beginning_time: "4:00pm",
-              end_time: "5:00pm",
-              lesson_description: "Des mouvements et des exercices plus lents que le Hatha Yoga, mais plus en profondeur sur la respiration et la conscience du corps. Ce cours est à destination de tous les niveaux.",
-              lesson_material_needed: "Pour ce cours, seul un tapis est nécessaire. Aucun autre matériel ne sera demandé. Vous pouvez également prévoir un plaid.",
-              lesson_name: "Yoga Méditation",
-              lesson_level: "Débutant",
-              lesson_duration: "1:00",
+              lesson_description: template_one.template_description,
+              lesson_material_needed: template_one.template_material_needed,
+              lesson_name: template_one.template_name,
+              lesson_level: template_one.template_level,
+              lesson_duration: "60",
               lesson_language: "Français",
               lesson_price: 15,
-              template_id: Template.first.id,
-              sport_id: Sport.first.id,
-              activity_id: Activity.first.id,
-              eleve_id: guitou_eleve.id)
+              sport_id: template_one.sport_id,
+              activity_id: template_one.activity_id,
+              eleve_id: template_one.eleve_id,
+              template_id: template_one.id)
 
-lesson_3 = Lesson.create!(lesson_date: "01/05/2020",
-              beginning_time: "4:00pm",
-              end_time: "5:00pm",
-              lesson_description: "Des mouvements et des exercices plus lents que le Hatha Yoga, mais plus en profondeur sur la respiration et la conscience du corps. Ce cours est à destination de tous les niveaux.",
-              lesson_material_needed: "Pour ce cours, seul un tapis est nécessaire. Aucun autre matériel ne sera demandé. Vous pouvez également prévoir un plaid.",
-              lesson_name: "Yoga Méditation",
-              lesson_level: "Débutant",
-              lesson_duration: "1:00",
-              lesson_language: "Français",
-              lesson_price: 15,
-              template_id: Template.first.id,
-              sport_id: Sport.first.id,
-              activity_id: Activity.first.id,
-              eleve_id: guitou_eleve.id)
+lesson_2 = Lesson.create!(lesson_date: "12/07/2020",
+              beginning_time: "2:00pm",
+              end_time: "3:00pm",
+              lesson_description: template_two.template_description,
+              lesson_material_needed: template_two.template_material_needed,
+              lesson_name: template_two.template_name,
+              lesson_level: template_two.template_level,
+              lesson_duration: "60",
+              lesson_language: "Anglais",
+              lesson_price: 18,
+              sport_id: template_two.sport_id,
+              activity_id: template_two.activity_id,
+              eleve_id: template_two.eleve_id,
+              template_id: template_two.id)
 
 puts "Création des bookings"
-
 Booking.create!(eleve_id: marine_eleve,
-                lesson_id: Lesson.last.id)
+                lesson_id: lesson_2.id)
 
+Booking.create!(eleve_id: claire_eleve,
+                lesson_id: lesson_1.id)
 
 puts "Création des reviews"
 Review.create!(content: "Beautiful Sunday class with Guitou. We were just 5 people so attention was given to each of teach of the participants.",
@@ -162,6 +159,6 @@ Review.create!(content: "Beautiful Sunday class with Guitou. We were just 5 peop
                 lesson_id: lesson_2.id)
 
 Review.create!(content: "Beautiful Sunday class with Guitou. We were just 5 people so attention was given to each of teach of the participants.",
-                rating: 2,
-                eleve_id: marine_eleve.id,
-                lesson_id: lesson_3.id)
+                rating: 4,
+                eleve_id: claire_eleve.id,
+                lesson_id: lesson_1.id)

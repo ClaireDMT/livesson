@@ -1,10 +1,14 @@
 <br>
 <%= render 'shared/search-bar-lesson' %>
 <br>
-<br>
-<% @lessons.each do |lesson| %>
-  <div class="container">
-    <div class="row">
+<div id="cards">
+  <% if @lessons.count == 0 || @lessons.count == 1%>
+    <p class=medium><%= @lessons.count %> résultat</p>
+  <% else %>
+   <p class=medium><%= @lessons.count %> résultats</p>
+  <% end%>
+  <div class="row">
+    <% @lessons.each do |lesson| %>
       <div class="col-xs-12 col-md-6">
         <div class="card">
           <div class="image">
@@ -44,6 +48,7 @@
           </div>
         </div>
       </div>
-    </div>
+    <% end %>
   </div>
-<% end %>
+</div>
+

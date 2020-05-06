@@ -17,10 +17,13 @@
     <div class="show-prof">
 
       <!-- PROF INFO & SOCIAL -->
-
       <div class="flexify">
         <div class="image-profil">
-          <%= image_tag "homepage/banner-homepage-pro.jpg" %>
+          <% if @eleve.profile_picture.attached? %>
+            <%= image_tag @eleve.profile_picture, class: 'profil-picture-eleve' %>
+          <% else %>
+            <%= image_tag 'empty.jpg', class: 'profil-picture-eleve' %>
+          <% end %>
         </div>
         <div class="flex-grow-1">
           <h3 class="title-purple-upcase"><%= @prof.sport.sport_name %></h3>
@@ -29,7 +32,13 @@
               <p class="bold"><%= @prof.name %> <%= @prof.surname %></p>
               <p><%= @prof.city %> - <%= @prof.country %></p>
               <p>Avis (voir tous les avis)</p>
-              <p>****</p>
+              <p><% @prof.average_rating.round.times do %>
+                  <%= image_tag 'icon-star-full.png' %>
+                <% end %>
+                <% (5 - @prof.average_rating.round).times do %>
+                  <%= image_tag 'icon-star-empty.png' %>
+                <% end %>
+              </p>
             </div>
             <div class="social-networks text-right">
               <p class="title-purple-upcase">Réseaux sociaux</p>
@@ -86,7 +95,13 @@
 
     <div class="infos-teacher mt-4">
       <p class="lesson-teacher"> <%= @lesson.eleve.name %> <%= @lesson.eleve.surname %> </p>
-      <p>****</p>
+      <p><% @prof.average_rating.round.times do %>
+          <%= image_tag 'icon-star-full.png' %>
+        <% end %>
+        <% (5 - @prof.average_rating.round).times do %>
+          <%= image_tag 'icon-star-empty.png' %>
+        <% end %>
+      </p>
     </div>
 
     <%#= @lesson.rating %>

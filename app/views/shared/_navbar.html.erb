@@ -22,7 +22,7 @@
         <input type="text" placeholder="Rechercher un coach en particulier">
       </div>
       <!-- Bouton devenir pro -->
-      <% if current_user.nil? %>
+      <% if current_user.nil? || current_user.eleve.nil? %>
         <%= link_to prof_path do %>
           <button class="btn-rounded medium">
             <p>
@@ -42,7 +42,7 @@
         <% end %>
       <% end %>
 
-      <% unless user_signed_in? %>
+      <% unless user_signed_in? && current_user.eleve.present? %>
         <%= link_to 'Aide', '/home', class: "medium nav-link" %>
         <%= link_to 'Inscription', new_user_registration_path, class: "medium nav-link" %>
         <%= link_to new_user_session_path do %>
@@ -51,7 +51,7 @@
           </button>
         <% end %>
       <% else %>
-        <% if current_user.eleve.prof?  %>
+        <% if current_user.eleve.moderated?  %>
           <%= link_to 'Cours', mes_cours_path(current_user.eleve), class: "medium nav-link" %>
           <%= link_to 'Planning', '', class: "medium nav-link" %>
         <% end %>
@@ -100,7 +100,7 @@
       </button>
       <div class="dropdown-menu">
         <%= link_to 'Aide', '/home' %> <br>
-        <% if user_signed_in? %>
+        <% if user_signed_in? && current_user.eleve.present? %>
           <%= link_to 'Mon Compte', edit_elefe_path(current_user.eleve) %>
           <%= link_to 'Me déconnecter', destroy_user_session_path, method: :delete %>
         <% else %>

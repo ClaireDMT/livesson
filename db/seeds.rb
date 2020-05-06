@@ -1,3 +1,14 @@
+# This file should contain all the record creation needed to seed the database with its default values.
+# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
+#
+# Examples:
+#
+#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
+#   Character.create(name: 'Luke', movie: movies.first)
+puts "Cleaning Reviews"
+Review.destroy_all
+puts "Cleaning Bookings"
+Booking.destroy_all
 puts "Cleaning Lessons"
 Lesson.destroy_all
 puts "Cleaning Templates"
@@ -37,7 +48,7 @@ guitou = User.create!(email: "guitou@imary.com", password: "guitouimary", passwo
 claire = User.create!(email: "claire@demont.com", password: "clairedemont", password_confirmation: "clairedemont", prof: false, confirmed_at: DateTime.now)
 
 puts "Création des Eleves/Profs"
-Eleve.create!(name: "Marine",
+marine_eleve = Eleve.create!(name: "Marine",
              surname: "Sourin",
              birthdate: "07/05/1995",
              prof: marine[:prof],
@@ -103,7 +114,7 @@ template_two = Template.create!(template_description: "Le cardio-training rassem
                  eleve_id: guitou_eleve.id)
 
 puts "Création des Lessons"
-Lesson.create!(lesson_date: "23/06/2020",
+lesson_1 = Lesson.create!(lesson_date: "23/06/2020",
               beginning_time: "4:00pm",
               end_time: "5:00pm",
 
@@ -119,7 +130,7 @@ Lesson.create!(lesson_date: "23/06/2020",
               eleve_id: template_one.eleve_id,
               template_id: template_one.id)
 
-Lesson.create!(lesson_date: "12/07/2020",
+lesson_2 = Lesson.create!(lesson_date: "12/07/2020",
               beginning_time: "2:00pm",
               end_time: "3:00pm",
               lesson_description: template_two.template_description,
@@ -134,4 +145,20 @@ Lesson.create!(lesson_date: "12/07/2020",
               eleve_id: template_two.eleve_id,
               template_id: template_two.id)
 
+puts "Création des bookings"
+Booking.create!(eleve_id: marine_eleve,
+                lesson_id: lesson_2.id)
 
+Booking.create!(eleve_id: claire_eleve,
+                lesson_id: lesson_1.id)
+
+puts "Création des reviews"
+Review.create!(content: "Beautiful Sunday class with Guitou. We were just 5 people so attention was given to each of teach of the participants.",
+                rating: 4,
+                eleve_id: marine_eleve.id,
+                lesson_id: lesson_2.id)
+
+Review.create!(content: "Beautiful Sunday class with Guitou. We were just 5 people so attention was given to each of teach of the participants.",
+                rating: 4,
+                eleve_id: claire_eleve.id,
+                lesson_id: lesson_1.id)

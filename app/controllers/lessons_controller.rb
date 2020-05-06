@@ -3,6 +3,7 @@ class LessonsController < ApplicationController
   before_action :find_lesson, only: %i[show edit update destroy]
 
   def index
+    @eleve = current_user.eleve unless current_user.nil?
     @lessons = Lesson.all
     @sports = Sport.all
     query = params[:query]

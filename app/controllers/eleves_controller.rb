@@ -10,14 +10,17 @@ class ElevesController < ApplicationController
       @eleve.user_id = current_user.id
       new_prof
       UserMailer.inscription_prof(current_user).deliver_now
+      awaiting_moderation
+      redirect_to awaiting_moderation_path
     elsif Eleve.where(user_id: current_user.id).empty?
       @eleve = Eleve.new(eleve_params)
       @eleve.user_id = current_user.id
       @eleve.status = "Inscrit(e)"
       @eleve.save
       UserMailer.send_welcome(current_user).deliver_now
+      redirect_to edit_user_registration_path
     end
-    redirect_to edit_user_registration_path
+
   end
 
   def new_prof
@@ -46,11 +49,17 @@ class ElevesController < ApplicationController
     @eleve = Eleve.find(@eleve.id)
     @eleve.prof = true
     @eleve.save
+    UserMailer.inscription_prof(current_user).deliver_now
+    awaiting_moderation
   end
 
   def mes_cours
     @eleve = Eleve.find(params[:id])
     @templates = Template.where(params[eleve_id: @eleve])
+  end
+
+  def awaiting_moderation
+    unless @eleve.moderated?
   end
 
   def mes_reservations

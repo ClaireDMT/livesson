@@ -26,4 +26,9 @@ class Eleve < ApplicationRecord
     pseudo = instagram.match(/https?:\/\/www.instagram.com\/([^\/]+)\/?/)
     pseudo.nil? ? instagram : pseudo[1]
   end
+
+  def average_rating
+    all_reviews = Review.joins(:lesson).where(lessons: {eleve_id: self.id })
+    all_reviews.map(&:rating).sum.fdiv(all_reviews.count)
+  end
 end

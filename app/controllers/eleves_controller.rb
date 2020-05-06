@@ -55,26 +55,12 @@ class ElevesController < ApplicationController
 
   def mes_reservations
     @eleve = Eleve.find(params[:id])
-    @bookings = Booking.where(eleve_id: @eleve)
-    @upcoming_bookings = upcoming_events
-    @past_bookings = past_events
-    @lessons = Lesson.where(eleve_id: @eleve)
+    @bookings = Booking.where(params[eleve_id: @eleve])
+    @upcoming_bookings = @bookings.joins(:lesson).where("lesson_date > ?", Date.today)
+    @past_bookings = @bookings.joins(:lesson).where("lesson_date < ?", Date.today)
+    @lessons = Lesson.where(params[eleve_id: @eleve])
     @upcoming_lessons = @lessons.where("lesson_date > ?", Date.today)
     @past_lessons = @lessons.where("lesson_date < ?", Date.today)
-  end
-
-  def upcoming_events
-    @bookings = Booking.where(eleve_id: @eleve)
-    @bookings.each_with_object([]) do |booking, upcoming_bookings|
-      upcoming_bookings << booking if booking.lesson.lesson_date > Date.today
-    end
-  end
-
-  def past_events
-    @bookings = Booking.where(eleve_id: @eleve)
-    @bookings.each_with_object([]) do |booking, past_bookings|
-      past_bookings << booking if booking.lesson.lesson_date < Date.today
-    end
   end
 
   private

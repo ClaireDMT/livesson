@@ -22,7 +22,16 @@
         <input type="text" placeholder="Rechercher un coach en particulier">
       </div>
       <!-- Bouton devenir pro -->
-      <% if current_user.nil? || !current_user.prof? || !current_user.eleve.prof? %>
+      <% if current_user.nil? %>
+        <%= link_to prof_path do %>
+          <button class="btn-rounded medium">
+            <p>
+              Professionnel ? <br>
+              Proposer des cours
+             </p>
+          </button>
+        <% end %>
+        <% elsif !current_user.eleve.prof? %>
         <%= link_to prof_path do %>
           <button class="btn-rounded medium">
             <p>
@@ -50,7 +59,11 @@
         <%= link_to 'Aide', '/home', class: "medium nav-link" %>
         <div class="btn-group dropright">
           <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="far fa-user"></i>
+            <% if @eleve.profile_picture.attached? %>
+              <%= image_tag @eleve.profile_picture, class:'avatar'%>
+            <% else %>
+              <%= image_tag "icone-navbar.svg" %>
+            <% end %>
           </button>
           <div class="dropdown-menu">
             <%= link_to 'Mon Compte', edit_elefe_path(current_user.eleve) %>

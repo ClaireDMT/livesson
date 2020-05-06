@@ -9,7 +9,7 @@
               <div class="card-mes-reservations">
                 <div class="card-part-left">
                   <p class="medium"><%= upcoming_booking.lesson.lesson_date.strftime(" %A %d %B %Y") %> à <%= upcoming_booking.lesson.beginning_time.strftime('%Hh%M') %></p>
-                  <p class="purple medium"><%= upcoming_booking.lesson.lesson_name.upcase %></p>
+                  <p class="purple medium"><%= upcoming_booking.lesson.lesson_name.capitalize %></p>
                   <p><%= upcoming_booking.lesson.lesson_level %></p>
                   <p>Cours en <%= upcoming_booking.lesson.lesson_language %></p>
                   <p class="medium"><span class= "purple"><%= upcoming_booking.lesson.bookings.count %></span> réservation</p>
@@ -37,7 +37,7 @@
               <div class="card-mes-reservations">
                 <div class="card-part-left">
                   <p class="medium"><%= past_booking.lesson.lesson_date.strftime(" %A %d %B %Y") %> à <%= past_booking.lesson.beginning_time.strftime('%Hh%M') %></p>
-                  <p class="purple medium"><%= past_booking.lesson.lesson_name.upcase %></p>
+                  <p class="purple medium"><%= past_booking.lesson.lesson_name.capitalize %></p>
                   <p><%= past_booking.lesson.lesson_level %></p>
                   <p>Cours en <%= past_booking.lesson.lesson_language %></p>
                   <p class="medium"><span class= "purple"><%= past_booking.lesson.bookings.count %></span> réservation</p>

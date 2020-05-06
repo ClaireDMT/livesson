@@ -1,5 +1,5 @@
 class LessonsController < ApplicationController
-  before_action :authenticate_user!, only: %i[index show]
+  skip_before_action :authenticate_user!, only: %i[index show]
   before_action :find_lesson, only: %i[show edit update destroy]
 
   def index

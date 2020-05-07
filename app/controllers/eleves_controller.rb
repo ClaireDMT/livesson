@@ -51,6 +51,10 @@ class ElevesController < ApplicationController
   def mes_cours
     @eleve = Eleve.find(params[:id])
     @templates = Template.where(eleve_id: @eleve)
+    @template = Template.new
+    @lesson = Lesson.new
+    @sports = Sport.all
+    @activities = Activity.all
   end
 
   def mes_reservations

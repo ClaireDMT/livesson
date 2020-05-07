@@ -20,6 +20,19 @@ class ElevesController < ApplicationController
     redirect_to edit_user_registration_path
   end
 
+  def show
+    @prof = Eleve.find(params[:id])
+    @eleve = current_user.eleve
+    @lesson = Lesson.find(params[:lesson]) if params[:lesson]
+    @lessons = Lesson.where(eleve_id: @prof.id)
+    @booking = Booking.new
+    @reviews = Review.joins(:lesson).where(lessons: { eleve_id: @prof.id })
+    respond_to do |format|
+      format.html
+      format.json
+    end
+  end
+
   def new_prof
     @eleve.prof = true
     @eleve.status = "En attente de modération"

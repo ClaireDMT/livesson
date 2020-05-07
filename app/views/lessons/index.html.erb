@@ -42,7 +42,7 @@
                 <p class="lesson-duration"><%= lesson.lesson_duration / 60 %>min</p>
               </div>
               <% unless lesson.eleve == current_user.eleve %>
-                <%= link_to lesson_path(lesson) do %><button class="btn-rectangle">Réserver</button><% end %>
+                <%= link_to elefe_path(lesson.eleve, lesson: lesson) do %><button class="btn-rectangle">Réserver</button><% end %>
               <% end %>
             </div>
           </div>

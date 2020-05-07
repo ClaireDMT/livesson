@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   }
   devise_scope :user do
     authenticated :user do
-        root 'customdevise/registrations#after_sign_in', as: :authenticated_root
+      root 'customdevise/registrations#after_sign_in', as: :authenticated_root
     end
     unauthenticated do
       root 'pages#home', as: :unauthenticated_root
@@ -26,7 +26,6 @@ Rails.application.routes.draw do
   # root to: redirect('/users/sign_up')
   resources :eleves, only: [:new, :create, :edit, :update, :show] do
     collection do
-      get '/turn_eleve_into_prof', to: 'eleves#turn_eleve_into_prof'
       get '/turn_eleve_into_prof', to: 'eleves#turn_eleve_into_prof'
     end
   end

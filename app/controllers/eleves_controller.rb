@@ -11,7 +11,7 @@ class ElevesController < ApplicationController
       new_prof
       UserMailer.inscription_prof(current_user).deliver_now
       awaiting_moderation
-      redirect_to awaiting_moderation_path
+      render 'awaiting_moderation'
     elsif Eleve.where(user_id: current_user.id).empty?
       @eleve = Eleve.new(eleve_params)
       @eleve.user_id = current_user.id
@@ -20,7 +20,6 @@ class ElevesController < ApplicationController
       UserMailer.send_welcome(current_user).deliver_now
       redirect_to edit_user_registration_path
     end
-
   end
 
   def new_prof
@@ -50,7 +49,7 @@ class ElevesController < ApplicationController
     @eleve.prof = true
     @eleve.save
     UserMailer.inscription_prof(current_user).deliver_now
-    awaiting_moderation
+    render 'awaiting_moderation'
   end
 
   def mes_cours
@@ -59,7 +58,7 @@ class ElevesController < ApplicationController
   end
 
   def awaiting_moderation
-    unless @eleve.moderated?
+    return unless @eleve.moderated?
   end
 
   def mes_reservations

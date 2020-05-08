@@ -14,3 +14,6 @@ import { initCalendar } from '../plugins/fullcalendar';
   initCalendar();
 
 import "controllers"
+
+import { toggleLesson } from '../plugins/toggle_lesson';
+toggleLesson();

@@ -1,4 +1,5 @@
 #prof-show #calendar {
+  margin-bottom: 50px;
   button {
     background-color: $purple;
     color: white;
@@ -24,6 +25,16 @@
   button.fc-today-button:disabled {
     opacity: 1;
     background-color: $darker-purple;
+  }
+
+  td.alert {
+    position: inherit;
+    color: $purple;
+    font-weight: 500;
+  }
+
+  td.alert-info {
+    background-color: transparent;
   }
 
   .fc-content {

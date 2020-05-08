@@ -19,7 +19,6 @@ import timeGridPlugin from '@fullcalendar/timegrid';
 import listPlugin from '@fullcalendar/list';
 import bootstrapPlugin from '@fullcalendar/bootstrap';
 import frLocale from '@fullcalendar/core/locales/fr';
-import { selectLesson } from '../plugins/selectLesson';
 
 
 const calendarEl = document.getElementById('calendar');
@@ -40,7 +39,7 @@ const initCalendar = () => {
         right: 'prev,today,next'
       },
       navLinks: true, // can click day/week names to navigate views
-      defaultDate: Date.now(),
+      // defaultDate: Date.now(),
       buttonText: {
         today: "aujourd'hui"
       },

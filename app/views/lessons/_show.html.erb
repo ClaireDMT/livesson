@@ -1,4 +1,5 @@
-<div class="show-lesson col-md-2" id="show-lesson" data-target="lessons.lesson">
+<div class="show-lesson" id="show-lesson" data-target="lessons.lesson">
+    <%= image_tag 'black-cross.svg', id: "closing-cross" %>
     <div class="reserver">
       <% if !@eleve.lessons.where(id: @lesson).any?  %>
         <%= simple_form_for [@lesson, @booking], url: lesson_bookings_url(@lesson) do |f| %>

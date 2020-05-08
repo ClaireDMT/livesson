@@ -12,6 +12,8 @@ export default class extends Controller {
       .then((data) => {
         const moment = require('moment');
         moment.locale('fr');
+        document.getElementById('show-lesson').style.display = "block";
+        document.getElementById('new_booking').action = `/lessons/${data.lesson.id}/bookings`;
         document.getElementById('new_booking').action = `/lessons/${data.lesson.id}/bookings`;
         document.querySelector('.lesson-title').innerText = data.lesson.lesson_name;
         document.querySelector('.lesson-price').innerText = data.lesson.lesson_price;
@@ -21,7 +23,6 @@ export default class extends Controller {
         document.querySelector('.lesson-duration').innerText = data.lesson.lesson_duration;
         document.querySelector('.lesson-description').innerText = data.lesson.lesson_description;
         document.querySelector('.lesson-material').innerText = data.lesson.lesson_material_needed;
-        console.log(data);
       });
   }
 }

@@ -46,6 +46,10 @@
   .container-show-prof {
     padding: 20px 30px;
 
+    .reviews-count {
+      color: $gray;
+    }
+
     .image-profil {
       margin-right: 30px;
     }
@@ -63,11 +67,15 @@
     .planning-prof {
       width: 100%
     }
+
   }
+
+
 
   /////////////////////////////// LESSON //////////////////////////
   .show-lesson {
     height: max-content;
+    min-width: 400px;
     position: sticky;
     top: 0;
     border-left: 1px solid rgba(0,0,0,0.1);
@@ -79,8 +87,15 @@
       margin-bottom: 0;
     }
 
+    #closing-cross {
+      width: 26px;
+      position: absolute;
+      right: 10px;
+      cursor: pointer;
+    }
+
     .reserver {
-      margin-bottom: 20px;
+      margin: 20px 0;
     }
 
     form {

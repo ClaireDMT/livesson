@@ -17,7 +17,7 @@ class Lesson < ApplicationRecord
             "Stretching", "Sports de combat", "Spécial kids"]
 
   def duration
-    @lesson_duration = end - start
+    @lesson_duration = self.end - start
   end
 
   include PgSearch

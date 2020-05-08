@@ -19,7 +19,7 @@ import timeGridPlugin from '@fullcalendar/timegrid';
 import listPlugin from '@fullcalendar/list';
 import bootstrapPlugin from '@fullcalendar/bootstrap';
 import frLocale from '@fullcalendar/core/locales/fr';
-import { getAllLessons } from '../plugins/selectLesson';
+import { selectLesson } from '../plugins/selectLesson';
 
 
 const calendarEl = document.getElementById('calendar');
@@ -56,14 +56,30 @@ const initCalendar = () => {
       // Events
       events: `/eleves/${prof}.json`,
       displayEventTime: true,
+      displayEventTitle: false,
       eventLimit: true, // allow "more" link when too many events
       // calendar style
       themeSystem: 'bootstrap',
       eventBackgroundColor: '#7921E9',
       eventBorderColor: '#7921E9',
-      datesRender: function() {
-        getAllLessons();
+      eventClick: function(info) {
+         info.jsEvent.preventDefault();
+       },
+      eventRender: function(info) {
+           info.el.dataset.action = "click->lessons#refresh";
+           info.el.dataset.lessonId = info.event.id;
+           const fcContent = info.el.firstChild;
+           fcContent.querySelector('.fc-title').remove();
+           fcContent.insertAdjacentHTML("afterbegin", `<p class='fc-title'>${info.event.title}</p>` );
+           fcContent.insertAdjacentHTML("beforeend", `<p class='fc-duration'>${info.event.extendedProps.duration}min</p>` );
+           fcContent.insertAdjacentHTML("beforeend", `<p class='fc-duration'>${info.event.extendedProps.niveau}</p>` );
+
       }
+      // eventClick: function(info) {
+      //   console.log(info.event);
+      //   console.log(info.event.id);
+      //   selectLesson(info.event.id);
+      // }
     });
 
     calendar.render();

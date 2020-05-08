@@ -11,7 +11,6 @@ import { initStarRating } from '../plugins/init_star_rating';
 initStarRating();
 
 import { initCalendar } from '../plugins/fullcalendar';
-initCalendar();
+  initCalendar();
 
-const events = document.querySelectorAll('#prof-show #calendar .fc-event');
-console.log(events);
+import "controllers"

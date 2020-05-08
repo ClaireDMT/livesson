@@ -25,4 +25,24 @@
     opacity: 1;
     background-color: $darker-purple;
   }
+
+  .fc-content {
+    color: white;
+    font-size: 12px;
+    line-height: 18px;
+    padding: 10px;
+    .fc-title {
+      font-weight: 500;
+    }
+    p {
+      margin-bottom: 0;
+      font-size: 12px;
+    }
+    .fc-event, .fc-time {
+      font-size: 12px;
+      line-height: 16px;
+      font-weight: 400;
+    }
+  }
+
 }

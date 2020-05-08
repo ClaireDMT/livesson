@@ -2,8 +2,8 @@
   <%= simple_form_for @lesson do |f| %>
     <%= f.association :template, collection: @templates, label_method: :template_name, value_method: :id %>
     <%= f.input :lesson_date %>
-    <%= f.input :beginning_time %>
-    <%= f.input :end_time %>
+    <%= f.input :start %>
+    <%= f.input :end %>
     <%= f.input :lesson_language %>
     <%= f.input :lesson_price %>
     <%= f.input :lesson_discount_price %>

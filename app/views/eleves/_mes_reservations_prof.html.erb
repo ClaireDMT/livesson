@@ -8,7 +8,7 @@
             <div class="col-xs-12 col-md-6">
               <div class="card-mes-reservations">
                 <div class="card-part-left">
-                  <p class="medium"><%= upcoming_lesson.lesson_date.strftime(" %A %d %B %Y") %> à <%= upcoming_lesson.beginning_time.strftime('%Hh%M') %></p>
+                  <p class="medium"><%= upcoming_lesson.lesson_date.strftime(" %A %d %B %Y") %> à <%= upcoming_lesson.start.strftime('%Hh%M') %></p>
                   <p class="purple medium"><%= upcoming_lesson.lesson_name.upcase %></p>
                   <p><%= upcoming_lesson.lesson_level %></p>
                   <p>Cours en <%= upcoming_lesson.lesson_language %></p>
@@ -36,7 +36,7 @@
             <div class="col-xs-12 col-md-6">
               <div class="card-mes-reservations">
                 <div class="card-part-left">
-                  <p class="medium"><%= past_lesson.lesson_date.strftime(" %A %d %B %Y") %> à <%= past_lesson.beginning_time.strftime('%Hh%M') %></p>
+                  <p class="medium"><%= past_lesson.lesson_date.strftime(" %A %d %B %Y") %> à <%= past_lesson.start.strftime('%Hh%M') %></p>
                   <p class="purple medium"><%= past_lesson.lesson_name.upcase %></p>
                   <p><%= past_lesson.lesson_level %></p>
                   <p>Cours en <%= past_lesson.lesson_language %></p>

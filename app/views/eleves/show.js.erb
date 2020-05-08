@@ -1,7 +1,0 @@
-const selectLesson = (id) => {
-  const showLesson = document.getElementById('show-lesson');
-  console.log("coucou");
-  showLesson.innerHTML = '<%= j render "lessons/show", lesson: Lesson.where(id: id), prof: Lesson.where(id: id).prof %>';
-}
-
-export { selectLesson };

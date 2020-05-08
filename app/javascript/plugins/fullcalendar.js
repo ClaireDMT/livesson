@@ -66,20 +66,14 @@ const initCalendar = () => {
          info.jsEvent.preventDefault();
        },
       eventRender: function(info) {
-           info.el.dataset.action = "click->lessons#refresh";
-           info.el.dataset.lessonId = info.event.id;
-           const fcContent = info.el.firstChild;
-           fcContent.querySelector('.fc-title').remove();
-           fcContent.insertAdjacentHTML("afterbegin", `<p class='fc-title'>${info.event.title}</p>` );
-           fcContent.insertAdjacentHTML("beforeend", `<p class='fc-duration'>${info.event.extendedProps.duration}min</p>` );
-           fcContent.insertAdjacentHTML("beforeend", `<p class='fc-duration'>${info.event.extendedProps.niveau}</p>` );
-
+        info.el.dataset.action = "click->lessons#refresh";
+        info.el.dataset.lessonId = info.event.id;
+        const fcContent = info.el.firstChild;
+        fcContent.querySelector('.fc-title').remove();
+        fcContent.insertAdjacentHTML("afterbegin", `<p class='fc-title'>${info.event.title}</p>` );
+        fcContent.insertAdjacentHTML("beforeend", `<p class='fc-duration'>${info.event.extendedProps.duration} min</p>` );
+        fcContent.insertAdjacentHTML("beforeend", `<p class='fc-duration'>${info.event.extendedProps.niveau}</p>` );
       }
-      // eventClick: function(info) {
-      //   console.log(info.event);
-      //   console.log(info.event.id);
-      //   selectLesson(info.event.id);
-      // }
     });
 
     calendar.render();

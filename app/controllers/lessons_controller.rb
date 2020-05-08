@@ -25,7 +25,7 @@ class LessonsController < ApplicationController
 
       # if query[:creneaux].present?
       #   @lessons = @lessons.select do |lesson|
-      #     lesson.beginning_time.split(":")[0].to_i >= query[:creneaux].to_i
+      #     lesson.start.split(":")[0].to_i >= query[:creneaux].to_i
       #   end
       # end
     end
@@ -40,11 +40,18 @@ class LessonsController < ApplicationController
     @activities = Activity.all
   end
 
+  def show
+    @lesson = Lesson.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.json { render json: { lesson: @lesson } }
+    end
+  end
   def create
     @lesson = Lesson.new(lesson_params)
     @lesson.eleve = current_user.eleve
     @templates = Template.all.where(eleve_id: @lesson.eleve)
-    @lesson.lesson_duration = @lesson.end_time - @lesson.beginning_time
+    @lesson.lesson_duration = @lesson.end - @lesson.start
     @lesson.sport = @lesson.template.sport
     @lesson.activity = @lesson.template.activity
     if @lesson.save
@@ -81,7 +88,7 @@ class LessonsController < ApplicationController
   end
 
   def lesson_params
-    params.require(:lesson).permit(:lesson_date, :beginning_time, :end_time,
+    params.require(:lesson).permit(:lesson_date, :start, :end,
                                    :lesson_description, :lesson_material_needed,
                                    :lesson_name, :lesson_level, :lesson_duration,
                                    :lesson_language, :lesson_price,

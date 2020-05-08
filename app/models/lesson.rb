@@ -5,7 +5,7 @@ class Lesson < ApplicationRecord
   belongs_to :template
   has_many :bookings, dependent: :destroy
   has_many :reviews, dependent: :destroy
-  # validates :lesson_date, :beginning_time, :end_time,
+  # validates :lesson_date, :start, :end,
   #           :lesson_description, :lesson_material_needed,
   #           :lesson_name, :lesson_level, :lesson_duration,
   #           :lesson_language, :lesson_price, presence: true
@@ -17,7 +17,7 @@ class Lesson < ApplicationRecord
             "Stretching", "Sports de combat", "Spécial kids"]
 
   def duration
-    @lesson_duration = end_time - beginning_time
+    @lesson_duration = end - start
   end
 
   include PgSearch

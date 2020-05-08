@@ -7,18 +7,18 @@
       <% end %>
     </div>
     <div class="bold mb-4">
-      <h3 class="title-purple-upcase"> <%= lesson.lesson_name %></h3>
-      <h3 class="title-purple-upcase"> <%= lesson.lesson_price %>€</h3>
+      <h3 class="title-purple-upcase lesson-title"><%= lesson.lesson_name %></h3>
+      <h3 class="title-purple-upcase"><span class="lesson-price"><%= lesson.lesson_price %></span>€</h3>
     </div>
     <div class="infos-lesson">
-      <p> <%= lesson.lesson_level %></p>
-      <p> <%= I18n.l(lesson.lesson_date, format: '%A %d %B %Y', locale: :'fr').capitalize %> à <%= lesson.start.strftime('%Hh%M') %></p>
-      <p>Cours en <%= lesson.lesson_language %> </p>
-      <p> <%= lesson.lesson_duration %> min</p>
+      <p class="lesson-level"><%= lesson.lesson_level %></p>
+      <p class="lesson-date"><span ><%= I18n.l(lesson.lesson_date, format: '%A %d %B %Y', locale: :'fr').capitalize %></span> à <%= lesson.start.strftime('%Hh%M') %></p>
+      <p>Cours en <span class="lesson-language"><%= lesson.lesson_language %></span></p>
+      <p><span class="lesson-duration"><%= lesson.lesson_duration %></span>min</p>
     </div>
 
     <div class="infos-teacher mt-4">
-      <p class="lesson-teacher"> <%= lesson.eleve.name %> <%= lesson.eleve.surname %> </p>
+      <p> <%= lesson.eleve.name %> <%= lesson.eleve.surname %> </p>
       <p><% prof.average_rating.round.times do %>
           <%= image_tag 'icon-star-full.png' %>
         <% end %>
@@ -30,10 +30,10 @@
 
     <%#= lesson.rating %>
     <div class="mt-4">
-      <p class="lesson-description">Descriptif du cours</p>
-      <p class="text-justify"><%= lesson.lesson_description %></p>
+      <p class="lesson-section-title">Descriptif du cours</p>
+      <p class="text-justify lesson-description"><%= lesson.lesson_description %></p>
       <br>
-      <p class="lesson-material">Matériel nécessaire</p>
-      <p class="text-justify"><%= lesson.lesson_material_needed %></p>
+      <p class="lesson-section-title">Matériel nécessaire</p>
+      <p class="text-justify lesson-material"><%= lesson.lesson_material_needed %></p>
     </div>
   </div>

@@ -58,6 +58,7 @@ class ElevesController < ApplicationController
   end
 
   def awaiting_moderation
+    @eleve = Eleve.find(params[:id])
     return unless @eleve.moderated?
   end
 

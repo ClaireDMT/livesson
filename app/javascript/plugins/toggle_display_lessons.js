@@ -11,7 +11,7 @@ if(document.body.contains(upcoming_lessons)) {
     else {
       upcoming_lessons.style.display = "block"
     }
-    event.style.tranform == "rotate(-45deg)"
+    event.target.nextElementSibling.style.tranform = "rotate(45deg)";
   })
 }
 
@@ -27,6 +27,6 @@ if(document.body.contains(past_lessons)) {
     else {
       past_lessons.style.display = "block"
     }
-    event.style.tranform == "rotate(-45deg)"
+    event.target.nextElementSibling.style.tranform = "rotate(45deg)";
   })
 }

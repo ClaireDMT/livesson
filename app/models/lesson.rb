@@ -20,6 +20,9 @@ class Lesson < ApplicationRecord
     @lesson_duration = self.end - start
   end
 
+  def all_participants
+  end
+
   include PgSearch
   pg_search_scope :search_by_sport_name,
                   against: [:sport_id],

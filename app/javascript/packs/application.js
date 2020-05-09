@@ -21,3 +21,6 @@ toggleLesson();
 
 import { createLessonStream } from '../plugins/jitsi.js';
 createLessonStream();
+
+import { modalReservations } from '../plugins/modal_reservation.js';
+modalReservations();

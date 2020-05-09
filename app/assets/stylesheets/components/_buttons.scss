@@ -39,6 +39,24 @@ button:focus {
   }
 }
 
+.btn-rectangle-blue {
+  background-color: $blue;
+  color: white;
+  border-radius: 10px;
+  font-size: 16px;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  height: 35px;
+  border: transparent;
+  p {
+    margin-bottom: 0;
+  }
+  &:hover {
+    font-weight: 500;
+  }
+}
+
 .btn-rectangle-gray {
   background-color: #DEE0E2;
   color: black;
@@ -128,9 +146,12 @@ button:focus {
 }
 #buttonTogglePastLessons span, #buttonToggleUpcomingLessons span,
 #buttonToggleUpcomingBookings span, #buttonTogglePastBookings span {
+  line-height: 21px;
+  margin-left: 10px;
   &:hover {
     transform: rotate(45deg);
     font-size: 24px;
   }
+
 
 }

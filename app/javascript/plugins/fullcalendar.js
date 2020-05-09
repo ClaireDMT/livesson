@@ -20,12 +20,10 @@ import listPlugin from '@fullcalendar/list';
 import bootstrapPlugin from '@fullcalendar/bootstrap';
 import frLocale from '@fullcalendar/core/locales/fr';
 
-
-const calendarEl = document.getElementById('calendar');
-const profShow = document.getElementById('prof-show');
-const prof = profShow.dataset.profId;
-
 const initCalendar = () => {
+  const calendarEl = document.getElementById('calendar');
+  const profShow = document.getElementById('prof-show');
+  const prof = profShow.dataset.profId;
   document.addEventListener('DOMContentLoaded', function() {
     const calendar = new Calendar(calendarEl, {
       plugins: [ interactionPlugin, dayGridPlugin, timeGridPlugin, listPlugin, bootstrapPlugin, momentPlugin, momentTimezonePlugin  ],

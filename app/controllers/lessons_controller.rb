@@ -1,5 +1,5 @@
 class LessonsController < ApplicationController
-  skip_before_action :authenticate_user!, only: %i[index show]
+  skip_before_action :authenticate_user!, only: %i[index]
   before_action :find_lesson, only: %i[show edit update destroy lesson_video]
 
   def index
@@ -41,6 +41,7 @@ class LessonsController < ApplicationController
   end
 
   def show
+    @eleve = current_user.eleve unless current_user.nil?
     @lesson = Lesson.find(params[:id])
     respond_to do |format|
       format.html

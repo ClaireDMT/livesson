@@ -3,7 +3,7 @@
     <%= f.association :sport, collection: @sports, label_method: :sport_name, value_method: :id %>
     <%= f.association :activity, collection: @activities, label_method: :activity_name, value_method: :id %>
     <%= f.input :template_name  %>
-    <%= f.input :template_level, collection: ['Tous niveaux', 'Débutant', 'Intermédiaire', 'Avancé'] %>
+    <%= f.input :template_level, collection: Lesson::NIVEAUX %>
     <%= f.input :template_description %>
     <%= f.input :template_material_needed %>
     <%= f.submit 'Enregistrer', class: 'btn-rectangle' %>

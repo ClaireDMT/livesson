@@ -12,7 +12,6 @@ class ElevesController < ApplicationController
       @eleve.user_id = current_user.id
       new_prof
       UserMailer.inscription_prof(current_user).deliver_now
-
     elsif Eleve.where(user_id: current_user.id).empty?
       # si ce n'est qu'un élève
       @eleve = Eleve.new(eleve_params)

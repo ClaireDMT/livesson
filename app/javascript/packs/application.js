@@ -9,3 +9,11 @@ import '../plugins/toggle_display_bookings';
 
 import { initStarRating } from '../plugins/init_star_rating';
 initStarRating();
+
+import { initCalendar } from '../plugins/fullcalendar';
+  initCalendar();
+
+import "controllers"
+
+import { toggleLesson } from '../plugins/toggle_lesson';
+toggleLesson();

@@ -1,0 +1,37 @@
+<div class="" id="reviews">
+  <div>
+    <h4 class="mb-4">Tous les avis sur <%= @prof.name %> <%= @prof.surname %></h4>
+    <% if !@reviews.empty? %>
+      <% @reviews.each do |review| %>
+        <div class="row">
+          <div class="col-xs-12 col-md-8">
+            <div class="flexify">
+              <% if @eleve.profile_picture.attached? %>
+                <%= image_tag @eleve.profile_picture, class: 'avatar-large' %>
+              <% else %>
+                <%= image_tag 'empty.jpg', class: 'avatar-large' %>
+              <% end %>
+              <div class="ml-4">
+                <div class="bold review-title mt-3 flexify">
+                  <p><%= review.eleve.name %> <%= review.eleve.surname[0] %>.</p>
+                  <div class="ml-3">
+                    <% review.rating.round.times do %>
+                      <%= image_tag 'icon-star-full.png' %>
+                    <% end %>
+                    <% (5 - review.rating.round).times do %>
+                      <%= image_tag 'icon-star-empty.png' %>
+                    <% end %>
+                  </div>
+                </div>
+                <p class="review-lesson"><%= review.lesson.lesson_name %> - <%= I18n.l(review.lesson.lesson_date, format: '%B %Y', locale: :'fr').capitalize %> </p>
+                <p><%= review.content %></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% else %>
+      <p>Ce professeur n'a pas encore d'avis</p>
+    <% end %>
+  </div>
+</div>

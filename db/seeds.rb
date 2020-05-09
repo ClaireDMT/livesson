@@ -1,3 +1,4 @@
+require 'date'
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
@@ -115,9 +116,8 @@ template_two = Template.create!(template_description: "Le cardio-training rassem
 
 puts "Création des Lessons"
 lesson_1 = Lesson.create!(lesson_date: "23/06/2020",
-              beginning_time: "4:00pm",
-              end_time: "5:00pm",
-
+              start: DateTime.new(2020,6,23,16,0,0,'+02:00'),
+              end: DateTime.new(2020,6,23,17,0,0,'+02:00'),
               lesson_description: template_one.template_description,
               lesson_material_needed: template_one.template_material_needed,
               lesson_name: template_one.template_name,
@@ -131,8 +131,8 @@ lesson_1 = Lesson.create!(lesson_date: "23/06/2020",
               template_id: template_one.id)
 
 lesson_2 = Lesson.create!(lesson_date: "12/07/2020",
-              beginning_time: "2:00pm",
-              end_time: "3:00pm",
+              start: DateTime.new(2020,7,12,15,0,0,'+02:00'),
+              end: DateTime.new(2020,7,12,16,0,0,'+02:00'),
               lesson_description: template_two.template_description,
               lesson_material_needed: template_two.template_material_needed,
               lesson_name: template_two.template_name,

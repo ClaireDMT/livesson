@@ -26,6 +26,7 @@ button:focus {
   vertical-align: middle;
   text-align: center;
   height: 35px;
+  display: table-cell;
   border: transparent;
   p {
     margin-bottom: 0;
@@ -115,8 +116,12 @@ button:focus {
   font-size: 20px;
   border: none;
   background-color: transparent;
+}
+#buttonTogglePastLessons span, #buttonToggleUpcomingLessons span,
+#buttonToggleUpcomingBookings span, #buttonTogglePastBookings span {
   &:hover {
     transform: rotate(45deg);
     font-size: 24px;
   }
+
 }

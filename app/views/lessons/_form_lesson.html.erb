@@ -4,7 +4,7 @@
     <%= f.input :lesson_date %>
     <%= f.input :start %>
     <%= f.input :end %>
-    <%= f.input :lesson_language %>
+    <%= f.input :lesson_language, collection: Lesson::LANGUES
     <%= f.input :lesson_price %>
     <%= f.input :lesson_discount_price %>
     <%= f.submit 'Enregistrer', class: 'btn-rectangle' %>

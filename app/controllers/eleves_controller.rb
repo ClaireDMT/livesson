@@ -57,11 +57,6 @@ class ElevesController < ApplicationController
     @templates = Template.where(eleve_id: @eleve)
   end
 
-  def awaiting_moderation
-    @eleve = Eleve.find(params[:id])
-    return unless @eleve.moderated?
-  end
-
   def mes_reservations
     @eleve = Eleve.find(params[:id])
     @bookings = Booking.where(params[eleve_id: @eleve])

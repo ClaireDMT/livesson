@@ -33,7 +33,6 @@ Rails.application.routes.draw do
 
   get 'eleves/:id/mes-cours', to: 'eleves#mes_cours', as: :mes_cours
   get 'eleves/:id/mes-reservations', to: 'eleves#mes_reservations', as: :mes_reservations
-  get 'eleves/:id/en-attente-de-moderation', to: 'eleves#awaiting_moderation', as: :awaiting_moderation
 
   resources :templates, only: [:index, :new, :create]
   resources :lessons do

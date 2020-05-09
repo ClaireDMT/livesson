@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   }
   devise_scope :user do
     authenticated :user do
-        root 'customdevise/registrations#after_sign_in', as: :authenticated_root
+      root 'customdevise/registrations#after_sign_in', as: :authenticated_root
     end
     unauthenticated do
       root 'pages#home', as: :unauthenticated_root

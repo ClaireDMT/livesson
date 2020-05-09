@@ -1,6 +1,6 @@
 class LessonsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
-  before_action :find_lesson, only: %i[show edit update destroy]
+  before_action :find_lesson, only: %i[show edit update destroy lesson_video]
 
   def index
     @eleve = current_user.eleve unless current_user.nil?
@@ -79,6 +79,13 @@ class LessonsController < ApplicationController
   def destroy
     @lesson.destroy
     redirect_to lesson_path
+  end
+
+  def lesson_video
+    @lesson.lesson_date == Date.today && @lesson.beginning_time == Time.now - 15.min
+    @prof = @lesson.eleve
+    @bookings = Booking.where(lesson: @lesson)
+    @eleves = Eleve.where(id: @bookings.eleve_id)
   end
 
   private

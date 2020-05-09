@@ -16,6 +16,9 @@ button:focus {
     padding: 5px 20px;
     font-size: 14px
   }
+  &:hover {
+    font-weight: 500;
+  }
 }
 
 .btn-rectangle {
@@ -31,6 +34,9 @@ button:focus {
   p {
     margin-bottom: 0;
   }
+  &:hover {
+    font-weight: 500;
+  }
 }
 
 .btn-rectangle-gray {
@@ -45,6 +51,9 @@ button:focus {
   border: transparent;
   p {
     margin-bottom: 0;
+  }
+  &:hover {
+    font-weight: 500;
   }
 }
 .btn-dropdown {

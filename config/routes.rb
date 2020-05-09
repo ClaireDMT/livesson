@@ -22,8 +22,8 @@ Rails.application.routes.draw do
   resources :eleves, only: [:new, :create, :edit, :update, :show] do
     collection do
       get '/turn_eleve_into_prof', to: 'eleves#turn_eleve_into_prof'
-      get 'eleves/:id/mes-cours', to: 'eleves#mes_cours', as: :mes_cours
-      get 'eleves/:id/mes-reservations', to: 'eleves#mes_reservations', as: :mes_reservations
+      get '/:id/mes-cours', to: 'eleves#mes_cours', as: :mes_cours
+      get '/:id/mes-reservations', to: 'eleves#mes_reservations', as: :mes_reservations
     end
   end
 

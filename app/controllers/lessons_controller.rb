@@ -41,8 +41,9 @@ class LessonsController < ApplicationController
   end
 
   def show
+    @lesson.streaming_url = "https://meet.jit.si/lessons/#{@lesson.id}" if @lesson.streaming_url.nil?
+    @lesson.save
     @eleve = current_user.eleve unless current_user.nil?
-    @lesson = Lesson.find(params[:id])
     respond_to do |format|
       format.html
       format.json { render json: { lesson: @lesson } }

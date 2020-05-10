@@ -21,15 +21,6 @@ class Lesson < ApplicationRecord
   end
 
   include PgSearch
-  pg_search_scope :search_by_sport_name,
-                  against: [:sport_id],
-                  associated_against: {
-                    sport: [:sport_name]
-                  },
-                  using: {
-                    tsearch: { prefix: true }
-                  }
-
   pg_search_scope :search_by_lesson_language,
                   against: [:lesson_language],
                   using: {

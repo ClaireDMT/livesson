@@ -5,29 +5,65 @@ class LessonsController < ApplicationController
   def index
     @eleve = current_user.eleve unless current_user.nil?
     @lessons = Lesson.all
-    @sports = Sport.all
     query = params[:query]
     if query.present?
+      search_sport_name
+      search_lesson_language
+      search_lesson_level
+      search_lesson_date
+      search_sport_name_and_lesson_language
+      search_sport_name_lesson_language_and_lesson_level
+      search_all
+    end
+  end
 
-      @sport = query[:sport_name]
-      if query[:sport_name].present?
-        @lessons = @lessons.search_by_sport_name(query[:sport_name])
-      end
+  def search_sport_name
+    query = params[:query]
+    @sports = query[:sport_name]
+    @lessons = @lessons.joins(:sport).where("sport_name IN (?)", @sports) if query[:sport_name].present?
+  end
 
-      @langue = query[:lesson_language]
-      if query[:lesson_language].present?
-        @lessons = @lessons.search_by_lesson_language(query[:lesson_language])
-      end
+  def search_lesson_language
+    query = params[:query]
+    @langues = query[:lesson_language]
+    @lessons = @lessons.search_by_lesson_language(query[:lesson_language]) if query[:lesson_language].present?
+  end
 
-      if query[:lesson_date].present?
-        @lessons = @lessons.search_by_lesson_date(query[:lesson_date])
-      end
+  def search_lesson_level
+    query = params[:query]
+    @niveaux = query[:lesson_level]
+    @lessons = @lessons.search_by_lesson_level(query[:lesson_level]) if query[:lesson_level].present?
+  end
 
-      # if query[:creneaux].present?
-      #   @lessons = @lessons.select do |lesson|
-      #     lesson.beginning_time.split(":")[0].to_i >= query[:creneaux].to_i
-      #   end
-      # end
+  def search_lesson_date
+    query = params[:query]
+    @lessons = @lessons.search_by_lesson_date(query[:lesson_date]) if query[:lesson_date].present?
+  end
+
+  def search_sport_name_and_lesson_language
+    query = params[:query]
+    if query[:sport_name].present? && query[:lesson_language].present?
+      @lessons = @lessons.joins(:sport).where("sport_name IN (?)AND lesson_language IN (?)",
+                                              @sports, @langues)
+    end
+  end
+
+  def search_sport_name_lesson_language_and_lesson_level
+    query = params[:query]
+    if query[:sport_name].present? && query[:lesson_language].present? && query[:lesson_level].present?
+      @lessons = @lessons.joins(:sport).where("sport_name IN (?) AND lesson_language IN (?) AND lesson_level IN (?)",
+                                              @sports, @langues, @niveaux)
+    end
+  end
+
+  def search_all
+    query = params[:query]
+    if query[:sport_name].present? && query[:lesson_language].present? &&
+       query[:lesson_level].present? && query[:lesson_date].present?
+      @lessons = @lessons.joins(:sport).where("sport_name IN (?)
+                                               AND lesson_language IN (?)
+                                               AND lesson_level IN (?) AND lesson_date = ?",
+                                              @sports, @langues, @niveaux, query[:lesson_date])
     end
   end
 

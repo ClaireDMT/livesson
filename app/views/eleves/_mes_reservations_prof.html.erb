@@ -1,63 +1,126 @@
 <% if @lessons.present? %>
-  <div class="container">
-    <h5 class="purple">MES COURS À VENIR (<%= @upcoming_lessons.count %>) <button id="buttonToggleUpcomingLessons" class="purple medium">+</button></h5>
+  <div class="container-reservations">
+
+    <button id="buttonToggleUpcomingLessons" class="purple medium d-flex">
+      <h5 class="purple">MES COURS À VENIR (<%= @upcoming_lessons.count %>)</h5><span>+</span>
+    </button>
+
+    <!-- Modal RESA-->
+    <div class="modal fade" id="reservationsModal" tabindex="-1" role="dialog" aria-labelledby="reservations" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title purple medium" id="reservations-title"><%= "Liste des élèves inscrits".upcase %></h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p></p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal RESA-->
+
+
     <div id="toggleUpcomingLessons" style="display: none">
       <% if @upcoming_lessons.present? %>
-        <% @upcoming_lessons.each do |upcoming_lesson| %>
+        <div class="cards-reservations">
           <div class="row">
-            <div class="col-xs-12 col-md-6">
-              <div class="card-mes-reservations">
-                <div class="card-part-left">
-                  <p class="medium"><%= upcoming_lesson.lesson_date.strftime(" %A %d %B %Y") %> à <%= upcoming_lesson.start.strftime('%Hh%M') %></p>
-                  <p class="purple medium"><%= upcoming_lesson.lesson_name.upcase %></p>
-                  <p><%= upcoming_lesson.lesson_level %></p>
-                  <p>Cours en <%= upcoming_lesson.lesson_language %></p>
-                  <p class="medium"><span class= "purple"><%= upcoming_lesson.bookings.count %></span> réservation</p>
-                </div>
-                <div class="card-part-right">
-                  <p>Descriptif du cours</p>
-                  <p><%= upcoming_lesson.lesson_description %></p>
-                  <p>Matériel nécessaire</p>
-                  <p><%= upcoming_lesson.lesson_material_needed %></p>
+            <% @upcoming_lessons.each do |upcoming_lesson| %>
+              <div class="col-xs-12 col-lg-12">
+                <div class="card-reservation d-flex">
+                  <div class="card-reservation-left col-xs-12 col-lg-2">
+                    <p class="medium"><span><%= I18n.l(upcoming_lesson.lesson_date, format: '%A %d %B %Y', locale: :'fr').capitalize %></span> à <%= upcoming_lesson.start.strftime('%Hh%M') %></p>
+                    <p class="purple medium"><%= upcoming_lesson.lesson_name.upcase %></p>
+                    <p><%= upcoming_lesson.lesson_level %></p>
+                    <p>Cours en <%= upcoming_lesson.lesson_language %></p>
+                    <p><%= (upcoming_lesson.duration / 60).round %>min</p>
+                    <% Eleve.where %>
+                    <p class="medium" data-toggle="modal" data-target="#reservationsModal" data-reservations="<%= upcoming_lesson.id %>">
+                      <span class= "purple"><%= upcoming_lesson.bookings.count %></span> réservation
+                    </p>
+                  </div>
+
+                  <div class="card-reservation-centre col-xs-12 col-lg-8">
+                    <p class='medium mb-0'>Descriptif du cours</p>
+                    <p><%= upcoming_lesson.lesson_description %></p>
+                    <p class='medium mb-0'>Matériel nécessaire</p>
+                    <p><%= upcoming_lesson.lesson_material_needed %></p>
+                  </div>
+
+                  <div class="card-reservation-right col-xs-12 col-lg-2 d-flex justify-content-center align-items-center">
+                    <div>
+                      <%= link_to lesson_path(upcoming_lesson.id), class: "btn-rectangle mb-4" do %>
+                        <%= image_tag "video-call.svg", class: "video-call-icon" %>
+                        <p>Démarrer le cours</p>
+                      <% end %>
+                      <%= link_to '+ Ajouter à mon calendrier', elefe_path(upcoming_lesson.eleve), class: 'black-link medium' %>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
+            <% end %>
           </div>
-        <% end %>
+        </div>
       <% else %>
         <p>Vous n'avez pas de cours à venir.</p>
       <% end %>
     </div>
-    <h5 class="purple">MES COURS PASSÉS (<%= @past_lessons.count %>) <button id="buttonTogglePastLessons" class="purple medium">+</button></h5>
+
+    <button id="buttonTogglePastLessons" class="purple medium d-flex mt-4">
+      <h5 class="purple">MES COURS PASSÉS (<%= @past_lessons.count %>)</h5><span>+</span>
+    </button>
+
     <div id="togglePastLessons" style="display: none">
-      <% if @past_lessons.present? %>
-        <% @past_lessons.each do |past_lesson| %>
+      <div class="cards-reservations">
+        <% if @past_lessons.present? %>
           <div class="row">
-            <div class="col-xs-12 col-md-6">
-              <div class="card-mes-reservations">
-                <div class="card-part-left">
-                  <p class="medium"><%= past_lesson.lesson_date.strftime(" %A %d %B %Y") %> à <%= past_lesson.start.strftime('%Hh%M') %></p>
+            <% @past_lessons.each do |past_lesson| %>
+            <div class="col-xs-12 col-lg-12">
+              <div class="card-reservation d-flex">
+                <div class="card-reservation-left col-xs-12 col-lg-2">
+                  <p class="medium"><span><%= I18n.l(past_lesson.lesson_date, format: '%A %d %B %Y', locale: :'fr').capitalize %></span> à <%= past_lesson.start.strftime('%Hh%M') %></p>
                   <p class="purple medium"><%= past_lesson.lesson_name.upcase %></p>
                   <p><%= past_lesson.lesson_level %></p>
                   <p>Cours en <%= past_lesson.lesson_language %></p>
+                  <p><%= (past_lesson.duration / 60).round %>min</p>
                   <p class="medium"><span class= "purple"><%= past_lesson.bookings.count %></span> réservation</p>
                 </div>
-                <div class="card-part-right">
-                  <p>Descriptif du cours</p>
+
+                <div class="card-reservation-centre col-xs-12 col-lg-8">
+                  <p class='medium mb-0'>Descriptif du cours</p>
                   <p><%= past_lesson.lesson_description %></p>
-                  <p>Matériel nécessaire</p>
+                  <p class='medium mb-0'>Matériel nécessaire</p>
                   <p><%= past_lesson.lesson_material_needed %></p>
+                </div>
+
+                <div class="card-reservation-right col-xs-12 col-lg-2 d-flex justify-content-center align-items-center">
+                  <div>
+                    <% reviews = Review.where(lesson_id: past_lesson.id).count %>
+                    <% if reviews != 0  %>
+                      <button class="btn-rectangle mb-4">Lire les avis sur ce cours (<%= reviews %>)</button>
+                    <% else %>
+                      Pas encore d'avis sur ce cours
+                    <% end %>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+            <% end %>
+            </div>
+        <% else %>
+          <p>Vous n'avez pas de cours passés</p>
         <% end %>
-      <% else %>
-        <p>Vous n'avez pas de cours passés</p>
-      <% end %>
+      </div>
     </div>
+
   </div>
 <% else %>
-  <p>Vous n'avez pas encore crée de cours.</p>
+  <p>Vous n'avez pas encore créé de cours.</p>
 <% end %>
 

@@ -4,3 +4,42 @@
   justify-content: space-between;
   align-items: flex-end;
 }
+
+#mes-reservations {
+  min-height: calc(100vh - 70px);
+
+  .card-reservation {
+    box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.07), 0 1px 0 0 rgba(0, 0, 0, 0.03);
+    padding: 20px 20px;
+    margin: 10px 0;
+  }
+
+  .card-reservation-left p {
+    margin-bottom: 5px;
+  }
+  .card-reservation-centre {
+    p {
+      width: 80%
+    }
+  }
+
+  .card-reservation-right {
+    a.btn-rectangle {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px 20px;
+    }
+    a.btn-rectangle:hover {
+      color: white;
+      font-weight: 500;
+    }
+
+    .video-call-icon {
+      width: 20px;
+      margin-right: 10px;
+
+    }
+  }
+
+}

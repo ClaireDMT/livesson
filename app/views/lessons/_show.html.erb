@@ -21,10 +21,10 @@
     <div class="infos-teacher mt-4">
       <p> <%= lesson.eleve.name %> <%= lesson.eleve.surname %> </p>
       <p><% prof.average_rating.round.times do %>
-          <%= image_tag 'icon-star-full.png' %>
+          <%= image_tag 'star-full.svg', class: "rating-prof-stars" %>
         <% end %>
         <% (5 - prof.average_rating.round).times do %>
-          <%= image_tag 'icon-star-empty.png' %>
+          <%= image_tag 'star-empty.svg', class: "rating-prof-stars" %>
         <% end %>
       </p>
     </div>

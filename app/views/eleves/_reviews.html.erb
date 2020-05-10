@@ -16,10 +16,10 @@
                   <p><%= review.eleve.name %> <%= review.eleve.surname[0] %>.</p>
                   <div class="ml-3">
                     <% review.rating.round.times do %>
-                      <%= image_tag 'icon-star-full.png' %>
+                      <%= image_tag 'star-full.svg', class: "rating-prof-stars"  %>
                     <% end %>
                     <% (5 - review.rating.round).times do %>
-                      <%= image_tag 'icon-star-empty.png' %>
+                      <%= image_tag 'star-empty.svg', class: "rating-prof-stars"  %>
                     <% end %>
                   </div>
                 </div>

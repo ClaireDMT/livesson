@@ -1,3 +1,4 @@
+require_relative 'lesson.rb'
 class Lesson < ApplicationRecord
   belongs_to :eleve
   belongs_to :sport
@@ -20,7 +21,11 @@ class Lesson < ApplicationRecord
     @lesson_duration = self.end - start
   end
 
-  include PgSearch
+  def all_participants
+    Eleve.joins(:bookings).where(booking:  {lesson_id: self.id })
+  end
+
+  include PgSearch::Model
   pg_search_scope :search_by_sport_name,
                   against: [:sport_id],
                   associated_against: {

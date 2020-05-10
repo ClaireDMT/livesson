@@ -16,6 +16,9 @@ button:focus {
     padding: 5px 20px;
     font-size: 14px
   }
+  &:hover {
+    font-weight: 500;
+  }
 }
 
 .btn-rectangle {
@@ -26,9 +29,31 @@ button:focus {
   vertical-align: middle;
   text-align: center;
   height: 35px;
+  display: table-cell;
   border: transparent;
   p {
     margin-bottom: 0;
+  }
+  &:hover {
+    font-weight: 500;
+  }
+}
+
+.btn-rectangle-blue {
+  background-color: $blue;
+  color: white;
+  border-radius: 10px;
+  font-size: 16px;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  height: 35px;
+  border: transparent;
+  p {
+    margin-bottom: 0;
+  }
+  &:hover {
+    font-weight: 500;
   }
 }
 
@@ -44,6 +69,9 @@ button:focus {
   border: transparent;
   p {
     margin-bottom: 0;
+  }
+  &:hover {
+    font-weight: 500;
   }
 }
 .btn-dropdown {
@@ -115,8 +143,15 @@ button:focus {
   font-size: 20px;
   border: none;
   background-color: transparent;
+}
+#buttonTogglePastLessons span, #buttonToggleUpcomingLessons span,
+#buttonToggleUpcomingBookings span, #buttonTogglePastBookings span {
+  line-height: 21px;
+  margin-left: 10px;
   &:hover {
     transform: rotate(45deg);
     font-size: 24px;
   }
+
+
 }

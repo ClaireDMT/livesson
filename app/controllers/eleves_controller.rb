@@ -80,14 +80,14 @@ class ElevesController < ApplicationController
 
   def eleve_reservations
     @bookings = Booking.where(eleve_id: @eleve)
-    @upcoming_bookings = @bookings.joins(:lesson).where("beginning_time > ?", Time.now)
-    @past_bookings = @bookings.joins(:lesson).where("beginning_time < ?", Time.now)
+    @upcoming_bookings = @bookings.joins(:lesson).where("start > ?", Time.now)
+    @past_bookings = @bookings.joins(:lesson).where("start < ?", Time.now)
   end
 
   def prof_reservations
     @lessons = Lesson.where(eleve_id: @eleve)
-    @upcoming_lessons = @lessons.where("beginning_time > ?", Time.now)
-    @past_lessons = @lessons.where("beginning_time < ?", Time.now)
+    @upcoming_lessons = @lessons.where("start > ?", Time.now)
+    @past_lessons = @lessons.where("start < ?", Time.now)
   end
 
   private

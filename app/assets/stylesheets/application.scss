@@ -19,3 +19,13 @@
 @import '@fullcalendar/daygrid/main.css';
 @import '@fullcalendar/timegrid/main.css';
 @import '@fullcalendar/list/main.css';
+
+
+a, a:hover {
+  text-decoration: none;
+}
+
+
+a.black-link, a.black-link:hover {
+  color: $black;
+}

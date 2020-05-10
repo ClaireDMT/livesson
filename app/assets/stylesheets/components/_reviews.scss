@@ -1,8 +1,4 @@
 #reviews {
-  .review-title img {
-    width: 20px;
-    height: 20px;
-  }
 
   .review-title p {
     padding-top: 1px;
@@ -11,4 +7,8 @@
   .review-lesson {
     opacity: 0.8
   }
+}
+
+.rating-prof-stars {
+  width: 15px;
 }

@@ -1,13 +1,9 @@
 class TemplatesController < ApplicationController
-  def index
-    @eleve = Eleve.find(params[:id])
-    @templates = Template.where(eleve_id: @eleve.id)
-  end
-
   def new
     @template = Template.new
     @sports = Sport.all
     @activities = Activity.all
+    @eleve = current_user.eleve
   end
 
   def create

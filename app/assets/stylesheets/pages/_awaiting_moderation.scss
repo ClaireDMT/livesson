@@ -1,0 +1,39 @@
+#moderation{
+  .page-moderation{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: black;
+    .page-moderation-left{
+      img {
+        height: calc(100vh - 70px);
+        width: 80vh;
+      }
+    }
+    .page-moderation-right{
+      width: 100%;
+      // display: flex;
+      // flex-direction: column;
+      // align-items: center;
+      .logo{
+        width: 267px;
+        margin-bottom: 30px
+      }
+      h2{
+        margin-top: 30px;
+        color: $purple;
+        font-size: 38px;
+        font-weight: 500;
+        line-height: 48px;
+      }
+      p{
+        max-width: 500px;
+        margin: 40px 150px;
+      }
+      button{
+        width: 197px;
+        height: 48px;
+      }
+    }
+  }
+}

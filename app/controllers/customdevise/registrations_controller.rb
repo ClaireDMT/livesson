@@ -9,7 +9,7 @@ class Customdevise::RegistrationsController < Devise::RegistrationsController
   def edit
     @eleve = current_user.eleve
     if !@eleve.nil?
-      redirect_to '/home'
+      redirect_to root_path
     else
       super
     end
@@ -27,7 +27,7 @@ class Customdevise::RegistrationsController < Devise::RegistrationsController
     elsif @eleve.moderated?
       redirect_to edit_elefe_path(@eleve)
     else
-      redirect_to '/home'
+      redirect_to root_path
     end
   end
 

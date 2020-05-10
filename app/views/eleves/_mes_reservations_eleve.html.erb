@@ -1,61 +1,103 @@
 <% if @bookings.present? %>
-  <div class="container">
-    <h5 class="purple">MES COURS À VENIR (<%= @upcoming_bookings.count %>) <button id="buttonToggleUpcomingBookings" class="purple medium">+</button></h5>
+  <div class="container-reservations">
+
+    <button id="buttonToggleUpcomingBookings" class="purple medium d-flex">
+      <h5 class="purple">MES COURS À VENIR (<%= @upcoming_bookings.count %>)</h5><span>+</span>
+    </button>
+
     <div id="toggleUpcomingBookings" style="display: none">
       <% if @upcoming_bookings.present? %>
-        <% @upcoming_bookings.each do |upcoming_booking| %>
+        <div class="cards-reservations">
           <div class="row">
-            <div class="col-xs-12 col-md-6">
-              <div class="card-mes-reservations">
-                <div class="card-part-left">
-                  <p class="medium"><%= upcoming_booking.lesson.lesson_date.strftime(" %A %d %B %Y") %> à <%= upcoming_booking.lesson.beginning_time.strftime('%Hh%M') %></p>
-                  <p class="purple medium"><%= upcoming_booking.lesson.lesson_name.capitalize %></p>
-                  <p><%= upcoming_booking.lesson.lesson_level %></p>
-                  <p>Cours en <%= upcoming_booking.lesson.lesson_language %></p>
-                  <p class="medium"><span class= "purple"><%= upcoming_booking.lesson.bookings.count %></span> réservation</p>
-                </div>
-                <div class="card-part-right">
-                  <p>Descriptif du cours</p>
-                  <p><%= upcoming_booking.lesson.lesson_description %></p>
-                  <p>Matériel nécessaire</p>
-                  <p><%= upcoming_booking.lesson.lesson_material_needed %></p>
+            <% @upcoming_bookings.each do |upcoming_booking| %>
+              <div class="col-xs-12 col-lg-12">
+                <div class="card-reservation d-flex">
+                  <div class="card-reservation-left col-xs-12 col-lg-2">
+                    <p class="medium"><span><%= I18n.l(upcoming_booking.lesson.lesson_date, format: '%A %d %B %Y', locale: :'fr').capitalize %></span> à <%= upcoming_booking.lesson.start.strftime('%Hh%M') %></p>
+                    <p class="purple medium"><%= upcoming_booking.lesson.lesson_name.upcase %></p>
+                    <p><%= upcoming_booking.lesson.lesson_level %></p>
+                    <p>Cours en <%= upcoming_booking.lesson.lesson_language %></p>
+                    <p><%= (upcoming_booking.lesson.duration / 60).round %>min</p>
+                    <%= link_to elefe_path(upcoming_booking.lesson.eleve), class: "black-link" do %>
+                      <p class="medium"><%= upcoming_booking.lesson.eleve.name %> <%= upcoming_booking.lesson.eleve.surname %></p>
+                    <% end %>
+                  </div>
+
+                  <div class="card-reservation-centre col-xs-12 col-lg-8">
+                    <p class='medium mb-0'>Descriptif du cours</p>
+                    <p><%= upcoming_booking.lesson.lesson_description %></p>
+                    <p class='medium mb-0'>Matériel nécessaire</p>
+                    <p><%= upcoming_booking.lesson.lesson_material_needed %></p>
+                  </div>
+
+                  <div class="card-reservation-right col-xs-12 col-lg-2 d-flex justify-content-center align-items-center">
+                    <div>
+                      <%= link_to lesson_path(upcoming_booking.lesson_id), class: "btn-rectangle mb-4" do %>
+                        <%= image_tag "video-call.svg", class: "video-call-icon" %>
+                        <p>Accéder au cours</p>
+                      <% end %>
+                      <p class="medium"><span class= "purple"><%= upcoming_booking.lesson.bookings.count %></span> participants</p>
+                      <%= link_to '+ Ajouter à mon calendrier', elefe_path(upcoming_booking.lesson.eleve), class: 'black-link medium' %>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
+            <% end %>
           </div>
-        <% end %>
+        </div>
+
       <% else %>
         <p>Vous n'avez pas de cours à venir.</p>
       <% end %>
     </div>
-    <h5 class="purple">MES COURS PASSÉS (<%= @past_bookings.count %>) <button id="buttonTogglePastBookings" class="purple medium">+</button></h5>
+
+    <button id="buttonTogglePastBookings" class="purple medium d-flex mt-4">
+      <h5 class="purple">MES COURS PASSÉS (<%= @past_bookings.count %>)</h5><span>+</span>
+    </button>
+
     <div id="togglePastBookings" style="display: none">
-      <% if @past_bookings.present? %>
-        <% @past_bookings.each do |past_booking| %>
+      <div class="cards-reservations">
+        <% if @past_bookings.present? %>
           <div class="row">
-            <div class="col-xs-12 col-md-6">
-              <div class="card-mes-reservations">
-                <div class="card-part-left">
-                  <p class="medium"><%= past_booking.lesson.lesson_date.strftime(" %A %d %B %Y") %> à <%= past_booking.lesson.beginning_time.strftime('%Hh%M') %></p>
-                  <p class="purple medium"><%= past_booking.lesson.lesson_name.capitalize %></p>
+            <% @past_bookings.each do |past_booking| %>
+            <div class="col-xs-12 col-lg-12">
+              <div class="card-reservation d-flex">
+                <div class="card-reservation-left col-xs-12 col-lg-2">
+                  <p class="medium"><span><%= I18n.l(past_booking.lesson.lesson_date, format: '%A %d %B %Y', locale: :'fr').capitalize %></span> à <%= past_booking.lesson.start.strftime('%Hh%M') %></p>
+                  <p class="purple medium"><%= past_booking.lesson.lesson_name.upcase %></p>
                   <p><%= past_booking.lesson.lesson_level %></p>
                   <p>Cours en <%= past_booking.lesson.lesson_language %></p>
-                  <p class="medium"><span class= "purple"><%= past_booking.lesson.bookings.count %></span> réservation</p>
+                  <p><%= (past_booking.lesson.duration / 60).round %>min</p>
+                  <%= link_to elefe_path(past_booking.lesson.eleve), class: "black-link" do %>
+                    <p class="medium"><%= past_booking.lesson.eleve.name %> <%= past_booking.lesson.eleve.surname %></p>
+                  <% end %>
                 </div>
-                <div class="card-part-right">
-                  <p>Descriptif du cours</p>
+
+                <div class="card-reservation-centre col-xs-12 col-lg-8">
+                  <p class='medium mb-0'>Descriptif du cours</p>
                   <p><%= past_booking.lesson.lesson_description %></p>
-                  <p>Matériel nécessaire</p>
+                  <p class='medium mb-0'>Matériel nécessaire</p>
                   <p><%= past_booking.lesson.lesson_material_needed %></p>
+                </div>
+
+                <div class="card-reservation-right col-xs-12 col-lg-2 d-flex justify-content-center align-items-center">
+                  <div>
+                    <% if Review.where("lesson_id = ? AND eleve_id = ?", past_booking.lesson.id, past_booking.eleve_id).empty? %>
+                      <button class="btn-rectangle-blue mb-4">Noter le cours</button>
+                    <% end %>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+            <% end %>
+            </div>
+        <% else %>
+          <p>Vous n'avez pas de cours passés</p>
         <% end %>
-      <% else %>
-        <p>Vous n'avez pas de cours passés</p>
-      <% end %>
+      </div>
     </div>
+
+
   </div>
 <% else %>
   <p>Vous ne vous êtes pas encore inscrit(e) à un cours.</p>

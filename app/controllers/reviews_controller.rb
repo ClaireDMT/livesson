@@ -10,7 +10,7 @@ class ReviewsController < ApplicationController
     @review.user = current_user
     if @review.save
       respond_to do |format|
-        format.html { redirect_to tour_path(@lesson) }
+        format.html { redirect_to lesson_path(@lesson) }
         format.js  # <-- will render `app/views/reviews/create.js.erb`
       end
     else

@@ -1,3 +1,4 @@
+require_relative 'lesson.rb'
 class Lesson < ApplicationRecord
   belongs_to :eleve
   belongs_to :sport
@@ -5,7 +6,7 @@ class Lesson < ApplicationRecord
   belongs_to :template
   has_many :bookings, dependent: :destroy
   has_many :reviews, dependent: :destroy
-  # validates :lesson_date, :beginning_time, :end_time,
+  # validates :lesson_date, :start, :end,
   #           :lesson_description, :lesson_material_needed,
   #           :lesson_name, :lesson_level, :lesson_duration,
   #           :lesson_language, :lesson_price, presence: true
@@ -17,10 +18,14 @@ class Lesson < ApplicationRecord
             "Stretching", "Sports de combat", "Spécial kids"]
 
   def duration
-    @lesson_duration = end_time - beginning_time
+    @lesson_duration = self.end - start
   end
 
-  include PgSearch
+  def all_participants
+    Eleve.joins(:bookings).where(booking:  {lesson_id: self.id })
+  end
+
+  include PgSearch::Model
   pg_search_scope :search_by_sport_name,
                   against: [:sport_id],
                   associated_against: {

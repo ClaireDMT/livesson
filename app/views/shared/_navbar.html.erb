@@ -1,7 +1,7 @@
 <% if params[:controller] == 'eleves' && params[:action] == 'new'  %>
   <div class="navbar-desktop d-none d-md-flex">
     <div class="logo">
-      <%= link_to '/home' do %>
+      <%= link_to root_path do %>
         <%= image_tag "logo.png" %>
       <% end %>
     </div>
@@ -10,7 +10,7 @@
   <div class="navbar-desktop d-none d-md-flex">
     <!-- Logo -->
     <div class="logo">
-      <%= link_to '/home' do %>
+      <%= link_to root_path do %>
         <%= image_tag "logo.png" %>
       <% end %>
     </div>
@@ -43,7 +43,7 @@
       <% end %>
 
       <% unless user_signed_in? && current_user.eleve.present? %>
-        <%= link_to 'Aide', '/home', class: "medium nav-link" %>
+        <%= link_to 'Aide', root_path, class: "medium nav-link" %>
         <%= link_to 'Inscription', new_user_registration_path, class: "medium nav-link" %>
         <%= link_to new_user_session_path do %>
           <button class="btn-rectangle medium">
@@ -52,11 +52,11 @@
         <% end %>
       <% else %>
         <% if current_user.eleve.moderated?  %>
-          <%= link_to 'Cours', mes_cours_path(current_user.eleve), class: "medium nav-link" %>
+          <%= link_to 'Cours', mes_cours_eleves_path(current_user.eleve), class: "medium nav-link" %>
           <%= link_to 'Planning', '', class: "medium nav-link" %>
         <% end %>
-        <%= link_to 'Réservations', mes_reservations_path(current_user.eleve), class: "medium nav-link" %>
-        <%= link_to 'Aide', '/home', class: "medium nav-link" %>
+        <%= link_to 'Réservations', mes_reservations_eleves_path(current_user.eleve), class: "medium nav-link" %>
+        <%= link_to 'Aide', root_path, class: "medium nav-link" %>
         <div class="btn-group dropright">
           <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <% if @eleve.profile_picture.attached? %>
@@ -90,7 +90,7 @@
       </div>
     </div>
     <div class="logo">
-      <%= link_to '/home' do %>
+      <%= link_to root_path do %>
         <%= image_tag "logo.png" %>
       <% end %>
     </div>
@@ -99,7 +99,7 @@
         <i class="far fa-user"></i>
       </button>
       <div class="dropdown-menu">
-        <%= link_to 'Aide', '/home' %> <br>
+        <%= link_to 'Aide', root_path %> <br>
         <% if user_signed_in? && current_user.eleve.present? %>
           <%= link_to 'Mon Compte', edit_elefe_path(current_user.eleve) %>
           <%= link_to 'Me déconnecter', destroy_user_session_path, method: :delete %>

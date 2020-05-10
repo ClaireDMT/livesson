@@ -38,4 +38,10 @@ class Lesson < ApplicationRecord
                   using: {
                     tsearch: { prefix: true }
                   }
+
+  pg_search_scope :search_by_beginning_time,
+                  against: [:beginning_time],
+                  using: {
+                    tsearch: { prefix: true }
+                  }
 end

@@ -11,6 +11,7 @@ class LessonsController < ApplicationController
       search_lesson_language
       search_lesson_level
       search_lesson_date
+      search_beginning_time
       search_sport_name_and_lesson_language
       search_sport_name_lesson_language_and_lesson_level
       search_all
@@ -38,6 +39,11 @@ class LessonsController < ApplicationController
   def search_lesson_date
     query = params[:query]
     @lessons = @lessons.search_by_lesson_date(query[:lesson_date]) if query[:lesson_date].present?
+  end
+
+  def search_beginning_time
+    query = params[:query]
+    @lessons = @lessons.search_by_beginning_time(query[:beginning_time]) if query[:beginning_time].present?
   end
 
   def search_sport_name_and_lesson_language

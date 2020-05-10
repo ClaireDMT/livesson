@@ -1,7 +1,7 @@
 const createLessonStream = () => {
   const lessonContainer = document.querySelector('#lesson-video-container');
   if(document.body.contains(lessonContainer)) {
-    const domain = 'www.livesson.com';
+    const domain = 'meet.jit.si';
     const lessonId = lessonContainer.dataset.lessonId;
     const options = {
         roomName: `/lessons/${lessonId}`,

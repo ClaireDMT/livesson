@@ -20,10 +20,12 @@ class Lesson < ApplicationRecord
     @lesson_duration = self.end - start
   end
 
-  def all_participants
-  end
+  # def all_participants
+  #   eleves = Eleve.joins(:booking).where(booking:  {lesson_id: self.id })
+  #   eleves
+  # end
 
-  include PgSearch
+  include PgSearch::Model
   pg_search_scope :search_by_sport_name,
                   against: [:sport_id],
                   associated_against: {

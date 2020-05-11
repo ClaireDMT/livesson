@@ -3,8 +3,8 @@ const createLessonStream = () => {
   if(document.body.contains(lessonContainer)) {
     const domain = 'meet.jit.si';
     const lessonId = lessonContainer.dataset.lessonId;
-    const lessonProfName = lessonContainer.dataset.lessonIdProfName;
-    const lessonProfSurname = lessonContainer.dataset.lessonIdProfSurname;
+    const lessonProfName = lessonContainer.dataset.lessonProfName;
+    const lessonProfSurname = lessonContainer.dataset.lessonProfSurname;
 
     const options = {
         roomName: `lessons/${lessonId}-${lessonProfName}-${lessonProfSurname}`,

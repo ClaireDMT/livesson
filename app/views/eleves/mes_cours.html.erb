@@ -1,41 +1,29 @@
 <div id="templates-new">
-
-<h2>Mes cours comme Prof +</h2>
-    <button class="open-button btn-rectangle" onclick="openFormTemplate()">+ Créer un nouveau type de cours</button>
-    <button class="open-button btn-rectangle" onclick="openFormLesson()"> Ajouter un cours au planning</button>
-
+  <div class="flexify">
+    <h2>Mes cours</h2>
+    <div class="buttons">
+      <button class=" btn-rectangle" onclick="openFormTemplate()">+ Créer un nouveau type de cours</button>
+      <button class=" btn-rectangle" onclick="openFormLesson()">+ Ajouter un cours au planning</button>
+    </div>
+  </div>
 <% @templates.each do |template| %>
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-12 col-md-6">
-        <div class="card">
-          <div class="image">
-            <%= image_tag "empty.jpg" %>
+  <div class="card">
+    <div class="card-content">
+      <div class="card-content-left">
+        <p class="template-name medium"> <%= template.template_name %> </p>
+        <p class="template-level"> <%=template.template_level %> </p>
+      </div>
+      <div class="card-content-right">
+        <div class="flexify-verticaly">
+          <div class="card-content-right-top">
+            <p class='medium'>Descriptif du cours</p>
+            <p class="template-desciption"><%= template.template_description %></p>
+            <p class='medium'>Voir plus</p>
           </div>
-          <div class="card-content">
-            <div class="card-content-left">
-              <p class="lesson-type medium"> <%= template.template_name %> </p>
-              <p class="lesson-level"> <%=template.template_level %> </p>
-              <p class="lesson-teacher medium"> <%= @eleve.name.capitalize %> <%= @eleve.surname.capitalize %> </p>
-              <p class="lesson-date"><%= 'Jour' %> à <%= '00h00' %></p>
-              <p class="lesson-language">Cours en Français</p>
-              <!-- <div class="lesson-notation">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="far fa-star"></i>
-                <i class="far fa-star"></i>
-                <span class="__number">(3)</span>
-              </div> -->
-            </div>
-            <div class="card-content-right">
-              <div class="card-content-right-top">
-                <p class="lesson-price medium">
-                  00€
-                </p>
-                <p class="lesson-duration">00min</p>
-              </div>
-            </div>
+          <div class='card-content-right-bottom'>
+            <p class='medium'>Matériel nécessaire</p>
+            <p class="template-materiel"><%= template.template_material_needed %></p>
+            <p class='medium'>Voir plus</p>
           </div>
         </div>
       </div>

@@ -60,6 +60,25 @@
         <% if @past_bookings.present? %>
           <div class="row">
             <% @past_bookings.each do |past_booking| %>
+
+            <!-- Modal -->
+            <div class="modal fade modal-add-review" id="modalCreateReviewLesson<%= past_booking.lesson.id %>" data-lesson="<%= past_booking.lesson.id %>" tabindex="-1" role="dialog" aria-labelledby="modalCreateReview" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title purple medium" id="createReview"><%= "évaluer ce cours".upcase %></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true"><%= image_tag "black-cross.svg" %></span>
+                    </button>
+                  </div>
+                  <div class="modal-body text-center">
+                    <%= render 'reviews/form', lesson: past_booking.lesson, review: Review.new %>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Modal -->
+
             <div class="col-xs-12 col-lg-12">
               <div class="card-reservation d-flex">
                 <div class="card-reservation-left col-xs-12 col-lg-2">
@@ -82,8 +101,19 @@
 
                 <div class="card-reservation-right col-xs-12 col-lg-2 d-flex justify-content-center align-items-center">
                   <div>
-                    <% if Review.where("lesson_id = ? AND eleve_id = ?", past_booking.lesson.id, past_booking.eleve_id).empty? %>
-                      <button class="btn-rectangle-blue mb-4">Noter le cours</button>
+                    <% review = Review.where("lesson_id = ? AND eleve_id = ?", past_booking.lesson.id, past_booking.eleve_id) %>
+                    <% if review.empty? %>
+                      <button class="btn-rectangle mb-4" data-toggle="modal" data-target="#modalCreateReviewLesson<%= past_booking.lesson.id %>" data-lesson="<%= past_booking.lesson.id %>" >Noter le cours</button>
+                      <% else %>
+                        <p class="medium">Votre avis sur le cours</p>
+                        <p><% review.first.rating.round.times do %>
+                            <%= image_tag 'star-full.svg', class: "rating-prof-stars" %>
+                          <% end %>
+                          <% (5 - review.first.rating.round).times do %>
+                            <%= image_tag 'star-empty.svg', class: "rating-prof-stars" %>
+                          <% end %>
+                        </p>
+                        <p><%= review.first.content %></p>
                     <% end %>
                   </div>
                 </div>

@@ -1,12 +1,8 @@
+<div id="templates-new">
+
 <h2>Mes cours comme Prof +</h2>
-    <button class="open-button" onclick="openForm()">+ Créer un nouveau type de cours</button>
-		<button type="button" class="btn btn-rectangle" data-toggle="modal" data-target="#myModal2">
-
-		</button>
-
-<%= link_to new_lesson_path do %>
-  <button class='btn-rectangle'>+ Ajouter un cours au planning</button>
-<% end %>
+    <button class="open-button btn-rectangle" onclick="openFormTemplate()">+ Créer un nouveau type de cours</button>
+    <button class="open-button btn-rectangle" onclick="openFormLesson()"> Ajouter un cours au planning</button>
 
 <% @templates.each do |template| %>
   <div class="container">
@@ -47,7 +43,8 @@
   </div>
 <% end %>
 
-<div id="template-new">
+<div id="template-new" class='form-popup'>
+  <i class="far fa-times-circle" onclick="closeFormTemplate()"></i>
   <h2>CRÉER UN TYPE DE COURS</h2>
   <%= simple_form_for @template do |f| %>
     <%= f.association :activity, collection: @activities, label_method: :activity_name, value_method: :id, label: "Type d'activité", placeholder: "Choisissez le type d'activité"%>
@@ -59,12 +56,36 @@
     <%= f.submit 'Enregistrer', class: 'btn-rectangle' %>
   <% end %>
 </div>
+<div id="lesson-new" class='form-popup'>
+  <i class="far fa-times-circle" onclick="closeFormLesson()"></i>
+  <h2>AJOUTER UN COURS AU PLANNING</h2>
+  <%= simple_form_for @lesson do |f| %>
+    <%= f.association :template, collection: @templates, label_method: :template_name, value_method: :id, label: 'Choisir le cours', placeholder: 'Choisissez votre cours' %>
+    <%= f.input :lesson_date, as: :string, input_html: {class: "datepicker"}, label: 'Date', placeholder: 'Choisissez la date du cours' %>
+    <%= f.input :start, as: :time,  label: 'Horaire du début du cours', placeholder: "Choisissez l'horaire de début du cours" %>
+    <%= f.input :lesson_duration, label: 'Durée', placeholder: 'Définissez la durée du cours' %>
+    <%= f.input :lesson_language, collection: Lesson::LANGUES, label: 'Langue', placeholder: 'Choisissez la langue de ce cours' %>
+    <p>Tarif du cours</p>
+    <%= f.input :lesson_price, label: 'Tarif du cours', placeholder: '€' %>
+     <p>Proposer une offre ponctuelle</p>
+    <%= f.input :lesson_discount_price, label: "Tarif de l'offre ponctuelle", placeholder: '€', hint: '(valable pour tous les élèves)' %>
+    <%= f.submit 'Enregistrer', class: 'btn-rectangle' %>
+  <% end %>
+</div>
 
 <script>
-  function openForm() {
+  function openFormTemplate() {
+    document.getElementById("lesson-new").style.display = "none"
     document.getElementById("template-new").style.display = "block";
   }
-  function closeForm() {
+  function closeFormTemplate() {
     document.getElementById("template-new").style.display = "none";
+  }
+  function openFormLesson() {
+    document.getElementById("template-new").style.display = "none";
+    document.getElementById("lesson-new").style.display = "block";
+  }
+  function closeFormLesson() {
+    document.getElementById("lesson-new").style.display = "none";
   }
 </script>

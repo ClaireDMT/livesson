@@ -1,5 +1,6 @@
 class ElevesController < ApplicationController
   before_action :find_eleve, only: %i[edit update mes_cours mes_reservations eleve_reservations prof_reservations]
+
   def new
     @eleve = Eleve.new
   end

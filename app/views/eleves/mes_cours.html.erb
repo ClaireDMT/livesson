@@ -1,7 +1,9 @@
 <h2>Mes cours comme Prof +</h2>
-<%= link_to new_template_path do %>
-  <button class='btn-rectangle'>+ Créer un nouveau type de cours</button>
-<% end %>
+    <button class="open-button" onclick="openForm()">+ Créer un nouveau type de cours</button>
+		<button type="button" class="btn btn-rectangle" data-toggle="modal" data-target="#myModal2">
+
+		</button>
+
 <%= link_to new_lesson_path do %>
   <button class='btn-rectangle'>+ Ajouter un cours au planning</button>
 <% end %>
@@ -44,7 +46,8 @@
     </div>
   </div>
 <% end %>
-<div id="template">
+
+<div id="template-new">
   <h2>CRÉER UN TYPE DE COURS</h2>
   <%= simple_form_for @template do |f| %>
     <%= f.association :activity, collection: @activities, label_method: :activity_name, value_method: :id, label: "Type d'activité", placeholder: "Choisissez le type d'activité"%>
@@ -57,12 +60,11 @@
   <% end %>
 </div>
 
-
 <script>
   function openForm() {
-    document.getElementById("template").style.display = "block";
+    document.getElementById("template-new").style.display = "block";
   }
   function closeForm() {
-    document.getElementById("template").style.display = "none";
+    document.getElementById("template-new").style.display = "none";
   }
 </script>

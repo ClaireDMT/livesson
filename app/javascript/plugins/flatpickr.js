@@ -11,7 +11,7 @@ flatpickr("#query_lesson_date", {
                                   "locale": French
                                 })
 
-flatpickr("#query_beginning_time", {
+flatpickr("#query_start", {
                                   enableTime: true,
                                   noCalendar: true,
                                   dateFormat: "H:i",

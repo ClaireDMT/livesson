@@ -19,7 +19,7 @@
               <p class="lesson-type medium"> <%= lesson.lesson_name %> </p>
               <p class="lesson-level"> <%=lesson.lesson_level %> </p>
               <p class="lesson-teacher medium"> <%=lesson.eleve.name.capitalize %> <%= lesson.eleve.surname.capitalize %> </p>
-              <p class="lesson-date"><span ><%= I18n.l(lesson.lesson_date, format: '%a %d %B %Y', locale: :'fr').capitalize %></span> à <%= lesson.start.strftime('%Hh%M') %></p>
+              <p class="lesson-date"><span ><%= l(lesson.lesson_date, format: :long, locale: :'fr').capitalize %></span> à <%= l(lesson.start, format: '%Hh%M') %></p>
               <p class="lesson-language">Cours en <%= lesson.lesson_language %></p>
               <!-- <div class="lesson-notation">
                 <i class="fas fa-star"></i>

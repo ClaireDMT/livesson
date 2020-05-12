@@ -69,6 +69,11 @@
           line-height: 20px;
           margin-top: 0px;
           margin-bottom: 0px;
+          overflow: hidden;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          max-width: 75ch;
         }
         .card-content-right-top{
           margin-bottom: 15px;

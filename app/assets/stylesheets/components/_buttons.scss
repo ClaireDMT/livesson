@@ -75,15 +75,44 @@ button:focus {
     font-weight: 500;
   }
 }
-.btn-dropdown {
+
+.btn-dropdown-purple {
+  background-color: $purple;
+  color: white;
+  border-radius: 10px;
+  font-size: 16px;
+  vertical-align: middle;
+  text-align: center;
+  height: 42px;
+  width: 228px;
+  border: transparent;
+  p {
+    margin-bottom: 0;
+  }
+}
+
+.btn-search {
+  background-color: $purple;
+  color: white;
+  border-radius: 10px;
+  font-size: 16px;
+  vertical-align: middle;
+  text-align: center;
+  height: 42px;
+  width: 100px;
+  border: transparent;
+}
+
+.btn-dropdown-white {
   background-color: white;
   color: black;
   border-radius: 10px;
   font-size: 16px;
   vertical-align: middle;
   text-align: center;
-  height: 35px;
-  border: 1px solid rgba(0, 0, 0, 0.5);
+  height: 42px;
+  width: 228px;
+  border: 1px solid rgba(28, 28, 38, 0.15);
   p {
     margin-bottom: 0;
   }
@@ -155,4 +184,8 @@ button:focus {
   }
 
 
+}
+
+.dropdown-toggle::after {
+  display: none;
 }

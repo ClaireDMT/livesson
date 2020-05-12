@@ -1,11 +1,40 @@
-<div class= 'text-center'>
+<div>
   <%= simple_form_for :query, method: :get, url: lessons_path, html: { class: "search-bar-lesson", id: "form-search" }, defaults: { input_html: { class: 'search-input-index' } } do |f| %>
-      <%= f.input :sport_name, label: false, collection: Lesson::SPORTS, selected: @sport, include_blank: "Type d'activités", required: false, wrapper_html: { class: "margin-10-0"} %>
-      <%= f.input :lesson_language, label: false, collection: Lesson::LANGUES, selected: @langue, include_blank: "Langue", required: false, wrapper_html: { class: "margin-10-0" } %>
+      <div class="dropdown show">
+        <button id="dropdown-toggle-sport-name" class="btn-dropdown-purple dropdown-toggle" type="button">
+          Type d'activité
+        </button>
+
+        <div id="dropdown-menu-sport-name" class="dropdown-menu" aria-labelledby="dropdown-toggle-sport-name">
+          <%= f.input :sport_name, label: false, collection: Lesson::SPORTS, include_blank: "Anything", wrapper_html: { class: 'form-group' }, as: :check_boxes, :input_html => {name: "query[sport_name][]", multiple: true, class: "dropdown-item"}, include_hidden: false %>
+        </div>
+      </div>
+
+      <div class="dropdown show">
+        <button id="dropdown-toggle-lesson-language" class="btn-dropdown-white dropdown-toggle" type="button" >
+          Langue
+        </button>
+
+        <div id="dropdown-menu-lesson-language" class="dropdown-menu" aria-labelledby="dropdown-toggle-lesson-language">
+          <%= f.input :lesson_language, label: false, collection: Lesson::LANGUES, include_blank: "Anything", wrapper_html: { class: 'form-group' }, as: :check_boxes, :input_html => {name: "query[lesson_language][]", multiple: true, class: "dropdown-item"}, include_hidden: false %>
+        </div>
+      </div>
+
       <% lesson_date =  params[:query][:lesson_date] if params[:query].present? %>
-      <%= f.input :lesson_date , label: false, input_html: { value: lesson_date }, required: false, placeholder: "Jour", wrapper_html: { class: "margin-10-0" } %>
-      <%#= f.input :creneaux, label: false, collection: Lesson::LANGUES, selected: @langue, include_blank: "Langue", required: false, wrapper_html: { class: "margin-10-0" } %>
-      <%= f.input :lesson_level, label: false, collection: Lesson::NIVEAUX, selected: @niveaux, include_blank: "Niveau", required: false, wrapper_html: { class: "margin-10-0" } %>
-      <button type="submit" id="submit-form"><i class="fas fa-search "></i></button>
+      <%= f.input :lesson_date , label: false, input_html: { value: lesson_date }, required: false, placeholder: "Jour", input_html: { class: "btn-dropdown-white" }  %>
+
+      <% beginning_time =  params[:query][:beginning_time] if params[:query].present? %>
+      <%= f.input :beginning_time , label: false, input_html: { value: beginning_time }, required: false, placeholder: "Heure de début", input_html: { class: "btn-dropdown-white" }  %>
+
+      <div class="dropdown show">
+        <button id="dropdown-toggle-lesson-level" class="btn-dropdown-white dropdown-toggle" type="button" >
+          Niveau
+        </button>
+        <div id="dropdown-menu-lesson-level" class="dropdown-menu" aria-labelledby="dropdown-toggle-lesson-level">
+          <%= f.input :lesson_level, label: false, collection: Lesson::NIVEAUX, include_blank: "Anything", wrapper_html: { class: 'form-group' }, as: :check_boxes, :input_html => {name: "query[lesson_level][]", multiple: true, class: "dropdown-item"}, include_hidden: false%>
+        </div>
+      </div>
+
+      <button type="submit" id="submit-form" class="btn-search"><i class="fas fa-search "></i></button>
   <% end %>
 </div>

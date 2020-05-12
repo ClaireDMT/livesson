@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_05_084519) do
+ActiveRecord::Schema.define(version: 2020_05_10_110025) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -96,8 +96,6 @@ ActiveRecord::Schema.define(version: 2020_05_05_084519) do
 
   create_table "lessons", force: :cascade do |t|
     t.date "lesson_date"
-    t.time "beginning_time"
-    t.time "end_time"
     t.text "lesson_description"
     t.text "lesson_material_needed"
     t.integer "review"
@@ -113,6 +111,9 @@ ActiveRecord::Schema.define(version: 2020_05_05_084519) do
     t.bigint "activity_id"
     t.bigint "eleve_id"
     t.bigint "template_id"
+    t.datetime "start"
+    t.datetime "end"
+    t.string "streaming_url"
     t.index ["activity_id"], name: "index_lessons_on_activity_id"
     t.index ["eleve_id"], name: "index_lessons_on_eleve_id"
     t.index ["sport_id"], name: "index_lessons_on_sport_id"

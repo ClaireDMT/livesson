@@ -18,7 +18,7 @@ class Lesson < ApplicationRecord
             "Stretching", "Sports de combat", "Spécial kids"]
 
   def end
-    @end = start + lesson_duration
+    @end = start + (lesson_duration * 60)
   end
 
   def all_participants

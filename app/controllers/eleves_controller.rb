@@ -81,6 +81,11 @@ class ElevesController < ApplicationController
   def mes_reservations
     eleve_reservations
     prof_reservations
+    @template = Template.new
+    @lesson = Lesson.new
+    @templates = Template.all.where(eleve_id: @eleve)
+    @sports = Sport.all
+    @activities = Activity.all
   end
 
   def eleve_reservations
@@ -93,6 +98,10 @@ class ElevesController < ApplicationController
     @lessons = Lesson.where(eleve_id: @eleve)
     @upcoming_lessons = @lessons.where("start > ?", Time.now)
     @past_lessons = @lessons.where("start < ?", Time.now)
+  end
+
+  def template_and_lesson_pop_up_new
+
   end
 
   private

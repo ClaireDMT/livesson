@@ -17,7 +17,7 @@
                     <p class="purple medium"><%= upcoming_booking.lesson.lesson_name.upcase %></p>
                     <p><%= upcoming_booking.lesson.lesson_level %></p>
                     <p>Cours en <%= upcoming_booking.lesson.lesson_language %></p>
-                    <p><%= (upcoming_booking.lesson.duration / 60).round %>min</p>
+                    <p><%= upcoming_booking.lesson.lesson_duration %>min</p>
                     <%= link_to elefe_path(upcoming_booking.lesson.eleve), class: "black-link" do %>
                       <p class="medium"><%= upcoming_booking.lesson.eleve.name %> <%= upcoming_booking.lesson.eleve.surname %></p>
                     <% end %>
@@ -86,7 +86,7 @@
                   <p class="purple medium"><%= past_booking.lesson.lesson_name.upcase %></p>
                   <p><%= past_booking.lesson.lesson_level %></p>
                   <p>Cours en <%= past_booking.lesson.lesson_language %></p>
-                  <p><%= (past_booking.lesson.duration / 60).round %>min</p>
+                  <p><%= past_booking.lesson.lesson_duration %>min</p>
                   <%= link_to elefe_path(past_booking.lesson.eleve), class: "black-link" do %>
                     <p class="medium"><%= past_booking.lesson.eleve.name %> <%= past_booking.lesson.eleve.surname %></p>
                   <% end %>

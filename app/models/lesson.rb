@@ -25,6 +25,10 @@ class Lesson < ApplicationRecord
     Eleve.joins(:bookings).where(bookings:  {lesson_id: self.id }).map { |eleve| "#{eleve.name} #{eleve.surname}"}
   end
 
+  def in_15?
+    (start - Time.now) / 60 <= 15
+  end
+
   include PgSearch::Model
   pg_search_scope :search_by_sport_name,
                   against: [:sport_id],

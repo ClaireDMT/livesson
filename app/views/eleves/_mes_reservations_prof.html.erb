@@ -56,6 +56,7 @@
 
                   <div class="card-reservation-right col-xs-12 col-lg-2 d-flex justify-content-center align-items-center">
                     <div>
+                      <% if upcoming_lesson.in_15?  %>
                       <%= link_to lesson_path(upcoming_lesson.id), class: "btn-rectangle mb-4" do %>
                         <%= image_tag "video-call.svg", class: "video-call-icon" %>
                         <p>Démarrer le cours</p>

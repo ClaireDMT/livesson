@@ -15,9 +15,15 @@
                   <div class="card-reservation-left col-xs-12 col-lg-2">
                     <p class="medium"><span><%= I18n.l(upcoming_booking.lesson.start, format: '%A %d %B %Y', locale: :'fr').capitalize %></span> à <%#= upcoming_booking.lesson.start.strftime('%Hh%M') %></p>
                     <p class="purple medium"><%= upcoming_booking.lesson.lesson_name.upcase %></p>
+<<<<<<< HEAD
                     <p><%#= upcoming_booking.lesson.lesson_level %></p>
                     <p>Cours en <%#= upcoming_booking.lesson.lesson_language %></p>
                     <p><%#= (upcoming_booking.lesson.duration / 60).round %>min</p>
+=======
+                    <p><%= upcoming_booking.lesson.lesson_level %></p>
+                    <p>Cours en <%= upcoming_booking.lesson.lesson_language %></p>
+                    <p><%= upcoming_booking.lesson.lesson_duration %>min</p>
+>>>>>>> master
                     <%= link_to elefe_path(upcoming_booking.lesson.eleve), class: "black-link" do %>
                       <p class="medium"><%= upcoming_booking.lesson.eleve.name %> <%= upcoming_booking.lesson.eleve.surname %></p>
                     <% end %>
@@ -82,11 +88,19 @@
             <div class="col-xs-12 col-lg-12">
               <div class="card-reservation d-flex">
                 <div class="card-reservation-left col-xs-12 col-lg-2">
+<<<<<<< HEAD
                   <p class="medium"><span><%= I18n.l(past_booking.lesson.start, format: '%A %d %B %Y', locale: :'fr').capitalize %></span> à <%= past_booking.lesson.start.strftime('%Hh%M') %></p>
                   <p class="purple medium"><%#= past_booking.lesson.lesson_name.upcase %></p>
                   <p><%#= past_booking.lesson.lesson_level %></p>
                   <p>Cours en <%#= past_booking.lesson.lesson_language %></p>
                   <p><%#= (past_booking.lesson.duration / 60).round %>min</p>
+=======
+                  <p class="medium"><span><%= I18n.l(past_booking.lesson.lesson_date, format: '%A %d %B %Y', locale: :'fr').capitalize %></span> à <%= past_booking.lesson.start.strftime('%Hh%M') %></p>
+                  <p class="purple medium"><%= past_booking.lesson.lesson_name.upcase %></p>
+                  <p><%= past_booking.lesson.lesson_level %></p>
+                  <p>Cours en <%= past_booking.lesson.lesson_language %></p>
+                  <p><%= past_booking.lesson.lesson_duration %>min</p>
+>>>>>>> master
                   <%= link_to elefe_path(past_booking.lesson.eleve), class: "black-link" do %>
                     <p class="medium"><%= past_booking.lesson.eleve.name %> <%= past_booking.lesson.eleve.surname %></p>
                   <% end %>

@@ -17,17 +17,14 @@ class Lesson < ApplicationRecord
             "Cardio training", "Renforcement", "Méditation",
             "Stretching", "Sports de combat", "Spécial kids"]
 
-  def duration
-    @lesson_duration = self.end - start
+  def end
+    @end = start + (lesson_duration * 60)
   end
 
   def all_participants
     Eleve.joins(:bookings).where(bookings:  {lesson_id: self.id }).map { |eleve| "#{eleve.name} #{eleve.surname}"}
   end
 
-  def in_15?
-    (start - Time.now) / 60 <= 15
-  end
 
   include PgSearch::Model
   pg_search_scope :search_by_sport_name,
@@ -53,6 +50,12 @@ class Lesson < ApplicationRecord
 
   pg_search_scope :search_by_lesson_level,
                   against: [:lesson_level],
+                  using: {
+                    tsearch: { prefix: true }
+                  }
+
+  pg_search_scope :search_by_start,
+                  against: [:start],
                   using: {
                     tsearch: { prefix: true }
                   }

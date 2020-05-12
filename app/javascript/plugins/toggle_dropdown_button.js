@@ -26,7 +26,7 @@ if(window.location.pathname === "/lessons") {
     dropdownMenuLessonLevel.classList.toggle("show");
   });
 }
-else if(window.location.pathname === "/home") {
+else if(window.location.pathname === "/") {
   dropdownButtonHome.addEventListener('click', (e) => {
   dropdownMenuHome.classList.toggle("show");
 });

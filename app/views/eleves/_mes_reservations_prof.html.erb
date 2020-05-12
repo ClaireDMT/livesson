@@ -12,14 +12,16 @@
           <div class="modal-header">
             <h5 class="modal-title purple medium" id="reservations-title"><%= "Liste des élèves inscrits".upcase %></h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
+              <span aria-hidden="true">
+                <%= image_tag "black-cross.svg" %>
+              </span>
             </button>
           </div>
           <div class="modal-body">
-            <p></p>
+            <ul></ul>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-primary">Save changes</button>
+            <button type="button" class="btn-rectangle" data-dismiss="modal">ok</button>
           </div>
         </div>
       </div>
@@ -40,9 +42,8 @@
                     <p><%= upcoming_lesson.lesson_level %></p>
                     <p>Cours en <%= upcoming_lesson.lesson_language %></p>
                     <p><%= (upcoming_lesson.duration / 60).round %>min</p>
-                    <% Eleve.where %>
-                    <p class="medium" data-toggle="modal" data-target="#reservationsModal" data-reservations="<%= upcoming_lesson.id %>">
-                      <span class= "purple"><%= upcoming_lesson.bookings.count %></span> réservation
+                    <p class="medium purple" data-toggle="modal" data-target="#reservationsModal" data-lesson="<%= upcoming_lesson.id %>" data-participants="<%= upcoming_lesson.all_participants.join(',') %> ">
+                      <%= pluralize(upcoming_lesson.bookings.count, "réservation") %>
                     </p>
                   </div>
 
@@ -89,7 +90,8 @@
                   <p><%= past_lesson.lesson_level %></p>
                   <p>Cours en <%= past_lesson.lesson_language %></p>
                   <p><%= (past_lesson.duration / 60).round %>min</p>
-                  <p class="medium"><span class= "purple"><%= past_lesson.bookings.count %></span> réservation</p>
+                  <p class="medium purple" data-toggle="modal" data-target="#reservationsModal" data-lesson="<%= past_lesson.id %>" data-participants="<%= past_lesson.all_participants.join(',') %> ">
+                    <%= pluralize(past_lesson.bookings.count, "réservation")  %></p>
                 </div>
 
                 <div class="card-reservation-centre col-xs-12 col-lg-8">

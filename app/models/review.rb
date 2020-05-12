@@ -2,7 +2,6 @@ class Review < ApplicationRecord
   belongs_to :lesson
   belongs_to :eleve
 
-  validates :content, length: { minimum: 20 }, presence: true
   validates :eleve, presence: true
   validates :rating, presence: true
 

@@ -22,7 +22,7 @@ class Lesson < ApplicationRecord
   end
 
   def all_participants
-    Eleve.joins(:bookings).where(booking:  {lesson_id: self.id })
+    Eleve.joins(:bookings).where(bookings:  {lesson_id: self.id }).map { |eleve| "#{eleve.name} #{eleve.surname}"}
   end
 
   include PgSearch::Model

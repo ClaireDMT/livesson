@@ -1,10 +1,12 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-4">
-      <%= simple_form_for @review do |f| %>
-        <%= f.input :rating, collection: (1..5).to_a, label: "Évaluer ce cours" %>
-        <%= f.input :content, label: false %>
-        <%= f.submit "Enregistrer" %>
+      <%= simple_form_for [lesson, review] do |f| %>
+        <p class="text-center">Évaluer ce cours permet à la communauté Livesson d'avoir un avis sur les cours proposés</p>
+        <%= f.input :rating, collection: (1..5).to_a, label: false, class: "rating-stars" %>
+        <p class="text-left mb-2 mt-5">Commentaire (facultatif):</p>
+        <%= f.input :content, label: false, as: :text, placeholder: "Vous pouvez également laisser un commentaire, qui sera visible sur le profil du professionel. Attention, une fois validé il ne pourra pas être modifié ou supprimé." %>
+        <%= f.submit "Enregistrer", class: "btn-rectangle mb-3 text-center" %>
       <% end %>
     </div>
   </div>

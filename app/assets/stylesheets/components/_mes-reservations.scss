@@ -38,8 +38,55 @@
     .video-call-icon {
       width: 20px;
       margin-right: 10px;
-
     }
   }
 
+  .modal-header, .modal-footer {
+    border: none;
+  }
+
+  .modal-header, .modal-footer {
+    display: block;
+    position: relative;
+    text-align: center;
+  }
+
+  .modal-header button {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+  }
+
+  .modal-header button img {
+    width: 25px;
+  }
+
+  .modal-body {
+    margin: 0 auto;
+  }
+  .modal-body ul {
+    list-style: none;
+    padding-left: 0;
+    text-align: center
+  }
+
+  .modal-add-review {
+    .modal-dialog {
+      max-width: 600px;
+    }
+    .modal-content {
+      padding: 20px;
+    }
+    .modal-body {
+      width: 80%;
+    }
+  }
+  .form-group.review_rating {
+    width: max-content;
+    margin: 10px auto;
+  }
+
+  .form-group textarea {
+    height: 150px;
+  }
 }

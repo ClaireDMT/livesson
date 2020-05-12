@@ -1,0 +1,59 @@
+#prof-show #calendar {
+  margin-bottom: 50px;
+  button {
+    background-color: $purple;
+    color: white;
+    font-size: 16px;
+    vertical-align: middle;
+    text-align: center;
+    height: 35px;
+    border: transparent;
+    p {
+      margin-bottom: 0;
+    }
+  }
+  button.fc-timeGridDay-button {
+    border-radius: 10px 0 0 10px;
+  }
+  button.fc-timeGridMonth-button {
+    border-radius: 0 10px 10px 0;
+  }
+  button.active {
+    background-color: $darker-purple;
+  }
+
+  button.fc-today-button:disabled {
+    opacity: 1;
+    background-color: $darker-purple;
+  }
+
+  td.alert {
+    position: inherit;
+    color: $purple;
+    font-weight: 500;
+  }
+
+  td.alert-info {
+    background-color: transparent;
+  }
+
+  .fc-content {
+    color: white;
+    font-size: 12px;
+    line-height: 18px;
+    padding: 10px;
+    .fc-title {
+      font-weight: 500;
+    }
+    p {
+      margin-bottom: 0;
+      font-size: 12px;
+    }
+    .fc-event, .fc-time {
+      font-size: 12px;
+      line-height: 16px;
+      font-weight: 400;
+    }
+  }
+
+}

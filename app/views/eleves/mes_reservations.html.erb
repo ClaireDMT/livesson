@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container-fluid" id="mes-reservations">
   <br>
   <div class="reservations-header">
     <h2>Mes réservations</h2>
@@ -16,7 +16,7 @@
   </nav>
   <br>
   <div class="tab-content" id="pills-tabContent">
-    <% if @eleve.prof? %>
+    <% if @eleve.moderated? %>
       <div class="tab-pane fade show active" id="pills-reservations-eleve" role="tabpanel" aria-labelledby="pills-reservations-eleve-tab">
         <%= render 'mes_reservations_eleve'%>
       </div>

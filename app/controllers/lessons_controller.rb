@@ -1,6 +1,6 @@
 class LessonsController < ApplicationController
-  skip_before_action :authenticate_user!, only: %i[index show]
-  before_action :find_lesson, only: %i[show edit update destroy]
+  skip_before_action :authenticate_user!, only: %i[index]
+  before_action :find_lesson, only: %i[show edit update destroy lesson_video]
 
   def index
     @eleve = current_user.eleve unless current_user.nil?
@@ -70,14 +70,8 @@ class LessonsController < ApplicationController
                                                AND lesson_language IN (?)
                                                AND lesson_level IN (?) AND lesson_date = ?",
                                               @sports, @langues, @niveaux, query[:lesson_date])
-    end
   end
 
-  def show
-    @prof = Eleve.find(@lesson.eleve.id)
-    @eleve = current_user.eleve
-    @booking = Booking.new
-    @review = Review.new
   end
 
   def new
@@ -88,11 +82,20 @@ class LessonsController < ApplicationController
     @activities = Activity.all
   end
 
+  def show
+    @lesson.streaming_url = "https://meet.jit.si/lessons/#{@lesson.id}" if @lesson.streaming_url.nil?
+    @lesson.save
+    @eleve = current_user.eleve unless current_user.nil?
+    respond_to do |format|
+      format.html
+      format.json { render json: { lesson: @lesson } }
+    end
+  end
   def create
     @lesson = Lesson.new(lesson_params)
     @lesson.eleve = current_user.eleve
     @templates = Template.all.where(eleve_id: @lesson.eleve)
-    @lesson.lesson_duration = @lesson.end_time - @lesson.beginning_time
+    @lesson.lesson_duration = @lesson.end - @lesson.start
     @lesson.sport = @lesson.template.sport
     @lesson.activity = @lesson.template.activity
     if @lesson.save
@@ -122,6 +125,13 @@ class LessonsController < ApplicationController
     redirect_to lesson_path
   end
 
+  def lesson_video
+    @lesson.lesson_date == Date.today && @lesson.beginning_time == Time.now - 15.min
+    @prof = @lesson.eleve
+    @bookings = Booking.where(lesson: @lesson)
+    @eleves = Eleve.where(id: @bookings.eleve_id)
+  end
+
   private
 
   def find_lesson
@@ -129,7 +139,7 @@ class LessonsController < ApplicationController
   end
 
   def lesson_params
-    params.require(:lesson).permit(:lesson_date, :beginning_time, :end_time,
+    params.require(:lesson).permit(:lesson_date, :start, :end,
                                    :lesson_description, :lesson_material_needed,
                                    :lesson_name, :lesson_level, :lesson_duration,
                                    :lesson_language, :lesson_price,

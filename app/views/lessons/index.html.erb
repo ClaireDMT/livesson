@@ -19,7 +19,7 @@
               <p class="lesson-type medium"> <%= lesson.lesson_name %> </p>
               <p class="lesson-level"> <%=lesson.lesson_level %> </p>
               <p class="lesson-teacher medium"> <%=lesson.eleve.name.capitalize %> <%= lesson.eleve.surname.capitalize %> </p>
-              <p class="lesson-date"><%= lesson.lesson_date.strftime('%a %d %b') %> à <%= lesson.beginning_time.strftime('%Hh%M') %></p>
+              <p class="lesson-date"><span ><%= I18n.l(lesson.lesson_date, format: '%a %d %B %Y', locale: :'fr').capitalize %></span> à <%= lesson.start.strftime('%Hh%M') %></p>
               <p class="lesson-language">Cours en <%= lesson.lesson_language %></p>
               <!-- <div class="lesson-notation">
                 <i class="fas fa-star"></i>
@@ -41,8 +41,14 @@
                 </p>
                 <p class="lesson-duration"><%= lesson.lesson_duration / 60 %>min</p>
               </div>
-              <% unless lesson.eleve == current_user.eleve %>
-                <%= link_to lesson_path(lesson) do %><button class="btn-rectangle">Réserver</button><% end %>
+              <% if current_user && lesson.eleve == current_user.eleve %>
+                <%= link_to elefe_path(lesson.eleve, lesson: lesson) do %>
+                  <button class="btn-rectangle">Voir mon cours</button>
+                <% end %>
+              <% else %>
+                <%= link_to elefe_path(lesson.eleve, lesson: lesson) do %>
+                  <button class="btn-rectangle">Réserver</button>
+                <% end %>
               <% end %>
             </div>
           </div>

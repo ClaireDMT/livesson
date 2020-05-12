@@ -23,8 +23,8 @@
       <% lesson_date =  params[:query][:lesson_date] if params[:query].present? %>
       <%= f.input :lesson_date , label: false, input_html: { value: lesson_date }, required: false, placeholder: "Jour", input_html: { class: "btn-dropdown-white" }  %>
 
-      <% beginning_time =  params[:query][:beginning_time] if params[:query].present? %>
-      <%= f.input :beginning_time , label: false, input_html: { value: beginning_time }, required: false, placeholder: "Heure de début", input_html: { class: "btn-dropdown-white" }  %>
+      <% start =  params[:query][:start] if params[:query].present? %>
+      <%= f.input :start , label: false, input_html: { value: start }, required: false, placeholder: "Heure de début", input_html: { class: "btn-dropdown-white" }  %>
 
       <div class="dropdown show">
         <button id="dropdown-toggle-lesson-level" class="btn-dropdown-white dropdown-toggle" type="button" >

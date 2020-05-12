@@ -17,8 +17,8 @@ class Lesson < ApplicationRecord
             "Cardio training", "Renforcement", "Méditation",
             "Stretching", "Sports de combat", "Spécial kids"]
 
-  def duration
-    @lesson_duration = self.end - start
+  def end
+    @end = start + (lesson_duration * 60)
   end
 
   include PgSearch

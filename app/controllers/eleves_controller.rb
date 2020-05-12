@@ -8,21 +8,22 @@ class ElevesController < ApplicationController
     @user = current_user
     if Eleve.where(user_id: current_user.id).empty? && @user.prof?
       # si l'élève est un prof également
-      @eleve = Eleve.new(eleve_params)
-      @eleve.user_id = current_user.id
       new_prof
       UserMailer.inscription_prof(current_user).deliver_now
-      awaiting_moderation
       render 'awaiting_moderation'
     elsif Eleve.where(user_id: current_user.id).empty?
       # si ce n'est qu'un élève
-      @eleve = Eleve.new(eleve_params)
-      @eleve.user_id = current_user.id
-      @eleve.status = "Inscrit(e)"
-      @eleve.save
+      eleve_creation
       UserMailer.send_welcome(current_user).deliver_now
       redirect_to edit_user_registration_path
     end
+  end
+
+  def eleve_creation
+    @eleve = Eleve.new(eleve_params)
+    @eleve.user_id = current_user.id
+    @eleve.status = "Inscrit(e)"
+    @eleve.save
   end
 
   def show
@@ -39,6 +40,8 @@ class ElevesController < ApplicationController
   end
 
   def new_prof
+    @eleve = Eleve.new(eleve_params)
+    @eleve.user_id = current_user.id
     @eleve.prof = true
     @eleve.status = "En attente de modération"
     @eleve.save
@@ -95,6 +98,7 @@ class ElevesController < ApplicationController
   def find_eleve
     @eleve = Eleve.find(params[:id])
   end
+
   def eleve_params
     params.require(:eleve).permit(:name, :profile_picture, :surname, :birthdate, :sex, :phone_number, :prof, :city, :presentation, :siret_number, :company_address, :facebook, :instagram, :country, :iban, :bic)
   end

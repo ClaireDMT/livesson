@@ -1,6 +1,7 @@
 class LessonsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index]
   before_action :find_lesson, only: %i[show edit update destroy lesson_video]
+  before_action :find_query, only: %i[search_sport_name search_lesson_language search_lesson_level search_lesson_date search_beginning_time search_sport_name_and_lesson_language search_all]
 
   def index
     @eleve = current_user.eleve unless current_user.nil?
@@ -19,35 +20,29 @@ class LessonsController < ApplicationController
   end
 
   def search_sport_name
-    query = params[:query]
     @sports = query[:sport_name]
     @lessons = @lessons.joins(:sport).where("sport_name IN (?)", @sports) if query[:sport_name].present?
   end
 
   def search_lesson_language
-    query = params[:query]
     @langues = query[:lesson_language]
     @lessons = @lessons.search_by_lesson_language(query[:lesson_language]) if query[:lesson_language].present?
   end
 
   def search_lesson_level
-    query = params[:query]
     @niveaux = query[:lesson_level]
     @lessons = @lessons.search_by_lesson_level(query[:lesson_level]) if query[:lesson_level].present?
   end
 
   def search_lesson_date
-    query = params[:query]
     @lessons = @lessons.search_by_lesson_date(query[:lesson_date]) if query[:lesson_date].present?
   end
 
   def search_beginning_time
-    query = params[:query]
     @lessons = @lessons.search_by_beginning_time(query[:beginning_time]) if query[:beginning_time].present?
   end
 
   def search_sport_name_and_lesson_language
-    query = params[:query]
     if query[:sport_name].present? && query[:lesson_language].present?
       @lessons = @lessons.joins(:sport).where("sport_name IN (?)AND lesson_language IN (?)",
                                               @sports, @langues)
@@ -55,7 +50,6 @@ class LessonsController < ApplicationController
   end
 
   def search_sport_name_lesson_language_and_lesson_level
-    query = params[:query]
     if query[:sport_name].present? && query[:lesson_language].present? && query[:lesson_level].present?
       @lessons = @lessons.joins(:sport).where("sport_name IN (?) AND lesson_language IN (?) AND lesson_level IN (?)",
                                               @sports, @langues, @niveaux)
@@ -63,15 +57,13 @@ class LessonsController < ApplicationController
   end
 
   def search_all
-    query = params[:query]
     if query[:sport_name].present? && query[:lesson_language].present? &&
        query[:lesson_level].present? && query[:lesson_date].present?
       @lessons = @lessons.joins(:sport).where("sport_name IN (?)
                                                AND lesson_language IN (?)
                                                AND lesson_level IN (?) AND lesson_date = ?",
                                               @sports, @langues, @niveaux, query[:lesson_date])
-  end
-
+    end
   end
 
   def new
@@ -99,17 +91,21 @@ class LessonsController < ApplicationController
     @lesson.sport = @lesson.template.sport
     @lesson.activity = @lesson.template.activity
     if @lesson.save
-      @lesson.sport = @lesson.template.sport
-      @lesson.activity = @lesson.template.activity
-      @lesson.lesson_name = @lesson.template.template_name
-      @lesson.lesson_level = @lesson.template.template_level
-      @lesson.lesson_description = @lesson.template.template_description
-      @lesson.lesson_material_needed = @lesson.template.template_material_needed
-      @lesson.save!
+      template_in_lesson
+      @lesson.save
       redirect_to lessons_path
     else
       render :new
     end
+  end
+
+  def template_in_lesson
+    @lesson.sport = @lesson.template.sport
+    @lesson.activity = @lesson.template.activity
+    @lesson.lesson_name = @lesson.template.template_name
+    @lesson.lesson_level = @lesson.template.template_level
+    @lesson.lesson_description = @lesson.template.template_description
+    @lesson.lesson_material_needed = @lesson.template.template_material_needed
   end
 
   def edit
@@ -133,6 +129,10 @@ class LessonsController < ApplicationController
   end
 
   private
+
+  def query
+    query = params[:query]
+  end
 
   def find_lesson
     @lesson = Lesson.find(params[:id])

@@ -1,16 +1,29 @@
+const newTemplate = document.getElementById("template-new");
+const newLesson = document.getElementById("lesson-new");
+
 function openFormTemplate() {
-  document.getElementById("lesson-new").style.display = "none"
-  document.getElementById("template-new").style.display = "block";
+  if (newLesson) {
+    newLesson.style.display = "none"
+    document.getElementById("template-new").style.display = "block";
+  }
 }
 function closeFormTemplate() {
-  document.getElementById("template-new").style.display = "none";
+  if (newTemplate) {
+    newTemplate.style.display = "none";
+  }
 }
+
 function openFormLesson() {
-  document.getElementById("template-new").style.display = "none";
-  document.getElementById("lesson-new").style.display = "block";
+  if (newTemplate) {
+    document.getElementById("template-new").style.display = "none";
+    document.getElementById("lesson-new").style.display = "block";
+  }
 }
+
 function closeFormLesson() {
-  document.getElementById("lesson-new").style.display = "none";
+  if (newLesson) {
+    document.getElementById("lesson-new").style.display = "none";
+  }
 }
 export { openFormTemplate };
 export { closeFormTemplate };

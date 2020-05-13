@@ -13,7 +13,7 @@
     </div>
     <div class="infos-lesson">
       <p class="lesson-level"><%= lesson.lesson_level %></p>
-      <p class="lesson-date"><span ><%= I18n.l(lesson.lesson_date, format: '%A %d %B %Y', locale: :'fr').capitalize %></span> à <%= lesson.start.strftime('%Hh%M') %></p>
+      <p class="lesson-date local-time"><%= lesson.start %></p>
       <p>Cours en <span class="lesson-language"><%= lesson.lesson_language %></span></p>
       <p><span class="lesson-duration"><%= lesson.lesson_duration %></span>min</p>
     </div>

@@ -1,5 +1,5 @@
 class ElevesController < ApplicationController
-  before_action :find_eleve, only: %i[edit update mes_cours mes_reservations eleve_reservations prof_reservations]
+  before_action :find_eleve, only: %i[edit update mes_cours mes_reservations eleve_reservations prof_reservations update_password update_email]
 
   def new
     @eleve = Eleve.new
@@ -99,9 +99,42 @@ class ElevesController < ApplicationController
     @past_lessons = @lessons.where("start < ?", Time.now)
   end
 
-  def template_and_lesson_pop_up_new
-
+def update_password
+    @user = @eleve.user
+    @errors = []
+    if @user.update_with_password(password_params)
+      bypass_sign_in(@user)
+      @success = "Votre mot de passe à bien été modifié."
+      message = 'Votre mot de passe à bien été modifié'
+    else
+      message = "Une erreur s'est produite"
+      @errors << "Votre mot de passe n'a pas pû être enregistré"
+    end
   end
+
+  def update_email
+    @user = @eleve.user
+    @errors = []
+    if @user.update_with_password(email_params)
+      @success = "Un email de confirmation a été envoyé à #{params[:user][:email]} "
+      message = "Un email de confirmation a été envoyé à #{params[:user][:email]}"
+    else
+      message = "Une erreur s'est produite"
+      @errors << "Votre email n'a pas pu être enregistré"
+    end
+  end
+
+  # def account_settings
+  #   unless user_signed_in?
+  #     redirect_to root_path
+  #   end
+  #   @user = current_user
+  #   @eleve = @user.eleve
+  #   @success = params[:success].nil? ? '' : params[:success]
+  #   @errors = params[:errors].nil? ? [] : params[:errors]
+  #   # @steps = ['Adresse email', 'Mot de passe']
+  #   # @step = params[:step].nil? ? 1 : params[:step].to_i
+  # end
 
   private
 
@@ -110,5 +143,13 @@ class ElevesController < ApplicationController
   end
   def eleve_params
     params.require(:eleve).permit(:name, :profile_picture, :surname, :birthdate, :sex, :phone_number, :prof, :city, :presentation, :siret_number, :company_address, :facebook, :instagram, :country, :iban, :bic)
+  end
+
+  def password_params
+    params.require(:user).permit(:current_password, :password, :password_confirmation)
+  end
+
+  def email_params
+    params.require(:user).permit(:email, :current_password)
   end
 end

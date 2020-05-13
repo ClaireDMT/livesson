@@ -11,14 +11,14 @@
 <% if @eleve.moderated? %>
   <div class="tab-content" id="pills-tabContent">
     <div class="tab-pane fade show active" id="pills-profil" role="tabpanel" aria-labelledby="pills-profil-tab"><%= render 'edit_eleve' %></div>
-    <div class="tab-pane fade" id="pills-emailmdp" role="tabpanel" aria-labelledby="pills-emailmdp-tab">Lien vers email et mdp</div>
+    <div class="tab-pane fade" id="pills-emailmdp" role="tabpanel" aria-labelledby="pills-emailmdp-tab"><%= render 'form_changement_email_et_mdp' %></div>
     <div class="tab-pane fade" id="pills-paiement" role="tabpanel" aria-labelledby="pills-paiement-tab"><%= render 'form_paiement'%></div>
     <div class="tab-pane fade" id="pills-espace-prof" role="tabpanel" aria-labelledby="pills-espace-prof-tab"><%= render 'edit_prof' %></div>
   </div>
 <% else %>
   <div class="tab-content" id="pills-tabContent">
     <div class="tab-pane fade show active" id="pills-profil" role="tabpanel" aria-labelledby="pills-profil-tab"><%= render 'edit_eleve' %></div>
-    <div class="tab-pane fade" id="pills-emailmdp" role="tabpanel" aria-labelledby="pills-emailmdp-tab">Lien vers email et mdp</div>
+    <div class="tab-pane fade" id="pills-emailmdp" role="tabpanel" aria-labelledby="pills-emailmdp-tab"><%= render 'form_changement_email_et_mdp' %></div>
     <div class="tab-pane fade" id="pills-paiement" role="tabpanel" aria-labelledby="pills-paiement-tab"><%= render 'form_paiement'%></div>
   </div>
 <% end %>

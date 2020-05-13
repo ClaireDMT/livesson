@@ -37,7 +37,7 @@ Rails.application.routes.draw do
     resources :bookings, only: [:new, :create]
   end
   # routes pour modifier email et mdp d'un user
-  get "users/:id/mon_compte", to: "customdevise/registrations#account_settings", as: :account_settings
-  patch "users/:id/update_password", to: "customdevise/registrations#update_password"
-  patch "users/:id/update_email", to: "customdevise/registrations#update_email"
+  get "eleves/:id/mon_compte", to: "customdevise/registrations#account_settings", as: :account_settings
+  patch "eleves/:id/update_password", to: "eleves#update_password"
+  patch "eleves/:id/update_email", to: "eleves#update_email"
 end

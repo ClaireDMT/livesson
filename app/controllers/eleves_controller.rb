@@ -110,6 +110,7 @@ def update_password
       message = "Une erreur s'est produite"
       @errors << "Votre mot de passe n'a pas pû être enregistré"
     end
+    redirect_to edit_elefe_path(@eleve)
   end
 
   def update_email
@@ -122,6 +123,7 @@ def update_password
       message = "Une erreur s'est produite"
       @errors << "Votre email n'a pas pu être enregistré"
     end
+    redirect_to edit_elefe_path(@eleve)
   end
 
   # def account_settings

@@ -1,12 +1,15 @@
+<div id="form-changement-email-mdp">
   <div class="container">
     <div class="form-flexify">
       <div class="form-left-part">
+        <h2>Mon e-mail de connexion</h2>
         <%= simple_form_for(@user, url: { action:"update_email" }, local: true ) do |form| %>
           <%= form.input :email, label: "Nouvelle adresse email" %>
           <%= form.input :current_password, autocomplete: "off", label: "Votre mot de passe"  %>
           <%= form.submit "Enregistrer", class:'btn-rectangle' %>
         <% end %>
         <br>
+         <h2>Mon mot de passe</h2>
         <%= simple_form_for(@user, url: { action:"update_password" }, local: true ) do |form| %>
           <%= form.input :current_password, autocomplete: "off", label: "Mot de passe actuel"  %>
           <%= form.input :password, label: "Nouveau mot de passe" %>

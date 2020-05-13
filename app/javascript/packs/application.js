@@ -26,3 +26,11 @@ createLessonStream();
 
 import { modalReservations } from '../plugins/modal_reservation.js';
 modalReservations();
+import { openFormTemplate } from '../plugins/template_lesson_pop_up_creation.js';
+openFormTemplate();
+import { closeFormTemplate } from '../plugins/template_lesson_pop_up_creation.js';
+closeFormTemplate();
+import { openFormLesson } from '../plugins/template_lesson_pop_up_creation.js';
+openFormLesson();
+import { closeFormLesson } from '../plugins/template_lesson_pop_up_creation.js';
+closeFormLesson();

@@ -107,7 +107,7 @@ class LessonsController < ApplicationController
     @lesson = Lesson.new(lesson_params)
     @lesson.eleve = current_user.eleve
     @templates = Template.all.where(eleve_id: @lesson.eleve)
-    @lesson.end = (@lesson.duration * 60) + @lesson.start
+    @lesson.end = @lesson.start + (@lesson.lesson_duration * 60)
     @lesson.sport = @lesson.template.sport
     @lesson.activity = @lesson.template.activity
     if @lesson.save

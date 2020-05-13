@@ -7,12 +7,15 @@
   <% else %>
    <p class=medium><%= @lessons.count %> résultats</p>
   <% end%>
-  <div class="row">
+  <div class="flexify">
     <% @lessons.each do |lesson| %>
-      <div class="col-xs-12 col-md-6">
-        <div class="card">
+        <div class="card-index">
           <div class="image">
-            <%= image_tag "empty.jpg" %>
+            <% if lesson.eleve.profile_picture.attached? %>
+              <%= image_tag lesson.eleve.profile_picture %>
+            <% else %>
+              <%= image_tag "empty.jpg" %>
+            <% end %>
           </div>
           <div class="card-content">
             <div class="card-content-left">
@@ -21,14 +24,7 @@
               <p class="lesson-teacher medium"> <%=lesson.eleve.name.capitalize %> <%= lesson.eleve.surname.capitalize %> </p>
               <p class="lesson-date"><span ><%= l(lesson.lesson_date, format: :long, locale: :'fr').capitalize %></span> à <%= l(lesson.start, format: '%Hh%M') %></p>
               <p class="lesson-language">Cours en <%= lesson.lesson_language %></p>
-              <!-- <div class="lesson-notation">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="far fa-star"></i>
-                <i class="far fa-star"></i>
-                <span class="__number">(3)</span>
-              </div> -->
+              <%#= 'Rating à rajouter' %>
             </div>
             <div class="card-content-right">
               <div class="card-content-right-top">
@@ -39,7 +35,7 @@
                     <%= lesson.lesson_discount_price %>
                   <% end %>
                 </p>
-                <p class="lesson-duration"><%= lesson.lesson_duration / 60 %>min</p>
+                <p class="lesson-duration"><%= lesson.lesson_duration %>min</p>
               </div>
               <% if current_user && lesson.eleve == current_user.eleve %>
                 <%= link_to elefe_path(lesson.eleve, lesson: lesson) do %>
@@ -53,7 +49,6 @@
             </div>
           </div>
         </div>
-      </div>
     <% end %>
   </div>
 </div>

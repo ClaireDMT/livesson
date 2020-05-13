@@ -24,6 +24,7 @@ Rails.application.routes.draw do
       get '/turn_eleve_into_prof', to: 'eleves#turn_eleve_into_prof'
       get '/:id/mes-cours', to: 'eleves#mes_cours', as: :mes_cours
       get '/:id/mes-reservations', to: 'eleves#mes_reservations', as: :mes_reservations
+      get '/:id/mon-planning', to: 'eleves#mon_planning', as: :mon_planning
     end
   end
 

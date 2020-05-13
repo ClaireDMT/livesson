@@ -1,5 +1,5 @@
 class ElevesController < ApplicationController
-  before_action :find_eleve, only: %i[edit update mes_cours mes_reservations eleve_reservations prof_reservations]
+  before_action :find_eleve, only: %i[edit update mes_cours mes_reservations eleve_reservations prof_reservations, mon_planning]
 
   def new
     @eleve = Eleve.new
@@ -74,6 +74,15 @@ class ElevesController < ApplicationController
     @lesson = Lesson.new
     @sports = Sport.all
     @activities = Activity.all
+  end
+
+  # mon planning en tant que prof
+  def mon_planning
+    @lessons = Lesson.where(eleve_id: @eleve.id)
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
   # mes réservations en tant qu'élève et en tant que prof

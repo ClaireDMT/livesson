@@ -50,7 +50,6 @@ class ElevesController < ApplicationController
   end
 
   def update
-    @user = User.find(params[:id])
     if @eleve.update(eleve_params)
       redirect_to edit_elefe_path(@eleve, errors: @errors, alerts: @alerts), notice: 'Profil mis à jour'
     else

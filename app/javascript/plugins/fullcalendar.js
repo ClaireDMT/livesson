@@ -68,6 +68,7 @@ const initCalendar = () => {
           info.el.dataset.lessonId = info.event.id;
           const fcContent = info.el.firstChild;
           fcContent.querySelector('.fc-title').remove();
+          info.el.classList.add('c-pointer');
           fcContent.insertAdjacentHTML("afterbegin", `<p class='fc-title'>${info.event.title}</p>` );
           fcContent.insertAdjacentHTML("beforeend", `<p class='fc-duration'>${info.event.extendedProps.duration} min</p>` );
           fcContent.insertAdjacentHTML("beforeend", `<p class='fc-duration'>${info.event.extendedProps.niveau}</p>` );

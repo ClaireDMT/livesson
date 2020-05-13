@@ -1,27 +1,42 @@
-<h2>Change your password</h2>
-
-<%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
-  <%= f.error_notification %>
-
-  <%= f.input :reset_password_token, as: :hidden %>
-  <%= f.full_error :reset_password_token %>
-
-  <div class="form-inputs">
-    <%= f.input :password,
-                label: "New password",
-                required: true,
-                autofocus: true,
-                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                label: "Confirm your new password",
-                required: true,
-                input_html: { autocomplete: "new-password" } %>
+<div class="page-connexion">
+  <div class="page-connexion-left">
+    <%= image_tag 'page-connexion/page-mdp-oublie.jpg' %>
   </div>
+  <div class="page-connexion-right">
+    <div class="page-connexion-right-inscription">
+      <p>Nouveau sur Livesson, vous n’avez pas encore de compte ?</p>
+      <%= link_to new_user_registration_path do %>
+        <button class="btn-rectangle">M'inscrire</button>
+      <% end %>
+    </div>
+    <div class="page-connexion-right-form">
+      <h2>Nouveau mot de passe</h2>
+      <p>Entrez votre nouveau mot de passe et confirmez-le</p>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Change my password" %>
+    <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+      <%= f.error_notification %>
+
+      <%= f.input :reset_password_token, as: :hidden %>
+      <%= f.full_error :reset_password_token %>
+
+      <div class="form-inputs">
+        <%= f.input :password,
+                    label: "Nouveau mot de passe",
+                    required: true,
+                    autofocus: true,
+                    hint: ("#{@minimum_password_length} cararctères minimum" if @minimum_password_length),
+                    input_html: { autocomplete: "new-password" } %>
+        <%= f.input :password_confirmation,
+                    label: "Confirmez votre nouveau mot de passe",
+                    required: true,
+                    input_html: { autocomplete: "new-password" } %>
+      </div>
+
+      <div class="form-actions">
+        <%= f.button :submit, "Changer mon mot de passe", class:'btn-rectangle' %>
+      </div>
+    <% end %>
+
+    </div>
   </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>

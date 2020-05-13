@@ -41,7 +41,7 @@
                     <p class="purple medium"><%= upcoming_lesson.lesson_name.upcase %></p>
                     <p><%= upcoming_lesson.lesson_level %></p>
                     <p>Cours en <%= upcoming_lesson.lesson_language %></p>
-                    <p><%= (upcoming_lesson.duration / 60).round %>min</p>
+                    <p><%= upcoming_lesson.lesson_duration %>min</p>
                     <p class="medium purple" data-toggle="modal" data-target="#reservationsModal" data-lesson="<%= upcoming_lesson.id %>" data-participants="<%= upcoming_lesson.all_participants.join(',') %> ">
                       <%= pluralize(upcoming_lesson.bookings.count, "réservation") %>
                     </p>
@@ -89,7 +89,7 @@
                   <p class="purple medium"><%= past_lesson.lesson_name.upcase %></p>
                   <p><%= past_lesson.lesson_level %></p>
                   <p>Cours en <%= past_lesson.lesson_language %></p>
-                  <p><%= (past_lesson.duration / 60).round %>min</p>
+                  <p><%= past_lesson.lesson_duration %>min</p>
                   <p class="medium purple" data-toggle="modal" data-target="#reservationsModal" data-lesson="<%= past_lesson.id %>" data-participants="<%= past_lesson.all_participants.join(',') %> ">
                     <%= pluralize(past_lesson.bookings.count, "réservation")  %></p>
                 </div>

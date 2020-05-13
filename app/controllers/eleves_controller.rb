@@ -1,5 +1,6 @@
 class ElevesController < ApplicationController
   before_action :find_eleve, only: %i[edit update mes_cours mes_reservations eleve_reservations prof_reservations]
+
   def new
     @eleve = Eleve.new
   end
@@ -52,7 +53,6 @@ class ElevesController < ApplicationController
   end
 
   def update
-    @user = User.find(params[:id])
     if @eleve.update(eleve_params)
       redirect_to edit_elefe_path(@eleve, errors: @errors, alerts: @alerts), notice: 'Profil mis à jour'
     else
@@ -73,12 +73,21 @@ class ElevesController < ApplicationController
   # liste des templates d'un prof
   def mes_cours
     @templates = Template.where(eleve_id: @eleve)
+    @template = Template.new
+    @lesson = Lesson.new
+    @sports = Sport.all
+    @activities = Activity.all
   end
 
   # mes réservations en tant qu'élève et en tant que prof
   def mes_reservations
     eleve_reservations
     prof_reservations
+    @template = Template.new
+    @lesson = Lesson.new
+    @templates = Template.all.where(eleve_id: @eleve)
+    @sports = Sport.all
+    @activities = Activity.all
   end
 
   def eleve_reservations
@@ -91,6 +100,10 @@ class ElevesController < ApplicationController
     @lessons = Lesson.where(eleve_id: @eleve)
     @upcoming_lessons = @lessons.where("start > ?", Time.now)
     @past_lessons = @lessons.where("start < ?", Time.now)
+  end
+
+  def template_and_lesson_pop_up_new
+
   end
 
   private

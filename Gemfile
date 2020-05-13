@@ -32,7 +32,7 @@ gem 'figaro'
 gem 'aws-sdk-s3'
 # Sendinblue --> mailer
 gem 'sendinblue'
-# rubocop
+# Rubocop
 gem 'rubocop', require: false
 
 group :development do

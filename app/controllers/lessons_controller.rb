@@ -12,7 +12,7 @@ class LessonsController < ApplicationController
       search_lesson_language
       search_lesson_level
       search_lesson_date
-      search_beginning_time
+      search_start
       search_sport_name_and_lesson_language
       search_sport_name_lesson_language_and_lesson_level
       search_all
@@ -38,8 +38,9 @@ class LessonsController < ApplicationController
     @lessons = @lessons.search_by_lesson_date(query[:lesson_date]) if query[:lesson_date].present?
   end
 
-  def search_beginning_time
-    @lessons = @lessons.search_by_beginning_time(query[:beginning_time]) if query[:beginning_time].present?
+  def search_start
+    query = params[:query]
+    @lessons = @lessons.search_by_start(query[:start]) if query[:start].present?
   end
 
   def search_sport_name_and_lesson_language
@@ -87,7 +88,7 @@ class LessonsController < ApplicationController
     @lesson = Lesson.new(lesson_params)
     @lesson.eleve = current_user.eleve
     @templates = Template.all.where(eleve_id: @lesson.eleve)
-    @lesson.lesson_duration = @lesson.end - @lesson.start
+    @lesson.end = @lesson.start + (@lesson.lesson_duration * 60)
     @lesson.sport = @lesson.template.sport
     @lesson.activity = @lesson.template.activity
     if @lesson.save
@@ -122,7 +123,7 @@ class LessonsController < ApplicationController
   end
 
   def lesson_video
-    @lesson.lesson_date == Date.today && @lesson.beginning_time == Time.now - 15.min
+    @lesson.lesson_date == Date.today && @lesson.start == Time.now - 15.min
     @prof = @lesson.eleve
     @bookings = Booking.where(lesson: @lesson)
     @eleves = Eleve.where(id: @bookings.eleve_id)

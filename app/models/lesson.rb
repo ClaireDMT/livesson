@@ -17,8 +17,8 @@ class Lesson < ApplicationRecord
             "Cardio training", "Renforcement", "Méditation",
             "Stretching", "Sports de combat", "Spécial kids"]
 
-  def duration
-    @lesson_duration = self.end - start
+  def end
+    @end = start + (lesson_duration * 60)
   end
 
   include PgSearch
@@ -26,7 +26,7 @@ class Lesson < ApplicationRecord
   def all_participants
     Eleve.joins(:bookings).where(bookings:  {lesson_id: self.id }).map { |eleve| "#{eleve.name} #{eleve.surname}"}
   end
-  
+
   pg_search_scope :search_by_lesson_language,
                   against: [:lesson_language],
                   using: {
@@ -45,8 +45,8 @@ class Lesson < ApplicationRecord
                     tsearch: { prefix: true }
                   }
 
-  pg_search_scope :search_by_beginning_time,
-                  against: [:beginning_time],
+  pg_search_scope :search_by_start,
+                  against: [:start],
                   using: {
                     tsearch: { prefix: true }
                   }

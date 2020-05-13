@@ -2,7 +2,8 @@
     <div class="show-lesson" id="show-lesson" >
         <%= image_tag 'black-cross.svg', id: "closing-cross" %>
         <div class="reserver">
-          <% if !@eleve.lessons.where(id: @lesson).any? || @lesson %>
+          <%# raise if time = @lesson.start < DateTime.now %>
+          <% if !@eleve.lessons.where(id: @lesson).any? && @lesson.start > DateTime.now  %>
             <%= simple_form_for [@lesson, @booking], url: lesson_bookings_url(@lesson) do |f| %>
               <%= f.button :submit, "Réserver", class: "btn-rectangle" %>
             <% end %>

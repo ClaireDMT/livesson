@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_10_110025) do
+ActiveRecord::Schema.define(version: 2020_05_11_150726) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,6 +61,11 @@ ActiveRecord::Schema.define(version: 2020_05_10_110025) do
     t.bigint "lesson_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "status", default: "ongoing"
+    t.bigint "canceller_id"
+    t.datetime "cancellation_time"
+    t.boolean "refundable"
+    t.index ["canceller_id"], name: "index_bookings_on_canceller_id"
     t.index ["eleve_id"], name: "index_bookings_on_eleve_id"
     t.index ["lesson_id"], name: "index_bookings_on_lesson_id"
   end
@@ -170,6 +175,7 @@ ActiveRecord::Schema.define(version: 2020_05_10_110025) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "bookings", "eleves", column: "canceller_id"
   add_foreign_key "bookings", "eleves", column: "eleve_id"
   add_foreign_key "bookings", "lessons"
   add_foreign_key "eleves", "activities"

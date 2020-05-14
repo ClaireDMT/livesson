@@ -1,0 +1,29 @@
+#form-changement-email-mdp{
+  // height: 80vh;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  .form-flexify {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    h2{
+      font-size: 32px;
+      line-height: 48px;
+      font-family: 700;
+    }
+  }
+  .form-left-part{
+    margin-right: 55px;
+
+    form{
+      width: 550px;
+      margin-bottom: 20px;
+    }
+  }
+  .form-right-part{
+    margin-left: 55px;
+    img {
+      width: 100%;
+    }
+  }
+}

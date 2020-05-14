@@ -1,5 +1,5 @@
 class ElevesController < ApplicationController
-  before_action :find_eleve, only: %i[edit update mes_cours mes_reservations eleve_reservations prof_reservations]
+  before_action :find_eleve, only: %i[edit update mes_cours mes_reservations eleve_reservations prof_reservations update_password update_email]
 
   def new
     @eleve = Eleve.new
@@ -99,8 +99,19 @@ class ElevesController < ApplicationController
     @past_lessons = @lessons.where("start < ?", Time.now)
   end
 
-  def template_and_lesson_pop_up_new
+def update_password
+    @user = @eleve.user
+    @user.update_with_password(password_params)
+    bypass_sign_in(@user)
+    UserMailer.mdp_changed(current_user).deliver_now
+    redirect_to edit_elefe_path(@eleve)
+  end
 
+  def update_email
+    @user = @eleve.user
+    @user.update_with_password(email_params)
+    UserMailer.email_changed(current_user).deliver_now
+    redirect_to edit_elefe_path(@eleve)
   end
 
   private
@@ -110,5 +121,13 @@ class ElevesController < ApplicationController
   end
   def eleve_params
     params.require(:eleve).permit(:name, :profile_picture, :surname, :birthdate, :sex, :phone_number, :prof, :city, :presentation, :siret_number, :company_address, :facebook, :instagram, :country, :iban, :bic)
+  end
+
+  def password_params
+    params.require(:user).permit(:current_password, :password, :password_confirmation)
+  end
+
+  def email_params
+    params.require(:user).permit(:email, :current_password)
   end
 end

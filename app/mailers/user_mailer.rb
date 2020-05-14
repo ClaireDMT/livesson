@@ -30,6 +30,14 @@ class UserMailer < ApplicationMailer
     mail(to: @email, subject: "Votre cours avec #{@prof.name} #{@prof.surname} est confirmée ! ")
   end
 
+  def mdp_changed(user)
+    mail(to: user.email, subject: "Votre mot de passe a bien été modifié")
+  end
+
+  def email_changed(user)
+    mail(to: user.email, subject: "Votre adresse email a bien été modifié")
+  end
+
   # def discover_woonies(pro, email)
   #   @pro_url = "https://woonies.com/pros/#{pro.id}"
   #   @pro_name = pro.company_name

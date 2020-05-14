@@ -140,7 +140,7 @@ class LessonsController < ApplicationController
 
   private
 
-  def query
+  def find_query
     query = params[:query]
   end
 

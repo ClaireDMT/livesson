@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class Customdevise::RegistrationsController < Devise::RegistrationsController
-
   def new
     super
   end
@@ -37,13 +36,13 @@ class Customdevise::RegistrationsController < Devise::RegistrationsController
 
   protected
 
-  def after_sign_up_path_for(resource)
+  def after_sign_up_path_for(_resource)
     @user.status = "En cours d'inscription"
     @user.save
     edit_user_registration_path
   end
 
-  def after_inactive_sign_up_path_for(resource)
+  def after_inactive_sign_up_path_for(_resource)
     # super(resource)
     # if @user.newsletter
     #   url = URI('https://api.sendinblue.com/v3/contacts')

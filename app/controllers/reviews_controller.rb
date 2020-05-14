@@ -11,7 +11,7 @@ class ReviewsController < ApplicationController
     @review.save!
     respond_to do |format|
       format.html { redirect_to mes_reservations_eleves_path(current_user.eleve) }
-      format.js  # <-- will render `app/views/reviews/create.js.erb`
+      format.js # <-- will render `app/views/reviews/create.js.erb`
     end
   end
 

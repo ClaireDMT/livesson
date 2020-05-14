@@ -21,6 +21,10 @@ class BookingsController < ApplicationController
     end
   end
 
+  def cancel_as_prof
+    raise
+  end
+
   def update
     @booking = Booking.find(params[:id])
     @booking.status = params[:status]
@@ -33,6 +37,7 @@ class BookingsController < ApplicationController
     @booking.destroy
     redirect_to mes_reservations_eleves_url(@booking.eleve_id)
   end
+
 
   private
 

@@ -14,13 +14,21 @@ class ElevesController < ApplicationController
       render 'awaiting_moderation'
     elsif Eleve.where(user_id: current_user.id).empty?
       # si ce n'est qu'un élève
-      eleve_creation
+      new_eleve
       UserMailer.send_welcome(current_user).deliver_now
       redirect_to edit_user_registration_path
     end
   end
 
-  def eleve_creation
+  def new_prof
+    @eleve = Eleve.new(eleve_params)
+    @eleve.user_id = current_user.id
+    @eleve.prof = true
+    @eleve.status = "En attente de modération"
+    @eleve.save
+  end
+
+  def new_eleve
     @eleve = Eleve.new(eleve_params)
     @eleve.user_id = current_user.id
     @eleve.status = "Inscrit(e)"
@@ -38,14 +46,6 @@ class ElevesController < ApplicationController
       format.html
       format.json
     end
-  end
-
-  def new_prof
-    @eleve = Eleve.new(eleve_params)
-    @eleve.user_id = current_user.id
-    @eleve.prof = true
-    @eleve.status = "En attente de modération"
-    @eleve.save
   end
 
   def edit
@@ -73,19 +73,21 @@ class ElevesController < ApplicationController
   # liste des templates d'un prof
   def mes_cours
     @templates = Template.where(eleve_id: @eleve)
-    @template = Template.new
-    @lesson = Lesson.new
-    @sports = Sport.all
-    @activities = Activity.all
+    create_template_lesson_dans_mes_cours
+    new_lesson_and_template
   end
 
   # mes réservations en tant qu'élève et en tant que prof
   def mes_reservations
     eleve_reservations
     prof_reservations
+    new_lesson_and_template
+    @templates = Template.all.where(eleve_id: @eleve)
+  end
+
+  def new_lesson_and_template
     @template = Template.new
     @lesson = Lesson.new
-    @templates = Template.all.where(eleve_id: @eleve)
     @sports = Sport.all
     @activities = Activity.all
   end
@@ -100,10 +102,6 @@ class ElevesController < ApplicationController
     @lessons = Lesson.where(eleve_id: @eleve)
     @upcoming_lessons = @lessons.where("start > ?", Time.now)
     @past_lessons = @lessons.where("start < ?", Time.now)
-  end
-
-  def template_and_lesson_pop_up_new
-
   end
 
   private

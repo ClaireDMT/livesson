@@ -24,6 +24,7 @@ gem 'uglifier'
 gem 'webpacker'
 gem 'momentjs-rails'
 gem 'moment_timezone-rails'
+gem 'tzinfo'
 # enhance speed  of JS
 gem 'turbolinks', '~> 5.2.0'
 # Security for sensitive info (wrapper for .env variables)

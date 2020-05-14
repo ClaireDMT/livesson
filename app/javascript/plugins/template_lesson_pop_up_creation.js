@@ -18,6 +18,7 @@ const closeFormTemplate = () => {
     })
   }
 }
+
 function openFormLesson() {
   if (document.body.contains(buttonOpenLesson)) {
     buttonOpenLesson.addEventListener("click", (event) => {
@@ -26,6 +27,7 @@ function openFormLesson() {
     })
   }
 }
+
 function closeFormLesson() {
   if (document.body.contains(buttonCloseLesson)) {
     buttonCloseLesson.addEventListener("click", (event) => {

@@ -366,6 +366,7 @@ DEPENDENCIES
   spring
   spring-watcher-listen (~> 2.0.0)
   turbolinks (~> 5.2.0)
+  tzinfo
   uglifier
   web-console (>= 3.3.0)
   webpacker

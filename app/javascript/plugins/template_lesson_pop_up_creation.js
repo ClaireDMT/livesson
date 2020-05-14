@@ -1,18 +1,40 @@
-function openFormTemplate() {
-  document.getElementById("lesson-new").style.display = "none"
-  document.getElementById("template-new").style.display = "block";
+const buttonOpenTemplate = document.getElementById("button-template")
+const buttonCloseTemplate = document.getElementById("close-template")
+const buttonOpenLesson = document.getElementById("button-lesson")
+const buttonCloseLesson = document.getElementById("close-lesson")
+
+const openFormTemplate = () => {
+  if (document.body.contains(buttonOpenTemplate)) {
+    buttonOpenTemplate.addEventListener("click", (event) => {
+      document.getElementById("lesson-new").style.display = "none"
+      document.getElementById("template-new").style.display = "block";
+    })
+  }
 }
-function closeFormTemplate() {
-  document.getElementById("template-new").style.display = "none";
+const closeFormTemplate = () => {
+  if (document.body.contains(buttonCloseTemplate)) {
+    buttonCloseTemplate.addEventListener("click", (event) => {
+      document.getElementById("template-new").style.display = "none";
+    })
+  }
 }
 function openFormLesson() {
-  document.getElementById("template-new").style.display = "none";
-  document.getElementById("lesson-new").style.display = "block";
+  if (document.body.contains(buttonOpenLesson)) {
+    buttonOpenLesson.addEventListener("click", (event) => {
+      document.getElementById("template-new").style.display = "none";
+      document.getElementById("lesson-new").style.display = "block";
+    })
+  }
 }
 function closeFormLesson() {
-  document.getElementById("lesson-new").style.display = "none";
+  if (document.body.contains(buttonCloseLesson)) {
+    buttonCloseLesson.addEventListener("click", (event) => {
+      document.getElementById("lesson-new").style.display = "none";
+    })
+  }
 }
 export { openFormTemplate };
 export { closeFormTemplate };
 export { openFormLesson };
 export { closeFormLesson };
+

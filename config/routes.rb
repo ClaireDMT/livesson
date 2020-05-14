@@ -35,6 +35,9 @@ Rails.application.routes.draw do
   resources :lessons do
     resources :reviews, only: [:new, :create]
     resources :bookings, only: [:new, :create]
+    collection do
+      get 'reservation_lesson/:id',to: 'lessons#resa_show', as: :resa_show
+    end
   end
   # routes pour modifier email et mdp d'un user
   get "users/:id/mon_compte", to: "customdevise/registrations#account_settings", as: :account_settings

@@ -71,7 +71,8 @@
       </div>
 
       <!-- REVIEWS -->
-      <%= render "eleves/reviews" %>
+      <h4 class="mb-4">Tous les avis sur <%= @prof.name %> <%= @prof.surname %></h4>
+      <%= render "reviews/index", reviews: @reviews %>
 
 
     </div>
@@ -79,7 +80,7 @@
   <!--------------------------  PROF ------------------------------------------------------->
 
   <!--------------------------  LESSON ------------------------------------------------------->
-
-  <%= render "lessons/show", lesson: @lesson, prof: @prof %>
-
+  <div id="show-lesson-container" data-target="lessons.lesson" data-lessons-url="<%= resa_show_lessons_path %>" >
+      <%= render "lessons/resa_show", lesson: @lesson, prof: @prof %>
+    </div>
 </div>

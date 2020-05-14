@@ -13,8 +13,9 @@
               <div class="col-xs-12 col-lg-12">
                 <div class="card-reservation d-flex">
                   <div class="card-reservation-left col-xs-12 col-lg-2">
-                    <p class="medium"><span><%= I18n.l(upcoming_booking.lesson.lesson_date, format: '%A %d %B %Y', locale: :'fr').capitalize %></span> à <%= upcoming_booking.lesson.start.strftime('%Hh%M') %></p>
+                    <p class="medium"><span><%= I18n.l(upcoming_booking.lesson.start, format: '%A %d %B %Y', locale: :'fr').capitalize %></span> à <%= upcoming_booking.lesson.start.strftime('%Hh%M') %></p>
                     <p class="purple medium"><%= upcoming_booking.lesson.lesson_name.upcase %></p>
+
                     <p><%= upcoming_booking.lesson.lesson_level %></p>
                     <p>Cours en <%= upcoming_booking.lesson.lesson_language %></p>
                     <p><%= upcoming_booking.lesson.lesson_duration %>min</p>

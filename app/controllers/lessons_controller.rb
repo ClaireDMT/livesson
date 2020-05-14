@@ -84,6 +84,18 @@ class LessonsController < ApplicationController
       format.json { render json: { lesson: @lesson } }
     end
   end
+
+  def resa_show
+    @eleve = current_user.eleve
+    @lesson = Lesson.find(params[:id])
+    @booking = Booking.new
+    @prof = Eleve.find(@lesson.eleve_id)
+
+    render layout: false
+
+  end
+
+
   def create
     @lesson = Lesson.new(lesson_params)
     @lesson.eleve = current_user.eleve

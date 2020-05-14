@@ -30,6 +30,8 @@ button:focus {
   text-align: center;
   height: 35px;
   min-width: 130px;
+  width: min-content;
+  white-space: nowrap;
   display: table-cell;
   border: transparent;
   p {

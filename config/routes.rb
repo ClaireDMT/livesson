@@ -24,9 +24,10 @@ Rails.application.routes.draw do
       get '/turn_eleve_into_prof', to: 'eleves#turn_eleve_into_prof'
       get '/:id/mes-cours', to: 'eleves#mes_cours', as: :mes_cours
       get '/:id/mes-reservations', to: 'eleves#mes_reservations', as: :mes_reservations
+      patch "/:id/update_password", to: "eleves#update_password"
+      patch "/:id/update_email", to: "eleves#update_email"
     end
   end
-
   # route pour annuler une réservation
   resources :bookings, only: :destroy
   # routes pour la création d'un template
@@ -36,8 +37,4 @@ Rails.application.routes.draw do
     resources :reviews, only: [:new, :create]
     resources :bookings, only: [:new, :create]
   end
-  # routes pour modifier email et mdp d'un user
-  get "eleves/:id/mon_compte", to: "customdevise/registrations#account_settings", as: :account_settings
-  patch "eleves/:id/update_password", to: "eleves#update_password"
-  patch "eleves/:id/update_email", to: "eleves#update_email"
 end

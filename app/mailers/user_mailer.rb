@@ -34,8 +34,8 @@ class UserMailer < ApplicationMailer
     mail(to: user.email, subject: "Votre mot de passe a bien été modifié")
   end
 
-  def email_changed
-    mail(to: )
+  def email_changed(user)
+    mail(to: user.email, subject: "Votre adresse email a bien été modifié")
   end
 
   # def discover_woonies(pro, email)

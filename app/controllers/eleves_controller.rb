@@ -101,42 +101,18 @@ class ElevesController < ApplicationController
 
 def update_password
     @user = @eleve.user
-    @errors = []
-    if @user.update_with_password(password_params)
-      bypass_sign_in(@user)
-      @success = "Votre mot de passe à bien été modifié."
-      message = 'Votre mot de passe à bien été modifié'
-    else
-      message = "Une erreur s'est produite"
-      @errors << "Votre mot de passe n'a pas pû être enregistré"
-    end
+    @user.update_with_password(password_params)
+    bypass_sign_in(@user)
+    UserMailer.mdp_changed(current_user).deliver_now
     redirect_to edit_elefe_path(@eleve)
   end
 
   def update_email
     @user = @eleve.user
-    @errors = []
-    if @user.update_with_password(email_params)
-      @success = "Un email de confirmation a été envoyé à #{params[:user][:email]} "
-      message = "Un email de confirmation a été envoyé à #{params[:user][:email]}"
-    else
-      message = "Une erreur s'est produite"
-      @errors << "Votre email n'a pas pu être enregistré"
-    end
+    @user.update_with_password(email_params)
+    UserMailer.email_changed(current_user).deliver_now
     redirect_to edit_elefe_path(@eleve)
   end
-
-  # def account_settings
-  #   unless user_signed_in?
-  #     redirect_to root_path
-  #   end
-  #   @user = current_user
-  #   @eleve = @user.eleve
-  #   @success = params[:success].nil? ? '' : params[:success]
-  #   @errors = params[:errors].nil? ? [] : params[:errors]
-  #   # @steps = ['Adresse email', 'Mot de passe']
-  #   # @step = params[:step].nil? ? 1 : params[:step].to_i
-  # end
 
   private
 

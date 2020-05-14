@@ -2,8 +2,8 @@
   <div class="flexify">
     <h2>Mes cours</h2>
     <div class="buttons">
-      <button class=" btn-rectangle" onclick="openFormTemplate()">+ Créer un nouveau type de cours</button>
-      <button class=" btn-rectangle" onclick="openFormLesson()">+ Ajouter un cours au planning</button>
+      <button class=" btn-rectangle" id="button-template">+ Créer un nouveau type de cours</button>
+      <button class=" btn-rectangle" id="button-lesson">+ Ajouter un cours au planning</button>
     </div>
   </div>
   <% @templates.each do |template| %>
@@ -32,7 +32,7 @@
   <% end %>
 
   <div id="template-new" class='form-popup'>
-    <i class="far fa-times-circle" onclick="closeFormTemplate()"></i>
+    <i class="far fa-times-circle" id="close-template""></i>
     <h2>CRÉER UN TYPE DE COURS</h2>
     <%= simple_form_for @template do |f| %>
       <%= f.association :activity, collection: @activities, label_method: :activity_name, value_method: :id, label: "Type d'activité", placeholder: "Choisissez le type d'activité"%>
@@ -45,7 +45,7 @@
     <% end %>
   </div>
   <div id="lesson-new" class='form-popup'>
-    <i class="far fa-times-circle" onclick="closeFormLesson()"></i>
+    <i class="far fa-times-circle" id="close-lesson"></i>
     <h2>AJOUTER UN COURS AU PLANNING</h2>
     <%= simple_form_for @lesson do |f| %>
       <%= f.association :template, collection: @templates, label_method: :template_name, value_method: :id, label: 'Choisir le cours', placeholder: 'Choisissez votre cours' %>
@@ -60,3 +60,4 @@
       <%= f.submit 'Enregistrer', class: 'btn-rectangle' %>
     <% end %>
   </div>
+</div>

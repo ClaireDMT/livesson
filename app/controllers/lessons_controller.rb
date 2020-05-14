@@ -90,11 +90,8 @@ class LessonsController < ApplicationController
     @lesson = Lesson.find(params[:id])
     @booking = Booking.new
     @prof = Eleve.find(@lesson.eleve_id)
-
     render layout: false
-
   end
-
 
   def create
     @lesson = Lesson.new(lesson_params)
@@ -105,7 +102,6 @@ class LessonsController < ApplicationController
     @lesson.activity = @lesson.template.activity
     if @lesson.save
       template_in_lesson
-      @lesson.save
       redirect_to lessons_path
     else
       render :new
@@ -119,6 +115,7 @@ class LessonsController < ApplicationController
     @lesson.lesson_level = @lesson.template.template_level
     @lesson.lesson_description = @lesson.template.template_description
     @lesson.lesson_material_needed = @lesson.template.template_material_needed
+    @lesson.save
   end
 
   def edit

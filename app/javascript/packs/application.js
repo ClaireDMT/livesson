@@ -10,6 +10,11 @@ import '../plugins/toggle_display_bookings';
 import '../plugins/toggle_dropdown_button';
 import '../plugins/persist_checkboxes_after_reload';
 
+
+import { localTime } from '../plugins/localize_time';
+localTime();
+
+
 import { initStarRating } from '../plugins/init_star_rating';
 initStarRating();
 
@@ -17,6 +22,7 @@ import { initCalendar } from '../plugins/fullcalendar';
 if (document.body.contains(document.getElementById('prof-show'))) {
   initCalendar();
 }
+
 
 import { toggleLesson } from '../plugins/toggle_lesson';
 toggleLesson();

@@ -1,13 +1,11 @@
   // TOGGLE LESSON SECTION ON SHOW PROF
 const toggleLesson = () => {
-
-  const showLesson = document.querySelector("#prof-show #show-lesson");
+  const showLesson = document.getElementById("show-lesson");
   const closingCross = document.getElementById("closing-cross");
-  if(document.body.contains(showLesson)) {
-    console.log(showLesson);
-    console.log(closingCross);
+  if(document.body.contains(closingCross)) {
     closingCross.addEventListener("click", (event) => {
-      showLesson.style.display = "none";
+      const showLessonContainer = document.getElementById("show-lesson-container");
+      showLessonContainer.style.display = "none";
     })
   }
 }

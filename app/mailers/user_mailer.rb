@@ -43,15 +43,23 @@ class UserMailer < ApplicationMailer
     @eleve = @booking.eleve_id
     @prof = @booking.lesson.eleve
     @email = Eleve.find(@eleve).user.email
-    mail(to: user.email, subject: "Votre cours avec #{@prof.name} #{@prof.surname} est annulé")
+    mail(to: @email, subject: "Votre cours avec #{@prof.name} #{@prof.surname} est annulé")
   end
 
-  def annulation_dans_les_temps(user)
-    mail(to: user.email, subject: "Votre cours avec #{@prof.name} #{@prof.surname} est annulé")
+  def refund(user)
+    @booking = Booking.find(booking_id)
+    @eleve = @booking.eleve_id
+    @prof = @booking.lesson.eleve
+    @email = Eleve.find(@eleve).user.email
+    mail(to: @email, subject: "Vous êtes remboursé")
   end
 
-  def annulation_pas_dans_les_temps(user)
-    mail(to: user.email, subject: "Votre cours avec #{@prof.name} #{@prof.surname} est annulé")
+  def no_refund(user)
+    @booking = Booking.find(booking_id)
+    @eleve = @booking.eleve_id
+    @prof = @booking.lesson.eleve
+    @email = Eleve.find(@eleve).user.email
+    mail(to: @email, subject: "Vous n'êtes pas remboursé")
   end
 
   # def discover_woonies(pro, email)

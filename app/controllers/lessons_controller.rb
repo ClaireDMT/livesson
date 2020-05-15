@@ -138,7 +138,6 @@ class LessonsController < ApplicationController
     bookings.each do |booking|
       booking.cancelled_by(@prof)
     end
-    # TO DO : add send email to prof to confirm cancellation of the lesson
     redirect_to mes_reservations_eleves_path(@prof)
   end
 

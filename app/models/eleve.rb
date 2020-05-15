@@ -19,17 +19,17 @@ class Eleve < ApplicationRecord
   end
 
   def url_to_fb_pseudo
-    pseudo = facebook.match(/https?:\/\/www.facebook.com\/([^\/]+)\/?/)
+    pseudo = facebook.match(%r{https?://www.facebook.com/([^/]+)/?})
     pseudo.nil? ? facebook : pseudo[1]
   end
 
   def url_to_insta_pseudo
-    pseudo = instagram.match(/https?:\/\/www.instagram.com\/([^\/]+)\/?/)
+    pseudo = instagram.match(%r{https?://www.instagram.com/([^/]+)/?})
     pseudo.nil? ? instagram : pseudo[1]
   end
 
   def average_rating
-    all_reviews = Review.joins(:lesson).where(lessons: {eleve_id: self.id })
+    all_reviews = Review.joins(:lesson).where(lessons: { eleve_id: id })
     all_reviews.map(&:rating).sum.fdiv(all_reviews.count)
   end
 end

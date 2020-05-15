@@ -1,8 +1,7 @@
 ActiveAdmin.register Eleve do
-
   filter :name_contains
   filter :surname_contains
-  filter :user_email_contains, :as => :string
+  filter :user_email_contains, as: :string
   filter :prof
 
   index do

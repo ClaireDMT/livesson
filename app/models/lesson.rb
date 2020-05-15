@@ -22,9 +22,8 @@ class Lesson < ApplicationRecord
   end
 
   def all_participants
-    Eleve.joins(:bookings).where(bookings:  {lesson_id: self.id }).map { |eleve| "#{eleve.name} #{eleve.surname}"}
+    Eleve.joins(:bookings).where(bookings: { lesson_id: id }).map { |eleve| "#{eleve.name} #{eleve.surname}" }
   end
-
 
   include PgSearch::Model
   pg_search_scope :search_by_sport_name,

@@ -9,21 +9,30 @@ class ElevesController < ApplicationController
     @user = current_user
     if Eleve.where(user_id: current_user.id).empty? && @user.prof?
       # si l'élève est un prof également
-      @eleve = Eleve.new(eleve_params)
-      @eleve.user_id = current_user.id
       new_prof
       UserMailer.inscription_prof(current_user).deliver_now
-      awaiting_moderation
       render 'awaiting_moderation'
     elsif Eleve.where(user_id: current_user.id).empty?
       # si ce n'est qu'un élève
-      @eleve = Eleve.new(eleve_params)
-      @eleve.user_id = current_user.id
-      @eleve.status = "Inscrit(e)"
-      @eleve.save
+      new_eleve
       UserMailer.send_welcome(current_user).deliver_now
       redirect_to edit_user_registration_path
     end
+  end
+
+  def new_prof
+    @eleve = Eleve.new(eleve_params)
+    @eleve.user_id = current_user.id
+    @eleve.prof = true
+    @eleve.status = "En attente de modération"
+    @eleve.save
+  end
+
+  def new_eleve
+    @eleve = Eleve.new(eleve_params)
+    @eleve.user_id = current_user.id
+    @eleve.status = "Inscrit(e)"
+    @eleve.save
   end
 
   def show
@@ -37,12 +46,6 @@ class ElevesController < ApplicationController
       format.html
       format.json
     end
-  end
-
-  def new_prof
-    @eleve.prof = true
-    @eleve.status = "En attente de modération"
-    @eleve.save
   end
 
   def edit
@@ -69,11 +72,9 @@ class ElevesController < ApplicationController
 
   # liste des templates d'un prof
   def mes_cours
-    @sports = Sport.all
-    @activities = Activity.all
-    @template = Template.new
     @templates = Template.where(eleve_id: @eleve)
-    @lesson = Lesson.new
+    create_template_lesson_dans_mes_cours
+    new_lesson_and_template
   end
 
   # mon planning en tant que prof
@@ -94,9 +95,13 @@ class ElevesController < ApplicationController
   def mes_reservations
     eleve_reservations
     prof_reservations
+    new_lesson_and_template
+    @templates = Template.all.where(eleve_id: @eleve)
+  end
+
+  def new_lesson_and_template
     @template = Template.new
     @lesson = Lesson.new
-    @templates = Template.all.where(eleve_id: @eleve)
     @sports = Sport.all
     @activities = Activity.all
   end
@@ -133,6 +138,7 @@ def update_password
   def find_eleve
     @eleve = Eleve.find(params[:id])
   end
+
   def eleve_params
     params.require(:eleve).permit(:name, :profile_picture, :surname, :birthdate, :sex, :phone_number, :prof, :city, :presentation, :siret_number, :company_address, :facebook, :instagram, :country, :iban, :bic)
   end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_11_150726) do
+ActiveRecord::Schema.define(version: 2020_05_14_233207) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -119,6 +119,7 @@ ActiveRecord::Schema.define(version: 2020_05_11_150726) do
     t.datetime "start"
     t.datetime "end"
     t.string "streaming_url"
+    t.string "status", default: "scheduled"
     t.index ["activity_id"], name: "index_lessons_on_activity_id"
     t.index ["eleve_id"], name: "index_lessons_on_eleve_id"
     t.index ["sport_id"], name: "index_lessons_on_sport_id"

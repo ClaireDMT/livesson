@@ -55,11 +55,19 @@
 
                   <div class="card-reservation-right col-xs-12 col-lg-2 d-flex justify-content-center align-items-center">
                     <div>
-                      <% if upcoming_lesson.in_15?  %>
+                      <% if upcoming_lesson.in_15  %>
                         <%= link_to lesson_path(upcoming_lesson.id), class: "btn-rectangle mb-4" do %>
                           <%= image_tag "video-call.svg", class: "video-call-icon" %>
                           <p>Démarrer le cours</p>
                         <% end %>
+                      <% else %>
+                          <button class="btn-rectangle disabled mb-4">
+                            <%= image_tag "video-call.svg", class: "video-call-icon" %>
+                            <p>Disponible à H-15min</p>
+                          </button>
+                      <% end %>
+                      <%= link_to prof_cancellation_lessons_path(upcoming_lesson.id), class: "btn-rectangle-gray mb-4" do %>
+                        <p>Annuler le cours   X</p>
                       <% end %>
                       <%= link_to '+ Ajouter à mon calendrier', elefe_path(upcoming_lesson.eleve), class: 'black-link medium' %>
                     </div>
@@ -83,19 +91,6 @@
         <% if @past_lessons.present? %>
           <div class="row">
             <% @past_lessons.each do |past_lesson| %>
-
-            <div class="col-xs-12 col-lg-12">
-              <div class="card-reservation d-flex">
-                <div class="card-reservation-left col-xs-12 col-lg-2">
-                  <p class="medium local-time"><%= lesson.start %></p>
-                  <p class="purple medium"><%= past_lesson.lesson_name.upcase %></p>
-                  <p><%= past_lesson.lesson_level %></p>
-                  <p>Cours en <%= past_lesson.lesson_language %></p>
-                  <p><%= past_lesson.lesson_duration %>min</p>
-                  <p class="medium purple" data-toggle="modal" data-target="#reservationsModal" data-lesson="<%= past_lesson.id %>" data-participants="<%= past_lesson.all_participants.join(',') %> ">
-                    <%= pluralize(past_lesson.bookings.count, "réservation")  %></p>
-                </div>
-
 
               <!-- Modal RESA-->
               <div class="modal fade reviewsModalLesson" id="reviewsModalLesson<%= past_lesson.id %>" tabindex="-1" role="dialog" aria-labelledby="reviews" aria-hidden="true">
@@ -121,7 +116,6 @@
                 </div>
               </div>
               <!-- Modal RESA-->
-
 
               <div class="col-xs-12 col-lg-12">
                 <div class="card-reservation d-flex">

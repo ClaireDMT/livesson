@@ -24,12 +24,21 @@
   }
 
   .card-reservation-right {
-    a.btn-rectangle {
+    .btn-rectangle, {
       display: flex;
       justify-content: center;
       align-items: center;
       padding: 10px 20px;
     }
+
+    button.btn-rectangle.disabled {
+     opacity: 0.5;
+     cursor: default;
+    }
+    button.btn-rectangle.disabled:hover {
+      font-weight: 400;
+    }
+
     a.btn-rectangle:hover {
       color: white;
       font-weight: 500;

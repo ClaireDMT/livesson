@@ -22,7 +22,15 @@ class Lesson < ApplicationRecord
   end
 
   def all_participants
-    Eleve.joins(:bookings).where(bookings: { lesson_id: id }).map { |eleve| "#{eleve.name} #{eleve.surname}" }
+    Eleve.joins(:bookings).where(bookings: { lesson_id: self.id }).map { |eleve| "#{eleve.name} #{eleve.surname}" }
+  end
+
+  def in_15
+    (self.start > DateTime.now) && ((self.start - DateTime.now) / 60 < 16)
+  end
+
+  def in_5
+    (self.start > DateTime.now) && ((self.start - DateTime.now) / 60 < 6)
   end
 
   include PgSearch::Model

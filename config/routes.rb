@@ -29,8 +29,12 @@ Rails.application.routes.draw do
       patch "/:id/update_email", to: "eleves#update_email"
     end
   end
-  # route pour annuler une réservation
-  resources :bookings, only: :destroy
+  # route pour supprimer un booking
+  resources :bookings, only: :destroy do
+    collection do
+      get '/:id/annuler', to: 'bookings#cancel', as: :cancel
+    end
+  end
   # routes pour la création d'un template
   resources :templates, only: [:index, :new, :create]
   # routes pour lessons avec l'annotation et la réservation imbriquées
@@ -38,7 +42,10 @@ Rails.application.routes.draw do
     resources :reviews, only: [:new, :create]
     resources :bookings, only: [:new, :create]
     collection do
+      # route render la mini-show d'une lesson sur un prof pour la réserver
       get 'reservation_lesson/:id',to: 'lessons#resa_show', as: :resa_show
+      # route pour annuler une lesson en tant que prof
+      get '/:id/annulation_professeur', to: 'lessons#prof_cancellation', as: :prof_cancellation
     end
   end
 end

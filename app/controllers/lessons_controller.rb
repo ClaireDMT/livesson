@@ -1,6 +1,6 @@
 class LessonsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index]
-  before_action :find_lesson, only: %i[show edit update destroy lesson_video]
+  before_action :find_lesson, only: %i[show edit update destroy lesson_video prof_cancellation]
   before_action :find_query, only: %i[search_sport_name search_lesson_language search_lesson_level search_lesson_date search_beginning_time search_sport_name_and_lesson_language search_all]
 
   def index
@@ -129,6 +129,17 @@ class LessonsController < ApplicationController
   def destroy
     @lesson.destroy
     redirect_to lesson_path
+  end
+
+  def prof_cancellation
+    @lesson.status = "cancelled"
+    @prof = @lesson.eleve
+    bookings = Booking.where(lesson_id: @lesson.id)
+    bookings.each do |booking|
+      booking.cancelled_by(@prof)
+    end
+    # TO DO : add send email to prof to confirm cancellation of the lesson
+    redirect_to mes_reservations_eleves_path(@prof)
   end
 
   def lesson_video

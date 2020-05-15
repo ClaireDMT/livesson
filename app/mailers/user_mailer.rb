@@ -38,6 +38,22 @@ class UserMailer < ApplicationMailer
     mail(to: user.email, subject: "Votre adresse email a bien été modifié")
   end
 
+  def cancel_lessson_by_prof(booking_id)
+    @booking = Booking.find(booking_id)
+    @eleve = @booking.eleve_id
+    @prof = @booking.lesson.eleve
+    @email = Eleve.find(@eleve).user.email
+    mail(to: user.email, subject: "Votre cours avec #{@prof.name} #{@prof.surname} est annulé")
+  end
+
+  def annulation_dans_les_temps(user)
+    mail(to: user.email, subject: "Votre cours avec #{@prof.name} #{@prof.surname} est annulé")
+  end
+
+  def annulation_pas_dans_les_temps(user)
+    mail(to: user.email, subject: "Votre cours avec #{@prof.name} #{@prof.surname} est annulé")
+  end
+
   # def discover_woonies(pro, email)
   #   @pro_url = "https://woonies.com/pros/#{pro.id}"
   #   @pro_name = pro.company_name

@@ -24,8 +24,8 @@
   <!-- CREATE NEW TEMPLATE -->
 
   <!-- CREATE NEW LESSON -->
-  <div id="lesson-new" id="close-lesson">
-    <i class="far fa-times-circle" onclick="closeFormLesson()"></i>
+  <div id="lesson-new" class='form-popup'>
+    <i class="far fa-times-circle" id="close-lesson"></i>
     <h2>AJOUTER UN COURS AU PLANNING</h2>
     <%= simple_form_for @lesson do |f| %>
       <%= f.association :template, collection: @templates, label_method: :template_name, value_method: :id, label: 'Choisir le cours', placeholder: 'Choisissez votre cours' %>

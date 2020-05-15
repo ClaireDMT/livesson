@@ -137,9 +137,9 @@ class LessonsController < ApplicationController
     bookings = Booking.where(lesson_id: @lesson.id)
     bookings.each do |booking|
       booking.cancelled_by(@prof)
-      # send email
     end
-    # redirect mes_resa
+    # TO DO : add send email to prof to confirm cancellation of the lesson
+    redirect_to mes_reservations_eleves_path(@prof)
   end
 
   def lesson_video

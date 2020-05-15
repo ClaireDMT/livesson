@@ -21,9 +21,13 @@ class BookingsController < ApplicationController
     end
   end
 
-  def cancel_as_prof
-    raise
+  def cancel
+    @booking = Booking.find(params[:id])
+    @booking.cancelled_by(current_user.eleve)
+    # send email
+    # redirect to mes_resa
   end
+
 
   def update
     @booking = Booking.find(params[:id])

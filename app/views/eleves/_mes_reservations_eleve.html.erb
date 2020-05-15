@@ -33,13 +33,24 @@
 
                   <div class="card-reservation-right col-xs-12 col-lg-2 d-flex justify-content-center align-items-center">
                     <div>
-                      <%= link_to lesson_path(upcoming_booking.lesson_id), class: "btn-rectangle mb-4" do %>
-                        <%= image_tag "video-call.svg", class: "video-call-icon" %>
-                        <p>Accéder au cours</p>
+                      <% if upcoming_booking.lesson.in_5  %>
+                        <%= link_to lesson_path(upcoming_booking.lesson_id), class: "btn-rectangle mb-4" do %>
+                          <%= image_tag "video-call.svg", class: "video-call-icon" %>
+                          <p>Accéder au cours</p>
+                        <% end %>
+                      <% else %>
+                        <button class="btn-rectangle disabled mb-4">
+                          <%= image_tag "video-call.svg", class: "video-call-icon" %>
+                          <p>Disponible à H-5min</p>
+                        </button>
+                      <% end %>
+                      <%= link_to cancel_bookings_path(upcoming_booking.id), class: "btn-rectangle-gray mb-4" do %>
+                        <p>Annuler le cours   X</p>
                       <% end %>
                       <p class="medium"><span class= "purple"><%= upcoming_booking.lesson.bookings.count %></span> participants</p>
                       <%= link_to '+ Ajouter à mon calendrier', elefe_path(upcoming_booking.lesson.eleve), class: 'black-link medium' %>
                     </div>
+
                   </div>
                 </div>
               </div>

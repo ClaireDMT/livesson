@@ -149,8 +149,8 @@ lesson_1 = Lesson.create!(lesson_date: "23/06/2020",
               template_id: template_one.id)
 
 lesson_2 = Lesson.create!(lesson_date: "12/07/2020",
-              start: DateTime.new(2020,7,12,15,0,0,'+02:00'),
-              end: DateTime.new(2020,7,12,16,0,0,'+02:00'),
+              start: DateTime.new(2020,6,15,01,15,0,'+02:00'),
+              end: DateTime.new(2020,6,15,02,0,0,'+02:00'),
               lesson_description: template_two.template_description,
               lesson_material_needed: template_two.template_material_needed,
               lesson_name: template_two.template_name,
@@ -164,8 +164,8 @@ lesson_2 = Lesson.create!(lesson_date: "12/07/2020",
               template_id: template_two.id)
 
 lesson_3 = Lesson.create!(lesson_date: "01/05/2020",
-              start: DateTime.new(2020,5,1,15,0,0,'+02:00'),
-              end: DateTime.new(2020,5,1,16,0,0,'+02:00'),
+              start: DateTime.new(2020,6,1,15,0,0,'+02:00'),
+              end: DateTime.new(2020,6,1,16,0,0,'+02:00'),
               lesson_description: template_three.template_description,
               lesson_material_needed: template_three.template_material_needed,
               lesson_name: template_three.template_name,

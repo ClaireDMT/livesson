@@ -1,6 +1,6 @@
 class LessonsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index]
-  before_action :find_lesson, only: %i[show edit update destroy lesson_video]
+  before_action :find_lesson, only: %i[show edit update destroy lesson_video prof_cancellation]
 
   def index
     @eleve = current_user.eleve unless current_user.nil?
@@ -70,8 +70,7 @@ class LessonsController < ApplicationController
                                                AND lesson_language IN (?)
                                                AND lesson_level IN (?) AND lesson_date = ?",
                                               @sports, @langues, @niveaux, query[:lesson_date])
-  end
-
+    end
   end
 
   def new
@@ -97,11 +96,8 @@ class LessonsController < ApplicationController
     @lesson = Lesson.find(params[:id])
     @booking = Booking.new
     @prof = Eleve.find(@lesson.eleve_id)
-
     render layout: false
-
   end
-
 
   def create
     @lesson = Lesson.new(lesson_params)
@@ -135,6 +131,17 @@ class LessonsController < ApplicationController
   def destroy
     @lesson.destroy
     redirect_to lesson_path
+  end
+
+  def prof_cancellation
+    @lesson.status = "cancelled"
+    @prof = @lesson.eleve
+    bookings = Booking.where(lesson_id: @lesson.id)
+    bookings.each do |booking|
+      booking.cancelled_by(@prof)
+      # send email
+    end
+    # redirect mes_resa
   end
 
   def lesson_video

@@ -55,16 +55,19 @@
 
                   <div class="card-reservation-right col-xs-12 col-lg-2 d-flex justify-content-center align-items-center">
                     <div>
-                      <% if upcoming_lesson.in_15?  %>
+                      <% if upcoming_lesson.in_15  %>
                         <%= link_to lesson_path(upcoming_lesson.id), class: "btn-rectangle mb-4" do %>
                           <%= image_tag "video-call.svg", class: "video-call-icon" %>
                           <p>Démarrer le cours</p>
                         <% end %>
                       <% else %>
-                          <%= link_to class: "btn-rectangle mb-4" do %>
-                            <%= image_tag "video-call.svg", class: "video-call-icon disabled" %>
+                          <button class="btn-rectangle disabled mb-4">
+                            <%= image_tag "video-call.svg", class: "video-call-icon" %>
                             <p>Disponible à H-15min</p>
-                          <% end %>
+                          </button>
+                      <% end %>
+                      <%= link_to prof_cancellation_lessons_path(upcoming_lesson.id), class: "btn-rectangle-gray mb-4" do %>
+                        <p>Annuler le cours   X</p>
                       <% end %>
                       <%= link_to '+ Ajouter à mon calendrier', elefe_path(upcoming_lesson.eleve), class: 'black-link medium' %>
                     </div>

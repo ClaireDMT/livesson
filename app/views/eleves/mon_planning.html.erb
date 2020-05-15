@@ -1,35 +1,13 @@
-<div class="container-fluid" id="mes-reservations">
-  <br>
-  <div class="reservations-header">
-    <h2>Mes réservations</h2>
-    <% if @eleve.moderated? %>
-      <div class="buttons">
-        <button class=" btn-rectangle" id="button-template">+ Créer un nouveau type de cours</button>
-        <button class=" btn-rectangle" id="button-lesson">+ Ajouter un cours au planning</button>
-      </div>
-    <% end %>
+<div id="mon-planning" class="prof-planning">
+  <div class="d-flex justify-content-between p-4">
+    <h2 class="">Mon planning</h2>
+    <div class="buttons">
+      <button class=" btn-rectangle" id="button-template">+ Créer un nouveau type de cours</button>
+      <button class=" btn-rectangle" id="button-lesson">+ Ajouter un cours au planning</button>
+    </div>
   </div>
-  <nav class="nav nav-pills">
-      <a class="nav-item nav-link nav-link-reservation active" id="pills-reservations-eleve-tab" data-toggle="tab" href="#pills-reservations-eleve" role="tab" aria-controls="pills-reservations-eleve" aria-selected="true">MES RÉSERVATIONS COMME ÉLÈVE</a>
-      <% if @eleve.moderated? %>
-        <a class="nav-item nav-link nav-link-reservation" id="pills-reservations-prof-tab" data-toggle="tab" href="#pills-reservations-prof" role="tab" aria-controls="pills-reservations-prof" aria-selected="false">MES RÉSERVATIONS COMME PROFESSEUR</a>
-      <% end %>
-  </nav>
-  <br>
-  <div class="tab-content" id="pills-tabContent">
-    <% if @eleve.moderated? %>
-      <div class="tab-pane fade show active" id="pills-reservations-eleve" role="tabpanel" aria-labelledby="pills-reservations-eleve-tab">
-        <%= render 'mes_reservations_eleve'%>
-      </div>
-      <div class="tab-pane fade" id="pills-reservations-prof" role="tabpanel" aria-labelledby="pills-reservations-prof-tab">
-        <%= render 'mes_reservations_prof'%>
-      </div>
-    <% else %>
-      <div class="tab-pane fade show active" id="pills-reservations-eleve" role="tabpanel" aria-labelledby="pills-reservations-eleve-tab">
-        <%= render 'mes_reservations_eleve'%>
-      </div>
-    <% end %>
-  </div>
+
+  <!-- CREATE NEW TEMPLATE -->
   <div id="template-new" class='form-popup'>
     <i class="far fa-times-circle" id="close-template"></i>
     <h2>CRÉER UN TYPE DE COURS</h2>
@@ -43,8 +21,11 @@
       <%= f.submit 'Enregistrer', class: 'btn-rectangle' %>
     <% end %>
   </div>
-  <div id="lesson-new" class='form-popup'>
-    <i class="far fa-times-circle" id="close-lesson"></i>
+  <!-- CREATE NEW TEMPLATE -->
+
+  <!-- CREATE NEW LESSON -->
+  <div id="lesson-new" id="close-lesson">
+    <i class="far fa-times-circle" onclick="closeFormLesson()"></i>
     <h2>AJOUTER UN COURS AU PLANNING</h2>
     <%= simple_form_for @lesson do |f| %>
       <%= f.association :template, collection: @templates, label_method: :template_name, value_method: :id, label: 'Choisir le cours', placeholder: 'Choisissez votre cours' %>
@@ -59,7 +40,8 @@
       <%= f.submit 'Enregistrer', class: 'btn-rectangle' %>
     <% end %>
   </div>
+  <!-- CREATE NEW TEMPLATE -->
 
-
-
-
+  <div id="calendar"
+  data-lessons="<%= @lessons.to_json %>"></div>
+</div>

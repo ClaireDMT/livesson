@@ -77,6 +77,20 @@ class ElevesController < ApplicationController
     new_lesson_and_template
   end
 
+  # mon planning en tant que prof
+  def mon_planning
+    @lessons = Lesson.where(eleve_id: @eleve.id)
+    @sports = Sport.all
+    @activities = Activity.all
+    @template = Template.new
+    @templates = Template.where(eleve_id: @eleve)
+    @lesson = Lesson.new
+    respond_to do |format|
+      format.html
+      format.json
+    end
+  end
+
   # mes réservations en tant qu'élève et en tant que prof
   def mes_reservations
     eleve_reservations

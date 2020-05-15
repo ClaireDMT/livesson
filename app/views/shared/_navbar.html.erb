@@ -53,7 +53,7 @@
       <% else %>
         <% if current_user.eleve.moderated?  %>
           <%= link_to 'Cours', mes_cours_eleves_path(current_user.eleve), class: "medium nav-link" %>
-          <%= link_to 'Planning', '', class: "medium nav-link" %>
+          <%= link_to 'Planning', mon_planning_eleves_path(current_user.eleve), class: "medium nav-link" %>
         <% end %>
         <%= link_to 'Réservations', mes_reservations_eleves_path(current_user.eleve), class: "medium nav-link" %>
         <%= link_to 'Aide', root_path, class: "medium nav-link" %>

@@ -18,8 +18,7 @@ const closeFormTemplate = () => {
     })
   }
 }
-
-function openFormLesson() {
+const openFormLesson = () => {
   if (document.body.contains(buttonOpenLesson)) {
     buttonOpenLesson.addEventListener("click", (event) => {
       document.getElementById("template-new").style.display = "none";
@@ -27,8 +26,7 @@ function openFormLesson() {
     })
   }
 }
-
-function closeFormLesson() {
+const closeFormLesson = () => {
   if (document.body.contains(buttonCloseLesson)) {
     buttonCloseLesson.addEventListener("click", (event) => {
       document.getElementById("lesson-new").style.display = "none";
@@ -39,4 +37,3 @@ export { openFormTemplate };
 export { closeFormTemplate };
 export { openFormLesson };
 export { closeFormLesson };
-

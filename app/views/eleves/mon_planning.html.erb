@@ -2,14 +2,14 @@
   <div class="d-flex justify-content-between p-4">
     <h2 class="">Mon planning</h2>
     <div class="buttons">
-      <button class=" btn-rectangle" onclick="openFormTemplate()">+ Créer un nouveau type de cours</button>
-      <button class=" btn-rectangle" onclick="openFormLesson()">+ Ajouter un cours au planning</button>
+      <button class=" btn-rectangle" id="button-template">+ Créer un nouveau type de cours</button>
+      <button class=" btn-rectangle" id="button-lesson">+ Ajouter un cours au planning</button>
     </div>
   </div>
 
   <!-- CREATE NEW TEMPLATE -->
   <div id="template-new" class='form-popup'>
-    <i class="far fa-times-circle" onclick="closeFormTemplate()"></i>
+    <i class="far fa-times-circle" id="close-template"></i>
     <h2>CRÉER UN TYPE DE COURS</h2>
     <%= simple_form_for @template do |f| %>
       <%= f.association :activity, collection: @activities, label_method: :activity_name, value_method: :id, label: "Type d'activité", placeholder: "Choisissez le type d'activité"%>
@@ -24,7 +24,7 @@
   <!-- CREATE NEW TEMPLATE -->
 
   <!-- CREATE NEW LESSON -->
-  <div id="lesson-new" class='form-popup'>
+  <div id="lesson-new" id="close-lesson">
     <i class="far fa-times-circle" onclick="closeFormLesson()"></i>
     <h2>AJOUTER UN COURS AU PLANNING</h2>
     <%= simple_form_for @lesson do |f| %>

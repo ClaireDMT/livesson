@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container-livesson">
   <nav class="nav nav-pills">
       <a class="nav-item nav-link nav-link-compte active" id="pills-profil-tab" data-toggle="tab" href="#pills-profil" role="tab" aria-controls="pills-profil" aria-selected="true">PROFIL ÉLÈVE</a>
       <a class="nav-item nav-link nav-link-compte" id="pills-emailmdp-tab" data-toggle="tab" href="#pills-emailmdp" role="tab" aria-controls="pills-emailmdp" aria-selected="false">E-MAIL ET MOT DE PASSE</a>
@@ -7,18 +7,18 @@
         <a class="nav-item nav-link nav-link-compte" id="pills-espace-prof-tab" data-toggle="tab" href="#pills-espace-prof" role="tab" aria-controls="pills-espace-prof" aria-selected="false">MON ESPACE PROFESSIONNEL</a>
       <% end %>
   </nav>
+  <% if @eleve.moderated? %>
+    <div class="tab-content" id="pills-tabContent">
+      <div class="tab-pane fade show active" id="pills-profil" role="tabpanel" aria-labelledby="pills-profil-tab"><%= render 'edit_eleve' %></div>
+      <div class="tab-pane fade" id="pills-emailmdp" role="tabpanel" aria-labelledby="pills-emailmdp-tab"><%= render 'form_changement_email_et_mdp' %></div>
+      <div class="tab-pane fade" id="pills-paiement" role="tabpanel" aria-labelledby="pills-paiement-tab"><%= render 'form_paiement'%></div>
+      <div class="tab-pane fade" id="pills-espace-prof" role="tabpanel" aria-labelledby="pills-espace-prof-tab"><%= render 'edit_prof' %></div>
+    </div>
+  <% else %>
+    <div class="tab-content" id="pills-tabContent">
+      <div class="tab-pane fade show active" id="pills-profil" role="tabpanel" aria-labelledby="pills-profil-tab"><%= render 'edit_eleve' %></div>
+      <div class="tab-pane fade" id="pills-emailmdp" role="tabpanel" aria-labelledby="pills-emailmdp-tab"><%= render 'form_changement_email_et_mdp' %></div>
+      <div class="tab-pane fade" id="pills-paiement" role="tabpanel" aria-labelledby="pills-paiement-tab"><%= render 'form_paiement'%></div>
+    </div>
+  <% end %>
 </div>
-<% if @eleve.moderated? %>
-  <div class="tab-content" id="pills-tabContent">
-    <div class="tab-pane fade show active" id="pills-profil" role="tabpanel" aria-labelledby="pills-profil-tab"><%= render 'edit_eleve' %></div>
-    <div class="tab-pane fade" id="pills-emailmdp" role="tabpanel" aria-labelledby="pills-emailmdp-tab"><%= render 'form_changement_email_et_mdp' %></div>
-    <div class="tab-pane fade" id="pills-paiement" role="tabpanel" aria-labelledby="pills-paiement-tab"><%= render 'form_paiement'%></div>
-    <div class="tab-pane fade" id="pills-espace-prof" role="tabpanel" aria-labelledby="pills-espace-prof-tab"><%= render 'edit_prof' %></div>
-  </div>
-<% else %>
-  <div class="tab-content" id="pills-tabContent">
-    <div class="tab-pane fade show active" id="pills-profil" role="tabpanel" aria-labelledby="pills-profil-tab"><%= render 'edit_eleve' %></div>
-    <div class="tab-pane fade" id="pills-emailmdp" role="tabpanel" aria-labelledby="pills-emailmdp-tab"><%= render 'form_changement_email_et_mdp' %></div>
-    <div class="tab-pane fade" id="pills-paiement" role="tabpanel" aria-labelledby="pills-paiement-tab"><%= render 'form_paiement'%></div>
-  </div>
-<% end %>

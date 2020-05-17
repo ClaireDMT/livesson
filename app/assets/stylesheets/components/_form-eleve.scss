@@ -1,13 +1,8 @@
 #form-eleve{
   margin-top: 20px;
-  .form-flexify-normal{
-    display: flex;
-    justify-content: space-around;
-  }
   .form-flexify {
     display: flex;
     align-items: center;
-    justify-content: space-around;
   }
   p{
     width: 500px;
@@ -17,6 +12,10 @@
     img{
       width: 170px;
       margin-bottom: 25px;
+    }
+    .btn-rectangle{
+      height: 48px;
+      width: 197px;
     }
     .flexify{
       display: flex;
@@ -37,11 +36,16 @@
         }
       }
     }
+    .radio_buttons{
+      display: flex;
+      flex-direction: row;
+    }
   }
   .form-right-part{
     margin-left: 55px;
     img {
-      width: 100%;
+      width: 777px;
+      height: 518px;
     }
     .form-paiement {
       display: flex;

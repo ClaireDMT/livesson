@@ -1,56 +1,55 @@
-<div class="container">
-  <div id="form-eleve">
-    <%= simple_form_for @eleve do |f| %>
-      <div class="form-flexify">
-        <div class="form-left-part">
-          <div class="form-profil">
-            <h2>Mon profil</h2>
-            <div class='flexify'>
-              <% if @eleve.profile_picture.attached? %>
-                <%= image_tag @eleve.profile_picture, class: 'profil-picture-eleve' %>
-              <% else %>
-                <%= f.input :profile_picture, as: :file, class: 'profil-picture-eleve' %>
-              <% end %>
-              <div class="nom-prenom">
-                <%= f.input :name,
-                              label: "Prénom",
-                              placeholder: "Votre prénom",
-                              required: true,
-                              error: 'Le prénom est obligatoire' %>
-                <%= f.input :surname,
-                              label: "Nom",
-                              placeholder: "Votre nom",
-                              required: true,
-                              error: 'Le nom est obligatoire' %>
-              </div>
+<div id="form-eleve">
+  <%= simple_form_for @eleve do |f| %>
+    <div class="form-flexify">
+      <div class="form-left-part">
+        <div class="form-profil">
+          <h2>Mon profil</h2>
+          <div class='flexify'>
+            <% if @eleve.profile_picture.attached? %>
+              <%= image_tag @eleve.profile_picture, class: 'profil-picture-eleve' %>
+            <% else %>
+              <%= f.input :profile_picture, as: :file, class: 'profil-picture-eleve' %>
+            <% end %>
+            <div class="nom-prenom">
+              <%= f.input :name,
+                            label: "Prénom",
+                            placeholder: "Votre prénom",
+                            required: true,
+                            error: 'Le prénom est obligatoire' %>
+              <%= f.input :surname,
+                            label: "Nom",
+                            placeholder: "Votre nom",
+                            required: true,
+                            error: 'Le nom est obligatoire' %>
             </div>
-            <%= f.input :birthdate,
-                        label: "Date de naissance",
-                        placeholder: "Date de naissance",
-                        as: :string,
-                        required: false,
-                        input_html: {class: "datepicker"}%>
-            <%= f.input :sex,
-                        as: :radio_buttons,
-                        collection: ['Femme', 'Homme', 'Ne souhaite pas communiquer'] %>
-            <%= f.input :country,
-                        label: "Pays",
-                        include_blank: "Votre pays",
-                        required: true,
-                        error: 'Le Pays est obligatoire' %>
-            <%= f.input :phone_number,
-                        label: "Numéro de téléphone",
-                        placeholder: "00 00 00 00 00",
-                        hint: "(attention: vous recevrez les notifications de cours sur ce numéro)",
-                        required: true,
-                        error: 'Le numéro de téléphone est obligatoire' %>
-            <%= f.submit 'Enregistrer', class: 'btn-rectangle' %>
           </div>
-        </div>
-        <div class="form-right-part">
-          <%= image_tag 'compte/Livesson_compte_3.jpg' %>
+          <%= f.input :birthdate,
+                      label: "Date de naissance",
+                      placeholder: "Date de naissance",
+                      as: :string,
+                      required: false,
+                      input_html: {class: "datepicker"}%>
+          <%= f.input :sex,
+                      as: :radio_buttons,
+                      collection: ['Femme', 'Homme', 'Ne souhaite pas communiquer'],
+                      class:'radio-inline' %>
+          <%= f.input :country,
+                      label: "Pays",
+                      include_blank: "Votre pays",
+                      required: true,
+                      error: 'Le Pays est obligatoire' %>
+          <%= f.input :phone_number,
+                      label: "Numéro de téléphone",
+                      placeholder: "00 00 00 00 00",
+                      hint: "(attention: vous recevrez les notifications de cours sur ce numéro)",
+                      required: true,
+                      error: 'Le numéro de téléphone est obligatoire' %>
+          <%= f.submit 'Enregistrer', class: 'btn-rectangle' %>
         </div>
       </div>
-    <% end %>
-  </div>
+      <div class="form-right-part">
+        <%= image_tag 'compte/Livesson_compte_3.jpg' %>
+      </div>
+    </div>
+  <% end %>
 </div>

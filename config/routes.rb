@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   # homepage
-  root to: 'pages#home'
+  get '/home', to: 'pages#home'
   # homepage prof
   get '/prof', to: 'pages#home_pro'
   # curstom registration controller devise

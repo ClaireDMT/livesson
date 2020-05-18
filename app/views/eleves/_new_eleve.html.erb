@@ -8,7 +8,8 @@
             Aucun paiement ne s’effectuer en avance. Vous serez prélevé une fois la réservation de votre premier cours effectuée</p>
             <h2>Mon profil</h2>
             <div class='flexify'>
-               <%= f.input :profile_picture, as: :file %>
+               <%= f.input :profile_picture, as: :file, input_html: { class: 'hidden', id: 'photo-input' }, label_html: { class: 'upload-photo', id: 'uploads-photo'}, label: '📷 Upload a photo' %>
+               <%= image_tag "", width: 170, class: "hidden", id: "photo-preview" %>
               <div class="nom-prenom">
                 <%= f.input :name,
                               label: "Prénom",

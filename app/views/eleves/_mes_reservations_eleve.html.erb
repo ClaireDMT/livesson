@@ -112,20 +112,35 @@
                 </div>
 
                 <div class="card-reservation-right col-xs-12 col-lg-2 d-flex justify-content-center align-items-center">
-                  <div>
-                    <% review = Review.where("lesson_id = ? AND eleve_id = ?", past_booking.lesson.id, past_booking.eleve_id) %>
-                    <% if review.empty? %>
-                      <button class="btn-rectangle mb-4" data-toggle="modal" data-target="#modalCreateReviewLesson<%= past_booking.lesson.id %>" data-lesson="<%= past_booking.lesson.id %>" >Noter le cours</button>
+                  <div class="text-center">
+                    <% if past_booking.cancelled? %>
+                      <button class="btn-rectangle-gray mb-4 ml-auto mr-auto d-pointer" >
+                        <p>Cours annulé</p>
+                      </button>
+                      <% if past_booking.refundable %>
+                        <p class="purple">Cours annulé par le professeur</p>
+                        <p class="medium">0€</p>
                       <% else %>
-                        <p class="medium">Votre avis sur le cours</p>
-                        <p><% review.first.rating.round.times do %>
-                            <%= image_tag 'star-full.svg', class: "rating-prof-stars" %>
-                          <% end %>
-                          <% (5 - review.first.rating.round).times do %>
-                            <%= image_tag 'star-empty.svg', class: "rating-prof-stars" %>
-                          <% end %>
-                        </p>
-                        <p><%= review.first.content %></p>
+                        <p class="purple mb-0">Annulation tardive</p>
+                        <p class="caption-small">(moins de 12h avant le début du cours)</p>
+                        <p class="medium"><%= past_booking.lesson.lesson_price %>€</p>
+
+                      <% end %>
+                    <% else %>
+                      <% reviews = Review.where("lesson_id = ? AND eleve_id = ?", past_booking.lesson.id, past_booking.eleve_id) %>
+                      <% if reviews.empty? %>
+                        <button class="btn-rectangle mb-4" data-toggle="modal" data-target="#modalCreateReviewLesson<%= past_booking.lesson.id %>" data-lesson="<%= past_booking.lesson.id %>" >Noter le cours</button>
+                        <% else %>
+                          <p class="medium">Votre avis sur le cours</p>
+                          <p><% review.first.rating.round.times do %>
+                              <%= image_tag 'star-full.svg', class: "rating-prof-stars" %>
+                            <% end %>
+                            <% (5 - review.first.rating.round).times do %>
+                              <%= image_tag 'star-empty.svg', class: "rating-prof-stars" %>
+                            <% end %>
+                          </p>
+                          <p><%= review.first.content %></p>
+                      <% end %>
                     <% end %>
                   </div>
                 </div>

@@ -82,6 +82,63 @@
       <% end %>
     </div>
 
+    <button id="buttonToggleCancelledLessons" class="purple medium d-flex mt-4">
+      <h5 class="purple">MES COURS ANNULES (<%= @cancelled_lessons.count %>)</h5><span>+</span>
+    </button>
+
+    <div id="toggleCancelledLessons" style="display: none">
+      <% if @cancelled_lessons.present? %>
+        <div class="cards-reservations">
+          <div class="row">
+            <% @cancelled_lessons.each do |cancelled_lesson| %>
+              <div class="col-xs-12 col-lg-12">
+                <div class="card-reservation d-flex">
+                  <div class="card-reservation-left col-xs-12 col-lg-2">
+                    <p class="medium local-time"><%= cancelled_lesson.start %></p>
+                    <p class="purple medium"><%= cancelled_lesson.lesson_name.upcase %></p>
+                    <p><%= cancelled_lesson.lesson_level %></p>
+                    <p>Cours en <%= cancelled_lesson.lesson_language %></p>
+                    <p><%= cancelled_lesson.lesson_duration %>min</p>
+                    <p class="medium purple c-pointer" data-toggle="modal" data-target="#reservationsModal" data-lesson="<%= cancelled_lesson.id %>" data-participants="<%= cancelled_lesson.all_participants.join(',') %> ">
+                      <%= pluralize(cancelled_lesson.bookings.count, "réservation") %></p>
+                  </div>
+
+                  <div class="card-reservation-centre col-xs-12 col-lg-8">
+                    <p class='medium mb-0'>Descriptif du cours</p>
+                    <p><%= cancelled_lesson.lesson_description %></p>
+                    <p class='medium mb-0'>Matériel nécessaire</p>
+                    <p><%= cancelled_lesson.lesson_material_needed %></p>
+                  </div>
+
+                  <div class="card-reservation-right col-xs-12 col-lg-2 d-flex justify-content-center align-items-center">
+                    <div>
+                      <% if cancelled_lesson.in_15  %>
+                        <%= link_to lesson_path(cancelled_lesson.id), class: "btn-rectangle mb-4" do %>
+                          <%= image_tag "video-call.svg", class: "video-call-icon" %>
+                          <p>Démarrer le cours</p>
+                        <% end %>
+                      <% else %>
+                          <button class="btn-rectangle disabled mb-4">
+                            <%= image_tag "video-call.svg", class: "video-call-icon" %>
+                            <p>Disponible à H-15min</p>
+                          </button>
+                      <% end %>
+                      <%= link_to prof_cancellation_lessons_path(cancelled_lesson.id), class: "btn-rectangle-gray mb-4" do %>
+                        <p>Annuler le cours   X</p>
+                      <% end %>
+                      <%= link_to '+ Ajouter à mon calendrier', elefe_path(cancelled_lesson.eleve), class: 'black-link medium' %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      <% else %>
+        <p>Vous n'avez pas de cours annulé.</p>
+      <% end %>
+    </div>
+
     <button id="buttonTogglePastLessons" class="purple medium d-flex mt-4">
       <h5 class="purple">MES COURS PASSÉS (<%= @past_lessons.count %>)</h5><span>+</span>
     </button>

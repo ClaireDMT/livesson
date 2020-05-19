@@ -107,12 +107,16 @@ class ElevesController < ApplicationController
   def eleve_reservations
     @bookings = Booking.where(eleve_id: @eleve)
     @upcoming_bookings = @bookings.joins(:lesson).where("start > ?", Time.now)
+    @upcoming_bookings = @upcoming_bookings.where.not(canceller_id: @eleve, refundable: true)
     @past_bookings = @bookings.joins(:lesson).where("start < ?", Time.now)
+    @past_bookings = @past_bookings.where.not(canceller_id: @eleve, refundable: true)
   end
 
   def prof_reservations
     @lessons = Lesson.where(eleve_id: @eleve)
     @upcoming_lessons = @lessons.where("start > ?", Time.now)
+    @cancelled_lessons = @upcoming_lessons.where(status: 'cancelled')
+    @upcoming_lessons = @upcoming_lessons.where(status: 'scheduled')
     @past_lessons = @lessons.where("start < ?", Time.now)
   end
 

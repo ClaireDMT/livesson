@@ -192,9 +192,12 @@ lesson_4 = Lesson.create!(lesson_date: "01/05/2020",
 
 puts "Création des bookings"
 Booking.create!(eleve_id: marine_eleve.id,
+                status: "cancelled",
+                canceller_id: template_two.eleve_id,
+                refundable: true,
                 lesson_id: lesson_2.id)
 
-Booking.create!(eleve_id: marine_eleve.id,
+Booking.create!(eleve_id: guitou_eleve.id,
                 lesson_id: lesson_3.id)
 
 Booking.create!(eleve_id: claire_eleve.id,

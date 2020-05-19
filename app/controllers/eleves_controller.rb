@@ -107,9 +107,9 @@ class ElevesController < ApplicationController
   def eleve_reservations
     @bookings = Booking.where(eleve_id: @eleve)
     @upcoming_bookings = @bookings.joins(:lesson).where("start > ?", Time.now)
-    @upcoming_bookings = @upcoming_bookings.where.not(canceller_id: @eleve, refundable: true)
+    @upcoming_bookings = @upcoming_bookings.where(canceller_id: nil).or(@upcoming_bookings.where.not(canceller_id: @eleve))
     @past_bookings = @bookings.joins(:lesson).where("start < ?", Time.now)
-    @past_bookings = @past_bookings.where.not(canceller_id: @eleve, refundable: true)
+    @past_bookings = @past_bookings.where(canceller_id: nil).or(@upcoming_bookings.where(canceller_id: @eleve, refundable: false))
   end
 
   def prof_reservations

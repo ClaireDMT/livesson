@@ -19,7 +19,7 @@
   }
   .card-reservation-centre {
     p {
-      width: 80%
+      width: 90%
     }
   }
 
@@ -49,7 +49,9 @@
       margin-right: 10px;
     }
   }
-
+  .cancelModalLesson button.btn-rectangle-gray {
+    min-width: 130px;
+  }
   .modal-header, .modal-footer {
     border: none;
   }

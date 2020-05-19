@@ -10,6 +10,40 @@
         <div class="cards-reservations">
           <div class="row">
             <% @upcoming_bookings.each do |upcoming_booking| %>
+
+            <!-- Modal CANCEL-->
+            <div class="modal fade cancelModalLesson" id="cancelModalBooking<%= upcoming_booking.id %>" tabindex="-1" role="dialog" aria-labelledby="reviews" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title purple medium" id="reservations-subtitle"><%= upcoming_booking.lesson.lesson_name.upcase %></h5>
+                    <p class="modal-title purple"><span><%= I18n.l(upcoming_booking.lesson.lesson_date, format: '%A %d %B %Y', locale: :'fr').capitalize %></span> à <%= upcoming_booking.lesson.start.strftime('%Hh%M') %></p>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">
+                        <%= image_tag "black-cross.svg" %>
+                      </span>
+                    </button>
+                  </div>
+                  <div class="modal-body p-4">
+                    <% if upcoming_booking.refundable_now? %>
+                      <p>L'annulation intervenant plus de 12H avant le cours, votre compte ne sera pas débité.</p>
+                    <% else %>
+                      <p>Attention: l'annulation intervient moins de 12H avant le cours, le cours est donc dû.</p>
+                      <p>Vous serez débité de <%= upcoming_booking.lesson.lesson_price %>€</p>
+                    <% end %>
+                  </div>
+                  <div class="modal-footer d-flex justify-content-center">
+                    <%= link_to cancel_bookings_path(upcoming_booking) do %>
+                      <button class="btn-rectangle">
+                        <p>Annuler</p>
+                      </button>
+                    <% end %>
+                    <button type="button" class="btn-rectangle-gray" data-dismiss="modal">retour</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Modal CANCEL-->
               <div class="col-xs-12 col-lg-12">
                 <div class="card-reservation d-flex">
                   <div class="card-reservation-left col-xs-12 col-lg-2">
@@ -32,23 +66,35 @@
                   </div>
 
                   <div class="card-reservation-right col-xs-12 col-lg-2 d-flex justify-content-center align-items-center">
-                    <div>
-                      <% if upcoming_booking.lesson.in_5  %>
-                        <%= link_to lesson_path(upcoming_booking.lesson_id), class: "btn-rectangle mb-4" do %>
-                          <%= image_tag "video-call.svg", class: "video-call-icon" %>
-                          <p>Accéder au cours</p>
+                    <div class="text-center">
+                      <% if upcoming_booking.status == "cancelled" %>
+                        <button class="btn-rectangle-gray mb-4 ml-auto mr-auto d-pointer" >
+                          <p>Cours annulé</p>
+                        </button>
+                        <% if upcoming_booking.cancelled_by_prof? %>
+                          <p class="purple">Cours annulé par le professeur</p>
+                          <p class="medium">0€</p>
+                        <% elsif !upcoming_booking.refundable %>
+                          <p class="purple mb-0">Annulation tardive</p>
+                          <p class="caption-small">(moins de 12h avant le début du cours)</p>
+                          <p class="medium"><%= past_booking.lesson.lesson_price %>€</p>
                         <% end %>
                       <% else %>
-                        <button class="btn-rectangle disabled mb-4">
-                          <%= image_tag "video-call.svg", class: "video-call-icon" %>
-                          <p>Disponible à H-5min</p>
-                        </button>
+                        <% if upcoming_booking.lesson.in_5  %>
+                          <%= link_to lesson_path(upcoming_booking.lesson_id), class: "btn-rectangle mb-4 ml-auto mr-auto" do %>
+                            <%= image_tag "video-call.svg", class: "video-call-icon" %>
+                            <p>Accéder au cours</p>
+                          <% end %>
+                        <% else %>
+                          <button class="btn-rectangle disabled mb-4 ml-auto mr-auto">
+                            <%= image_tag "video-call.svg", class: "video-call-icon" %>
+                            <p>Disponible à H-5min</p>
+                          </button>
+                        <% end %>
+                        <button class="btn-rectangle-gray mb-4 ml-auto mr-auto" data-toggle="modal" data-target="#cancelModalBooking<%= upcoming_booking.id %>" >Annuler le cours   X</button>
+                        <p class="medium"><span class= "purple"><%= upcoming_booking.lesson.bookings.count %></span> participants</p>
+                        <%= link_to '+ Ajouter à mon calendrier', elefe_path(upcoming_booking.lesson.eleve), class: 'black-link medium' %>
                       <% end %>
-                      <%= link_to cancel_bookings_path(upcoming_booking.id), class: "btn-rectangle-gray mb-4" do %>
-                        <p>Annuler le cours   X</p>
-                      <% end %>
-                      <p class="medium"><span class= "purple"><%= upcoming_booking.lesson.bookings.count %></span> participants</p>
-                      <%= link_to '+ Ajouter à mon calendrier', elefe_path(upcoming_booking.lesson.eleve), class: 'black-link medium' %>
                     </div>
 
                   </div>
@@ -124,7 +170,6 @@
                         <p class="purple mb-0">Annulation tardive</p>
                         <p class="caption-small">(moins de 12h avant le début du cours)</p>
                         <p class="medium"><%= past_booking.lesson.lesson_price %>€</p>
-
                       <% end %>
                     <% else %>
                       <% reviews = Review.where("lesson_id = ? AND eleve_id = ?", past_booking.lesson.id, past_booking.eleve_id) %>

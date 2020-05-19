@@ -26,7 +26,7 @@ class Customdevise::RegistrationsController < Devise::RegistrationsController
     elsif @eleve.moderated?
       redirect_to edit_elefe_path(@eleve)
     else
-      redirect_to root_path
+      redirect_to '/home'
     end
   end
 

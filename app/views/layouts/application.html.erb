@@ -17,7 +17,13 @@
   <body>
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
-    <%= yield %>
+    <% if current_page?('/') %>
+      <%= yield %>
+    <% else %>
+      <div class="container-livesson">
+        <%= yield %>
+      </div>
+    <% end %>
     <%= render 'shared/footer' %>
 
     <%= javascript_pack_tag 'application' %>

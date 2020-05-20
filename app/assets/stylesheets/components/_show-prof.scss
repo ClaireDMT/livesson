@@ -44,7 +44,6 @@
   /////// PROF SECTION ////////////////////
 
   .container-show-prof {
-    padding: 20px 30px;
 
     .reviews-count {
       color: $gray;
@@ -58,7 +57,11 @@
       height: 180px;
       object-fit: cover;
     }
-
+    .social-networks a {
+      color: $black;
+      justify-content: flex-end;
+      margin-bottom: 10px;
+    }
     .social-networks img {
       margin-left: 10px;
       height: 22px;

@@ -43,14 +43,24 @@
             </div>
             <div class="social-networks text-right">
               <p class="title-purple-upcase">Réseaux sociaux</p>
-              <p>
-                @<%= @prof.url_to_insta_pseudo %>
-                <%= image_tag "instagram.svg" %>
-              </p>
-              <p>
-                <%= @prof.url_to_fb_pseudo %>
-                <%= image_tag "facebook.svg" %>
-              </p>
+              <% if @prof.instagram %>
+                <a href="<%= @prof.instagram %>" target=”_blank” class="d-flex">
+                  @<%= @prof.url_to_insta_pseudo %>
+                  <%= image_tag "instagram.svg" %>
+                </a>
+              <% end %>
+              <% if @prof.facebook %>
+                <a href="<%= @prof.facebook %>" target=”_blank” class="d-flex">
+                  <%= @prof.url_to_fb_pseudo %>
+                  <%= image_tag "facebook.svg" %>
+                </a>
+              <% end %>
+              <% if @prof.twitter %>
+                <a href="<%= @prof.twitter %>" target=”_blank” class="d-flex">
+                  <%= @prof.url_to_tw_pseudo %>
+                  <%= image_tag "twitter.svg" %>
+                </a>
+              <% end %>
             </div>
           </div>
         </div>
@@ -66,7 +76,7 @@
         <div class="prof-planning mt-5">
           <p class="bold">Planning</p>
           <div id="calendar"
-          data-lessons="<%= @lessons.to_json %>"></div>
+          data-lessons="<%= @lessons.to_json %>" data-prof-id="<%= @prof.id %>"></div>
         </div>
       </div>
 

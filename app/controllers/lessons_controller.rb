@@ -133,8 +133,9 @@ class LessonsController < ApplicationController
 
   def prof_cancellation
     @lesson.status = "cancelled"
+    @lesson.save
     @prof = @lesson.eleve
-    bookings = Booking.where(lesson_id: @lesson.id)
+    bookings = Booking.where(lesson_id: @lesson)
     bookings.each do |booking|
       booking.cancelled_by(@prof)
     end

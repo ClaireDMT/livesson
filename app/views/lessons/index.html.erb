@@ -38,7 +38,7 @@
                 </p>
                 <p class="lesson-duration"><%= lesson.lesson_duration %>min</p>
               </div>
-              <% if current_user.eleve == lesson.eleve %>
+              <% if current_user.present? && current_user.eleve == lesson.eleve %>
                 <%= link_to elefe_path(lesson.eleve, lesson: lesson) do %>
                   <button class="btn-rectangle">Voir mon cours</button>
                 <% end %>

@@ -23,10 +23,10 @@ class BookingsController < ApplicationController
 
   def cancel
     @booking = Booking.find(params[:id])
-    # method in Booking MOdel, works for both prof or eleve cancellation!
+    # method in Booking Model, works for both prof or eleve cancellation!
     @booking.cancelled_by(current_user.eleve)
     send_cancellation_email(@booking)
-    redirect_to mes_reservations_eleves(current_user.eleve)
+    redirect_to mes_reservations_eleves_url(current_user.eleve)
   end
 
   def update
@@ -46,12 +46,12 @@ class BookingsController < ApplicationController
   private
 
   def send_cancellation_email(booking)
-    if cancelled_by_prof?
-      UserMailer.cancel_lessson_by_prof(booking.id).deliver_now
-    elsif refundable
-      UserMailer.refund(booking.id).deliver_now
+    if @booking.cancelled_by_prof?
+      UserMailer.cancel_lessson_by_prof(@booking.id).deliver_now
+    elsif @booking.refundable
+      UserMailer.refund(@booking.id).deliver_now
     else
-      UserMailer.no_refund(booking.id).deliver_now
+      UserMailer.no_refund(@booking.id).deliver_now
     end
   end
 

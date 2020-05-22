@@ -40,3 +40,5 @@ import { openFormLesson } from '../plugins/template_lesson_pop_up_creation.js';
 openFormLesson();
 import { closeFormLesson } from '../plugins/template_lesson_pop_up_creation.js';
 closeFormLesson();
+import { previewImageOnFileSelect } from '../plugins/photo_preview.js';
+previewImageOnFileSelect();

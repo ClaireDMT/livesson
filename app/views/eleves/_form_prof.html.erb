@@ -6,7 +6,10 @@
           <div class="form-profil">
             <h2>Mon profil</h2>
             <div class='flexify'>
-                <%= f.input :profile_picture, as: :file %>
+              <div>
+                <%= f.input :profile_picture, as: :file, input_html: { class: 'd-none hidden', id: 'photo-input' }, label_html: { class: 'upload-photo'}, label: '<i class="fas fa-camera-retro"></i>'.html_safe %>
+              <%= image_tag "", width: 170, class: "d-none", id: "photo-preview" %>
+              </div>
               <div class="nom-prenom">
                 <%= f.input :name, label: 'Prénom', placeholder:'Votre prénom', required: true, error: 'Le Prénom est obligatoire' %>
                 <%= f.input :surname, label: 'Nom', placeholder:'Votre nom', required: true, error: 'Le Nom est obligatoire' %>

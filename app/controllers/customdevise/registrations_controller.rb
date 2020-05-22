@@ -8,7 +8,7 @@ class Customdevise::RegistrationsController < Devise::RegistrationsController
   def edit
     @eleve = current_user.eleve
     if !@eleve.nil?
-      redirect_to root_path
+      redirect_to '/home'
     else
       super
     end

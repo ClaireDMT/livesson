@@ -46,7 +46,7 @@ class UserMailer < ApplicationMailer
     mail(to: @email, subject: "Votre cours avec #{@prof.name} #{@prof.surname} est annulé")
   end
 
-  def refund(user)
+  def refund(booking_id)
     @booking = Booking.find(booking_id)
     @eleve = @booking.eleve_id
     @prof = @booking.lesson.eleve
@@ -54,7 +54,7 @@ class UserMailer < ApplicationMailer
     mail(to: @email, subject: "Vous êtes remboursé")
   end
 
-  def no_refund(user)
+  def no_refund(booking_id)
     @booking = Booking.find(booking_id)
     @eleve = @booking.eleve_id
     @prof = @booking.lesson.eleve

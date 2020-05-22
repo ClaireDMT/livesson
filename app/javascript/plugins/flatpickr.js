@@ -16,7 +16,7 @@ flatpickr(".datepicker", {
 flatpickr(".datepicker-birthdate", {
   dateFormat: "d-m-Y",
   "locale": French,
-  maxDate: "1 janvier 2009",
+  maxDate: birthDate.toString(),
   minDate: "1 janvier 1900"
 })
 

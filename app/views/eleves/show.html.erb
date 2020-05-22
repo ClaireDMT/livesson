@@ -35,8 +35,14 @@
               <p><% @prof.average_rating.round.times do %>
                   <%= image_tag 'star-full.svg', class: "rating-prof-stars" %>
                 <% end %>
-                <% (5 - @prof.average_rating.round).times do %>
-                  <%= image_tag 'star-empty.svg', class: "rating-prof-stars" %>
+                <% if @prof.average_rating.nil %>
+                  <% 5.times do %>
+                    <%= image_tag 'star-empty.svg', class: "rating-prof-stars" %>
+                  <% end %>
+                <% else %>
+                  <% (5 - @prof.average_rating.round).times do %>
+                    <%= image_tag 'star-empty.svg', class: "rating-prof-stars" %>
+                  <% end %>
                 <% end %>
                 <span class="reviews-count"> (<%= @reviews.count %>)</span>
               </p>

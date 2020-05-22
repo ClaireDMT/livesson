@@ -7,8 +7,8 @@
             <h2>Mon profil</h2>
             <div class='flexify'>
               <div>
-                <%= f.input :profile_picture, as: :file, input_html: { class: ' d-none hidden', id: 'photo-input' }, label_html: { class: 'upload-photo'}, label: '📷 Upload a photo' %>
-                <%= image_tag "", width: 170, class: "hidden", id: "photo-preview" %>
+                <%= f.input :profile_picture, as: :file, input_html: { class: 'd-none hidden', id: 'photo-input' }, label_html: { class: 'upload-photo'}, label: '<i class="fas fa-camera-retro"></i>'.html_safe %>
+              <%= image_tag "", width: 170, class: "d-none", id: "photo-preview" %>
               </div>
               <div class="nom-prenom">
                 <%= f.input :name, label: 'Prénom', placeholder:'Votre prénom', required: true, error: 'Le Prénom est obligatoire' %>

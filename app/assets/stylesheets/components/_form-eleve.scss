@@ -9,13 +9,22 @@
   }
   .form-left-part{
     margin-right: 55px;
+    .form-group.file.optional.eleve_profile_picture{
+      align-items: center;
+    }
     .upload-photo {
-      border: 1px solid #d3d3d3;
-      padding: 16px 24px;
+      text-align: center;
+      align-items: center;
+      // border: 1px solid #d3d3d3;
+      padding: 32px 24px;
       cursor: pointer;
       font-weight: 500;
       background: white;
-      border-radius: 2px;
+      border-radius: 8px;
+      color: $purple;
+      font-size: 100px;
+      width: 170px;
+      height: 170px;
     }
     img{
       width: 170px;

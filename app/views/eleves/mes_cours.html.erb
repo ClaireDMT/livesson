@@ -1,5 +1,5 @@
 <div id="templates-new">
-  <div class="flexify">
+  <div class="d-flex justify-content-between mb-4">
     <h2>Mes cours</h2>
     <div class="buttons">
       <button class=" btn-rectangle" id="button-template">+ Créer un nouveau type de cours</button>
@@ -32,7 +32,7 @@
   <% end %>
 
   <div id="template-new" class='form-popup'>
-    <i class="far fa-times-circle" id="close-template""></i>
+    <%= image_tag "black-cross.svg", id: "close-template" %>
     <h2>CRÉER UN TYPE DE COURS</h2>
     <%= simple_form_for @template do |f| %>
       <%= f.association :activity, collection: @activities, label_method: :activity_name, value_method: :id, label: "Type d'activité", placeholder: "Choisissez le type d'activité"%>
@@ -45,7 +45,7 @@
     <% end %>
   </div>
   <div id="lesson-new" class='form-popup'>
-    <i class="far fa-times-circle" id="close-lesson"></i>
+    <%= image_tag "black-cross.svg", id: "close-lesson" %>
     <h2>AJOUTER UN COURS AU PLANNING</h2>
     <%= simple_form_for @lesson do |f| %>
       <%= f.association :template, collection: @templates, label_method: :template_name, value_method: :id, label: 'Choisir le cours', placeholder: 'Choisissez votre cours' %>

@@ -30,3 +30,19 @@ if(document.body.contains(past_lessons)) {
     event.target.nextElementSibling.style.tranform = "rotate(45deg)";
   })
 }
+
+// TOGGLE POUR LES RESERVATIONS PROF ANNULES
+  const cancelled_lessons = document.getElementById("toggleCancelledLessons");
+  const buttonCancelled = document.getElementById("buttonToggleCancelledLessons");
+
+if(document.body.contains(cancelled_lessons)) {
+  buttonCancelled.addEventListener("click", (event) => {
+    if(cancelled_lessons.style.display === "block"){
+      cancelled_lessons.style.display = "none"
+    }
+    else {
+      cancelled_lessons.style.display = "block"
+    }
+    event.target.nextElementSibling.style.tranform = "rotate(45deg)";
+  })
+}

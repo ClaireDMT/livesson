@@ -28,6 +28,11 @@ class Eleve < ApplicationRecord
     pseudo.nil? ? instagram : pseudo[1]
   end
 
+  def url_to_tw_pseudo
+    pseudo = twitter.match(%r{https?://www.twitter.com/([^/]+)/?})
+    pseudo.nil? ? twitter : pseudo[1]
+  end
+
   def average_rating
     all_reviews = Review.joins(:lesson).where(lessons: { eleve_id: id })
     all_reviews.map(&:rating).sum.fdiv(all_reviews.count)

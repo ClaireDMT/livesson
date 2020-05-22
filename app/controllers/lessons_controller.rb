@@ -1,13 +1,13 @@
 class LessonsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index]
   before_action :find_lesson, only: %i[show edit update destroy lesson_video prof_cancellation]
-  before_action :find_query, only: %i[search_sport_name search_lesson_language search_lesson_level search_lesson_date search_beginning_time search_sport_name_and_lesson_language search_all]
+  before_action :find_query, only: %i[index search_sport_name search_lesson_language search_lesson_level search_lesson_date search_start search_sport_name_and_lesson_language search_all]
 
   def index
     @eleve = current_user.eleve unless current_user.nil?
-    @lessons = Lesson.all
-    query = params[:query]
-    if query.present?
+    @lessons = Lesson.select {|l| l.start >= Time.now}
+                     .sort_by {|k, v| k.lesson_date}
+    if @query.present?
       search_sport_name
       search_lesson_language
       search_lesson_level
@@ -20,50 +20,49 @@ class LessonsController < ApplicationController
   end
 
   def search_sport_name
-    @sports = query[:sport_name]
-    @lessons = @lessons.joins(:sport).where("sport_name IN (?)", @sports) if query[:sport_name].present?
+    @sports = @query[:sport_name]
+    @lessons = @lessons.joins(:sport).where("sport_name IN (?)", @sports) if @query[:sport_name].present?
   end
 
   def search_lesson_language
-    @langues = query[:lesson_language]
-    @lessons = @lessons.search_by_lesson_language(query[:lesson_language]) if query[:lesson_language].present?
+    @langues = @query[:lesson_language]
+    @lessons = @lessons.search_by_lesson_language(@query[:lesson_language]) if @query[:lesson_language].present?
   end
 
   def search_lesson_level
-    @niveaux = query[:lesson_level]
-    @lessons = @lessons.search_by_lesson_level(query[:lesson_level]) if query[:lesson_level].present?
+    @niveaux = @query[:lesson_level]
+    @lessons = @lessons.search_by_lesson_level(@query[:lesson_level]) if @query[:lesson_level].present?
   end
 
   def search_lesson_date
-    @lessons = @lessons.search_by_lesson_date(query[:lesson_date]) if query[:lesson_date].present?
+    @lessons = @lessons.search_by_lesson_date(@query[:lesson_date]) if @query[:lesson_date].present?
   end
 
   def search_start
-    query = params[:query]
-    @lessons = @lessons.search_by_start(query[:start]) if query[:start].present?
+    @lessons = @lessons.search_by_start(@query[:start]) if @query[:start].present?
   end
 
   def search_sport_name_and_lesson_language
-    if query[:sport_name].present? && query[:lesson_language].present?
+    if @query[:sport_name].present? && @query[:lesson_language].present?
       @lessons = @lessons.joins(:sport).where("sport_name IN (?)AND lesson_language IN (?)",
                                               @sports, @langues)
     end
   end
 
   def search_sport_name_lesson_language_and_lesson_level
-    if query[:sport_name].present? && query[:lesson_language].present? && query[:lesson_level].present?
+    if @query[:sport_name].present? && @query[:lesson_language].present? && @query[:lesson_level].present?
       @lessons = @lessons.joins(:sport).where("sport_name IN (?) AND lesson_language IN (?) AND lesson_level IN (?)",
                                               @sports, @langues, @niveaux)
     end
   end
 
   def search_all
-    if query[:sport_name].present? && query[:lesson_language].present? &&
-       query[:lesson_level].present? && query[:lesson_date].present?
+    if @query[:sport_name].present? && @query[:lesson_language].present? &&
+       @query[:lesson_level].present? && @query[:lesson_date].present?
       @lessons = @lessons.joins(:sport).where("sport_name IN (?)
                                                AND lesson_language IN (?)
                                                AND lesson_level IN (?) AND lesson_date = ?",
-                                              @sports, @langues, @niveaux, query[:lesson_date])
+                                              @sports, @langues, @niveaux, @query[:lesson_date])
     end
   end
 
@@ -133,8 +132,9 @@ class LessonsController < ApplicationController
 
   def prof_cancellation
     @lesson.status = "cancelled"
+    @lesson.save
     @prof = @lesson.eleve
-    bookings = Booking.where(lesson_id: @lesson.id)
+    bookings = Booking.where(lesson_id: @lesson)
     bookings.each do |booking|
       booking.cancelled_by(@prof)
     end
@@ -151,7 +151,7 @@ class LessonsController < ApplicationController
   private
 
   def find_query
-    query = params[:query]
+    @query = params[:query]
   end
 
   def find_lesson

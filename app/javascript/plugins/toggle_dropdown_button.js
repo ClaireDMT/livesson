@@ -31,3 +31,8 @@ else if(window.location.pathname === "/") {
   dropdownMenuHome.classList.toggle("show");
 });
 }
+else if (window.location.pathname === "/home") {
+  dropdownButtonHome.addEventListener('click', (e) => {
+    dropdownMenuHome.classList.toggle("show");
+  });
+}

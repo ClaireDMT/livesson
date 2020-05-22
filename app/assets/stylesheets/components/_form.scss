@@ -90,6 +90,7 @@
   }
 }
 .form-popup {
+  z-index: 10;
   display: none;
   position: absolute;
   top: 70px;
@@ -120,4 +121,16 @@
       height: 36px;
     }
   }
+
 }
+
+  #closing-cross, #close-template, #close-lesson {
+    width: 26px;
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+  }
+
+  #close-template, #close-lesson {
+    top: 10px;
+  }

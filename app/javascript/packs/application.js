@@ -19,7 +19,7 @@ import { initStarRating } from '../plugins/init_star_rating';
 initStarRating();
 
 import { initCalendar } from '../plugins/fullcalendar';
-if (document.body.contains(document.getElementById('prof-show'))) {
+if (document.body.contains(document.getElementById('calendar'))) {
   initCalendar();
 }
 

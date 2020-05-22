@@ -60,7 +60,6 @@ marine_eleve = Eleve.create!(name: "Marine",
              status: "Inscrit(e)",
              presentation: "J’ai sillonné de nombreux pays, et c’est à travers le monde que j’ai découvert le yoga. Plus de dix ans à le pratiquer sous diverses formes au Canada, en Islande, au Panama, aux Antilles et en France, m’ont menée à prendre une décision qui a changé ma vie : devenir professeur de yoga. Alors tout s’est enchaîné : j’ai obtenu un certificat de professeur de Hatha Yoga en 2015, un autre de spécialisation pour enseigner aux enfants en 2016, et un dernier pour enseigner aux mères enceintes en 2017. J’enseigne désormais le yoga depuis plusieurs années avec passion et dévouement.",
              facebook: "https://www.facebook.com/guitou.imary",
-             twitter: "https://www.twitter.fr",
              instagram: "https://www.instagram.com/guitouchou/",
              siret_number: "ABC123",
              company_address: "53 rue de Rome",
@@ -81,7 +80,6 @@ guitou_eleve = Eleve.create!(name: "Guitou",
              status: "Inscrit(e)",
              presentation: "J’ai sillonné de nombreux pays, et c’est à travers le monde que j’ai découvert le yoga. Plus de dix ans à le pratiquer sous diverses formes au Canada, en Islande, au Panama, aux Antilles et en France, m’ont menée à prendre une décision qui a changé ma vie : devenir professeur de yoga. Alors tout s’est enchaîné : j’ai obtenu un certificat de professeur de Hatha Yoga en 2015, un autre de spécialisation pour enseigner aux enfants en 2016, et un dernier pour enseigner aux mères enceintes en 2017. J’enseigne désormais le yoga depuis plusieurs années avec passion et dévouement.",
              facebook: "https://www.facebook.com/guitou.imary",
-             twitter: "https://www.twitter.fr",
              instagram: "https://www.instagram.com/guitouchou/",
              siret_number: "ABC123",
              company_address: "53 rue de Rome",
@@ -102,7 +100,6 @@ claire_eleve = Eleve.create!(name: "Claire",
              status: "Inscrit(e)",
              presentation: "J’ai sillonné de nombreux pays, et c’est à travers le monde que j’ai découvert le yoga. Plus de dix ans à le pratiquer sous diverses formes au Canada, en Islande, au Panama, aux Antilles et en France, m’ont menée à prendre une décision qui a changé ma vie : devenir professeur de yoga. Alors tout s’est enchaîné : j’ai obtenu un certificat de professeur de Hatha Yoga en 2015, un autre de spécialisation pour enseigner aux enfants en 2016, et un dernier pour enseigner aux mères enceintes en 2017. J’enseigne désormais le yoga depuis plusieurs années avec passion et dévouement.",
              facebook: "https://www.facebook.com/clairedemont",
-             twitter: "https://www.twitter.fr",
              instagram: "https://www.instagram.com/claireDTM/",
              user_id: claire.id)
 
@@ -195,9 +192,12 @@ lesson_4 = Lesson.create!(lesson_date: "01/05/2020",
 
 puts "Création des bookings"
 Booking.create!(eleve_id: marine_eleve.id,
+                status: "cancelled",
+                canceller_id: template_two.eleve_id,
+                refundable: true,
                 lesson_id: lesson_2.id)
 
-Booking.create!(eleve_id: marine_eleve.id,
+Booking.create!(eleve_id: guitou_eleve.id,
                 lesson_id: lesson_3.id)
 
 Booking.create!(eleve_id: claire_eleve.id,

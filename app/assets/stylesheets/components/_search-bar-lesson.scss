@@ -38,4 +38,13 @@
     padding-right: 1.25rem;
     justify-content: left;
   }
+
+  .btn-dropdown {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    p {
+      margin-bottom: 0;
+    }
+  }
 }

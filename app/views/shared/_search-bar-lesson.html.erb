@@ -7,6 +7,10 @@
 
         <div id="dropdown-menu-sport-name" class="dropdown-menu" aria-labelledby="dropdown-toggle-sport-name">
           <%= f.input :sport_name, label: false, collection: Lesson::SPORTS, include_blank: "Anything", wrapper_html: { class: 'form-group' }, as: :check_boxes, :input_html => {name: "query[sport_name][]", multiple: true, class: "dropdown-item"}, include_hidden: false %>
+          <div class="btn-dropdown">
+            <p type="button" id="check_all_sport">x Effacer</p>
+            <button type="submit" class="btn-search">Valider</button>
+          </div>
         </div>
       </div>
 
@@ -17,14 +21,30 @@
 
         <div id="dropdown-menu-lesson-language" class="dropdown-menu" aria-labelledby="dropdown-toggle-lesson-language">
           <%= f.input :lesson_language, label: false, collection: Lesson::LANGUES, include_blank: "Anything", wrapper_html: { class: 'form-group' }, as: :check_boxes, :input_html => {name: "query[lesson_language][]", multiple: true, class: "dropdown-item"}, include_hidden: false %>
+          <div class="btn-dropdown">
+            <p type="button" id="check_all_language">x Effacer</p>
+            <button type="submit" class="btn-search">Valider</button>
+          </div>
         </div>
       </div>
 
       <% lesson_date =  params[:query][:lesson_date] if params[:query].present? %>
       <%= f.input :lesson_date , label: false, input_html: { value: lesson_date }, required: false, placeholder: "Jour", input_html: { class: "btn-dropdown-white" }  %>
 
-      <% start =  params[:query][:start] if params[:query].present? %>
-      <%= f.input :start , label: false, input_html: { value: start }, required: false, placeholder: "Heure de début", input_html: { class: "btn-dropdown-white" }  %>
+      <div class="dropdown show">
+        <button id="dropdown-toggle-lesson-start" class="btn-dropdown-white dropdown-toggle" type="button" >
+          Heure de début
+        </button>
+        <div id="dropdown-menu-lesson-start" class="dropdown-menu" aria-labelledby="dropdown-toggle-lesson-level">
+          <%#= f.input :lesson_level, label: false, collection: Lesson::NIVEAUX, include_blank: "Anything", wrapper_html: { class: 'form-group' }, as: :check_boxes, :input_html => {name: "query[lesson_level][]", multiple: true, class: "dropdown-item"}, include_hidden: false%>
+          <% start =  params[:query][:start] if params[:query].present? %>
+          <%= f.input :start , label: false, input_html: { value: start }, required: false %>
+          <div class="btn-dropdown">
+            <p type="button" class="clear_flatpickr">x Effacer</p>
+            <button type="submit" class="btn-search">Valider</button>
+          </div>
+        </div>
+      </div>
 
       <div class="dropdown show">
         <button id="dropdown-toggle-lesson-level" class="btn-dropdown-white dropdown-toggle" type="button" >
@@ -32,6 +52,10 @@
         </button>
         <div id="dropdown-menu-lesson-level" class="dropdown-menu" aria-labelledby="dropdown-toggle-lesson-level">
           <%= f.input :lesson_level, label: false, collection: Lesson::NIVEAUX, include_blank: "Anything", wrapper_html: { class: 'form-group' }, as: :check_boxes, :input_html => {name: "query[lesson_level][]", multiple: true, class: "dropdown-item"}, include_hidden: false%>
+          <div class="btn-dropdown">
+            <p type="button" id="check_all_level">x Effacer</p>
+            <button type="submit" class="btn-search">Valider</button>
+          </div>
         </div>
       </div>
 

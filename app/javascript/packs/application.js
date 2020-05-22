@@ -10,6 +10,31 @@ import '../plugins/toggle_display_bookings';
 import '../plugins/toggle_dropdown_button';
 import '../plugins/persist_checkboxes_after_reload';
 
+import $ from 'jquery';
+
+$('#check_all_sport').on("click", function(){
+  var checkboxes = $('input[name="query[sport_name][]"]');
+  // check whether checkboxes are selected.
+  checkboxes.prop("checked",false);
+});
+
+$('#check_all_language').on("click", function(){
+  var checkboxes = $('input[name="query[lesson_language][]"]');
+  // check whether checkboxes are selected.
+  checkboxes.prop("checked",false);
+});
+
+$('#check_all_level').on("click", function(){
+  var checkboxes = $('input[name="query[lesson_level][]"]');
+  // check whether checkboxes are selected.
+  checkboxes.prop("checked",false);
+});
+
+// const $flatpickr_start = $("#query_start").flatpickr();
+
+// $(".clear_flatpickr").click(function() {
+//    $flatpickr_start.clear();
+// })
 
 import { localTime } from '../plugins/localize_time';
 localTime();

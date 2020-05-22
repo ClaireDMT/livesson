@@ -29,6 +29,28 @@
         text-decoration: none;
       }
     }
+    .dropright .dropdown-toggle::after {
+      display: none;
+    }
+    .dropright .dropdown-menu {
+      text-align: right;
+      top: 13px !important;
+      left: 61px !important;
+      width: max-content;
+      margin-top: 0;
+      margin-left: 0.125rem;
+      padding: 17px;
+      border: none;
+      box-shadow: -10px 10px 12px rgba(0, 0, 0, 0.5);
+      transform: translate3d(-96px, 53px, 0px)!important;
+      a {
+        color: black;
+        line-height: 50px;
+        &:hover {
+          text-decoration: none;
+        }
+      }
+    }
   }
 }
 

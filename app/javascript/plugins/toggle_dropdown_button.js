@@ -14,6 +14,8 @@ const dropdownMenuLessonLevel = document.getElementById('dropdown-menu-lesson-le
 const dropdownButtonLessonStartEnd = document.getElementById('dropdown-toggle-lesson-start-end');
 const dropdownMenuLessonStartEnd = document.getElementById('dropdown-menu-lesson-start-end');
 
+const dropdownButtonLessonDate = document.getElementById('dropdown-toggle-lesson-date');
+const dropdownMenuLessonDate = document.getElementById('dropdown-menu-lesson-date');
 
 // Listen to the click on the button to open and close the dropdown
 if(window.location.pathname === "/lessons") {
@@ -31,6 +33,10 @@ if(window.location.pathname === "/lessons") {
 
   dropdownButtonLessonStartEnd.addEventListener('click', (e) => {
     dropdownMenuLessonStartEnd.classList.toggle("show");
+  });
+
+  dropdownButtonLessonDate.addEventListener('click', (e) => {
+    dropdownMenuLessonDate.classList.toggle("show");
   });
 }
 else if(window.location.pathname === "/") {

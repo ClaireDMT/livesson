@@ -30,15 +30,8 @@ $('#check_all_level').on("click", function(){
   checkboxes.prop("checked",false);
 });
 
-// const $flatpickr_start = $("#query_start").flatpickr();
-
-// $(".clear_flatpickr").click(function() {
-//    $flatpickr_start.clear();
-// })
-
 import { localTime } from '../plugins/localize_time';
 localTime();
-
 
 import { initStarRating } from '../plugins/init_star_rating';
 initStarRating();

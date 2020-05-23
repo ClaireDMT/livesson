@@ -28,8 +28,19 @@
         </div>
       </div>
 
-      <% lesson_date =  params[:query][:lesson_date] if params[:query].present? %>
-      <%= f.input :lesson_date , label: false, input_html: { value: lesson_date }, required: false, placeholder: "Jour", input_html: { class: "btn-dropdown-white" }  %>
+      <div class="dropdown show">
+        <button id="dropdown-toggle-lesson-date" class="btn-dropdown-white dropdown-toggle" type="button" >
+          Jour
+        </button>
+        <div id="dropdown-menu-lesson-date" class="dropdown-menu" aria-labelledby="dropdown-toggle-lesson-level">
+          <% lesson_date =  params[:query][:lesson_date] if params[:query].present? %>
+          <%= f.input :lesson_date , label: false, input_html: { value: lesson_date }, required: false, placeholder: "Jour", input_html: { class: "btn-dropdown-white" }  %>
+          <div class="btn-dropdown">
+            <p type="button" class="clear_flatpickr_lesson_date">x Effacer</p>
+            <button type="submit" class="btn-search">Valider</button>
+          </div>
+        </div>
+      </div>
 
       <div class="dropdown show">
         <button id="dropdown-toggle-lesson-start-end" class="btn-dropdown-white dropdown-toggle" type="button" >
@@ -47,7 +58,7 @@
           <%#= f.input :end , label: false, input_html: { value: end_lesson }, required: false, placeholder: "Heure de fin" %>
           <!-- </div> -->
           <div class="btn-dropdown">
-            <p type="button" class="clear_flatpickr">x Effacer</p>
+            <p type="button" class="clear_flatpickr_lesson_start">x Effacer</p>
             <button type="submit" class="btn-search">Valider</button>
           </div>
         </div>

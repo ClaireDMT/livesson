@@ -1,6 +1,7 @@
 import flatpickr from "flatpickr"
 import { French } from "flatpickr/dist/l10n/fr.js"
 import "flatpickr/dist/flatpickr.min.css" // Note this is important!
+import $ from 'jquery';
 let today = new Date()
 let year = today.getFullYear()
 let month = today.getMonth()
@@ -21,7 +22,7 @@ flatpickr(".datepicker-birthdate", {
                                     minDate: "1 janvier 1900"
                                   })
 
-flatpickr("#query_lesson_date", {
+const flatpickr_lesson_date = flatpickr("#query_lesson_date", {
                                   "locale": French,
                                   minDate: "today",
                                   onChange: function(selectedDates, dateStr, instance) {
@@ -29,7 +30,13 @@ flatpickr("#query_lesson_date", {
                                   }
                                 })
 
-flatpickr("#query_start", {
+
+$(".clear_flatpickr_lesson_date").click(function() {
+   flatpickr_lesson_date.clear();
+})
+
+
+const flatpickr_start = flatpickr("#query_start", {
                             enableTime: true,
                             noCalendar: true,
                             dateFormat: "H:i",
@@ -37,6 +44,12 @@ flatpickr("#query_start", {
                             defaultHour: 12,
                             defaultMinute: 0,
                           })
+
+$(".clear_flatpickr_lesson_start").click(function() {
+   flatpickr_start.clear();
+})
+
+
 flatpickr("#query_end", {
                             enableTime: true,
                             noCalendar: true,

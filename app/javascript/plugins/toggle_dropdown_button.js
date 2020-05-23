@@ -11,8 +11,8 @@ const dropdownMenuLessonLanguage = document.getElementById('dropdown-menu-lesson
 const dropdownButtonLessonLevel = document.getElementById('dropdown-toggle-lesson-level');
 const dropdownMenuLessonLevel = document.getElementById('dropdown-menu-lesson-level');
 
-const dropdownButtonLessonStart = document.getElementById('dropdown-toggle-lesson-start');
-const dropdownMenuLessonStart = document.getElementById('dropdown-menu-lesson-start');
+const dropdownButtonLessonStartEnd = document.getElementById('dropdown-toggle-lesson-start-end');
+const dropdownMenuLessonStartEnd = document.getElementById('dropdown-menu-lesson-start-end');
 
 
 // Listen to the click on the button to open and close the dropdown
@@ -29,8 +29,8 @@ if(window.location.pathname === "/lessons") {
     dropdownMenuLessonLevel.classList.toggle("show");
   });
 
-  dropdownButtonLessonStart.addEventListener('click', (e) => {
-    dropdownMenuLessonStart.classList.toggle("show");
+  dropdownButtonLessonStartEnd.addEventListener('click', (e) => {
+    dropdownMenuLessonStartEnd.classList.toggle("show");
   });
 }
 else if(window.location.pathname === "/") {

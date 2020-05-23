@@ -47,4 +47,21 @@
       margin-bottom: 0;
     }
   }
+  #lesson_start {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    p {
+      margin-bottom: 0;
+    }
+  }
+
+  #lesson_end {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    p {
+      margin-bottom: 0;
+    }
+  }
 }

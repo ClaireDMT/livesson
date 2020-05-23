@@ -32,11 +32,16 @@ flatpickr("#query_lesson_date", {
 flatpickr("#query_start", {
                             enableTime: true,
                             noCalendar: true,
-                            dateFormat: "H",
+                            dateFormat: "H:i",
                             time_24hr: true,
                             defaultHour: 12,
                             defaultMinute: 0,
-                            onChange: function(selectedDates, dateStr, instance) {
-                              submitButton.click()
-                            }
+                          })
+flatpickr("#query_end", {
+                            enableTime: true,
+                            noCalendar: true,
+                            dateFormat: "H:i",
+                            time_24hr: true,
+                            defaultHour: 12,
+                            defaultMinute: 0,
                           })

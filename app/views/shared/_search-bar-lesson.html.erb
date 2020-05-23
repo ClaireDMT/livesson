@@ -32,13 +32,20 @@
       <%= f.input :lesson_date , label: false, input_html: { value: lesson_date }, required: false, placeholder: "Jour", input_html: { class: "btn-dropdown-white" }  %>
 
       <div class="dropdown show">
-        <button id="dropdown-toggle-lesson-start" class="btn-dropdown-white dropdown-toggle" type="button" >
+        <button id="dropdown-toggle-lesson-start-end" class="btn-dropdown-white dropdown-toggle" type="button" >
           Heure de début
         </button>
-        <div id="dropdown-menu-lesson-start" class="dropdown-menu" aria-labelledby="dropdown-toggle-lesson-level">
-          <%#= f.input :lesson_level, label: false, collection: Lesson::NIVEAUX, include_blank: "Anything", wrapper_html: { class: 'form-group' }, as: :check_boxes, :input_html => {name: "query[lesson_level][]", multiple: true, class: "dropdown-item"}, include_hidden: false%>
-          <% start =  params[:query][:start] if params[:query].present? %>
-          <%= f.input :start , label: false, input_html: { value: start }, required: false %>
+        <div id="dropdown-menu-lesson-start-end" class="dropdown-menu" aria-labelledby="dropdown-toggle-lesson-level">
+          <div id="lesson_start">
+            <!-- <p>De</p> -->
+            <% start =  params[:query][:start] if params[:query].present? %>
+            <%= f.input :start , label: false, input_html: { value: start }, required: false, placeholder: "Heure de début" %>
+          </div>
+          <!-- <div id="lesson_end"> -->
+          <%# end_lesson =  params[:query][:end] if params[:query].present? %>
+          <!-- <p>À</p> -->
+          <%#= f.input :end , label: false, input_html: { value: end_lesson }, required: false, placeholder: "Heure de fin" %>
+          <!-- </div> -->
           <div class="btn-dropdown">
             <p type="button" class="clear_flatpickr">x Effacer</p>
             <button type="submit" class="btn-search">Valider</button>

@@ -61,8 +61,14 @@ class Lesson < ApplicationRecord
                     tsearch: { prefix: true }
                   }
 
-  pg_search_scope :search_by_start,
-                  against: [:start],
+  pg_search_scope :search_start,
+                  against: %i[start],
+                  using: {
+                    tsearch: { prefix: true }
+                  }
+
+  pg_search_scope :search_end,
+                  against: %i[end],
                   using: {
                     tsearch: { prefix: true }
                   }

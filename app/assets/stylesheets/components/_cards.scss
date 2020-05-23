@@ -15,6 +15,7 @@
     font-size: 16px;
     margin-right: 14px;
     margin-bottom: 14px;
+    box-shadow: 12px 12px 20px $light-gray;
     p {
       margin-bottom: 0;
       font-size: 16px;
@@ -69,7 +70,7 @@
     }
   }
   .card-index:hover{
-      border: 0.5px solid black;
+      box-shadow: 12px 12px 20px $gray;
     }
 
   .card-mes-reservations {

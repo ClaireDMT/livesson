@@ -12,8 +12,8 @@ class UserMailer < ApplicationMailer
   end
 
   # Moderated --> true --> Admin
-  def moderated_prof
-    mail(to: user.email, subject: "Livesson a accepté votre profil")
+  def moderated_prof(eleve)
+    mail(to: eleve.user.email, subject: "Livesson a accepté votre profil")
   end
 
   # Moderated --> false --> Admin

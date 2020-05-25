@@ -3,6 +3,7 @@ ActiveAdmin.register Eleve do
   filter :surname_contains
   filter :user_email_contains, as: :string
   filter :prof
+  filter :moderated
 
   index do
     selectable_column
@@ -10,6 +11,7 @@ ActiveAdmin.register Eleve do
     column :surname
     column :user
     column :prof
+    column :moderated
     actions
   end
 
@@ -35,7 +37,6 @@ ActiveAdmin.register Eleve do
       f.input :iban
       f.input :bic
       f.input :status
-      f.input :moderated
     end
     f.actions
   end
@@ -46,4 +47,14 @@ ActiveAdmin.register Eleve do
                 :twitter, :instagram, :siret_number,
                 :company_address, :iban, :bic, :status,
                 :moderated
+
+  controller do
+    def update
+      @moderated = Eleve.find(params[:id]).try(:moderated)
+      super
+      if @eleve.valid? && @eleve.moderated != @moderated
+        UserMailer.moderated_prof(@eleve).deliver_now
+      end
+    end
+  end
 end

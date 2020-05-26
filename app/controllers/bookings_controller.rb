@@ -42,10 +42,9 @@ class BookingsController < ApplicationController
     redirect_to mes_reservations_eleves_url(@booking.eleve_id)
   end
 
-
   private
 
-  def send_cancellation_email(booking)
+  def send_cancellation_email(_booking)
     if @booking.cancelled_by_prof?
       UserMailer.cancel_lessson_by_prof(@booking.id).deliver_now
     elsif @booking.refundable

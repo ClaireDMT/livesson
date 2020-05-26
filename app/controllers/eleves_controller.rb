@@ -3,8 +3,6 @@ class ElevesController < ApplicationController
 
   def new
     @eleve = Eleve.new
-
-
   end
 
   def create
@@ -121,13 +119,13 @@ class ElevesController < ApplicationController
     @past_lessons = @lessons.where("start < ?", Time.now)
   end
 
-def update_password
+  def update_password
     @user = @eleve.user
     @user.update_with_password(password_params)
     bypass_sign_in(@user)
     UserMailer.mdp_changed(current_user).deliver_now
-    # redirect_to edit_elefe_path(@eleve)
-  end
+      # redirect_to edit_elefe_path(@eleve)
+    end
 
   def update_email
     @user = @eleve.user

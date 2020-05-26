@@ -21,20 +21,25 @@ class LessonsController < ApplicationController
   def search_sport_name
     query = params[:query]
     @sports = query[:sport_name]
-    @lessons = @lessons.joins(:sport).where("sport_name IN (?) AND lesson_date >= ?", @sports, Time.now).order('start ASC') if query[:sport_name].present?
+    if query[:sport_name].present?
+      @lessons = @lessons.joins(:sport).where("sport_name IN (?) AND lesson_date >= ?", @sports, Time.now).order('start ASC')
+    end
   end
 
   def search_lesson_language
     query = params[:query]
     @langues = query[:lesson_language]
-    @lessons = @lessons.search_by_lesson_language(query[:lesson_language]).where("lesson_date >= ?", Time.now).order('start ASC') if query[:lesson_language].present?
+    if query[:lesson_language].present?
+      @lessons = @lessons.search_by_lesson_language(query[:lesson_language]).where("lesson_date >= ?", Time.now).order('start ASC')
+    end
   end
-
 
   def search_lesson_level
     query = params[:query]
     @niveaux = query[:lesson_level]
-    @lessons = @lessons.search_by_lesson_level(query[:lesson_level]).where("lesson_date >= ?", Time.now).order('start ASC') if query[:lesson_level].present?
+    if query[:lesson_level].present?
+      @lessons = @lessons.search_by_lesson_level(query[:lesson_level]).where("lesson_date >= ?", Time.now).order('start ASC')
+    end
   end
 
   def search_lesson_date
@@ -44,14 +49,16 @@ class LessonsController < ApplicationController
 
   def search_hours
     query = params[:query]
-    @lessons = Lesson.search_start(query[:start]).where("lesson_date >= ?", Time.now).order('start ASC') if query[:start].present?
+    if query[:start].present?
+      @lessons = Lesson.search_start(query[:start]).where("lesson_date >= ?", Time.now).order('start ASC')
+    end
   end
 
   def search_sport_name_and_lesson_language
     query = params[:query]
     if query[:sport_name].present? && query[:lesson_language].present?
       @lessons = Lesson.joins(:sport).where("sport_name IN (?) AND lesson_language IN (?) AND lesson_date >= ?",
-                                              @sports, @langues, Time.now).order('start ASC')
+                                            @sports, @langues, Time.now).order('start ASC')
     end
   end
 
@@ -59,7 +66,7 @@ class LessonsController < ApplicationController
     query = params[:query]
     if query[:sport_name].present? && query[:lesson_language].present? && query[:lesson_level].present?
       @lessons = Lesson.joins(:sport).where("sport_name IN (?) AND lesson_language IN (?) AND lesson_level IN (?) AND lesson_date >= ?",
-                                              @sports, @langues, @niveaux, Time.now).order('start ASC')
+                                            @sports, @langues, @niveaux, Time.now).order('start ASC')
     end
   end
 
@@ -70,7 +77,7 @@ class LessonsController < ApplicationController
       @lessons = Lesson.joins(:sport).where("sport_name IN (?)
                                                AND lesson_language IN (?)
                                                AND lesson_level IN (?) AND lesson_date = ?",
-                                              @sports, @langues, @niveaux, query[:lesson_date]).order('start ASC')
+                                            @sports, @langues, @niveaux, query[:lesson_date]).order('start ASC')
     end
   end
 

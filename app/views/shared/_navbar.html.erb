@@ -1,4 +1,4 @@
-<% if (params[:controller] == 'eleves' && params[:action] == 'new') || current_page?('/connexion') || current_page?('/inscription') %>
+<% if (params[:controller] == 'eleves' && params[:action] == 'new') || current_page?('/connexion') || current_page?('/inscription') || current_page?('/password/new')  %>
   <div class="navbar-desktop d-none d-md-flex">
     <div class="logo">
       <%= link_to '/home' do %>

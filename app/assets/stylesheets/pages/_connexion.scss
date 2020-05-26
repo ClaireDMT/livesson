@@ -63,6 +63,11 @@
         font-size: 32px;
         line-height: 48px;
       }
+      .hint-prof {
+        font-size: 12px;
+        color: $gray;
+        padding: 10px 0px;
+      }
       .form-inputs {
         margin-bottom: 30px;
       }
@@ -85,6 +90,22 @@
         color: black;
         &:hover {
           text-decoration: none;
+        }
+      }
+      .checkbox-container {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        .form-check {
+          border: 1px solid $light-gray;
+          border-radius: 10px;
+          width: 262px;
+          padding: 20px;
+          .form-check-label {
+            white-space: pre-wrap;
+            display: initial;
+            margin-left: 20px;
+          }
         }
       }
     }

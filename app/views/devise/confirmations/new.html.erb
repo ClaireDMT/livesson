@@ -9,7 +9,7 @@
       <p class="bold">Félicitations, votre inscription est bien prise en compte ! </p>
       <p>Un e-mail vous a été envoyé pour valider votre adresse e-mail et vous permettre de créer votre profil !</p>
       <br>
-        <p <%= params[:resend] == "true" ? 'hidden' : ''  %> class="light"> Vous ne l'avez pas reçu ? <%= link_to "Renvoyer l'email de confirmation", new_user_confirmation_path(resend: 'true'), class: "link-resend" %></p>
+        <p <%= params[:resend] == "true" ? 'hidden' : ''  %> class="light"> Vous ne l'avez pas reçu ? <%= link_to "Renvoyer l'email de confirmation", new_user_confirmation_path(resend: 'true'), class: "link-resend bold" %></p>
         <div <%= params[:resend] == "true" ? '' : 'hidden'%> data-target="animation.collapse">
           <p>Indiquez votre adresse e-mail pour le renvoyer</p>
           <%= simple_form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post, class: 'form-block-transparent full-width' }) do |f| %>
@@ -24,7 +24,7 @@
                           input_html: { autocomplete: "email" } %>
             </div>
             <div class="form-actions await-confirmation">
-              <%= f.button :submit, "Renvoyer l'email de confirmation" %>
+              <%= f.button :submit, "Renvoyer l'email de confirmation", class: 'btn-rectangle'%>
             </div>
           <% end %>
         </div>

@@ -421,7 +421,7 @@ SimpleForm.setup do |config|
     date:          :vertical_multi_select,
     datetime:      :vertical_multi_select,
     file:          :vertical_file,
-    radio_buttons: :vertical_collection,
+    radio_buttons: :horizontal_collection,
     range:         :vertical_range,
     time:          :vertical_multi_select
   }

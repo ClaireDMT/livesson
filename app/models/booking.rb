@@ -15,7 +15,7 @@ class Booking < ApplicationRecord
   end
 
   def refundable_now?
-    Time.now < (self.lesson.start + 0.5)
+    Time.now < (lesson.start + 0.5)
   end
 
   def cancelled_by_prof?
@@ -25,7 +25,7 @@ class Booking < ApplicationRecord
   def to_refund?
     self.refundable = true if cancelled_by_prof?
     #  DateTime : 0.5 = 12h
-    self.refundable = true if (cancellation_time > (self.lesson.start + 0.5)) && !cancelled_by_prof?
+    self.refundable = true if (cancellation_time > (lesson.start + 0.5)) && !cancelled_by_prof?
     self.refundable = false
     save
   end

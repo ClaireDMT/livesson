@@ -52,9 +52,7 @@ ActiveAdmin.register Eleve do
     def update
       @moderated = Eleve.find(params[:id]).try(:moderated)
       super
-      if @eleve.valid? && @eleve.moderated != @moderated
-        UserMailer.moderated_prof(@eleve).deliver_now
-      end
+      UserMailer.moderated_prof(@eleve).deliver_now if @eleve.valid? && @eleve.moderated != @moderated
     end
   end
 end

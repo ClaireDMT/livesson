@@ -17,13 +17,7 @@
   <body>
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
-    <% if current_page?('/') || current_page?('/home') || current_page?('/connexion') || current_page?('/inscription') %>
       <%= yield %>
-    <% else %>
-      <div class="container-livesson">
-        <%= yield %>
-      </div>
-    <% end %>
     <%= render 'shared/footer' %>
 
     <%= javascript_pack_tag 'application' %>

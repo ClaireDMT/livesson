@@ -1,57 +1,58 @@
-<br>
-<%= render 'shared/search-bar-lesson' %>
-<br>
-<div id="cards">
-  <% if @lessons.count == 0 || @lessons.count == 1%>
-    <p class=medium><%= @lessons.count %> résultat</p>
-  <% else %>
-   <p class=medium><%= @lessons.count %> résultats</p>
-  <% end%>
-  <div class="flexify">
-    <% @lessons.each do |lesson| %>
-      <%= link_to elefe_path(lesson.eleve, lesson: lesson) do %>
-        <div class="card-index">
-          <div class="image">
-            <% if lesson.eleve.profile_picture.attached? %>
-              <%= image_tag lesson.eleve.profile_picture %>
-            <% else %>
-              <%= image_tag "empty.jpg" %>
-            <% end %>
-          </div>
-          <div class="card-content">
-            <div class="card-content-left">
-              <p class="lesson-type medium"> <%= lesson.lesson_name %> </p>
-              <p class="lesson-level"> <%=lesson.lesson_level %> </p>
-              <p class="lesson-teacher medium"> <%=lesson.eleve.name.capitalize %> <%= lesson.eleve.surname.capitalize %> </p>
-              <p class="lesson-date local-time"><%= lesson.start %></p>
-              <p class="lesson-language">Cours en <%= lesson.lesson_language %></p>
-              <%#= 'Rating à rajouter' %>
-            </div>
-            <div class="card-content-right">
-              <div class="card-content-right-top">
-                <p class="lesson-price medium">
-                  <% if lesson.lesson_discount_price.nil? %>
-                    <%= lesson.lesson_price %>€
-                  <% else %>
-                    <%= lesson.lesson_discount_price %>
-                  <% end %>
-                </p>
-                <p class="lesson-duration"><%= lesson.lesson_duration %>min</p>
-              </div>
-              <% if current_user.present? && current_user.eleve == lesson.eleve %>
-                <%= link_to elefe_path(lesson.eleve, lesson: lesson) do %>
-                  <button class="btn-rectangle">Voir mon cours</button>
-                <% end %>
+<div class="container-livesson">
+  <br>
+  <%= render 'shared/search-bar-lesson' %>
+  <br>
+  <div id="cards">
+    <% if @lessons.count == 0 || @lessons.count == 1%>
+      <p class=medium><%= @lessons.count %> résultat</p>
+    <% else %>
+    <p class=medium><%= @lessons.count %> résultats</p>
+    <% end%>
+    <div class="flexify">
+      <% @lessons.each do |lesson| %>
+        <%= link_to elefe_path(lesson.eleve, lesson: lesson) do %>
+          <div class="card-index">
+            <div class="image">
+              <% if lesson.eleve.profile_picture.attached? %>
+                <%= image_tag lesson.eleve.profile_picture %>
               <% else %>
-                <%= link_to elefe_path(lesson.eleve, lesson: lesson) do %>
-                  <button class="btn-rectangle">Réserver</button>
-                <% end %>
+                <%= image_tag "empty.jpg" %>
               <% end %>
             </div>
+            <div class="card-content">
+              <div class="card-content-left">
+                <p class="lesson-type medium"> <%= lesson.lesson_name %> </p>
+                <p class="lesson-level"> <%=lesson.lesson_level %> </p>
+                <p class="lesson-teacher medium"> <%=lesson.eleve.name.capitalize %> <%= lesson.eleve.surname.capitalize %> </p>
+                <p class="lesson-date local-time"><%= lesson.start %></p>
+                <p class="lesson-language">Cours en <%= lesson.lesson_language %></p>
+                <%#= 'Rating à rajouter' %>
+              </div>
+              <div class="card-content-right">
+                <div class="card-content-right-top">
+                  <p class="lesson-price medium">
+                    <% if lesson.lesson_discount_price.nil? %>
+                      <%= lesson.lesson_price %>€
+                    <% else %>
+                      <%= lesson.lesson_discount_price %>
+                    <% end %>
+                  </p>
+                  <p class="lesson-duration"><%= lesson.lesson_duration %>min</p>
+                </div>
+                <% if current_user.present? && current_user.eleve == lesson.eleve %>
+                  <%= link_to elefe_path(lesson.eleve, lesson: lesson) do %>
+                    <button class="btn-rectangle">Voir mon cours</button>
+                  <% end %>
+                <% else %>
+                  <%= link_to elefe_path(lesson.eleve, lesson: lesson) do %>
+                    <button class="btn-rectangle">Réserver</button>
+                  <% end %>
+                <% end %>
+              </div>
+            </div>
           </div>
-        </div>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
   </div>
 </div>
-

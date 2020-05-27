@@ -177,14 +177,14 @@
                         <button class="btn-rectangle mb-4" data-toggle="modal" data-target="#modalCreateReviewLesson<%= past_booking.lesson.id %>" data-lesson="<%= past_booking.lesson.id %>" >Noter le cours</button>
                         <% else %>
                           <p class="medium">Votre avis sur le cours</p>
-                          <p><% review.first.rating.round.times do %>
+                          <p><% reviews.first.rating.round.times do %>
                               <%= image_tag 'star-full.svg', class: "rating-prof-stars" %>
                             <% end %>
-                            <% (5 - review.first.rating.round).times do %>
+                            <% (5 - reviews.first.rating.round).times do %>
                               <%= image_tag 'star-empty.svg', class: "rating-prof-stars" %>
                             <% end %>
                           </p>
-                          <p><%= review.first.content %></p>
+                          <p><%= reviews.first.content %></p>
                       <% end %>
                     <% end %>
                   </div>

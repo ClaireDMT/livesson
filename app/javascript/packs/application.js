@@ -30,24 +30,20 @@ $('#check_all_level').on("click", function(){
   checkboxes.prop("checked",false);
 });
 
+import { initAutocomplete } from '../plugins/init_autocomplete';
+initAutocomplete();
 import { localTime } from '../plugins/localize_time';
 localTime();
-
 import { initStarRating } from '../plugins/init_star_rating';
 initStarRating();
-
 import { initCalendar } from '../plugins/fullcalendar';
 if (document.body.contains(document.getElementById('calendar'))) {
   initCalendar();
 }
-
-
 import { toggleLesson } from '../plugins/toggle_lesson';
 toggleLesson();
-
 import { createLessonStream } from '../plugins/jitsi.js';
 createLessonStream();
-
 import { modalReservations } from '../plugins/modal_reservation.js';
 modalReservations();
 import { openFormTemplate } from '../plugins/template_lesson_pop_up_creation.js';

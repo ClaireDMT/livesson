@@ -15,11 +15,11 @@ flatpickr(".datepicker", {
                           minDate: "today"
                          })
 
-flatpickr(".datepicker-birthdate", {
+flatpickr(".date-birthdate", {
                                     dateFormat: "d-m-Y",
                                     "locale": French,
-                                    maxDate: "1 janvier 2009",
-                                    minDate: "1 janvier 1900"
+                                    maxDate: "31-12-2008",
+                                    minDate: "01-01-1900"
                                   })
 
 const flatpickr_lesson_date = flatpickr("#query_lesson_date", {

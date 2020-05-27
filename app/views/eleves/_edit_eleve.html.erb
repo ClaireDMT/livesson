@@ -8,7 +8,7 @@
             <% if @eleve.profile_picture.attached? %>
               <%= image_tag @eleve.profile_picture, class: 'profil-picture-eleve' %>
             <% else %>
-              <%= f.input :profile_picture, as: :file, input_html: { class: 'd-none hidden', id: 'photo-input' }, label_html: { class: 'upload-photo'}, label: '<i class="fas fa-camera-retro"></i>'.html_safe %>
+              <%= f.input :profile_picture, as: :file, input_html: { class: 'd-none hidden', id: 'photo-input' }, label_html: { class: 'upload-photo'}, label: '+'.html_safe %>
               <%= image_tag "", width: 170, class: "d-none", id: "photo-preview" %>
             <% end %>
             <div class="nom-prenom">
@@ -29,7 +29,7 @@
                       placeholder: "Date de naissance",
                       as: :string,
                       required: false,
-                      input_html: {class: "datepicker-birthdate"}%>
+                      input_html: {class: "date-birthdate"}%>
           <%= f.input :sex,
                       as: :radio_buttons,
                       collection: ['Femme', 'Homme', 'Ne souhaite pas communiquer'],

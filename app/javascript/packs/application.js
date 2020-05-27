@@ -30,21 +30,8 @@ $('#check_all_level').on("click", function(){
   checkboxes.prop("checked",false);
 });
 
-
-const inputOffre = document.getElementById('offre_ponctuelle');
-const discountPrice = document.querySelector('.lesson_lesson_discount_price');
-
-inputOffre.addEventListener('click', (e) => {
-  if(discountPrice.style.display === 'block') {
-    discountPrice.style.display = 'none';
-  }
-  else {
-    discountPrice.style.display = 'block';
-  }
-})
-
-
-
+import { toggleOffrePonctuelle } from '../plugins/toggle_offre_ponctuelle';
+toggleOffrePonctuelle();
 import { initAutocomplete } from '../plugins/init_autocomplete';
 initAutocomplete();
 import { localTime } from '../plugins/localize_time';

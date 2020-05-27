@@ -47,16 +47,34 @@
       h2 {
         margin-bottom: 20px;
       }
+      .eleve_sex{
+        .col-form-label, abbr{
+          display: none;
+        }
+        .checkbox-container{
+          display: flex;
+          align-items: center;
+          .form-check{
+            padding-left: 0;
+            padding-right: 1.25rem;
+            label{
+              margin-left: 5px;
+            }
+            input{
+              margin-right: 0;
+            }
+          }
+        }
+      }
       fieldset {
         legend {
           display: none;
         }
       }
     }
-    .radio_buttons{
-      display: flex;
-      flex-direction: row;
-    }
+  select:invalid, option:nth-child(1){
+        color: #6c757d !important;
+      }
   }
   .form-right-part{
     margin-left: 55px;

@@ -8,31 +8,35 @@ class ElevesController < ApplicationController
   def create
     @user = current_user
     if Eleve.where(user_id: current_user.id).empty? && @user.prof?
-      # si l'élève est un prof également
       new_prof
-      UserMailer.inscription_prof(current_user).deliver_now
-      render 'awaiting_moderation'
     elsif Eleve.where(user_id: current_user.id).empty?
-      # si ce n'est qu'un élève
       new_eleve
-      UserMailer.send_welcome(current_user).deliver_now
-      redirect_to edit_user_registration_path
     end
   end
 
   def new_prof
-    @eleve = Eleve.new(eleve_params)
-    @eleve.user_id = current_user.id
-    @eleve.prof = true
-    @eleve.status = "En attente de modération"
-    @eleve.save
+    @prof = Eleve.new(eleve_params)
+    @prof.user_id = current_user.id
+    @prof.prof = true
+    @prof.status = "En attente de modération"
+    if @prof.save
+      UserMailer.inscription_prof(current_user).deliver_now
+      render 'awaiting_moderation'
+    else
+      render :new
+    end
   end
 
   def new_eleve
     @eleve = Eleve.new(eleve_params)
     @eleve.user_id = current_user.id
     @eleve.status = "Inscrit(e)"
-    @eleve.save
+    if @eleve.save
+      UserMailer.send_welcome(current_user).deliver_now
+      redirect_to edit_user_registration_path
+    else
+      render :new
+    end
   end
 
   def show
@@ -61,7 +65,7 @@ class ElevesController < ApplicationController
     end
   end
 
-  # transformer un élève en prof
+  # transformer un eleve en prof
   def turn_eleve_into_prof
     @eleve = current_user.eleve
     @eleve = Eleve.find(@eleve.id)
@@ -88,7 +92,7 @@ class ElevesController < ApplicationController
     end
   end
 
-  # mes réservations en tant qu'élève et en tant que prof
+  # mes reservations en tant qu'eleve et en tant que prof
   def mes_reservations
     eleve_reservations
     prof_reservations
@@ -121,17 +125,24 @@ class ElevesController < ApplicationController
 
   def update_password
     @user = @eleve.user
-    @user.update_with_password(password_params)
-    bypass_sign_in(@user)
-    UserMailer.mdp_changed(current_user).deliver_now
-      # redirect_to edit_elefe_path(@eleve)
+    if @user.update_with_password(password_params)
+      bypass_sign_in(@user)
+      UserMailer.mdp_changed(current_user).deliver_now
+      redirect_to edit_elefe_path(@eleve), notice: 'Profil mis à jour'
+    else
+      render :edit
     end
+  end
 
   def update_email
     @user = @eleve.user
-    @user.update_with_password(email_params)
-    UserMailer.email_changed(current_user).deliver_now
-    # redirect_to edit_elefe_path(@eleve)
+    if @user.update_with_password(email_params)
+      bypass_sign_in(@user)
+      UserMailer.email_changed(current_user).deliver_now
+      redirect_to edit_elefe_path(@eleve), notice: 'Profil mis à jour'
+    else
+      render :edit
+    end
   end
 
   private

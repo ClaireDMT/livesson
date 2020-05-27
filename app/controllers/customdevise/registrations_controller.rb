@@ -10,7 +10,7 @@ class Customdevise::RegistrationsController < Devise::RegistrationsController
     if !@eleve.nil?
       redirect_to '/home'
     else
-      super
+      redirect_to new_elefe_path
     end
   end
 
@@ -24,7 +24,7 @@ class Customdevise::RegistrationsController < Devise::RegistrationsController
     elsif @eleve.nil?
       redirect_to new_elefe_path
     elsif @eleve.moderated?
-      redirect_to edit_elefe_path(@eleve)
+      redirect_to mon_planning_eleves(@eleve)
     else
       redirect_to '/home'
     end

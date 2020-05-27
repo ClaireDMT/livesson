@@ -120,6 +120,17 @@
     select{
       height: 36px;
     }
+    select#lesson_lesson_duration, option:nth-child(1){
+      color: #6c757d !important;
+    }
+    .offre_ponctuelle {
+      label {
+        font-size: 16px;
+      }
+    .lesson_lesson_discount_price {
+      display: none;
+    }
+    }
   }
 
 }

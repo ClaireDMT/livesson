@@ -10,7 +10,7 @@ class Customdevise::RegistrationsController < Devise::RegistrationsController
     if !@eleve.nil?
       redirect_to '/home'
     else
-      super
+      redirect_to new_elefe_path
     end
   end
 

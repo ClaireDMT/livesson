@@ -41,6 +41,8 @@ if (document.body.contains(document.getElementById('calendar'))) {
   initCalendar();
 }
 
+import { underlineNavbarLinks } from '../plugins/underline_navbar_links';
+underlineNavbarLinks();
 
 import { toggleLesson } from '../plugins/toggle_lesson';
 toggleLesson();

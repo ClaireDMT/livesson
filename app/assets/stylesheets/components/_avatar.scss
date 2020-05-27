@@ -1,8 +1,9 @@
 .avatar {
-  width: 40px;
-  height: 40px;
+  width: 54px;
+  height: 54px;
   border-radius: 50%;
   object-fit: cover;
+  border: 1px solid $purple;
 }
 
 .avatar-large {

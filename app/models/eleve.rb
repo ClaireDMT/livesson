@@ -3,11 +3,13 @@ class Eleve < ApplicationRecord
   belongs_to :sport, optional: true
   has_many :lessons
   has_many :reviews
-  has_many :bookings
+  has_many :bookings, dependent: :destroy
   has_one_attached :profile_picture
+  validate :validate_phone_format
   validates :name, :surname, :birthdate, :sex, :phone_number, :country, presence: true
   with_options if: :prof? do |eleve|
     eleve.validates :city, :presentation, :siret_number, :company_address, :iban, :bic, presence: true
+    eleve.validate :validate_iban_format
   end
 
   def prof?
@@ -36,5 +38,17 @@ class Eleve < ApplicationRecord
   def average_rating
     all_reviews = Review.joins(:lesson).where(lessons: { eleve_id: id })
     all_reviews.map(&:rating).sum.fdiv(all_reviews.count)
+  end
+
+  def validate_phone_format
+    return if phone_number.blank? || phone_number =~ /^0[1-9](?:\d{8})|0[1-9](?: \d\d){4}$/
+
+    errors.add :phone_number, "n'est pas au bon format."
+  end
+
+  def validate_iban_format
+    return if iban.blank? || iban =~ /^0[1-9](?:\d{8})|0[1-9](?: \d\d){4}$/
+
+    errors.add :iban, "n'est pas au bon format."
   end
 end

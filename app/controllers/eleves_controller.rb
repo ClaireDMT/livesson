@@ -125,15 +125,24 @@ class ElevesController < ApplicationController
 
   def update_password
     @user = @eleve.user
-    @user.update_with_password(password_params)
-    bypass_sign_in(@user)
-    UserMailer.mdp_changed(current_user).deliver_now
+    if @user.update_with_password(password_params)
+      bypass_sign_in(@user)
+      UserMailer.mdp_changed(current_user).deliver_now
+      redirect_to edit_elefe_path(@eleve), notice: 'Profil mis à jour'
+    else
+      render :edit
+    end
   end
 
   def update_email
     @user = @eleve.user
-    @user.update_with_password(email_params)
-    UserMailer.email_changed(current_user).deliver_now
+    if @user.update_with_password(email_params)
+      bypass_sign_in(@user)
+      UserMailer.email_changed(current_user).deliver_now
+      redirect_to edit_elefe_path(@eleve), notice: 'Profil mis à jour'
+    else
+      render :edit
+    end
   end
 
   private

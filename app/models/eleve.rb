@@ -6,6 +6,8 @@ class Eleve < ApplicationRecord
   has_many :bookings, dependent: :destroy
   has_one_attached :profile_picture
   validate :validate_phone_format
+  validate :validate_iban_format
+  validate :validate_siret_number_format
   validates :name, :surname, :birthdate, :sex, :phone_number, :country, presence: true
   with_options if: :prof? do |eleve|
     eleve.validates :city, :presentation, :siret_number, :company_address, :iban, :bic, presence: true
@@ -50,5 +52,11 @@ class Eleve < ApplicationRecord
     return if iban.blank? || iban =~ /^0[1-9](?:\d{8})|0[1-9](?: \d\d){4}$/
 
     errors.add :iban, "n'est pas au bon format."
+  end
+
+  def validate_siret_number_format
+    return if siret_number.blank? || siret_number =~ /\d/
+
+    errors.add :siret_number, "n'est pas au bon format."
   end
 end

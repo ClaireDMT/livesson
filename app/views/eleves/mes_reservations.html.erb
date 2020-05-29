@@ -29,33 +29,6 @@
       </div>
     <% end %>
   </div>
-  <div id="template-new" class='form-popup'>
-    <%= image_tag "black-cross.svg", id: "close-template" %>
-    <h2>CRÉER UN TYPE DE COURS</h2>
-    <%= simple_form_for @template do |f| %>
-      <%= f.association :activity, collection: @activities, label_method: :activity_name, value_method: :id, label: "Type d'activité", placeholder: "Choisissez le type d'activité"%>
-      <%= f.association :sport, collection: @sports, label_method: :sport_name, value_method: :id, label: 'Type de sport', placeholder: 'Choisissez le type de sport' %>
-      <%= f.input :template_name, label: 'Intitulé du cours' , placeholder: 'Indiquez le nom du cours' %>
-      <%= f.input :template_level, collection: ['Tous niveaux', 'Débutant', 'Intermédiaire', 'Avancé'], label: 'Niveau', placeholder: 'Définissez le niveau du cours' %>
-      <%= f.input :template_description, label: 'Descriptif du cours', placeholder: 'Décrivez le cours, ses bénéfices, ce qui sera abordé, etc.' %>
-      <%= f.input :template_material_needed, label: 'Matériel nécessaire pour ce cours', placeholder: 'Indiquez le matériel nécessaire pour participer à ce cours. Si aucun matériel n’est nécessaire, précisez “aucun”.' %>
-      <%= f.submit 'Enregistrer', class: 'btn-rectangle' %>
-    <% end %>
-  </div>
-  <div id="lesson-new" class='form-popup'>
-    <%= image_tag "black-cross.svg", id: "close-lesson" %>
-    <h2>AJOUTER UN COURS AU PLANNING</h2>
-    <%= simple_form_for @lesson do |f| %>
-      <%= f.association :template, collection: @templates, label_method: :template_name, value_method: :id, label: 'Choisir le cours', placeholder: 'Choisissez votre cours' %>
-      <%= f.input :lesson_date, as: :string, input_html: {class: "datepicker"}, label: 'Date', placeholder: 'Choisissez la date du cours' %>
-      <%= f.input :start, as: :time,  label: 'Horaire du début du cours', placeholder: "Choisissez l'horaire de début du cours" %>
-      <%= f.input :lesson_duration, label: 'Durée', placeholder: 'Définissez la durée du cours' %>
-      <%= f.input :lesson_language, collection: Lesson::LANGUES, label: 'Langue', placeholder: 'Choisissez la langue de ce cours' %>
-      <p>Tarif du cours</p>
-      <%= f.input :lesson_price, label: 'Tarif du cours', placeholder: '€' %>
-      <p>Proposer une offre ponctuelle</p>
-      <%= f.input :lesson_discount_price, label: "Tarif de l'offre ponctuelle", placeholder: '€', hint: '(valable pour tous les élèves)' %>
-      <%= f.submit 'Enregistrer', class: 'btn-rectangle' %>
-    <% end %>
-  </div>
+  <%= render 'template_new' %>
+  <%= render 'lesson_new' %>
 </div>

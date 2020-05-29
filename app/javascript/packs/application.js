@@ -30,8 +30,7 @@ $('#check_all_level').on("click", function(){
   checkboxes.prop("checked",false);
 });
 
-import { toggleOffrePonctuelle } from '../plugins/toggle_offre_ponctuelle';
-toggleOffrePonctuelle();
+
 import { initAutocomplete } from '../plugins/init_autocomplete';
 initAutocomplete();
 import { localTime } from '../plugins/localize_time';
@@ -61,3 +60,5 @@ import { closeFormLesson } from '../plugins/template_lesson_pop_up_creation.js';
 closeFormLesson();
 import { previewImageOnFileSelect } from '../plugins/photo_preview.js';
 previewImageOnFileSelect();
+import { toggleOffrePonctuelle } from '../plugins/toggle_offre_ponctuelle';
+toggleOffrePonctuelle();

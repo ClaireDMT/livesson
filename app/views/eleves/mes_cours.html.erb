@@ -1,29 +1,31 @@
-<div id="templates-new">
-  <div class="d-flex justify-content-between mb-4">
-    <h2>Mes cours</h2>
-    <div class="buttons">
-      <button class=" btn-creation-cours" id="button-template">+ Créer un nouveau type de cours</button>
-      <button class=" btn-creation-cours" id="button-lesson">+ Ajouter un cours au planning</button>
+<div class="container-livesson">
+  <div id="templates-new">
+    <div class="d-flex justify-content-between mb-4">
+      <h2>Mes cours</h2>
+      <div class="buttons">
+        <button class=" btn-creation-cours" id="button-template">+ Créer un nouveau type de cours</button>
+        <button class=" btn-creation-cours" id="button-lesson">+ Ajouter un cours au planning</button>
+      </div>
     </div>
-  </div>
-  <% @templates.each do |template| %>
-    <div class="card">
-      <div class="card-content">
-        <div class="card-content-left">
-          <p class="template-name medium"> <%= template.template_name %> </p>
-          <p class="template-level"> <%=template.template_level %> </p>
-        </div>
-        <div class="card-content-right">
-          <div class="flexify-verticaly">
-            <div class="card-content-right-top">
-              <p class='medium'>Descriptif du cours</p>
-              <p class="template-desciption"><%= template.template_description %></p>
-              <p class='medium'>Voir plus</p>
-            </div>
-            <div class='card-content-right-bottom'>
-              <p class='medium'>Matériel nécessaire</p>
-              <p class="template-materiel"><%= template.template_material_needed %></p>
-              <p class='medium'>Voir plus</p>
+    <% @templates.each do |template| %>
+      <div class="card">
+        <div class="card-content">
+          <div class="card-content-left">
+            <p class="template-name medium"> <%= template.template_name %> </p>
+            <p class="template-level"> <%=template.template_level %> </p>
+          </div>
+          <div class="card-content-right">
+            <div class="flexify-verticaly">
+              <div class="card-content-right-top">
+                <p class='medium'>Descriptif du cours</p>
+                <p class="template-desciption"><%= template.template_description %></p>
+                <p class='medium'>Voir plus</p>
+              </div>
+              <div class='card-content-right-bottom'>
+                <p class='medium'>Matériel nécessaire</p>
+                <p class="template-materiel"><%= template.template_material_needed %></p>
+                <p class='medium'>Voir plus</p>
+              </div>
             </div>
           </div>
         </div>
@@ -33,3 +35,4 @@
   <%= render 'template_new' %>
   <%= render 'lesson_new' %>
 </div>
+

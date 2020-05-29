@@ -1,12 +1,12 @@
 <div id="mon-planning" class="prof-planning" >
-  <div class="d-flex justify-content-between mb-4">
-    <h2 class="">Mon planning</h2>
-    <div class="buttons">
-      <button class=" btn-creation-cours" id="button-template">+ Créer un nouveau type de cours</button>
-      <button class=" btn-creation-cours" id="button-lesson">+ Ajouter un cours au planning</button>
+  <div class="contaner-livesson">
+    <div class="d-flex justify-content-between mb-4">
+      <h2 class="">Mon planning</h2>
+      <div class="buttons">
+        <button class=" btn-creation-cours" id="button-template">+ Créer un nouveau type de cours</button>
+        <button class=" btn-creation-cours" id="button-lesson">+ Ajouter un cours au planning</button>
+      </div>
     </div>
-  </div>
-
   <!-- CREATE NEW TEMPLATE -->
   <%= render 'template_new' %>
   <!-- CREATE NEW TEMPLATE -->
@@ -14,7 +14,8 @@
   <!-- CREATE NEW LESSON -->
   <%= render 'lesson_new' %>
   <!-- CREATE NEW TEMPLATE -->
-
-  <div id="calendar"
-  data-lessons="<%= @lessons.to_json %>" data-prof-id="<%= @eleve.id %>"></div>
+    <div id="calendar"
+    data-lessons="<%= @lessons.to_json %>" data-prof-id="<%= @eleve.id %>">
+    </div>
+  </div>
 </div>

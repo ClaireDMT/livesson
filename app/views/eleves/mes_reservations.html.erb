@@ -1,33 +1,35 @@
 <div id="mes-reservations">
-  <div class="d-flex justify-content-between mb-4">
-    <h2>Mes réservations</h2>
-    <% if @eleve.moderated? %>
-      <div class="buttons">
-        <button class=" btn-creation-cours" id="button-template">+ Créer un nouveau type de cours</button>
-        <button class=" btn-creation-cours" id="button-lesson">+ Ajouter un cours au planning</button>
-      </div>
-    <% end %>
-  </div>
-  <nav class="nav nav-pills">
-      <a class="nav-item nav-link nav-link-reservation active" id="pills-reservations-eleve-tab" data-toggle="tab" href="#pills-reservations-eleve" role="tab" aria-controls="pills-reservations-eleve" aria-selected="true">MES RÉSERVATIONS COMME ÉLÈVE</a>
+  <div class="container-livesson">
+    <div class="d-flex justify-content-between mb-4">
+      <h2>Mes réservations</h2>
       <% if @eleve.moderated? %>
-        <a class="nav-item nav-link nav-link-reservation" id="pills-reservations-prof-tab" data-toggle="tab" href="#pills-reservations-prof" role="tab" aria-controls="pills-reservations-prof" aria-selected="false">MES RÉSERVATIONS COMME PROFESSEUR</a>
+        <div class="buttons">
+          <button class=" btn-creation-cours" id="button-template">+ Créer un nouveau type de cours</button>
+          <button class=" btn-creation-cours" id="button-lesson">+ Ajouter un cours au planning</button>
+        </div>
       <% end %>
-  </nav>
-  <br>
-  <div class="tab-content" id="pills-tabContent">
-    <% if @eleve.moderated? %>
-      <div class="tab-pane fade show active" id="pills-reservations-eleve" role="tabpanel" aria-labelledby="pills-reservations-eleve-tab">
-        <%= render 'mes_reservations_eleve'%>
-      </div>
-      <div class="tab-pane fade" id="pills-reservations-prof" role="tabpanel" aria-labelledby="pills-reservations-prof-tab">
-        <%= render 'mes_reservations_prof'%>
-      </div>
-    <% else %>
-      <div class="tab-pane fade show active" id="pills-reservations-eleve" role="tabpanel" aria-labelledby="pills-reservations-eleve-tab">
-        <%= render 'mes_reservations_eleve'%>
-      </div>
-    <% end %>
+    </div>
+    <nav class="nav nav-pills">
+        <a class="nav-item nav-link nav-link-reservation active" id="pills-reservations-eleve-tab" data-toggle="tab" href="#pills-reservations-eleve" role="tab" aria-controls="pills-reservations-eleve" aria-selected="true">MES RÉSERVATIONS COMME ÉLÈVE</a>
+        <% if @eleve.moderated? %>
+          <a class="nav-item nav-link nav-link-reservation" id="pills-reservations-prof-tab" data-toggle="tab" href="#pills-reservations-prof" role="tab" aria-controls="pills-reservations-prof" aria-selected="false">MES RÉSERVATIONS COMME PROFESSEUR</a>
+        <% end %>
+    </nav>
+    <br>
+    <div class="tab-content" id="pills-tabContent">
+      <% if @eleve.moderated? %>
+        <div class="tab-pane fade show active" id="pills-reservations-eleve" role="tabpanel" aria-labelledby="pills-reservations-eleve-tab">
+          <%= render 'mes_reservations_eleve'%>
+        </div>
+        <div class="tab-pane fade" id="pills-reservations-prof" role="tabpanel" aria-labelledby="pills-reservations-prof-tab">
+          <%= render 'mes_reservations_prof'%>
+        </div>
+      <% else %>
+        <div class="tab-pane fade show active" id="pills-reservations-eleve" role="tabpanel" aria-labelledby="pills-reservations-eleve-tab">
+          <%= render 'mes_reservations_eleve'%>
+        </div>
+      <% end %>
+    </div>
   </div>
   <%= render 'template_new' %>
   <%= render 'lesson_new' %>

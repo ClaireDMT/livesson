@@ -129,6 +129,7 @@ class LessonsController < ApplicationController
     @lesson.lesson_level = @lesson.template.template_level
     @lesson.lesson_description = @lesson.template.template_description
     @lesson.lesson_material_needed = @lesson.template.template_material_needed
+    @lesson.start = (@lesson.start - 2.hours)
     @lesson.save
   end
 

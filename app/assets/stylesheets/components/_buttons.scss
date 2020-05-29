@@ -197,10 +197,17 @@ button:focus {
     transform: rotate(45deg);
     font-size: 24px;
   }
-
-
 }
 
 .dropdown-toggle::after {
   display: none;
+}
+
+.btn-creation-cours{
+  width: 260px;
+  height: 48px;
+  background-color: $purple;
+  color: white;
+  border-radius: 30px;
+  border: transparent;
 }

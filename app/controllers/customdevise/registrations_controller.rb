@@ -24,7 +24,7 @@ class Customdevise::RegistrationsController < Devise::RegistrationsController
     elsif @eleve.nil?
       redirect_to new_elefe_path
     elsif @eleve.moderated?
-      redirect_to mon_planning_eleves_url(@eleve)
+      redirect_to mon_planning_eleves_path(@eleve)
     else
       redirect_to '/home'
     end

@@ -97,6 +97,8 @@
   right: 0px;
   box-shadow: -3px 3px 4px 3px rgba(0, 0, 0, 0.2);
   width: 370px;
+  max-height: calc(100vh - 70px);
+  overflow-y: scroll;
   background-color: white;
   i{
     position: absolute;
@@ -107,6 +109,11 @@
   i:hover{
     cursor: pointer;
   }
+  p, .offre_ponctuelle{
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+  }
   h2{
     text-align: center;
     padding-top: 30px;
@@ -115,10 +122,24 @@
     color: $purple;
     font-weight: 600;
   }
+  select:invalid, option:nth-child(1){
+    color: #6c757d !important;
+  }
   form#new_lesson, form#new_template{
     margin: 20px;
     select{
       height: 36px;
+    }
+    select#lesson_lesson_duration, option:nth-child(1){
+      color: #6c757d !important;
+    }
+    .offre_ponctuelle {
+      label {
+        font-size: 16px;
+      }
+    .lesson_lesson_discount_price {
+      display: none;
+    }
     }
   }
 

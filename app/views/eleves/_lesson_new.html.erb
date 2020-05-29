@@ -1,0 +1,19 @@
+<div id="lesson-new" class='form-popup'>
+    <%= image_tag "black-cross.svg", id: "close-lesson" %>
+    <h2>AJOUTER UN COURS AU PLANNING</h2>
+    <%= simple_form_for @lesson do |f| %>
+      <%= f.association :template, collection: @templates, label_method: :template_name, value_method: :id, label: 'Choisir le cours', include_blank: 'Choisissez votre cours' %>
+      <%= f.input :lesson_date, as: :string, input_html: {class: "datepicker"}, label: 'Date', placeholder: 'Choisissez la date du cours' %>
+      <%= f.input :start, as: :time,  label: 'Horaire du début du cours', placeholder: "Choisissez l'horaire de début du cours" %>
+      <%= f.input :lesson_duration, label: 'Durée (minutes)', include_blank: 'Définissez la durée du cours', collection: 1..240 %>
+      <%= f.input :lesson_language, collection: Lesson::LANGUES, label: 'Langue', include_blank: 'Choisissez la langue de ce cours' %>
+      <p class='bold'>Tarif du cours</p>
+      <%= f.input :lesson_price, label: 'Tarif du cours', placeholder: '€' %>
+      <div class="offre_ponctuelle">
+        <input type="checkbox" id="offre_ponctuelle" name="offre_ponctuelle">
+        <label for="offre_ponctuelle" class='bold'>Proposer une offre ponctuelle</label>
+        <%= f.input :lesson_discount_price, label: "Tarif de l'offre ponctuelle", placeholder: '€', hint: '(valable pour tous les élèves)' %>
+      </div>
+      <%= f.submit 'Enregistrer', class: 'btn-rectangle' %>
+    <% end %>
+  </div>

@@ -116,7 +116,7 @@ class LessonsController < ApplicationController
     @lesson.activity = @lesson.template.activity
     if @lesson.save
       template_in_lesson
-      redirect_to lessons_path
+      redirect_to :back
     else
       render :new
     end

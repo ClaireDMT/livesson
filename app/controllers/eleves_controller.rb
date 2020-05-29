@@ -1,5 +1,5 @@
 class ElevesController < ApplicationController
-  before_action :find_eleve, only: %i[edit update mes_cours mes_reservations eleve_reservations prof_reservations update_password update_email mon_planning]
+  before_action :find_eleve, only: %i[edit update mes_reservations eleve_reservations prof_reservations update_password update_email mon_planning]
 
   def new
     @eleve = Eleve.new
@@ -73,12 +73,6 @@ class ElevesController < ApplicationController
     @eleve.save
     UserMailer.inscription_prof(current_user).deliver_now
     render 'awaiting_moderation'
-  end
-
-  # liste des templates d'un prof
-  def mes_cours
-    @templates = Template.where(eleve_id: @eleve)
-    new_lesson_and_template
   end
 
   # mon planning en tant que prof

@@ -1,4 +1,13 @@
 class TemplatesController < ApplicationController
+  def index
+    @templates = Template.where(eleve_id: current_user.eleve)
+    @eleve = current_user.eleve
+    @template = Template.new
+    @lesson = Lesson.new
+    @sports = Sport.all
+    @activities = Activity.all
+  end
+
   def new
     @template = Template.new
     @sports = Sport.all
@@ -12,10 +21,16 @@ class TemplatesController < ApplicationController
     @sports = Sport.all
     @activities = Activity.all
     if @template.save
-      redirect_to :back
+      redirect_to request.referrer
     else
       render :new
     end
+  end
+
+  def destroy
+    @template = Template.find(params[:id])
+    @template.destroy
+    redirect_to request.referrer
   end
 
   private

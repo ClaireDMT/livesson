@@ -28,11 +28,15 @@
               </div>
             </div>
           </div>
+          <%= link_to template_path(template), method: :delete do %>
+            <%= image_tag "black-cross.svg", id: "close-template" %>
+          <% end %>
         </div>
       </div>
-    </div>
-  <% end %>
-  <%= render 'template_new' %>
-  <%= render 'lesson_new' %>
+    <% end %>
+  </div>
+
+  <%= render 'eleves/template_new' %>
+  <%= render 'eleves/lesson_new' %>
 </div>
 

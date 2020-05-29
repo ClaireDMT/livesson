@@ -49,7 +49,7 @@ class Eleve < ApplicationRecord
   end
 
   def validate_iban_format
-    return if iban.blank? || iban =~ /^0[1-9](?:\d{8})|0[1-9](?: \d\d){4}$/
+    return if iban.blank? || iban =~ /^([A-Z]{2}[\-]?[0-9]{2})(?=(?:[\-]?[A-Z0-9]){9,30}$)((?:[ \-]?[A-Z0-9]{3,5}){2,7})([\-]?[A-Z0-9]{1,3})?$/
 
     errors.add :iban, "n'est pas au bon format."
   end

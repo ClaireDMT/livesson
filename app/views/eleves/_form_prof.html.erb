@@ -8,7 +8,7 @@
             <div class='flexify'>
               <div>
                 <%= f.input :profile_picture, as: :file, input_html: { class: 'd-none hidden', id: 'photo-input' }, label_html: { class: 'upload-photo'}, label: '+'.html_safe %>
-              <%= image_tag "", width: 170, class: "d-none", id: "photo-preview" %>
+                <%= image_tag "", width: 170, class: "d-none", id: "photo-preview" %>
               </div>
               <div class="nom-prenom">
                 <%= f.input :name, label: 'Prénom', placeholder:'Votre prénom', required: true, error: 'Le Prénom est obligatoire' %>
@@ -21,7 +21,7 @@
                         as: :string,
                         required: false,
                         input_html: {class: "date-birthdate"}%>
-            <%= f.input :sex, as: :radio_buttons, collection: ['Homme', 'Femme', 'Ne souhaite pas communiquer'] %>
+            <%= f.input :sex, as: :radio_buttons, collection: ['Femme', 'Homme', 'Ne souhaite pas communiquer'] %>
             <%= f.input :country,
                           label: "Pays",
                           include_blank: "Votre pays",
@@ -45,10 +45,10 @@
             <h2>Mes réseaux sociaux</h2>
             <p>Vos réseaux sociaux apparaîtront sur votre profil en ligne.</p>
             <div class="flexify">
-              <%= image_tag 'instagram.svg' %><%= f.input :instagram, label: false, placeholder: 'www.intagram.com/cooach000' %>
+              <%= image_tag 'instagram.svg' %><%= f.input :instagram, label: false, placeholder: 'www.instagram.com/coach000' %>
             </div>
             <div class="flexify">
-              <%= image_tag 'facebook.svg' %><%= f.input :facebook, label: false, placeholder: 'www.intagram.com/cooach000' %>
+              <%= image_tag 'facebook.svg' %><%= f.input :facebook, label: false, placeholder: 'www.facebook.com/coach000' %>
             </div>
           </div>
           <div class="form-company-info">
@@ -59,7 +59,7 @@
           <div class="form-bank-info">
             <h2>Mes coordonnées bancaires</h2>
             <p>Entrez vos coordonnées bancaires pour que nous puissions vous envoyer les paiements de vos cours effectués en ligne.</p>
-            <%= f.input :iban, label: 'IBAN', placeholder: '000 000 000 000 000' %>
+            <%= f.input :iban, label: 'IBAN', placeholder: 'FR0000000000000000000000000' %>
             <%= f.input :bic, label: 'BIC', placeholder: '873628' %>
           </div>
           <p>En cliquant sur « Enregistrer » j’atteste avoir lu et compris les <span class="bold">Conditions Générales d’Utilisation</span>, que j’accepte sans aucune réserve.</p>

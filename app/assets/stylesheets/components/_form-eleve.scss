@@ -72,9 +72,24 @@
         }
       }
     }
-  select:invalid, option:nth-child(1){
-        color: #6c757d !important;
-      }
+    select:invalid, option:nth-child(1){
+      color: #6c757d !important;
+    }
+    select#eleve_country {
+      background-image:
+        linear-gradient(45deg, transparent 50%, gray 50%),
+        linear-gradient(135deg, gray 50%, transparent 50%),
+        linear-gradient(to right, #ccc, #ccc);
+      background-position:
+        calc(99% - 12px) calc(1.3em + 2px),
+        calc(99% - 7px) calc(1.3em + 2px),
+        calc(100% - 2.2em) 0.8em;
+      background-size:
+        5px 5px,
+        5px 5px,
+        1px 1.5em;
+      background-repeat: no-repeat;
+    }
   }
   .form-right-part{
     margin-left: 55px;

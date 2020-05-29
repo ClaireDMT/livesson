@@ -12,7 +12,7 @@ class TemplatesController < ApplicationController
     @sports = Sport.all
     @activities = Activity.all
     if @template.save
-      redirect_to lessons_path
+      redirect_to :back
     else
       render :new
     end

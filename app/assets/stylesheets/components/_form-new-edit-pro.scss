@@ -21,6 +21,54 @@
           margin-left: 35px;
         }
       }
+      .upload-photo {
+        text-align: center;
+        align-items: center;
+        border: 2px dotted $gray;
+        padding: 78px 24px;
+        cursor: pointer;
+        background: white;
+        border-radius: 50%;
+        color: $gray;
+        font-size: 80px;
+        font-weight: 300;
+        width: 170px;
+        height: 170px;
+      }
+    }
+    .eleve_sex{
+      .col-form-label, abbr{
+        display: none;
+      }
+      .checkbox-container{
+        display: flex;
+        align-items: center;
+        .form-check{
+          padding-left: 0;
+          padding-right: 1.25rem;
+          label{
+            margin-left: 5px;
+          }
+          input{
+            margin-right: 0;
+          }
+        }
+      }
+    }
+    select#eleve_country {
+      background-image:
+        linear-gradient(45deg, transparent 50%, gray 50%),
+        linear-gradient(135deg, gray 50%, transparent 50%),
+        linear-gradient(to right, #ccc, #ccc);
+      background-position:
+        calc(99% - 12px) calc(1.3em + 2px),
+        calc(99% - 7px) calc(1.3em + 2px),
+        calc(100% - 2.2em) 0.8em;
+      background-size:
+        5px 5px,
+        5px 5px,
+        1px 1.5em;
+      background-repeat: no-repeat;
     }
   }
   .form-right-part{

@@ -15,11 +15,11 @@ class ElevesController < ApplicationController
   end
 
   def new_prof
-    @prof = Eleve.new(eleve_params)
-    @prof.user_id = current_user.id
-    @prof.prof = true
-    @prof.status = "En attente de modération"
-    if @prof.save
+    @eleve = Eleve.new(eleve_params)
+    @eleve.user_id = current_user.id
+    @eleve.prof = true
+    @eleve.status = "En attente de modération"
+    if @eleve.save
       UserMailer.inscription_prof(current_user).deliver_now
       render 'awaiting_moderation'
     else

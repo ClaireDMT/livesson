@@ -44,9 +44,11 @@ possible_sports.each do |sport|
 end
 
 puts "Création des Users"
-marine = User.create!(email: "marine@sourin.com", password: "marinesourin", password_confirmation: "marinesourin", prof: true, admin: true, confirmed_at: DateTime.now)
-guitou = User.create!(email: "guitou@imary.com", password: "guitouimary", password_confirmation: "guitouimary", prof: true, confirmed_at: DateTime.now)
-claire = User.create!(email: "claire@demont.com", password: "clairedemont", password_confirmation: "clairedemont", prof: false, confirmed_at: DateTime.now)
+marine = User.create!(email: "marine@sourin.com", password: "Livesson75!", password_confirmation: "Livesson75!", prof: true, admin: true, confirmed_at: DateTime.now)
+guitou = User.create!(email: "guitou@imary.com", password: "Livesson75!", password_confirmation: "Livesson75!", prof: true, confirmed_at: DateTime.now)
+claire = User.create!(email: "claire@demont.com", password: "Livesson75!", password_confirmation: "Livesson75!", prof: false, confirmed_at: DateTime.now)
+melanie = User.create!(email: "melanie@livesson.com", password: "Livesson75!", password_confirmation: "Livesson75!", prof: true, admin: true, confirmed_at: DateTime.now)
+alex = User.create!(email: "alex@livesson.com", password: "Livesson75!", password_confirmation: "Livesson75!", prof: true, admin: true, confirmed_at: DateTime.now)
 
 puts "Création des Eleves/Profs"
 marine_eleve = Eleve.create!(name: "Marine",
@@ -61,9 +63,9 @@ marine_eleve = Eleve.create!(name: "Marine",
              presentation: "J’ai sillonné de nombreux pays, et c’est à travers le monde que j’ai découvert le yoga. Plus de dix ans à le pratiquer sous diverses formes au Canada, en Islande, au Panama, aux Antilles et en France, m’ont menée à prendre une décision qui a changé ma vie : devenir professeur de yoga. Alors tout s’est enchaîné : j’ai obtenu un certificat de professeur de Hatha Yoga en 2015, un autre de spécialisation pour enseigner aux enfants en 2016, et un dernier pour enseigner aux mères enceintes en 2017. J’enseigne désormais le yoga depuis plusieurs années avec passion et dévouement.",
              facebook: "https://www.facebook.com/guitou.imary",
              instagram: "https://www.instagram.com/guitouchou/",
-             siret_number: "ABC123",
+             siret_number: "123456",
              company_address: "53 rue de Rome",
-             iban: "AZERTY123456",
+             iban: "FR7630001007941234567890185",
              bic: "AZE123",
              moderated: true,
              user_id: marine.id,
@@ -81,9 +83,9 @@ guitou_eleve = Eleve.create!(name: "Guitou",
              presentation: "J’ai sillonné de nombreux pays, et c’est à travers le monde que j’ai découvert le yoga. Plus de dix ans à le pratiquer sous diverses formes au Canada, en Islande, au Panama, aux Antilles et en France, m’ont menée à prendre une décision qui a changé ma vie : devenir professeur de yoga. Alors tout s’est enchaîné : j’ai obtenu un certificat de professeur de Hatha Yoga en 2015, un autre de spécialisation pour enseigner aux enfants en 2016, et un dernier pour enseigner aux mères enceintes en 2017. J’enseigne désormais le yoga depuis plusieurs années avec passion et dévouement.",
              facebook: "https://www.facebook.com/guitou.imary",
              instagram: "https://www.instagram.com/guitouchou/",
-             siret_number: "ABC123",
+             siret_number: "123456",
              company_address: "53 rue de Rome",
-             iban: "AZERTY123456",
+             iban: "FR7630001007941234567890185",
              bic: "AZE123",
              moderated: true,
              user_id: guitou.id,
@@ -160,7 +162,7 @@ lesson_2 = Lesson.create!(lesson_date: "12/07/2020",
               eleve_id: template_two.eleve_id,
               template_id: template_two.id)
 
-lesson_3 = Lesson.create!(lesson_date: "01/05/2020",
+lesson_3 = Lesson.create!(lesson_date: "01/06/2020",
               start: DateTime.new(2020,6,1,15,0,0,'+02:00'),
               end: DateTime.new(2020,6,1,16,0,0,'+02:00'),
               lesson_description: template_three.template_description,
@@ -175,7 +177,7 @@ lesson_3 = Lesson.create!(lesson_date: "01/05/2020",
               eleve_id: template_three.eleve_id,
               template_id: template_three.id)
 
-lesson_4 = Lesson.create!(lesson_date: "01/05/2020",
+lesson_4 = Lesson.create!(lesson_date: "01/06/2020",
               start: DateTime.new(2020,5,1,12,0,0,'+02:00'),
               end: DateTime.new(2020,5,1,13,0,0,'+02:00'),
               lesson_description: template_two.template_description,
@@ -189,35 +191,3 @@ lesson_4 = Lesson.create!(lesson_date: "01/05/2020",
               activity_id: template_two.activity_id,
               eleve_id: template_two.eleve_id,
               template_id: template_two.id)
-
-puts "Création des bookings"
-Booking.create!(eleve_id: marine_eleve.id,
-                status: "cancelled",
-                canceller_id: template_two.eleve_id,
-                refundable: true,
-                lesson_id: lesson_2.id)
-
-Booking.create!(eleve_id: guitou_eleve.id,
-                lesson_id: lesson_3.id)
-
-Booking.create!(eleve_id: claire_eleve.id,
-                lesson_id: lesson_1.id)
-
-Booking.create!(eleve_id: guitou_eleve.id,
-                lesson_id: lesson_4.id)
-
-puts "Création des reviews"
-Review.create!(content: "Beautiful Sunday class with Guitou. We were just 5 people so attention was given to each of teach of the participants.",
-                rating: 4,
-                eleve_id: marine_eleve.id,
-                lesson_id: lesson_2.id)
-
-Review.create!(content: "Beautiful Sunday class with Guitou. We were just 5 people so attention was given to each of teach of the participants.",
-                rating: 4,
-                eleve_id: claire_eleve.id,
-                lesson_id: lesson_1.id)
-
-Review.create!(content: "Beautiful Sunday class with Guitou. We were just 5 people so attention was given to each of teach of the participants.",
-                rating: 5,
-                eleve_id: marine_eleve.id,
-                lesson_id: lesson_3.id)

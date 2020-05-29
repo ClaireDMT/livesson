@@ -22,7 +22,6 @@ Rails.application.routes.draw do
   resources :eleves, only: [:new, :create, :edit, :update, :show] do
     collection do
       get '/turn_eleve_into_prof', to: 'eleves#turn_eleve_into_prof'
-      get '/:id/mes-cours', to: 'eleves#mes_cours', as: :mes_cours
       get '/:id/mes-reservations', to: 'eleves#mes_reservations', as: :mes_reservations
       get '/:id/mon-planning', to: 'eleves#mon_planning', as: :mon_planning
       patch "/:id/update_password", to: "eleves#update_password"
@@ -36,7 +35,7 @@ Rails.application.routes.draw do
     end
   end
   # routes pour la création d'un template
-  resources :templates, only: [:index, :new, :create]
+  resources :templates, only: [:index, :new, :create, :destroy]
   # routes pour lessons avec l'annotation et la réservation imbriquées
   resources :lessons do
     resources :reviews, only: [:new, :create]

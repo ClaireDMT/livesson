@@ -1,5 +1,7 @@
-<% if current_user.prof? || @eleve.prof? %>
-  <%= render 'form_prof' %>
-<% else %>
-  <%= render 'new_eleve' %>
-<% end%>
+<div class="container-livesson">
+  <% if current_user.prof? || @eleve.prof? %>
+    <%= render 'form_prof' %>
+  <% else %>
+    <%= render 'new_eleve' %>
+  <% end%>
+</div>

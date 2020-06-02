@@ -3,7 +3,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    color: black;
+    color: $black;
     .page-moderation-left{
       img {
         height: calc(100vh - 70px);

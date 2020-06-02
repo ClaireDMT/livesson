@@ -113,7 +113,7 @@ button:focus {
 
 .btn-dropdown-white {
   background-color: white;
-  color: black;
+  color: $black;
   border-radius: 10px;
   font-size: 16px;
   vertical-align: middle;
@@ -129,16 +129,16 @@ button:focus {
 .btn-secondary {
   background-color: transparent;
   border-color: transparent;
-  color: black;
+  color: $black;
   &:hover {
     background-color: transparent;
     border-color: transparent;
-    color: black;
+    color: $black;
   }
   &:not(:disabled):not(.disabled):active{
     background-color: transparent;
     border-color: transparent;
-    color: black;
+    color: $black;
   }
   &:not(:disabled):not(.disabled):active:focus {
     box-shadow: none;
@@ -148,7 +148,7 @@ button:focus {
 .show > .btn-secondary.dropdown-toggle {
   background-color: transparent;
   border-color: transparent;
-  color: black;
+  color: $black;
   &:focus {
     box-shadow: none;
   }

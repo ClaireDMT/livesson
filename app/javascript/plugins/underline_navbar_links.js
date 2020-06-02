@@ -7,7 +7,7 @@ const underlineNavbarLinks = () => {
   if(window.location.pathname.split('/')[3] === "mon-planning") {
     planning.style.borderBottom = "2px solid #7921E9";
   }
-  else if(window.location.pathname.split('/')[3] === "mes-cours") {
+  else if(window.location.pathname.split('/')[1].startsWith('templates')) {
     cours.style.borderBottom = "2px solid #7921E9";
   }
   else if(window.location.pathname.split('/')[3] === "mes-reservations") {

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_14_233207) do
+ActiveRecord::Schema.define(version: 2020_06_03_201536) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -108,8 +108,8 @@ ActiveRecord::Schema.define(version: 2020_05_14_233207) do
     t.string "lesson_level"
     t.integer "lesson_duration"
     t.string "lesson_language"
-    t.integer "lesson_price"
-    t.integer "lesson_discount_price"
+    t.float "lesson_price"
+    t.float "lesson_discount_price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "sport_id"

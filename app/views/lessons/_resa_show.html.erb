@@ -11,13 +11,27 @@
         </div>
         <div class="bold mb-4">
           <h3 class="title-purple-upcase lesson-title"><%= @lesson.lesson_name %></h3>
-          <h3 class="title-purple-upcase"><span class="lesson-price"><%= @lesson.lesson_price %></span>€</h3>
+          <h3 class="title-purple-upcase">
+            <% if lesson.lesson_discount_price.nil? %>
+              <% if lesson.lesson_price.to_i == lesson.lesson_price %>
+                <%= lesson.lesson_price.to_i %> €
+              <% else %>
+                <%= lesson.lesson_price %> €
+              <% end %>
+            <% else %>
+              <% if lesson.lesson_discount_price.to_i == lesson.lesson_discount_price %>
+                <%= lesson.lesson_discount_price.to_i %> €
+              <% else %>
+                <%= lesson.lesson_discount_price %> €
+              <% end %>
+            <% end %>
+          </h3>
         </div>
         <div class="infos-lesson">
           <p class="lesson-level"><%= @lesson.lesson_level %></p>
           <p class="lesson-date"><span ><%= I18n.l(@lesson.lesson_date, format: '%A %d %B %Y', locale: :'fr').capitalize %></span> à <%= @lesson.start.strftime('%Hh%M') %></p>
           <p>Cours en <span class="lesson-language"><%= @lesson.lesson_language %></span></p>
-          <p><span class="lesson-duration"><%= @lesson.lesson_duration %></span>min</p>
+          <p><span class="lesson-duration"><%= @lesson.lesson_duration %></span> min</p>
         </div>
 
         <div class="infos-teacher mt-4">

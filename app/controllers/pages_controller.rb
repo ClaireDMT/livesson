@@ -8,4 +8,8 @@ class PagesController < ApplicationController
   def home_pro
     @eleve = current_user.eleve unless current_user.nil?
   end
+
+  def faq
+    @eleve = current_user.eleve unless current_user.nil?
+  end
 end

@@ -199,6 +199,48 @@ button:focus {
   }
 }
 
+#buttonToggleAnswerFaq1,
+#buttonToggleAnswerFaq2,
+#buttonToggleAnswerFaq3,
+#buttonToggleAnswerFaq4,
+#buttonToggleAnswerFaq5,
+#buttonToggleAnswerFaq6,
+#buttonToggleAnswerFaq7,
+#buttonToggleAnswerFaq8,
+#buttonToggleAnswerFaq9,
+#buttonToggleAnswerFaq10,
+#buttonToggleAnswerFaq11,
+#buttonToggleAnswerFaq12,
+#buttonToggleAnswerFaq13,
+#buttonToggleAnswerFaq14 {
+  border: none;
+  background-color: transparent;
+  padding: 0;
+  color: $black;
+}
+
+#buttonToggleAnswerFaq1 span,
+#buttonToggleAnswerFaq2 span,
+#buttonToggleAnswerFaq3 span,
+#buttonToggleAnswerFaq4 span,
+#buttonToggleAnswerFaq5 span,
+#buttonToggleAnswerFaq6 span,
+#buttonToggleAnswerFaq7 span,
+#buttonToggleAnswerFaq8 span,
+#buttonToggleAnswerFaq9 span,
+#buttonToggleAnswerFaq10 span,
+#buttonToggleAnswerFaq11 span,
+#buttonToggleAnswerFaq12 span,
+#buttonToggleAnswerFaq13 span,
+#buttonToggleAnswerFaq14 span{
+  line-height: 34px;
+  margin-left: 10px;
+  font-size: 20px;
+  &:hover {
+    transform: rotate(180deg);
+  }
+}
+
 .dropdown-toggle::after {
   display: none;
 }

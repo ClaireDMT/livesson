@@ -3,7 +3,8 @@
   height: calc(100vh - 70px);
   #faq-1 {
     width: 497px;
-    background-color: $purple;
+    background-image: image-url("FAQ.png");
+    background-size: cover;
   }
   #faq-2 {
     padding-left: 50px;

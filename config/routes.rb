@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   # homepage prof
   get '/prof', to: 'pages#home_pro'
   # FAQ
-  get '/faq', to: 'pages#faq'
+  get '/aide', to: 'pages#faq'
   # curstom registration controller devise
   devise_for :users, controllers: { registrations: 'customdevise/registrations' }, path: '', path_names: {
     sign_in: 'connexion',

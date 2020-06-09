@@ -3,6 +3,9 @@
   .form-flexify {
     display: flex;
     align-items: center;
+    @media all and (min-width: 1500px){
+      justify-content: center;
+    }
     h2{
       font-size: 32px;
       line-height: 48px;
@@ -23,7 +26,7 @@
   .form-right-part{
     margin-left: 55px;
     img {
-      width: 842px;
+      width: 640px;
     }
   }
 }

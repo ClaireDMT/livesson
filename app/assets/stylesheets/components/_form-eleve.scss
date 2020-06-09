@@ -3,6 +3,9 @@
   .form-flexify {
     display: flex;
     align-items: center;
+    @media all and (min-width: 1500px){
+      justify-content: center;
+    }
   }
   p{
     width: 500px;
@@ -94,7 +97,7 @@
   .form-right-part{
     margin-left: 55px;
     img {
-      width: 777px;
+      width: 640px;
       height: 518px;
     }
     .form-paiement {

@@ -7,6 +7,7 @@ import "bootstrap";
 import "../plugins/flatpickr";
 import '../plugins/toggle_display_lessons';
 import '../plugins/toggle_display_bookings';
+import '../plugins/toggle_display_answer_faq';
 import '../plugins/toggle_dropdown_button';
 import '../plugins/persist_checkboxes_after_reload';
 

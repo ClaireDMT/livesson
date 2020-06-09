@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   get '/home', to: 'pages#home'
   # homepage prof
   get '/prof', to: 'pages#home_pro'
+  # FAQ
+  get '/aide', to: 'pages#faq'
   # curstom registration controller devise
   devise_for :users, controllers: { registrations: 'customdevise/registrations' }, path: '', path_names: {
     sign_in: 'connexion',

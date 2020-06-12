@@ -19,6 +19,8 @@ import listPlugin from '@fullcalendar/list';
 import bootstrapPlugin from '@fullcalendar/bootstrap';
 import frLocale from '@fullcalendar/core/locales/fr';
 
+import 'fullcalendar/dist/fullcalendar.min.css';
+
 const initCalendar = () => {
   const calendarEl = document.getElementById('calendar');
   const prof = calendarEl.dataset.profId;
